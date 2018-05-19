@@ -3,23 +3,11 @@ package progproj.homework;
 import java.io.*;
 import java.util.ArrayList;
 
-public class GffFile {
+public class GffIO {
 
+    //file content in java datatypes
     private String fileHeader;
     private ArrayList<GffEntry> gffEntries;
-
-    public static void main(String[] args) {
-        GffFile gffFile = new GffFile();
-        gffFile.readGff("GCF_000746645.1_ASM74664v1_genomic.gff");
-
-        System.out.println(gffFile.getFileHeader());
-
-        //for (GffEntry gffentry : gffFile.getGffEntries()) {
-        //    System.out.println(gffentry);
-        //}
-
-
-    }
 
     public void readGff(String filePath) {
         gffEntries = new ArrayList<GffEntry>();
@@ -73,7 +61,7 @@ public class GffFile {
                     gffEntries.add(new GffEntry(sequence, source, feature, start, end, score, strand, frame , attributes));
                 }
             }
-            //bufferedReader.close();
+
             // Always close files.
             bufferedReader.close();
         }
@@ -82,6 +70,9 @@ public class GffFile {
         }
         catch(IOException ex) {
             System.out.println("Error reading file '" + filePath + "'");
+        }
+        catch(ArrayIndexOutOfBoundsException ex) {
+            System.out.println("The file '" + filePath + "' is not correctly formated as a GFF-file.");
         }
     }
 
