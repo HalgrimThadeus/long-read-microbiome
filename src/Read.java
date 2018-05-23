@@ -6,7 +6,7 @@ public class Read {
 
     private String id;
     private String sequence;
-    private ArrayList<GffEntry> gffEntries;
+    private ArrayList<GffEntry> gffEntries;//list of GFF entries
 
     public String getId(){
         return this.id;
@@ -16,6 +16,16 @@ public class Read {
     }
     public ArrayList<GffEntry> getGFFEntries() {
         return this.gffEntries;
+    }
+    
+    public void setId(String id){
+        this.id = id;
+    }
+    public void setSequence(String sequence){
+        this.sequence = sequence;
+    }
+    public void setGffEntries(ArrayList<GffEntry> gffEntries){
+        this.gffEntries = gffEntries;
     }
 
 }
