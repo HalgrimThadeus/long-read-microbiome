@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         //Scanner to get the Filepaths
         /**Scanner s = new Scanner(System.in);
 
@@ -28,20 +28,20 @@ public class Main {
             System.out.println("Invalid Filepath, enter a corrent Fasta-Filepath:");
             fastaFilePath = Paths.get(s.next());
         }
-        **/
+
         //Create GffIO
         GffIO gffFile = new GffIO();
         gffFile.readGff("src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
         //Create FastaIO
         FastAIO fastaFile = new FastAIO();
         fastaFile.readFastA("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta");
-
+        **/
         //Test Methods:
-        
-
-
-
-
+        try {
+            SampleReader.read("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }

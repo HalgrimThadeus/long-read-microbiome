@@ -129,7 +129,7 @@ public class FastAIO {
     }
 
     //getId for NCBI FastA Formates!!! TODO Implement for others
-    public String getId(int i){
+    public String getId(int i) throws Exception {
         String header = getHeader(i);
         String id = "";
         for(int k = 0; k < header.length(); k++){
