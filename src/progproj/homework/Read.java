@@ -28,6 +28,13 @@ public class Read {
         this.gffEntries = gffEntries;
     }
 
-    public void addGffEntries(GffEntry gffEntry) {this.gffEntries.add(gffEntry);}
+    //Added ein Gff Entry
+    public void addGffEntries(GffEntry gffEntry) {
+        //If its null, generate null
+        if(this.gffEntries == null){
+            this.gffEntries = new ArrayList<GffEntry>();
+        }
+        this.gffEntries.add(gffEntry);
+    }
 
 }
