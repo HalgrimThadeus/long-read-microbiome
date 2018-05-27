@@ -36,9 +36,13 @@ public class Main {
         FastAIO fastaFile = new FastAIO();
         fastaFile.readFastA("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta");
         **/
-        //Test Methods:
+        //Test Methods for Test purposes preinitialized paths:
         try {
-            SampleReader.read("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
+            SampleReader.read("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
+            System.out.println(SampleReader.sample.getReads().get(0).getId());
+            System.out.println(SampleReader.sample.getReads().get(0).getSequence());
+            System.out.println(SampleReader.sample.getReads().get(0).getGFFEntries());
+
         } catch (Exception e) {
             e.printStackTrace();
         }

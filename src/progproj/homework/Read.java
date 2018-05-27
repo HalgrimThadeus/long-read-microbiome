@@ -28,4 +28,6 @@ public class Read {
         this.gffEntries = gffEntries;
     }
 
+    public void addGffEntries(GffEntry gffEntry) {this.gffEntries.add(gffEntry);}
+
 }

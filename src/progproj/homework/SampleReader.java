@@ -26,14 +26,13 @@ public class SampleReader{
             Read read = new Read();
             read.setId(fastaReader.getId(i+1));
             read.setSequence(fastaReader.getSequence(i+1));
+            read.setGffEntries(new ArrayList<GffEntry>());
 
             //Every GFF-Entry with the same id is added to the Read
             for(int j = 0; j < gffReader.getGffEntries().size(); j++){
                 GffEntry entry = gffReader.getGffEntry(j);
                 if(gffReader.getGffEntry(j).getSequence().equals(read.getId())){
-                    ArrayList<GffEntry> newEntry= read.getGFFEntries();
-                    newEntry.add(entry);
-                    read.setGffEntries(newEntry);
+                    read.addGffEntries(gffReader.getGffEntry(j));
                 }
             }
             //Adds the read to the new Sample

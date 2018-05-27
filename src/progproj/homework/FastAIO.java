@@ -132,10 +132,14 @@ public class FastAIO {
     public String getId(int i) throws Exception {
         String header = getHeader(i);
         String id = "";
-        for(int k = 0; k < header.length(); k++){
-            if(header.charAt(i) == '\n')
-                break;
-            id += header.charAt(i);
+
+        if (header.length() > 1) {
+            header = header.substring(1);
+        }
+        for (int k = 0; k < header.length(); k++) {
+                if (header.charAt(k) == ' ')
+                    break;
+                id += header.charAt(k);
         }
 
         return id.trim();
