@@ -128,10 +128,17 @@ public class FastAIO {
         writeFastA(writer);
     }
 
+    //getId for NCBI FastA Formates!!! TODO Implement for others
     public String getId(int i){
-        /// TODO implement
+        String header = getHeader(i);
+        String id = "";
+        for(int k = 0; k < header.length(); k++){
+            if(header.charAt(i) == '\n')
+                break;
+            id += header.charAt(i);
+        }
 
-        return null;
+        return id.trim();
     }
 
 
