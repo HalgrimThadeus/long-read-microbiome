@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="7a764a91-0aa2-48f9-8a8f-7d4e9a3835f3" name="Default" comment="" />
+=======
+    <list default="true" id="cea520c4-fa3a-481d-93d1-6116cd66526f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -11,6 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="GffEntry.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/progproj/homework/GffEntry.java">
@@ -26,6 +35,14 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+=======
+    <leaf>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/progproj/homework/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
             </state>
           </provider>
         </entry>
@@ -33,12 +50,17 @@
       <file leaf-file-name="FastAIO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/progproj/homework/FastAIO.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="204">
+=======
+            <state relative-caret-position="128">
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
               <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="long-read-microbiome.iml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/long-read-microbiome.iml">
           <provider selected="true" editor-type-id="text-editor" />
@@ -122,15 +144,31 @@
     <option name="y" value="83" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
+=======
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-11" />
+    <option name="width" value="980" />
+    <option name="height" value="1031" />
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+=======
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -147,12 +185,22 @@
               <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
               <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+=======
+              <item name="GffFile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
               <item name="homework" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -161,6 +209,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
+=======
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -174,6 +227,20 @@
     </option>
   </component>
   <component name="RunManager">
+<<<<<<< HEAD
+=======
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="progproj.homework.Main" />
+      <module name="long-read-microbiome" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="progproj.homework.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -215,12 +282,21 @@
       <properties />
       <listeners />
     </configuration>
+<<<<<<< HEAD
+=======
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="7a764a91-0aa2-48f9-8a8f-7d4e9a3835f3" name="Default" comment="" />
       <created>1527344894971</created>
       <option name="number" value="Default" />
@@ -484,10 +560,59 @@
     <entry file="file://$PROJECT_DIR$/src/progproj/homework/FastAIO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
+=======
+      <changelist id="cea520c4-fa3a-481d-93d1-6116cd66526f" name="Default" comment="" />
+      <created>1527449958845</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1527449958845</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <layout>
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32920355" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3125506" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/progproj/homework/FastAIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/progproj/homework/GffEntry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -499,6 +624,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1161">
           <caret line="78" column="31" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="31" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/progproj/homework/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+>>>>>>> d868389c01e261a0c9cdcc1fda838ba284898d9b
         </state>
       </provider>
     </entry>
