@@ -7,14 +7,14 @@ public class SampleReader{
 
     public static Sample sample;
 
-    public static void read(String filepathFastA, String filePathGff){
+    public static void read(String filepathFastA, String filePathGff) throws Exception {
         //Read Gff File
         GffIO gffReader = new GffIO();
         gffReader.readGff(filePathGff);
 
         //Read FastA File
         FastAIO fastaReader = new FastAIO();
-        fastaReader.readFastA(filepathFastA); //TODO FastA Impelementation ?! anpassen
+        fastaReader.readFastA(filepathFastA);
 
         //New Sample Object
         sample = new Sample();
