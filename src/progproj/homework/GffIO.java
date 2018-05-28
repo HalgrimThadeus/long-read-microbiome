@@ -1,16 +1,20 @@
 package progproj.homework;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GffIO {
 
     //file content in java datatypes
     private String fileHeader;
-    private ArrayList<GffEntry> gffEntries;
+    private List<GffEntry> gffEntries;
 
     public void readGff(String filePath) {
-        gffEntries = new ArrayList<GffEntry>();
+        gffEntries = new ArrayList<>();
 
         try {
             // FileReader reads text files in the default encoding.
@@ -32,7 +36,7 @@ public class GffIO {
                     String source = lineCols[1];
                     String feature = lineCols[2];
 
-                    //wenn leer, dann wird eine -1 gespeichert
+                    //if empty, -1 is stored
                     int start = -1;
                     if(!lineCols[3].equals("."))  {
                         start = Integer.parseInt(lineCols[3]);
@@ -80,7 +84,7 @@ public class GffIO {
         return gffEntries.get(i);
     }
 
-    public ArrayList<GffEntry> getGffEntries() {
+    public List<GffEntry> getGffEntries() {
         return this.gffEntries;
     }
 
