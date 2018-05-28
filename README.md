@@ -1,10 +1,17 @@
 <a id="toc" rel="bookmark"></a>
 # Table of Contents
 
+* [Tasks](#tasks)
 * [Long-read-microbiome](#lrm)
 * [Stuff from the tutors](#stuff)
 
 <hr />
+
+<a id="lrm" rel="tasks"></a>
+# Tasks
+1. Read Design Pattern
+2. Assign Issues to yourself or get assigned
+3. Try to write the tests
 
 <a id="lrm" rel="bookmark"></a>
 # Long-read-microbiome
