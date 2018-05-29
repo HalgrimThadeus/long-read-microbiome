@@ -2,14 +2,15 @@ package progproj.homework;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GffIO {
 
     //file content in java datatypes
     private String fileHeader;
-    private ArrayList<GffEntry> gffEntries;
+    private List<GffEntry> gffEntries;
 
-    public void readGff(String filePath) {
+    public List<GffEntry> readGff(String filePath) {
         gffEntries = new ArrayList<GffEntry>();
 
         try {
