@@ -2,7 +2,7 @@ package progproj.homework;
 
 import java.util.ArrayList;
 
-public class Read {
+public class Read{
 
     private String id;
     private String sequence;
