@@ -9,7 +9,7 @@ public class GffIO {
     //file content in java datatypes
     private String fileHeader;
 
-    public List<GffEntry> readGff(String filePath) {
+    public List<GffEntry> readGff(String filePath) throws Exception {
         List<GffEntry> gffEntries = new ArrayList<GffEntry>();
 
         try {
@@ -65,14 +65,8 @@ public class GffIO {
             // Always close files.
             bufferedReader.close();
         }
-        catch(FileNotFoundException ex) {
-            System.out.println("Unable to open file '" + filePath + "'");
-        }
-        catch(IOException ex) {
-            System.out.println("Error reading file '" + filePath + "'");
-        }
         catch(ArrayIndexOutOfBoundsException ex) {
-            System.out.println("The file '" + filePath + "' is not correctly formated as a GFF-file.");
+            throw new Exception("The file '" + filePath + "' is not correctly formated as a GFF-file.");
         }
         return gffEntries;
     }
