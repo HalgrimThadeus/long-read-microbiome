@@ -25,9 +25,18 @@ package progproj.homework;
         this.sequence = sequence;
     }
 
+    /**
+     *
+     * @return Header of a FastAEntry
+     */
     public String getHeader() {
         return header;
     }
+
+    /**
+     *
+     * @return Sequence of a FastAEntry
+     */
     public String getSequence(){
         return sequence;
     }

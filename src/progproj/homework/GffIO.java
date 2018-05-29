@@ -8,10 +8,9 @@ public class GffIO {
 
     //file content in java datatypes
     private String fileHeader;
-    private List<GffEntry> gffEntries;
 
     public List<GffEntry> readGff(String filePath) {
-        gffEntries = new ArrayList<GffEntry>();
+        List<GffEntry> gffEntries = new ArrayList<GffEntry>();
 
         try {
             // FileReader reads text files in the default encoding.
@@ -75,14 +74,7 @@ public class GffIO {
         catch(ArrayIndexOutOfBoundsException ex) {
             System.out.println("The file '" + filePath + "' is not correctly formated as a GFF-file.");
         }
-    }
-
-    public GffEntry getGffEntry(int i) {
-        return gffEntries.get(i);
-    }
-
-    public ArrayList<GffEntry> getGffEntries() {
-        return this.gffEntries;
+        return gffEntries;
     }
 
     public String getFileHeader() {
