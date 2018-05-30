@@ -35,7 +35,7 @@ public class Read extends FastAEntry{
     }
 
     //processes id out of the header; id = first in header until first whitespace & delete first sign <
-    private String getIdFromHeader(String header){
+    public String getIdFromHeader(String header){
         //String id = header.split("/s")[0];
         String id = "";
         return id;
