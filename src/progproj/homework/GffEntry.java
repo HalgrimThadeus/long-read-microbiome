@@ -1,6 +1,9 @@
 package progproj.homework;
 
+import com.sun.org.apache.xpath.internal.operations.String;
+
 import java.util.ArrayList;
+import java.util.Map;
 
 public class GffEntry {
     /**
@@ -36,7 +39,7 @@ public class GffEntry {
      */
     private int frame;
 
-    private ArrayList<String> attributes; //All the other information pertaining to this feature. The format, structure and content of this field is the one which varies the most between the three competing file formats.
+    private Map<String,String> attributes; //All the other information pertaining to this feature. The format, structure and content of this field is the one which varies the most between the three competing file formats.
 
     /**
      * Makea new GffEntry with all the typical protperties of a Feature in a GFF-File
