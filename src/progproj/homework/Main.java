@@ -31,7 +31,7 @@ public class Main {
 
         //Create GffIO
         GffIO gffFile = new GffIO();
-        gffFile.readGff("src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
+        gffFile.readGff(gffFilePath.toString());
         //Create FastaIO
         FastAIO fastaFile = new FastAIO();
         fastaFile.readFastA("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta");
