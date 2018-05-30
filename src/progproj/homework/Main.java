@@ -35,7 +35,7 @@ public class Main {
         //Create FastaIO
         FastAIO fastaFile = new FastAIO();
         fastaFile.readFastA("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta");
-         Test
+         PushTest
         **/
         //Test Methods for Test purposes preinitialized paths:
         try {
