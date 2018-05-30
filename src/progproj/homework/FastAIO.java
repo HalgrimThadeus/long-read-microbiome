@@ -16,6 +16,8 @@ public class FastAIO {
     private List<String> headerList = new ArrayList<>();
     private List<String> sequenceList = new ArrayList<>();
 
+    //TODO Die oberen werden entfernt es reicht:
+    private List<FastAEntry> fastAEntries = new ArrayList<>();
     /**
      * For new FastaA which will be filled with the add method
      */
@@ -173,6 +175,11 @@ public class FastAIO {
             throw new Exception("No such Header");
         }
         return headerList.get(i - 1);
+    }
+
+    //TODO implementieren
+    public FastAEntry getFastaEntry(int i){
+
     }
 
     /**
