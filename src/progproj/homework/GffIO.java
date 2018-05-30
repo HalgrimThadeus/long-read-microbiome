@@ -6,11 +6,9 @@ import java.util.List;
 
 public class GffIO {
 
-    //file content in java datatypes
-    private String fileHeader;
 
     public List<GffEntry> readGff(String filePath) throws Exception {
-        List<GffEntry> gffEntries = new ArrayList<GffEntry>();
+        List<GffEntry> gffEntries = new ArrayList<>();
 
         try {
             // FileReader reads text files in the default encoding.
@@ -19,13 +17,13 @@ public class GffIO {
             // Always wrap FileReader in BufferedReader.
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            String line = null;
-            this.fileHeader = "";
+            String line = "";
+            String fileHeader = "";
 
             //read actual content of the gff file
             while((line = bufferedReader.readLine()) != null) {
                 if ( line.startsWith("#")) {
-                    this.fileHeader = this.fileHeader + line + "\n";
+                    fileHeader = fileHeader + line + "\n";
                 } else {
                     String[] lineCols = line.split("\t");
                     String sequence = lineCols[0];
@@ -68,10 +66,8 @@ public class GffIO {
         catch(ArrayIndexOutOfBoundsException ex) {
             throw new Exception("The file '" + filePath + "' is not correctly formated as a GFF-file.");
         }
+
         return gffEntries;
     }
 
-    public String getFileHeader() {
-        return this.fileHeader;
-    }
 }
