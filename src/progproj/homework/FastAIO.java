@@ -16,8 +16,10 @@ public class FastAIO {
     private List<String> headerList = new ArrayList<>();
     private List<String> sequenceList = new ArrayList<>();
 
-    //TODO Die oberen werden entfernt es reicht:
-    private List<FastAEntry> fastAEntries = new ArrayList<>();
+    /*TODO Sollte wie in der GffIO nur die FastA Datei lesen/schreiben und eine Liste von fastAEntrys zurückgegeben.
+      TODO Geter können entfernt werden, da diese bereits in FastAEntry sind!
+     */
+
     /**
      * For new FastaA which will be filled with the add method
      */
@@ -46,14 +48,15 @@ public class FastAIO {
         readFastA(path);
     }
 
-
+    //TODO Modifizieren das FastAEntry erzeugt und zurückegeben werden
     /**
      * With a given Reader this method is creating 2 lists with the input from the reader.
      * Split up into header and sequence lists.
      *     * @param r
      * @throws IOException
      */
-    public void readFastA(Reader r) throws IOException {
+    //Bereits modifiziert gibt Liste zurück
+    public List<FastAEntry> readFastA(Reader r) throws IOException {
         String thisLine;
         String nextLine;
         String accumulator = "";
@@ -95,7 +98,7 @@ public class FastAIO {
      * @param filePath
      * @throws IOException
      */
-    public void readFastA(String filePath) throws IOException {
+    public List<FastAEntry> readFastA(String filePath) throws IOException {
     FileReader reader = new FileReader(filePath);
     readFastA(reader);
     }
@@ -130,24 +133,7 @@ public class FastAIO {
         writeFastA(writer);
     }
 
-    //getId for NCBI FastA Formates!!! TODO Implement for others
-    public String getId(int i) throws Exception {
-        String header = getHeader(i);
-        String id = "";
-        //Entfernt den > Zeichen
-        if (header.length() > 1) {
-            header = header.substring(1);
-        }
-        //Nimmt den ersten Headerinhalt
-        for (int k = 0; k < header.length(); k++) {
-                if (header.charAt(k) == ' ')
-                    break;
-                id += header.charAt(k);
-        }
-
-        return id.trim();
-    }
-
+    //TODO getter können eigentlich alle entfernt werden, da diese schon in FastAEntrys
 
     /**
      * is giving the header at given position
@@ -177,10 +163,6 @@ public class FastAIO {
         return headerList.get(i - 1);
     }
 
-    //TODO implementieren
-    public FastAEntry getFastaEntry(int i){
-
-    }
 
     /**
      * returns the size of the header list
