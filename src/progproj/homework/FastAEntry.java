@@ -5,6 +5,7 @@ package progproj.homework;
  * It is the motherclass of a Read, which gets additional information from a GFF-File
  *
  **/
+
  public class FastAEntry {
     /**
      * Header of the FastaEntry
