@@ -2,7 +2,9 @@ package progproj.homework;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GffIO {
 
@@ -56,11 +58,19 @@ public class GffIO {
                         frame = Integer.parseInt(lineCols[7]);
                     }
 
+                    //creating the map for the attributes
+                    Map<String, String> attributes = new HashMap<>();
 
-                    ArrayList<String> attributes = new ArrayList<>();
-                    String[] attributes_array= lineCols[8].split("; ");
+                    String[] attributes_array= lineCols[8].split(";");
                     for (int i = 0; i < attributes_array.length; i++) {
-                        attributes.add(attributes_array[i]);
+                        String[] key_attribute = attributes_array[i].split("=");
+
+                        //controls if really only the attribute itself consists of key and value
+                        if(key_attribute.length != 2) {
+                            throw new Exception("The file '" + filePath + "' is not correctly formated as a GFF-file. Because attributes and keys not match to eacht other");
+                        }
+                        //adding to Map of key and value
+                        attributes.put(key_attribute[0], key_attribute[1]);
                     }
 
                     gffEntries.add(new GffEntry(sequence, source, feature, start, end, score, strand, frame , attributes));
