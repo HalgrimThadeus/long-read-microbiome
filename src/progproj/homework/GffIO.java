@@ -6,6 +6,13 @@ import java.util.List;
 
 public class GffIO {
 
+    /**
+     * Reads from a GFF file with a given filepath the GFF entries, which are the lines of the file.
+     *
+     * @param filePath String where to find the file
+     * @return gffentries: a list of gffentries, which are stored in the file, from which the filepath was given
+     * @throws Exception
+     */
 
     public List<GffEntry> readGff(String filePath) throws Exception {
         List<GffEntry> gffEntries = new ArrayList<>();
@@ -30,7 +37,7 @@ public class GffIO {
                     String source = lineCols[1];
                     String feature = lineCols[2];
 
-                    //wenn leer, dann wird eine -1 gespeichert
+                    //if empty, -1 is stored
                     int start = -1;
                     if(!lineCols[3].equals("."))  {
                         start = Integer.parseInt(lineCols[3]);
