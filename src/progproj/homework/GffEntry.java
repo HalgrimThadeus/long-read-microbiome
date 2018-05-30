@@ -1,8 +1,6 @@
 package progproj.homework;
 
-import com.sun.org.apache.xpath.internal.operations.String;
-
-import java.util.ArrayList;
+import java.lang.String;
 import java.util.Map;
 
 public class GffEntry {
@@ -42,7 +40,7 @@ public class GffEntry {
     private Map<String,String> attributes; //All the other information pertaining to this feature. The format, structure and content of this field is the one which varies the most between the three competing file formats.
 
     /**
-     * Makea new GffEntry with all the typical protperties of a Feature in a GFF-File
+     * Make a new GffEntry with all the typical protperties of a Feature in a GFF-File
      * @param sequence
      * @param source
      * @param feature
@@ -53,7 +51,7 @@ public class GffEntry {
      * @param frame
      * @param attributes
      */
-    public GffEntry(String sequence, String source, String feature, int start, int end, int score, char strand, int frame, ArrayList<String> attributes) {
+    public GffEntry(String sequence, String source, String feature, int start, int end, int score, char strand, int frame, Map<String,String> attributes) {
         this.sequence = sequence;
         this.source = source;
         this.feature = feature;
@@ -129,10 +127,14 @@ public class GffEntry {
         return frame;
     }
 
-    public ArrayList<String> getAttributes() {
+    public Map<String,String> getAttributes() {
         return attributes;
     }
 
+    /**
+     * sets up a string out of the gffEntry
+     * @return
+     */
     @Override
     public String toString() {
         String output = this.sequence + "\t"
@@ -144,7 +146,7 @@ public class GffEntry {
                 + this.strand + "\t"
                 + this.frame + "\t";
 
-        for (String attribute:this.attributes) {
+        for (String attribute:this.attributes.values()) {
             output = output + attribute + "; ";
         }
 
