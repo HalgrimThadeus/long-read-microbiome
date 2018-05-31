@@ -43,11 +43,11 @@ public class Sample {
 //Checks if the gene is contained in an entry
     private boolean isGeneInRead(GffEntry gff,String gene){
             List<String> attributes = gff.getAttributes();
-            for(String name: attributes){
-                if(name.equals("Name="+gene)){
-                    return true;
-                }
+        for(String name: attributes){
+            if(name.equals("Name="+gene)){
+                return true;
             }
+        }
             return false;
     }
 }
