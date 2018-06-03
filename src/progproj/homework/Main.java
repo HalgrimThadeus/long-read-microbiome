@@ -53,6 +53,13 @@ public class Main {
             e.printStackTrace();
         }
 
+        //Testing Read class
+        ReadTest test2 = new ReadTest();
+        test2.idShouldBeProcessedOutOfTheHeader();
+        test2.gffEntriesShouldntBeNull();
+
+
+
 
     }
 }
