@@ -93,7 +93,7 @@ public class FastAIO {
         reader.close();
     }
     */
-
+    //TODO make it better, was from error fixing
     public List<FastAEntry> readFastA(Reader r) throws IOException{
         String thisLine;
         String nextLine;
