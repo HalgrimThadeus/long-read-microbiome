@@ -38,12 +38,10 @@ public class Filter {
             for(GffEntry gff: read.getGFFEntries()){
                 boolean fits = true;
                 for(int i = 0; i < keys.size(); i++){
-                    if(gff.getAttributes().get(keys.get(i)) == null){
-                        System.err.println("Key doesn't exist in attributes");
-                        break;
-                    }
+
+                    //First
                     //if there is a size span look at min and max values and compare them to the length
-                    else if(keys.get(i).equals("min")){
+                    if(keys.get(i).equals("min")){
                         if(Integer.parseInt(gff.getAttributes().get("Length")) < Integer.parseInt(values.get(i))){
                             fits = false;
                             break;
@@ -54,7 +52,12 @@ public class Filter {
                             fits = false;
                             break;
                         }
-                    } // if the key is something else look up the value of the gffEntry and compare to value
+                        //then all else keys are compared if they exist in the attributes
+                    } else if(gff.getAttributes().get(keys.get(i)) == null){
+                        System.err.println("Key doesn't exist in attributes");
+                        break;
+                    }
+                     // if the key is something else look up the value of the gffEntry and compare to value
                     else if(!(gff.getAttributes().get(keys.get(i)).equals(values.get(i)))){
                         fits = false;
                         break;
@@ -70,15 +73,14 @@ public class Filter {
         }
     }
 
-    private void splitKeyValuePairs(){
+    private void splitKeyValuePairs() {
         //Split key=value pairs to use them in findread;
-        for(String pairs: criteriaarray){
+        for (String pairs : criteriaarray) {
 
-        keys.add(pairs.split("=")[0]);
-        values.add(pairs.split("=")[1]);
+            keys.add(pairs.split("=")[0]);
+            values.add(pairs.split("=")[1]);
         }
-
-            }
+    }
 
     protected void writeAcceptedReads(){
         Writer writer ;
