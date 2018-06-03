@@ -101,25 +101,31 @@ public class FastAIO {
 
         BufferedReader reader = new BufferedReader(r);
 
+
         if((thisLine = reader.readLine()) != null){
             nextLine = reader.readLine();
-
-            if ( thisLine.startsWith(">") && nextLine.startsWith(">")) {
-                thisLine = nextLine;
-                nextLine = reader.readLine();
-            } else if ( thisLine.startsWith(">") && !(nextLine.startsWith(">"))) {
-                String header;
-                String sequence = "";
-
-                header = thisLine;
-
-                while(nextLine.startsWith(">")){
+            while (thisLine != null && nextLine != null) {
+                if (thisLine.startsWith(">") && nextLine.startsWith(">")) {
                     thisLine = nextLine;
                     nextLine = reader.readLine();
-                    sequence += thisLine;
-                }
+                } else if (thisLine.startsWith(">") && !(nextLine.startsWith(">"))) {
+                    String header;
+                    String sequence = "";
 
-                fastAEntries.add(new FastAEntry(header,sequence));
+                    header = thisLine;
+
+                    while (!nextLine.startsWith(">")) {
+                        thisLine = nextLine;
+                        nextLine = reader.readLine();
+                        if(nextLine == null)
+                            break;
+                        sequence += thisLine;
+                    }
+                    thisLine = nextLine;
+                    nextLine = reader.readLine();
+
+                    fastAEntries.add(new FastAEntry(header, sequence));
+                }
             }
         }
 

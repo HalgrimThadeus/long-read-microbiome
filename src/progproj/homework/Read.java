@@ -40,7 +40,7 @@ public class Read extends FastAEntry{
         //String id = header.split("/s")[0];
         String id = "";
         int i = 1; //starts with 1 to ignore/delete "<" at the beginning of the header
-        while(header.charAt(i) != '\t') { //tabulator or whitespace??
+        while(header.charAt(i) != ' ') { //tabulator or whitespace??
             id += header.charAt(i);
             if(i < header.length()-1){
                 i++;

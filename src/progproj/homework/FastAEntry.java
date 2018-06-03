@@ -41,18 +41,5 @@ package progproj.homework;
     public String getSequence(){
         return sequence;
     }
-    /** pussible getID, if necessairy
-    public String getID(){
-        String res = "NoID";
-        int i = 0;
-        if(sequence != null) {
-            while (sequence.charAt(i) != '\t') {
-                res += sequence.charAt(i);
-                i++;
-            }
-            res = res.substring(1);
-        }
-        return res;
-    }
-     **/
+
 }

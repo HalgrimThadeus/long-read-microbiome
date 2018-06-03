@@ -39,10 +39,10 @@ public class Main {
         **/
         //Test Methods for Test purposes preinitialized paths:
         try {
-            SampleReader.read("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
+            Sample sample = SampleReader.read("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
             //.out.println(SampleReader.getSample().getReads().get(0).getId());
-            //System.out.println(SampleReader.getSample().getReads().get(0).getSequence());
-            //System.out.println(SampleReader.getSample().getReads().get(0).getGFFEntries());
+            System.out.println(sample.getReads().get(0).getId());
+            System.out.println(sample.getReads().get(0).getGFFEntries());
 
         } catch (Exception e) {
             e.printStackTrace();
