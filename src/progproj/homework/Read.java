@@ -42,7 +42,10 @@ public class Read extends FastAEntry{
         int i = 1; //starts with 1 to ignore/delete "<" at the beginning of the header
         while(header.charAt(i) != '\t') { //tabulator or whitespace??
             id += header.charAt(i);
-            i++;
+            if(i < header.length()-1){
+                i++;
+            }
+            else break;
         }
         return id;
     }
