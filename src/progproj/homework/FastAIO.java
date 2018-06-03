@@ -56,7 +56,8 @@ public class FastAIO {
      * @throws IOException
      */
     //Bereits modifiziert gibt Liste zurück
-    public List<FastAEntry> readFastA(Reader r) throws IOException {
+    /*
+    public void readFastA(Reader r) throws IOException {
         String thisLine;
         String nextLine;
         String accumulator = "";
@@ -91,6 +92,39 @@ public class FastAIO {
 
         reader.close();
     }
+    */
+
+    public List<FastAEntry> readFastA(Reader r) throws IOException{
+        String thisLine;
+        String nextLine;
+        List<FastAEntry> fastAEntries = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(r);
+
+        if((thisLine = reader.readLine()) != null){
+            nextLine = reader.readLine();
+
+            if ( thisLine.startsWith(">") && nextLine.startsWith(">")) {
+                thisLine = nextLine;
+                nextLine = reader.readLine();
+            } else if ( thisLine.startsWith(">") && !(nextLine.startsWith(">"))) {
+                String header;
+                String sequence = "";
+
+                header = thisLine;
+
+                while(nextLine.startsWith(">")){
+                    thisLine = nextLine;
+                    nextLine = reader.readLine();
+                    sequence += thisLine;
+                }
+
+                fastAEntries.add(new FastAEntry(header,sequence));
+            }
+        }
+
+        return fastAEntries;
+    }
 
     /**
      * read a FastA file with a path
@@ -99,8 +133,8 @@ public class FastAIO {
      * @throws IOException
      */
     public List<FastAEntry> readFastA(String filePath) throws IOException {
-    FileReader reader = new FileReader(filePath);
-    readFastA(reader);
+        FileReader reader = new FileReader(filePath);
+        return readFastA(reader);
     }
 
     /**

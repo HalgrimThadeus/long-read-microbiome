@@ -41,9 +41,10 @@ public class GffEntryTest {
     @Test
     public void getAttributes() {
     }
-
+    /*
     @Test
     public void toString() {
         assertEquals(1+1,2);
     }
+    */
 }
