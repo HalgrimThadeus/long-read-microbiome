@@ -20,8 +20,9 @@ public class Sample {
         reads.add(newread);
     }
 
-    // Picks up all reads with the demanded gene (id?) from the reads list.
-    private List<Read> getReadsWithGene(String gene){
+    /*---------------------------------------------------------------
+    Picks up all reads with the demanded gene (id?) from the reads list.
+   private List<Read> getReadsWithGene(String gene){
 
         List<Read> readswithgene = new ArrayList<>();
 
@@ -39,15 +40,13 @@ public class Sample {
 
         return readswithgene;
     }
+    --------------------------------------------------*/
 
 //Checks if the gene is contained in an entry
-    private boolean isGeneInRead(GffEntry gff,String gene){
-            List<String> attributes = gff.getAttributes();
-            for(String name: attributes){
-                if(name.equals("Name="+gene)){
-                    return true;
-                }
-            }
-            return false;
+    private List<Read> filter(String criteria){
+        Filter crit = new Filter(reads,criteria);
+        List<Read> acceptedreads = crit.getAcceptedReads();
+        crit.writeAcceptedReads();
+        return acceptedreads;
     }
 }

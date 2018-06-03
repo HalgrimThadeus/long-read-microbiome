@@ -40,7 +40,7 @@ public class GffEntry {
     private Map<String,String> attributes; //All the other information pertaining to this feature. The format, structure and content of this field is the one which varies the most between the three competing file formats.
 
     /**
-     * Make a new GffEntry with all the typical protperties of a Feature in a GFF-File
+     * Make a new GffEntry with all the typical properties of a Feature in a GFF-File
      * @param sequence
      * @param source
      * @param feature
