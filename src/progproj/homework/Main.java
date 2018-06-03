@@ -42,9 +42,13 @@ public class Main {
             Sample sample = SampleReader.read("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
             SampleReaderTest test = new SampleReaderTest();
             //.out.println(SampleReader.getSample().getReads().get(0).getId());
-            System.out.println(sample.getReads().get(0).getGFFEntries());
-            System.out.println(sample.getReads().get(sample.getReads().size()-1).getGFFEntries());
-            test.allFastAEntriesAreInSample("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
+            for (int i= 0; i <sample.getReads().size(); i++){
+                System.out.println(sample.getReads().get(i).getGFFEntries().size());
+                System.out.println(sample.getReads().get(i).getGFFEntries());
+                //System.out.println(sample.getReads().get(sample.getReads().size() - 1).getGFFEntries());
+            }
+                test.allFastAEntriesAreInSample("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
