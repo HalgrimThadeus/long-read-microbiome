@@ -5,12 +5,13 @@ import java.util.Map;
 
 public class TaxTree {
     private Map<Integer, TaxNode> tree;
+    private Map<String, Integer> nameMap;
 
     public void add(TaxNode taxNode) {
 
     }
 
-    public void setNameOfId(long id, String name) {
+    public void setNameOfId(int id, String name) {
 
     }
 
@@ -24,7 +25,7 @@ public class TaxTree {
         //this can be done by searching the parentId (which is stored in each node) and set itself as child of parent
     }
 
-    public List<Long> getAllChildren(long id) {
+    public List<Integer> getAllChildren(int id) {
         //returns children and subchildren..subsusbsubsubsubsubchildren of a node
         //???MAyBE other datastructure for return, because could be quiet large
         return null;

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaxNode {
-    private long id;
-    private long parentId;
-    private List<Long> childrenIds = new ArrayList<>() ;
+    private int id;
+    private int parentId;
+    private List<Integer> childrenIds = new ArrayList<>() ;
     private String rank;
     private String name;
 
-    public TaxNode(long id, long parentId, String rank) {
+    public TaxNode(int id, int parentId, String rank) {
         //normally this should be out commented, because its not my job ;)
         this.id = id;
         this.parentId = parentId;
@@ -22,11 +22,11 @@ public class TaxNode {
         this.name = name;
     }
 
-    public void addChild(long childId) {
+    public void addChild(int childId) {
         //this.childrenIds.add(childId);
     }
 
-    public List<Long> getChildren() {
+    public List<Integer> getChildren() {
         //return this.childrenIds;
         return null;
     }
