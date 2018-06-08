@@ -1,6 +1,7 @@
-package progproj.homework;
+package Tests;
 
 import org.junit.Test;
+import progproj.homework.*;
 
 import java.util.List;
 
