@@ -29,6 +29,13 @@ public class Read extends FastAEntry{
         this.id = getIdFromHeader(header);
         this.gffEntries = new ArrayList<GffEntry>(); //initialize gffEntries list, won't have to check if its null
     }
+    //old constructor:
+    /*
+    public Read(FastAEntry fastaEntry){
+        super(fastaEntry.getHeader(), fastaEntry.getSequence()); //override
+        this.id = getIdFromHeader(fastaEntry.getHeader());
+        this.gffEntries = new ArrayList<GffEntry>(); //initialize gffEntries list, won't have to check if its null
+    }*/
 
     /**
      *
@@ -62,7 +69,7 @@ public class Read extends FastAEntry{
      */
     public String getIdFromHeader(String header){
         //starts with 1 to ignore/delete "<" at the beginning of the header & ends before first whitespace " "
-        String id = header.substring(1,header.indexOf(' ')-1);
+        String id = header.substring(1,header.indexOf(' '));
         return id;
     }
 
