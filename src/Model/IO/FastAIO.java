@@ -1,4 +1,6 @@
-package Model;
+package Model.IO;
+
+import Model.FastAEntry;
 
 import java.io.*;
 import java.util.ArrayList;

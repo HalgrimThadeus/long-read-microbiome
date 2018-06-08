@@ -1,4 +1,4 @@
-package Model;
+package Model.Tax;
 
 public class TaxIO {
     public TaxTree readInTaxTree() {

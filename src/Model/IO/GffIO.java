@@ -1,5 +1,7 @@
-package Model;
+package Model.IO;
 
+
+import Model.GffEntry;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

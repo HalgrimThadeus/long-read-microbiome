@@ -1,5 +1,12 @@
-package Model;
+package Model.IO;
 
+
+import Model.FastAEntry;
+import Model.GffEntry;
+import Model.IO.FastAIO;
+import Model.IO.GffIO;
+import Model.Read;
+import Model.Sample;
 
 import java.util.List;
 /**

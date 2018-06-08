@@ -1,5 +1,6 @@
 package Model;
 
+import Model.IO.SampleReader;
 import Tests.ReadTest;
 import Tests.SampleReaderTest;
 

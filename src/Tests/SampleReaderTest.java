@@ -1,6 +1,8 @@
 package Tests;
 
 import Model.*;
+import Model.IO.FastAIO;
+import Model.IO.SampleReader;
 import org.junit.Test;
 import progproj.homework.*;
 
