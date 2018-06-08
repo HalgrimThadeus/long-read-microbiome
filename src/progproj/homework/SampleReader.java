@@ -29,8 +29,8 @@ public class SampleReader{
         Sample sample = new Sample();
 
         //Read Gff File
-        GffIO gffReader = new GffIO();
-        List<GffEntry> gffEntries = gffReader.readGff(filePathGff);
+        GffIO gffReader = new GffIO(filePathGff);
+        List<GffEntry> gffEntries = gffReader.readGff();
 
         //Read FastA File
         FastAIO fastaReader = new FastAIO();
@@ -41,7 +41,7 @@ public class SampleReader{
         for(int i = 0; i < fastaEntries.size(); i++){
 
             //Creating new Read and adding id and sequence of FastA
-            Read read = new Read(fastaEntries.get(i));
+            Read read = new Read(fastaEntries.get(i).getHeader(), fastaEntries.get(i).getSequence());
 
             for(int j = 0; j < gffEntries.size(); j++){
                 GffEntry entry = gffEntries.get(j);
