@@ -1,4 +1,4 @@
-package progproj.homework;
+package Model;
 
 import Tests.ReadTest;
 import Tests.SampleReaderTest;

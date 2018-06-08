@@ -1,8 +1,8 @@
 package Tests;
 
 import org.junit.*;
-import progproj.homework.FastAEntry;
-import progproj.homework.Read;
+import Model.FastAEntry;
+import Model.Read;
 //import org.junit.Test;
 import static org.junit.Assert.*;
 

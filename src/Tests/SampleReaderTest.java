@@ -1,11 +1,10 @@
 package Tests;
 
+import Model.*;
 import org.junit.Test;
 import progproj.homework.*;
 
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class SampleReaderTest {
 

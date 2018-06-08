@@ -1,4 +1,4 @@
-package progproj.homework;
+package Model;
 
 public class TaxIO {
     public TaxTree readInTaxTree() {

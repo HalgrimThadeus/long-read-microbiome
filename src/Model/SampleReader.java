@@ -1,7 +1,6 @@
-package progproj.homework;
+package Model;
 
 
-import java.util.ArrayList;
 import java.util.List;
 /**
  * $SampleReader

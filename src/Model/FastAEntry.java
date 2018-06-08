@@ -1,4 +1,4 @@
-package progproj.homework;
+package Model;
 
 /**
  *This class models a FastAEntry, so it's a seqeunce with its header (incl. title)

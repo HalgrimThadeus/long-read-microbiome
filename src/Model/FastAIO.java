@@ -1,4 +1,4 @@
-package progproj.homework;
+package Model;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,12 +13,12 @@ import java.util.List;
  * @author Patrick Schirm
  */
 public class FastAIO {
-    private List<String> headerList = new ArrayList<>();
-    private List<String> sequenceList = new ArrayList<>();
 
     /*TODO Sollte wie in der GffIO nur die FastA Datei lesen/schreiben und eine Liste von fastAEntrys zurückgegeben.
       TODO Geter können entfernt werden, da diese bereits in FastAEntry sind!
      */
+    private List<String> headerList;
+    private List<String> sequenceList;
 
     /**
      * For new FastaA which will be filled with the add method
@@ -150,6 +150,7 @@ public class FastAIO {
      * @throws IOException
      */
     public void writeFastA(Writer w) throws IOException {
+
         BufferedWriter writer = new BufferedWriter(w);
 
         for(int i = 0; i < headerList.size(); i++){

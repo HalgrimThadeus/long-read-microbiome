@@ -1,4 +1,4 @@
-package progproj.homework;
+package Model;
 
 import java.lang.String;
 import java.util.Map;
