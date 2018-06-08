@@ -13,6 +13,8 @@ public class TaxTree {
 
     public void setNameOfId(int id, String name) {
 
+        //add name to TaxNode
+        //and add entry to nameMap
     }
 
     public void setChildren() {
@@ -31,7 +33,9 @@ public class TaxTree {
         return null;
     }
 
+    public int getId(String name) {
 
-    //PROBLEM: SERCHING FOR  NAME is super compliccated
-    //USE two hashtables??? One for name to id, one for id to node
+        //returns id by using nameMap
+        return 0;
+    }
 }
