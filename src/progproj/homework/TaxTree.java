@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class TaxTree {
     private Map<Integer, TaxNode> tree;
+    //this is one idea how to store the taxdump entries...could be maybe spaceexpensive, but makes access easy
     private Map<String, Integer> nameMap;
 
     public void add(TaxNode taxNode) {
