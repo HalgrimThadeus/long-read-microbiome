@@ -5,8 +5,8 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/FastAFiles" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/GffFile" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/FastAFiles" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/GffFile" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
