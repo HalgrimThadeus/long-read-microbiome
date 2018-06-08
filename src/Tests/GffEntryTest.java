@@ -1,4 +1,4 @@
-package progproj.homework;
+package Tests;
 
 import org.junit.Test;
 
