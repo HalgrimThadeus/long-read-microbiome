@@ -15,7 +15,6 @@ public class TaxNode {
         this.id = id;
         this.parentId = parentId;
         this.rank = rank;
-        this.name = name;
     }
 
     public void setName(String name) {

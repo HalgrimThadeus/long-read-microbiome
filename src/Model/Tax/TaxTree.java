@@ -40,9 +40,9 @@ public class TaxTree {
         return null;
     }
 
-    public int getId(String name) {
+    public int getName(int id) {
 
-        //returns id by using nameMap
+        //returns name using nameMap
         return 0;
     }
 }

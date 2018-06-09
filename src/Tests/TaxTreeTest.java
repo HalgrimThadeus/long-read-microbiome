@@ -1,29 +1,60 @@
 
+import Model.Tax.TaxNode;
+import Model.Tax.TaxTree;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class TaxTreeTest {
 
-    //todo: for rabeUni
+    private TaxTree taxTree = new TaxTree();
 
-    @Test
-    public void add() {
+    public void shouldAddRootToTree() {
+        TaxNode root = new TaxNode(1, 1, "SuperFastKingdom");
+        root.setName("Flatulenzae");
+        taxTree.add(root);
+    }
+
+    public void shouldAddTwoNodesWithSettingName() {
+        TaxNode testNode = new TaxNode(2, 1, "Family");
+        taxTree.add(testNode);
+        taxTree.setNameOfId(2, "Liquipupso");
+
+        TaxNode testNode2 = new TaxNode(3, 1, "Family");
+        taxTree.add(testNode2);
+        taxTree.setNameOfId(3, "Secoaire");
+    }
+
+    public void shouldSetChildrenOfTree() {
+        taxTree.setChildren();
     }
 
     @Test
-    public void setNameOfId() {
+    public void shouldGetAllChildrenOfRoot() {
+        shouldAddRootToTree();
+        shouldAddTwoNodesWithSettingName();
+        shouldSetChildrenOfTree();
+
+        assertEquals(true, taxTree.getAllChildren(1).contains(3));
+        assertNotEquals(true, taxTree.getAllChildren(1).contains(1));
     }
 
     @Test
-    public void setChildren() {
+    public void shouldGetAllChildrenOfLeaf() {
+        shouldAddRootToTree();
+        shouldAddTwoNodesWithSettingName();
+        shouldSetChildrenOfTree();
+
+        assertNull(taxTree.getAllChildren(3));
     }
 
     @Test
-    public void getAllChildren() {
-    }
+    public void shouldGetNameOfRoot() {
+        shouldAddRootToTree();
+        shouldAddTwoNodesWithSettingName();
 
-    @Test
-    public void getId() {
+        assertEquals("Flatulenzae", taxTree.getName(1));
+        assertNotEquals("Flatulenzae", taxTree.getName(2));
+        assertNull(taxTree.getName(42));
     }
 }
