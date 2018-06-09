@@ -1,8 +1,8 @@
 package Model;
 
 import Model.IO.SampleReader;
-import Tests.ReadTest;
-import Tests.SampleReaderTest;
+import Model.*;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -37,25 +37,26 @@ public class Main {
         **/
         //Test Methods for Test purposes preinitialized paths:
         try {
-            Sample sample = SampleReader.read("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
-            SampleReaderTest test = new SampleReaderTest();
-            //.out.println(SampleReader.getSample().getReads().get(0).getId());
+            Sample sample = SampleReader.read("res/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "res/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
+
             for (int i= 0; i <sample.getReads().size(); i++){
                 System.out.println(sample.getReads().get(i).getGFFEntries().size());
                 System.out.println(sample.getReads().get(i).getGFFEntries());
                 //System.out.println(sample.getReads().get(sample.getReads().size() - 1).getGFFEntries());
+
+
             }
-                test.allFastAEntriesAreInSample("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
+                //test.allFastAEntriesAreInSample("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        //Testing Read class
+        /*
         ReadTest test2 = new ReadTest();
         test2.idShouldBeProcessedOutOfTheHeader();
         test2.gffEntriesShouldntBeNull();
-
+        */
 
 
 

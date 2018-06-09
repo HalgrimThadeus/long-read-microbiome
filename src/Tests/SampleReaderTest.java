@@ -1,22 +1,14 @@
-package Tests;
 
-import Model.*;
-import Model.IO.FastAIO;
 import Model.IO.SampleReader;
 import org.junit.Test;
-import progproj.homework.*;
 
-import java.util.List;
+import java.io.FileNotFoundException;
 
 public class SampleReaderTest {
 
-    /**
-     * Because of the Implementation the Reads in the Sample should have the same order as the FastEntries.
-     * So the following asserts should always be true
-     *
-     * @param fastaFile File Path to fastA File
-     * @param gffFile File Path to Gff File
-     */
+
+    /*
+    Hier müssten temporäre Testfiles erstellt werden ://
     @Test
     public void allFastAEntriesAreInSample(String fastaFile, String gffFile) {
         try {
@@ -39,4 +31,15 @@ public class SampleReaderTest {
             System.err.println("Test could not be done because the FilePaths are Wrong");
         }
     }
+    */
+
+    @Test
+    public void wrongFilePath(){
+        try {
+            SampleReader.read("asdf", "asdf");
+        } catch (Exception e) {
+            assert e.getMessage().equals("asdf (Das System kann die angegebene Datei nicht finden)");
+        }
+    }
+
 }

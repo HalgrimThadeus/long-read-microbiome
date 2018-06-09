@@ -1,4 +1,3 @@
-package Tests;
 
 import org.junit.*;
 import Model.FastAEntry;

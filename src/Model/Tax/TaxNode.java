@@ -23,12 +23,19 @@ public class TaxNode {
     }
 
     public void addChild(int childId) {
-        //this.childrenIds.add(childId);
+        this.childrenIds.add(childId);
     }
 
     public List<Integer> getChildren() {
-        //return this.childrenIds;
-        return null;
+        return this.childrenIds;
+    }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public int getParentId(){
+        return parentId;
     }
 
 
