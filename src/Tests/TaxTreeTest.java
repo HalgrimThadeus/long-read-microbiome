@@ -25,6 +25,15 @@ public class TaxTreeTest {
         taxTree.setNameOfId(3, "Secoaire");
     }
 
+    public void shouldAddSubNodes() {
+        TaxNode subNode = new TaxNode(4, 3, "Species");
+        subNode.setName("Schüsselsprenger");
+        taxTree.add(subNode);
+        TaxNode subNode2 = new TaxNode(5, 3, "Species");
+        subNode2.setName("Flitzpiepe");
+        taxTree.add(subNode2);
+    }
+
     public void shouldSetChildrenOfTree() {
         taxTree.setChildren();
     }
@@ -37,6 +46,10 @@ public class TaxTreeTest {
 
         assertEquals(true, taxTree.getAllChildren(1).contains(3));
         assertNotEquals(true, taxTree.getAllChildren(1).contains(1));
+
+        shouldAddSubNodes();
+        shouldSetChildrenOfTree();
+        System.out.println(taxTree.getAllChildren(1));
     }
 
     @Test

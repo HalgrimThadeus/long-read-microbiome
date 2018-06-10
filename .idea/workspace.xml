@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cea520c4-fa3a-481d-93d1-6116cd66526f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Tax/TaxTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Tax/TaxTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/TaxIOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/TaxIOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/TaxTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/TaxTreeTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaxTree.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TaxTree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+            <state relative-caret-position="195">
+              <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#382#383#0" expanded="true" />
@@ -78,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaxTreeTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TaxTreeTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+            <state relative-caret-position="200">
+              <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -121,9 +120,9 @@
         <option value="$PROJECT_DIR$/src/Model/FastAIO.java" />
         <option value="$PROJECT_DIR$/src/Model/IO/FastAIO.java" />
         <option value="$PROJECT_DIR$/src/Model/Tax/TaxNode.java" />
-        <option value="$PROJECT_DIR$/src/Tests/TaxTreeTest.java" />
         <option value="$PROJECT_DIR$/src/Tests/TaxIOTest.java" />
         <option value="$PROJECT_DIR$/src/Model/Tax/TaxTree.java" />
+        <option value="$PROJECT_DIR$/src/Tests/TaxTreeTest.java" />
       </list>
     </option>
   </component>
@@ -522,7 +521,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528570388220</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="implemented getAllchildren">
+      <created>1528654829984</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1528654829984</updated>
+    </task>
+    <task id="LOCAL-00020" summary="implemented setNameOfId">
+      <created>1528654939231</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1528654939231</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -539,6 +552,9 @@
       <configuration name="TaxTreeTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TaxTreeTest - 2018.06.10 at 20h 13m 27s.xml">
+      <configuration name="TaxTreeTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TaxTreeTest - 2018.06.10 at 20h 22m 51s.xml">
       <configuration name="TaxTreeTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -631,7 +647,9 @@
     <MESSAGE value="added subpackages" />
     <MESSAGE value="moved Gui resource to res folder" />
     <MESSAGE value="added Tests for TaxTree" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Tests for TaxTree" />
+    <MESSAGE value="implemented getAllchildren" />
+    <MESSAGE value="implemented setNameOfId" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented setNameOfId" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -891,13 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -917,13 +928,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        <state relative-caret-position="195">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#382#383#0" expanded="true" />
             <element signature="e#432#433#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
         </state>
       </provider>
     </entry>
