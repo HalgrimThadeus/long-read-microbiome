@@ -39,8 +39,12 @@ public class TaxTree {
         List<Integer> childrenList = tree.get(id).getChildren();
         List<Integer> allChildrenList = childrenList;
 
-        for (int i = 0; i < childrenList.size(); i++) {
-            allChildrenList.addAll(getAllChildren(childrenList.get(i)));
+        if(childrenList.size() == 0) {
+            return null;
+        } else {
+            for (int i = 0; i < childrenList.size(); i++) {
+                allChildrenList.addAll(getAllChildren(childrenList.get(i)));
+            }
         }
 
         return allChildrenList;
