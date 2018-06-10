@@ -11,8 +11,8 @@ public class TaxIO {
     public static TaxTree readInTaxTree() throws IOException {
 
         //please CHANGE
-        String filePathToNodes = "C:\\Users\\manuel\\Desktop\\nodes - Kopie.dmp";
-        String filePathToNames = "C:\\Users\\manuel\\Desktop\\names - Kopie.dmp";
+        String filePathToNodes = "res\\TreeDumpFiles\\nodesTest.dmp";
+        String filePathToNames = "res\\TreeDumpFiles\\namesTest.dmp";
 
         TaxTree tree = new TaxTree();
 
@@ -36,27 +36,27 @@ public class TaxIO {
         tree.setChildren();
 
         //then read in names.dmp and use only the scientific names,which are then added to the corresponding TaxNode via TaxTree
-        BufferedReader nameReader = new BufferedReader(new FileReader(filePathToNodes));
+        BufferedReader nameReader = new BufferedReader(new FileReader(filePathToNames));
         //read in first the nodes.dmp and create TaxNodes in TaxTree
 
         //useful to only take the first line with a ID
-        String nameLine = nodeReader.readLine();
+        String nameLine = nameReader.readLine();
 
-
+        //Add names
         while (nameLine != null ) {
 
-                nameLine.replace('\t', '\0');
-                String[] lineValues = nodeLine.trim().split("\\|");
+                nameLine = nameLine.replace('\t', '\0');
+                String[] lineValues = nameLine.trim().split("\\|");
 
                 //overwrites if there are multiple scientifc names for one id
-                if(lineValues[3].equals("scientificname")) {
+                if(lineValues[3].contains("scientific name")) {
                     int nodeID = Integer.parseInt(lineValues[0].trim());
 
                     String nodeName = lineValues[1].trim();
                     tree.setNameOfId(nodeID, nodeName);
 
                 }
-                nameLine = nodeReader.readLine();
+                nameLine = nameReader.readLine();
             }
 
 
