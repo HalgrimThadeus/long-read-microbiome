@@ -27,7 +27,7 @@ public class GffEntry {
     /**
      * score 	Numeric value that generally indicates the confidence of the source on the annotated feature. A value of "." (a dot) is used to define a null value.
      */
-    private int score;
+    private double score;
     /**
      * Single character that indicates the Sense (molecular biology) strand of the feature; it can assume the values of "+" (positive, or 5'->3'), "-", (negative, or 3'->5'), "." (undetermined).
      */
@@ -107,7 +107,7 @@ public class GffEntry {
      *
      * @return the score of the feature
      */
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
