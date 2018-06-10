@@ -11,17 +11,17 @@ public class TaxIO {
     public static TaxTree readInTaxTree() throws IOException {
 
         //please CHANGE
-        String filePathToNodes = "C:\\Users\\manug\\Desktop\\nodes.dmp";
+        String filePathToNodes = "C:\\Users\\manuel\\Desktop\\nodes.dmp";
         String filePathToNames = "./names.dmp";
 
         TaxTree tree = new TaxTree();
 
         BufferedReader nodeReader = new BufferedReader(new FileReader(filePathToNodes));
         //read in first the nodes.dmp and create TaxNodes in TaxTree
-        String line = nodeReader.readLine();
-        while(line != null){
-            line.replace('\t', '\0');
-            String[] lineValues = line.trim().split("\\|");
+        String nodeLine = nodeReader.readLine();
+        while(nodeLine != null){
+            nodeLine = nodeLine.replace('\t', '\0');
+            String[] lineValues = nodeLine.trim().split("\\|");
 
             int id = Integer.parseInt(lineValues[0].trim());
             int parentId = Integer.parseInt(lineValues[1].trim());
@@ -30,14 +30,36 @@ public class TaxIO {
             TaxNode node = new TaxNode(id, parentId, rank);
             tree.add(node);
 
-            line = nodeReader.readLine();
+            nodeLine = nodeReader.readLine();
         }
 
         tree.setChildren();
 
         //then read in names.dmp and use only the scientific names,which are then added to the corresponding TaxNode via TaxTree
+        BufferedReader nameReader = new BufferedReader(new FileReader(filePathToNodes));
+        //read in first the nodes.dmp and create TaxNodes in TaxTree
+
+        //useful to only take the first line with a ID
+        String nameLine = nodeReader.readLine();
 
 
-        return null;
+        while (nameLine != null ) {
+
+                nameLine.replace('\t', '\0');
+                String[] lineValues = nodeLine.trim().split("\\|");
+
+                //overwrites if there are multiple scientifc names for one id
+                if(lineValues[3].equals("scientificname")) {
+                    int nodeID = Integer.parseInt(lineValues[0].trim());
+
+                    String nodeName = lineValues[1].trim();
+                    tree.setNameOfId(nodeID, nodeName);
+
+                }
+                nodeLine = nodeReader.readLine();
+            }
+
+
+        return tree;
     }
 }
