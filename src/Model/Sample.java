@@ -4,22 +4,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sample {
+    /**
+     * Contains the List of the Reads in this Sample
+     */
+    private List<Read> reads = new ArrayList<>();
 
-    private List<Read> reads = new ArrayList<>(); // List of Reads
-
+    /**
+     * Returns the List of Reads
+     * @return reads
+     */
     public List<Read> getReads() {
         return reads;
     }
 
+    /**
+     * Set the List of reads to a new List of reads
+     * @param newreads
+     */
     public void setReads(List<Read> newreads) {
         reads = newreads;
     }
 
-    //Method to add single Reads to the List
+    /**
+     * Add a new Read to to current List of Reads
+     * @param newread
+     */
     public void addReads(Read newread){
         reads.add(newread);
     }
 
+    //TODO Is this working???
     /*---------------------------------------------------------------
     Picks up all reads with the demanded gene (id?) from the reads list.
    private List<Read> getReadsWithGene(String gene){
@@ -42,7 +56,11 @@ public class Sample {
     }
     --------------------------------------------------*/
 
-//Checks if the gene is contained in an entry
+    /**
+     * Checks if the gene is contained in an entry
+     * @param criteria
+     * @return
+     */
     private List<Read> filter(String criteria){
         Filter crit = new Filter(reads,criteria);
         List<Read> acceptedreads = crit.getAcceptedReads();
