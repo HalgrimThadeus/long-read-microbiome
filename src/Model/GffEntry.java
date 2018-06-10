@@ -52,12 +52,12 @@ public class GffEntry {
      * @param attributes
      */
     public GffEntry(String sequence, String source, String feature, int start, int end, int score, char strand, int frame, Map<String,String> attributes) {
-        this.sequence = sequence;
-        this.source = source;
-        this.feature = feature;
-        this.start = start;
-        this.end = end;
-        this.score = score;
+            this.sequence = sequence;
+            this.source = source;
+            this.feature = feature;
+            this.start = start;
+            this.end = end;
+            this.score = score;
         this.strand = strand;
         this.frame = frame;
         this.attributes = attributes;
@@ -129,6 +129,9 @@ public class GffEntry {
 
     public Map<String,String> getAttributes() {
         return attributes;
+    }
+    public String getAttributefromKey(String key){
+        return attributes.get(key);
     }
 
     /**
