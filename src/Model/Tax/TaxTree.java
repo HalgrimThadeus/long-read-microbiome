@@ -1,8 +1,6 @@
 package Model.Tax;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TaxTree {
 
@@ -33,18 +31,15 @@ public class TaxTree {
         }
     }
 
-    public List<Integer> getAllChildren(int id) {
-        List<Integer> childrenList = tree.get(id).getChildren();
-        List<Integer> allChildrenList = childrenList;
+    public Set<Integer> getAllChildren(int id) {
+        Set<Integer> childrenList = tree.get(id).getChildren();
+        Set<Integer> allChildrenList = childrenList;
 
-
-            for (int i = 0; i < childrenList.size(); i++) {
-                allChildrenList.addAll(getAllChildren(childrenList.get(i)));
-            }
-            return allChildrenList;
-
-
-
+        Iterator<Integer> childrenIterator = childrenList.iterator();
+        while(childrenIterator.hasNext()) {
+            allChildrenList.addAll(getAllChildren(childrenIterator.next()));
+        }
+        return allChildrenList;
     }
 
     public int getName(int id) {

@@ -1,7 +1,7 @@
 package Model.Tax;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Datastructure of a TaxNode
@@ -18,7 +18,7 @@ public class TaxNode {
     /**
      * Contains the Children of this node
      */
-    private List<Integer> childrenIds = new ArrayList<>() ;
+    private Set<Integer> childrenIds = new HashSet<>();
     /**
      * Contains the taxonomic rank of the node
      */
@@ -62,7 +62,7 @@ public class TaxNode {
      * Retruns the List of the childrenIds
      * @return
      */
-    public List<Integer> getChildren() {
+    public Set<Integer> getChildren() {
         return this.childrenIds;
     }
 
