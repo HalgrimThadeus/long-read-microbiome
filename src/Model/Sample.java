@@ -33,28 +33,30 @@ public class Sample {
         reads.add(newread);
     }
 
-    //TODO Is this working???
-    /*---------------------------------------------------------------
-    Picks up all reads with the demanded gene (id?) from the reads list.
-   private List<Read> getReadsWithGene(String gene){
+    //TODO Is this working??? --> now this should (not safe) work , but it's not intended to be in Filter, not here
+    /*
+      //Picks up all reads with the demanded gene (id?) from the reads list.
+   private List<Read> getReadsWithGene(String geneID){
 
         List<Read> readswithgene = new ArrayList<>();
+
 
         for(Read possibleread: reads){
           List<GffEntry> entries = possibleread.getGFFEntries();    //List of entries in the current read
             //checks if the current entries contains the gene . if yes it adds read to result else not
             for(GffEntry entry: entries){
-              if(isGeneInRead(entry,gene)){
-                  readswithgene.add(possibleread);
-              break;
-              }
+                if (entry.getAttributefromKey("ID") == geneID){
+                    readswithgene.add(possibleread);
+                    break;
+                }
           }
 
         }
 
         return readswithgene;
     }
-    --------------------------------------------------*/
+    */
+
 
     /**
      * Checks if the gene is contained in an entry

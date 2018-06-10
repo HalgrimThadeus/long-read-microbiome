@@ -2,17 +2,35 @@ package Model.Tax;
 
 import java.util.*;
 
+/**
+ * @class the datastorage for the taxdump files, where information about species and their taxonomic classification is put in
+ * therefore there are two hashmaps, which make easy access of the tree strucure and the elements theirselves possible
+ */
 public class TaxTree {
 
+    /**
+     * contains the actual tree structure with the TaxNodes
+     */
     private Map<Integer, TaxNode> tree;
+
+    /**
+     * in this map the search for ids by name is made possible, for easy use in later applications as genus filtering
+     */
     //this is one idea how to store the taxdump entries...could be maybe spaceexpensive, but makes access easy
     private Map<String, Integer> nameMap;
 
+    /**
+     * constructing empty maps
+     */
     public TaxTree() {
         this.tree = new HashMap<>();
         this.nameMap =  new HashMap<>();
     }
 
+    /**
+     * adds the taxNode to the tree, including the name if exists
+     * @param taxNode
+     */
     public void add(TaxNode taxNode) {
         tree.put(taxNode.getId(), taxNode);
         if(taxNode.getName() != null) {
@@ -20,15 +38,23 @@ public class TaxTree {
         }
     }
 
+    /**
+     * method to be called if name is set a posteriori (e.g. file parsing from name.dmp)
+     * @param id
+     * @param name
+     */
     public void setNameOfId(int id, String name) {
         nameMap.put(name,id);
         tree.get(id).setName(name);
     }
 
+    /**
+     * cause the nodes.dmp only safe parent nodes, therefore the children have to be set afterwards !!TIME EXPENSIVE!!
+     *
+     *THIS METHOD MUST BE CALLED after Addition Process
+     */
     public void setChildren() {
 
-        //THIS METHOD MUST BE CALLED BY TAXIO or CALL IT in ADD MEthod
-        // (quiet time expensive, maybe better to have a list of unlinked children)
         for (TaxNode child : this.tree.values()) {
 
             //tests if node is root, to not set child of root root itself
@@ -39,6 +65,12 @@ public class TaxTree {
         }
     }
 
+    /**
+     * returns all children (inner nodes and leafes) of one node
+     * may cause problems if applied on root, because of a huge set
+     * @param id
+     * @return
+     */
     public Set<Integer> getAllChildren(int id) {
         Set<Integer> childrenList = tree.get(id).getChildren();
         Set<Integer> allChildrenList = childrenList;
@@ -50,7 +82,16 @@ public class TaxTree {
         return allChildrenList;
     }
 
-    public int getName(int id) {
-        return this.nameMap.get(id);
+    /**
+     * returns the name of one id
+     * @param name
+     * @return
+     */
+    public int getId(String name) {
+        if (this.nameMap.containsKey(name)) {
+            return this.nameMap.get(name);
+        } else {
+            return -1;
+        }
     }
 }
