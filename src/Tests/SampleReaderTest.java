@@ -8,7 +8,10 @@ import java.io.*;
 public class SampleReaderTest {
 
     @Test
-    public void allFastAEntriesAreInSample() {
+    /**
+     * Test read with temp Files
+     */
+    public void readTest() {
         try {
             File fasta = File.createTempFile("FastA", ".fasta");
             File gff = File.createTempFile("Gff", ".gff");
@@ -43,6 +46,9 @@ public class SampleReaderTest {
 
 
     @Test
+    /**
+     * With wrong filepaths the gff-Entry should report a error
+     */
     public void wrongFilePath(){
         try {
             SampleReader.read("asdf", "asdf");
