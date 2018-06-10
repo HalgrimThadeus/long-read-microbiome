@@ -1,13 +1,16 @@
 1	|	all	|		|	synonym	|
 1	|	Pardus	|		|	scientific name	|
 2	|	Panthera	|	Eukaryota	|	scientific name	|
-3	|	Felidae	|	Eukaryota	|	in-part	|
+3	|	Felidae	|	Eukaryota	|	scientific name		|
 4	|	Taxidea	|	Eukaryota	|	in-part	|
+5	|	Taxus	|	Eukaryota	|	scientific name		|
 5	|	Taxus	|	Eukaryota	|	in-part	|
-6	|	Lutra	|	Eukaryota	|	in-part	|
+6	|	Lutra	|	Eukaryota	|	scientific name		|
+7	|	Lutra	|	Eukaryota	|	scientific name		|
 7	|	Lutra	|	Eukaryota	|	blast name	|
-8	|	Mustelidae	|		|	genbank common name	|
-9	|	Canidae	|		|	authority	|
+8	|	Mustelidae	|		|	scientific name	|
+9	|	Canidae	|		|	scientific name		|
+10	|	Latrans	|	Eukaryota	|	scientific name		|
 10	|	Latrans	|	Eukaryota	|	in-part	|
-11	|	Canis	|	Eukaryota	|	in-part	|
+11	|	Canis	|	Eukaryota	|	scientific name		|
 12	|	Lupus	|		|	scientific name	|
