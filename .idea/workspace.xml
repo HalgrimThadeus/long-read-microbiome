@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cea520c4-fa3a-481d-93d1-6116cd66526f" name="Default" comment="" />
+    <list default="true" id="cea520c4-fa3a-481d-93d1-6116cd66526f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +17,42 @@
       <file leaf-file-name="TaxIO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="85" selection-start-line="38" selection-start-column="85" selection-end-line="38" selection-end-column="85" />
+            <state relative-caret-position="1003">
+              <caret line="59" column="13" lean-forward="true" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/GUI/sample.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="2" lean-forward="true" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SampleReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/IO/SampleReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -33,27 +66,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FastAEntry.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/FastAEntry.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
-              <folding>
-                <element signature="e#715#716#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TaxTree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="272">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#427#428#0" expanded="true" />
-                <element signature="e#477#478#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,26 +93,8 @@
       <file leaf-file-name="TaxTreeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="41">
-              <caret line="37" column="34" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NativeMethodAccessorImpl.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/jdk/internal/reflect/NativeMethodAccessorImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DelegatingMethodAccessorImpl.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/jdk/internal/reflect/DelegatingMethodAccessorImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="228">
+              <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -167,7 +168,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -185,6 +186,17 @@
             <path>
               <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
               <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="TreeDumpFiles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
@@ -216,6 +228,12 @@
               <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -249,6 +267,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Manuel Glöckler\Desktop\long-read-microbiome\res\TreeDumpFiles" />
       <recent name="$PROJECT_DIR$/res" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -506,10 +525,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.TaxIO" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.TaxTreeTest" />
         <item itemvalue="JUnit.TaxIOTest" />
         <item itemvalue="JUnit.SampleReaderTest.allFastAEntriesAreInSample" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -655,7 +674,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528655031372</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="filestest">
+      <created>1528655329640</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1528655329640</updated>
+    </task>
+    <task id="LOCAL-00020" summary="filestest">
+      <created>1528656023871</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1528656023871</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -685,10 +718,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17222000" />
+    <option name="totallyTimeSpent" value="18199000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -700,18 +733,18 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33261803" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32943678" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.50104386" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3995749" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3995749" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Palette" order="9" />
       <window_info id="Designer" order="7" />
@@ -792,7 +825,8 @@
     <MESSAGE value="modified dir hierarchy again" />
     <MESSAGE value="changed dir name of model class package" />
     <MESSAGE value="added subpackages" />
-    <option name="LAST_COMMIT_MESSAGE" value="added subpackages" />
+    <MESSAGE value="filestest" />
+    <option name="LAST_COMMIT_MESSAGE" value="filestest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -803,24 +837,11 @@
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Model/Tax/TaxIO.java</url>
-          <line>13</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
       </breakpoints>
       <option name="time" value="13" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Model/Read.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/ArrayList.java" />
     <entry file="file://$PROJECT_DIR$/src/Model/Main.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -986,16 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="1" selection-start-line="21" selection-end-line="22" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/SampleReaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -1014,13 +1025,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/IO/SampleReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1074,19 +1078,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="37" column="34" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="34" />
+        <state relative-caret-position="228">
+          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#427#428#0" expanded="true" />
-            <element signature="e#477#478#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1101,10 +1103,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/IO/SampleReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/GUI/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="2" lean-forward="true" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="85" selection-start-line="38" selection-start-column="85" selection-end-line="38" selection-end-column="85" />
+        <state relative-caret-position="1003">
+          <caret line="59" column="13" lean-forward="true" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
