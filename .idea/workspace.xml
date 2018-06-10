@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cea520c4-fa3a-481d-93d1-6116cd66526f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Sample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Sample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/SampleReaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/SampleReaderTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +16,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="30" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SampleReaderTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Tests/SampleReaderTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="29" column="146" selection-start-line="29" selection-start-column="146" selection-end-line="29" selection-end-column="146" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParentRunner.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="240" selection-start-line="240" selection-end-line="240" />
+              <folding>
+                <element signature="e#2111#2112#0" expanded="true" />
+                <element signature="e#2155#2156#0" expanded="true" />
+                <element signature="e#5951#6086#0" expanded="true" />
+                <element signature="e#6085#6086#0" expanded="true" />
+                <element signature="e#6484#6648#0" expanded="true" />
+                <element signature="e#6647#6648#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JUnitCore.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runner/JUnitCore.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SampleReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/IO/SampleReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="459">
+              <caret line="60" selection-start-line="60" selection-end-line="60" />
             </state>
           </provider>
         </entry>
@@ -27,57 +72,32 @@
       <file leaf-file-name="TaxTree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="829">
-              <caret line="52" column="16" lean-forward="true" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
+            <state relative-caret-position="511">
+              <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaxNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#383#384#0" expanded="true" />
-                <element signature="e#433#434#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SampleReaderTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tests/SampleReaderTest.java">
+      <file leaf-file-name="TaxIO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sample.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Model/Sample.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+            <state relative-caret-position="194">
+              <caret line="61" selection-start-line="61" selection-end-line="61" />
               <folding>
-                <element signature="e#215#216#0" expanded="true" />
-                <element signature="e#243#244#0" expanded="true" />
-                <element signature="e#292#293#0" expanded="true" />
-                <element signature="e#324#325#0" expanded="true" />
-                <element signature="e#600#601#0" expanded="true" />
-                <element signature="e#634#635#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaxIOTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tests/TaxIOTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaxTreeTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="43" column="23" lean-forward="true" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -85,31 +105,11 @@
       <file leaf-file-name="FastAEntry.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/FastAEntry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="466">
+              <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
               <folding>
+                <element signature="e#686#687#0" expanded="true" />
                 <element signature="e#715#716#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FastAIO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/IO/FastAIO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-872">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GffEntry.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/GffEntry.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="70" selection-start-line="70" selection-end-line="70" />
-              <folding>
-                <element signature="e#2986#2987#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -134,6 +134,14 @@
         <option value="JUnit4 Test Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>name</find>
+      <find>att</find>
+      <find>getSe</find>
+      <find>keyAttri</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -162,6 +170,8 @@
         <option value="$PROJECT_DIR$/src/Model/Tax/TaxNode.java" />
         <option value="$PROJECT_DIR$/src/Model/Tax/TaxIO.java" />
         <option value="$PROJECT_DIR$/src/Model/Sample.java" />
+        <option value="$PROJECT_DIR$/src/Model/Main.java" />
+        <option value="$PROJECT_DIR$/src/Tests/SampleReaderTest.java" />
       </list>
     </option>
   </component>
@@ -198,6 +208,18 @@
               <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
               <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="FastAFiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="GffFile" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
@@ -293,7 +315,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Model/Tax/TaxIO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Model/Tax/TaxNode.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Model/Tax/TaxTree.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Tests/TaxTreeTest.java</PATH>
         </FILE-GROUP>
@@ -403,7 +425,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TaxIO">
+  <component name="RunManager" selected="JUnit.SampleReaderTest">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Model.Main" />
+      <module name="long-read-microbiome" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.Main" />
       <module name="long-read-microbiome" />
@@ -429,35 +462,12 @@
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="SampleReaderTest.allFastAEntriesAreInSample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="long-read-microbiome" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Tests.SampleReaderTest" />
-      <option name="METHOD_NAME" value="allFastAEntriesAreInSample" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="TaxIOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SampleReaderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="long-read-microbiome" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TaxIOTest" />
+      <option name="MAIN_CLASS_NAME" value="SampleReaderTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -526,18 +536,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.SampleReaderTest.allFastAEntriesAreInSample" />
       <item itemvalue="Application.TaxIO" />
-      <item itemvalue="JUnit.TaxIOTest" />
       <item itemvalue="JUnit.TaxTreeTest" />
+      <item itemvalue="JUnit.SampleReaderTest" />
+      <item itemvalue="Application.Main (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TaxIO" />
+        <item itemvalue="JUnit.SampleReaderTest" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="JUnit.TaxTreeTest" />
+        <item itemvalue="Application.TaxIO" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TaxIOTest" />
-        <item itemvalue="JUnit.SampleReaderTest.allFastAEntriesAreInSample" />
       </list>
     </recent_temporary>
   </component>
@@ -732,43 +742,50 @@
       <option name="project" value="LOCAL" />
       <updated>1528657743548</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="java docing">
+      <created>1528658867703</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1528658867703</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TaxIOTest - 2018.06.10 at 20h 12m 06s.xml">
-      <configuration name="TaxIOTest" configurationId="JUnit" />
+    <history-entry file="SampleReaderTest - 2018.06.10 at 22h 04m 06s.xml">
+      <configuration name="SampleReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxIOTest - 2018.06.10 at 20h 12m 34s.xml">
-      <configuration name="TaxIOTest" configurationId="JUnit" />
+    <history-entry file="SampleReaderTest - 2018.06.10 at 22h 05m 57s.xml">
+      <configuration name="SampleReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxIOTest - 2018.06.10 at 20h 12m 56s.xml">
-      <configuration name="TaxIOTest" configurationId="JUnit" />
+    <history-entry file="SampleReaderTest - 2018.06.10 at 22h 08m 10s.xml">
+      <configuration name="SampleReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest - 2018.06.10 at 20h 13m 01s.xml">
-      <configuration name="TaxTreeTest" configurationId="JUnit" />
+    <history-entry file="SampleReaderTest - 2018.06.10 at 22h 12m 45s.xml">
+      <configuration name="SampleReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest - 2018.06.10 at 20h 16m 12s.xml">
-      <configuration name="TaxTreeTest" configurationId="JUnit" />
+    <history-entry file="SampleReaderTest - 2018.06.10 at 22h 15m 12s.xml">
+      <configuration name="SampleReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest - 2018.06.10 at 20h 16m 27s.xml">
-      <configuration name="TaxTreeTest" configurationId="JUnit" />
+    <history-entry file="SampleReaderTest - 2018.06.10 at 22h 15m 41s.xml">
+      <configuration name="SampleReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest - 2018.06.10 at 20h 56m 43s.xml">
-      <configuration name="TaxTreeTest" configurationId="JUnit" />
+    <history-entry file="SampleReaderTest - 2018.06.10 at 22h 19m 50s.xml">
+      <configuration name="SampleReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest - 2018.06.10 at 20h 58m 52s.xml">
-      <configuration name="TaxTreeTest" configurationId="JUnit" />
+    <history-entry file="SampleReaderTest - 2018.06.10 at 22h 23m 45s.xml">
+      <configuration name="SampleReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest - 2018.06.10 at 21h 10m 39s.xml">
-      <configuration name="TaxTreeTest" configurationId="JUnit" />
+    <history-entry file="SampleReaderTest - 2018.06.10 at 22h 23m 54s.xml">
+      <configuration name="SampleReaderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest - 2018.06.10 at 21h 13m 26s.xml">
-      <configuration name="TaxTreeTest" configurationId="JUnit" />
+    <history-entry file="SampleReaderTest - 2018.06.10 at 22h 24m 58s.xml">
+      <configuration name="SampleReaderTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20948000" />
+    <option name="totallyTimeSpent" value="24445000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -783,12 +800,12 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32943678" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31562167" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -882,39 +899,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests/SampleReaderTest.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="18" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/ArrayList.java" />
-    <entry file="file://$PROJECT_DIR$/src/Model/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="35" column="42" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/IO/GffIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/IO/SampleReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/IO/FastAIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/IO/FastAIO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-21">
@@ -996,11 +992,6 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Object.java" />
-    <entry file="file://$PROJECT_DIR$/res/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-174" />
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Throwable.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.instrument/sun/instrument/InstrumentationImpl.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.instrument/sun/instrument/TransformerManager.java" />
@@ -1009,13 +1000,6 @@
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/String.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/StringLatin1.java" />
     <entry file="file://$PROJECT_DIR$/src/View/TestWindow.java" />
-    <entry file="file://$PROJECT_DIR$/src/Model/Read.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/jdk/internal/reflect/NativeMethodAccessorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
@@ -1037,16 +1021,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-474">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/GUI/sample.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -1059,43 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/IO/GffIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-97">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#953#954#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1039#1040#0" expanded="true" />
-            <element signature="e#1081#1082#0" expanded="true" />
-            <element signature="e#1120#1121#0" expanded="true" />
-            <element signature="e#1581#1582#0" expanded="true" />
-            <element signature="e#1611#1612#0" expanded="true" />
-            <element signature="e#1642#1643#0" expanded="true" />
-            <element signature="e#1673#1674#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1116,28 +1053,132 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="44" column="23" lean-forward="true" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/TaxIOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/GffEntry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        <state relative-caret-position="185">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="34" />
           <folding>
+            <element signature="e#2955#2956#0" expanded="true" />
             <element signature="e#2986#2987#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Read.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="34" column="54" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/IO/FastAIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-872">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="605">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="9" selection-start-line="7" selection-end-line="7" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Sample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/IO/GffIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runners/BlockJUnit4ClassRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="240" selection-start-line="240" selection-end-line="240" />
+          <folding>
+            <element signature="e#2111#2112#0" expanded="true" />
+            <element signature="e#2155#2156#0" expanded="true" />
+            <element signature="e#5951#6086#0" expanded="true" />
+            <element signature="e#6085#6086#0" expanded="true" />
+            <element signature="e#6484#6648#0" expanded="true" />
+            <element signature="e#6647#6648#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runner/JUnitCore.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/IO/SampleReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/FastAEntry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="466">
+          <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
           <folding>
+            <element signature="e#686#687#0" expanded="true" />
             <element signature="e#715#716#0" expanded="true" />
           </folding>
         </state>
@@ -1150,58 +1191,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxTree.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="829">
-          <caret line="52" column="16" lean-forward="true" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
+        <state relative-caret-position="113">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/IO/SampleReader.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="194">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/TaxIOTest.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="43" column="23" lean-forward="true" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+        <state relative-caret-position="511">
+          <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/SampleReaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Sample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
-          <folding>
-            <element signature="e#215#216#0" expanded="true" />
-            <element signature="e#243#244#0" expanded="true" />
-            <element signature="e#292#293#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#600#601#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="391">
+          <caret line="29" column="146" selection-start-line="29" selection-start-column="146" selection-end-line="29" selection-end-column="146" />
         </state>
       </provider>
     </entry>
