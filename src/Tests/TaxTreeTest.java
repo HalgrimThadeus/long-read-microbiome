@@ -4,6 +4,7 @@ import Model.Tax.TaxTree;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import static org.junit.Assert.*;
 
@@ -60,7 +61,7 @@ public class TaxTreeTest {
         shouldAddTwoNodesWithSettingName();
         shouldSetChildrenOfTree();
 
-        assertEquals(new ArrayList<TaxNode>(), taxTree.getAllChildren(3));
+        assertEquals(new HashSet<Integer>(), taxTree.getAllChildren(3));
     }
 
     @Test

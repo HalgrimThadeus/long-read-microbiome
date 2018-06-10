@@ -4,12 +4,20 @@ import java.util.*;
 
 public class TaxTree {
 
-    private Map<Integer, TaxNode> tree = new HashMap<>();
+    private Map<Integer, TaxNode> tree;
     //this is one idea how to store the taxdump entries...could be maybe spaceexpensive, but makes access easy
-    private Map<String, Integer> nameMap = new HashMap<>();
+    private Map<String, Integer> nameMap;
+
+    public TaxTree() {
+        this.tree = new HashMap<>();
+        this.nameMap =  new HashMap<>();
+    }
 
     public void add(TaxNode taxNode) {
         tree.put(taxNode.getId(), taxNode);
+        if(taxNode.getName() != null) {
+            this.nameMap.put(taxNode.getName(),taxNode.getId());
+        }
     }
 
     public void setNameOfId(int id, String name) {
@@ -43,8 +51,6 @@ public class TaxTree {
     }
 
     public int getName(int id) {
-
-        //returns name using nameMap
-        return 0;
+        return this.nameMap.get(id);
     }
 }

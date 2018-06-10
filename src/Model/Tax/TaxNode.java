@@ -40,6 +40,7 @@ public class TaxNode {
         this.id = id;
         this.parentId = parentId;
         this.rank = rank;
+        this.name = null;
     }
 
     /**
@@ -82,5 +83,12 @@ public class TaxNode {
         return parentId;
     }
 
+    /**
+     * returns the name of the taxNode
+     * @return
+     */
+    public String getName() {
+        return this.name;
+    }
 
 }
