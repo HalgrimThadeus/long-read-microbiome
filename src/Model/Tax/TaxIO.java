@@ -40,16 +40,16 @@ public class TaxIO {
         //read in first the nodes.dmp and create TaxNodes in TaxTree
 
         //useful to only take the first line with a ID
-        String nameLine = nodeReader.readLine();
+        String nameLine = nameReader.readLine();
 
 
         while (nameLine != null ) {
 
-                nameLine.replace('\t', '\0');
-                String[] lineValues = nodeLine.trim().split("\\|");
+                nameLine = nameLine.replace('\t', '\0');
+                String[] lineValues = nameLine.trim().split("\\|");
 
                 //overwrites if there are multiple scientifc names for one id
-                if(lineValues[3].equals("scientificname")) {
+                if(lineValues[3].contains("scientific name")) {
                     int nodeID = Integer.parseInt(lineValues[0].trim());
 
                     String nodeName = lineValues[1].trim();
