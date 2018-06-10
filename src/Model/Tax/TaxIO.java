@@ -36,7 +36,7 @@ public class TaxIO {
         tree.setChildren();
 
         //then read in names.dmp and use only the scientific names,which are then added to the corresponding TaxNode via TaxTree
-        BufferedReader nameReader = new BufferedReader(new FileReader(filePathToNodes));
+        BufferedReader nameReader = new BufferedReader(new FileReader(filePathToNames));
         //read in first the nodes.dmp and create TaxNodes in TaxTree
 
         //useful to only take the first line with a ID
