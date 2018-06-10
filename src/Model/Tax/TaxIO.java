@@ -11,8 +11,8 @@ public class TaxIO {
     public static TaxTree readInTaxTree() throws IOException {
 
         //please CHANGE
-        String filePathToNodes = "C:\\Users\\manuel\\Desktop\\nodes - Kopie.dmp";
-        String filePathToNames = "C:\\Users\\manuel\\Desktop\\names - Kopie.dmp";
+        String filePathToNodes = "C:\\Users\\Manuel Glöckler\\Desktop\\nodes - Kopie.dmp";
+        String filePathToNames = "C:\\Users\\Manuel Glöckler\\Desktop\\names-Kopie.dmp";
 
         TaxTree tree = new TaxTree();
 
