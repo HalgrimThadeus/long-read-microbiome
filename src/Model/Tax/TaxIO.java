@@ -42,7 +42,7 @@ public class TaxIO {
         //useful to only take the first line with a ID
         String nameLine = nameReader.readLine();
 
-
+        //Add names
         while (nameLine != null ) {
 
                 nameLine = nameLine.replace('\t', '\0');
