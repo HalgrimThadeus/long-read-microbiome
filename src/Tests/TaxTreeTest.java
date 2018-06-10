@@ -51,7 +51,6 @@ public class TaxTreeTest {
 
         shouldAddSubNodes();
         shouldSetChildrenOfTree();
-        System.out.println(taxTree);
         System.out.println(taxTree.getAllChildren(1));
     }
 
