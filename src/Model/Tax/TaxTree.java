@@ -16,9 +16,8 @@ public class TaxTree {
     }
 
     public void setNameOfId(int id, String name) {
-
-        //add name to TaxNode
-        //and add entry to nameMap
+        nameMap.put(name,id);
+        tree.get(id).setName(name);
     }
 
     public void setChildren() {
