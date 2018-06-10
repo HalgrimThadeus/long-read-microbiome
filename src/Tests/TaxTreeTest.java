@@ -3,6 +3,8 @@ import Model.Tax.TaxNode;
 import Model.Tax.TaxTree;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class TaxTreeTest {
@@ -49,6 +51,7 @@ public class TaxTreeTest {
 
         shouldAddSubNodes();
         shouldSetChildrenOfTree();
+        System.out.println(taxTree);
         System.out.println(taxTree.getAllChildren(1));
     }
 
@@ -58,7 +61,7 @@ public class TaxTreeTest {
         shouldAddTwoNodesWithSettingName();
         shouldSetChildrenOfTree();
 
-        assertNull(taxTree.getAllChildren(3));
+        assertEquals(new ArrayList<TaxNode>(), taxTree.getAllChildren(3));
     }
 
     @Test
