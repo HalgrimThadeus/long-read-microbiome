@@ -65,12 +65,13 @@ public class TaxTreeTest {
     }
 
     @Test
-    public void shouldGetNameOfRoot() {
+    public void shouldGetIdOfRoot() {
         shouldAddRootToTree();
         shouldAddTwoNodesWithSettingName();
 
-        assertEquals("Flatulenzae", taxTree.getName(1));
-        assertNotEquals("Flatulenzae", taxTree.getName(2));
-        assertNull(taxTree.getName(42));
+        assertEquals(1, taxTree.getId("Flatulenzae"));
+        assertNotEquals(2, taxTree.getId("Flatulenzae"));
+        assertNotEquals(1, taxTree.getId("sdfsdfsdfdsfs"));
+        assertEquals(-1, taxTree.getId("sbgnfgnargh"));
     }
 }

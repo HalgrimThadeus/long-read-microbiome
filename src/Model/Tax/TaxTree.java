@@ -50,7 +50,11 @@ public class TaxTree {
         return allChildrenList;
     }
 
-    public int getName(int id) {
-        return this.nameMap.get(id);
+    public int getId(String name) {
+        if (this.nameMap.containsKey(name)) {
+            return this.nameMap.get(name);
+        } else {
+            return -1;
+        }
     }
 }
