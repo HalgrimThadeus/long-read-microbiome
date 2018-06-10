@@ -1,7 +1,5 @@
 package Model.Tax;
 
-import javafx.beans.binding.IntegerBinding;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +26,6 @@ public class TaxTree {
         for (Map.Entry<Integer, TaxNode> child : this.tree.entrySet()) {
             TaxNode parent = tree.get(child.getValue().getParentId());
             parent.addChild(child.getValue().getId());
-            System.out.println(i++ + " Fertig");
         }
         int j = 0;
         //iterate through the ids and set node for node the children of each node
@@ -39,11 +36,16 @@ public class TaxTree {
         List<Integer> childrenList = tree.get(id).getChildren();
         List<Integer> allChildrenList = childrenList;
 
-        for (int i = 0; i < childrenList.size(); i++) {
-            allChildrenList.addAll(getAllChildren(childrenList.get(i)));
+        if(childrenList.size() == 0) {
+            return null;
+        } else {
+            for (int i = 0; i < childrenList.size(); i++) {
+                allChildrenList.addAll(getAllChildren(childrenList.get(i)));
+            }
+            return allChildrenList;
         }
 
-        return allChildrenList;
+
     }
 
     public int getName(int id) {
