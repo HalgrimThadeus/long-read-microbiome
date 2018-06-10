@@ -11,20 +11,12 @@ import java.util.Map;
 
 public class TaxIO {
 
-    public static void main(String[] args) throws IOException {
-
-        //please CHANGE
-        String filePathToNodes = "res\\TreeDumpFiles\\nodesTest.dmp";
-        String filePathToNames = "res\\TreeDumpFiles\\namesTest.dmp";
-        readInTaxTree(filePathToNodes,filePathToNames);
-    }
-
     /**
      * this static mathod readInTaxTree gets the filepaths and produces the tree
      * @return the completed tree from the files
      * @throws IOException
      */
-    public static TaxTree readInTaxTree(String filePathToNodes,String filePathToNames ) throws IOException {
+    public TaxTree readInTaxTree(String filePathToNodes,String filePathToNames ) throws IOException {
         //Initialise a emptry tree to start
         TaxTree tree = new TaxTree();
         //read in first the nodes.dmp and create TaxNodes in TaxTree
