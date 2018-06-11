@@ -54,9 +54,9 @@ public class FastAIO {
         String thisLine;
         String nextLine;
         List<FastAEntry> fastAEntries = new ArrayList<>();
+        StringBuilder sequence = new StringBuilder();
 
         BufferedReader reader = new BufferedReader(r);
-
 
         if((thisLine = reader.readLine()) != null){
             nextLine = reader.readLine();
@@ -66,21 +66,21 @@ public class FastAIO {
                     nextLine = reader.readLine();
                 } else if (thisLine.startsWith(">") && !(nextLine.startsWith(">"))) {
                     String header;
-                    String sequence = "";
+                    sequence.setLength(0);
 
                     header = thisLine;
 
                     while (!nextLine.startsWith(">")) {
                         thisLine = nextLine;
                         nextLine = reader.readLine();
-                        sequence += thisLine;
+                        sequence.append(thisLine);
                         if(nextLine == null)
                             break;
                     }
                     thisLine = nextLine;
                     nextLine = reader.readLine();
 
-                    fastAEntries.add(new FastAEntry(header, sequence));
+                    fastAEntries.add(new FastAEntry(header, sequence.toString()));
                 }
             }
         }
