@@ -30,7 +30,7 @@ public class SampleReaderTest {
             Sample sample = SampleReader.read(fasta.getAbsolutePath(), gff.getAbsolutePath());
             assert sample.getReads().size() == 1;
             assert sample.getReads().get(0).getGFFEntries().size() == 3;
-            //assert sample.getReads().get(0).getSequence().equals("AGCAAAAGCAGGTCAATTATATTCAGTATGGAAAGAATAAAAGAACTACGGAACCTGATGTCGCAGTCTCGCACTCGCGA");
+            assert sample.getReads().get(0).getSequence().equals("AGCAAAAGCAGGTCAATTATATTCAGTATGGAAAGAATAAAAGAACTACGGAACCTGATGTCGCAGTCTCGCACTCGCGA");
 
             fasta.delete();
             gff.delete();

@@ -50,7 +50,6 @@ public class FastAIO {
      * @throws IOException
      */
 
-    //TODO make it better, was from error fixing
     public List<FastAEntry> readFastA(Reader r) throws IOException{
         String thisLine;
         String nextLine;
@@ -74,9 +73,9 @@ public class FastAIO {
                     while (!nextLine.startsWith(">")) {
                         thisLine = nextLine;
                         nextLine = reader.readLine();
+                        sequence += thisLine;
                         if(nextLine == null)
                             break;
-                        sequence += thisLine;
                     }
                     thisLine = nextLine;
                     nextLine = reader.readLine();
