@@ -8,6 +8,9 @@ import Model.IO.GffIO;
 import Model.Read;
 import Model.Sample;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
 import java.util.List;
 /**
  * $SampleReader
@@ -21,27 +24,37 @@ import java.util.List;
 public class SampleReader{
 
     /**
+     * Takes the FilePath as String an runs read with Readers
+     * @param filePathFasta
+     * @param filePathGff
+     * @return
+     * @throws Exception
+     */
+    public static Sample read(String filePathFasta, String filePathGff) throws Exception {
+        return read(new FileReader(filePathFasta), new FileReader(filePathGff));
+    }
+
+    /**
      * read Method for making Samples out of an FastA and Gff File
      *
-     * @param filepathFastA File-Path to the file as String
-     * @param filePathGff File-Path to the file as String
+     * @param fasta File-Path to the file as String
+     * @param gff File-Path to the file as String
      *
      * @return Sample constructed out of the Gff/FastA File
      *
      * @throws Exception if the File  was not found or...
      */
-    public static Sample read(String filepathFastA, String filePathGff) throws Exception {
+    public static Sample read(Reader fasta, Reader gff) throws Exception {
         //New Sample is generated
         Sample sample = new Sample();
 
         //Read Gff File
-        GffIO gffReader = new GffIO(filePathGff);
+        GffIO gffReader = new GffIO(gff);
         List<GffEntry> gffEntries = gffReader.readGff();
 
         //Read FastA File
         FastAIO fastaReader = new FastAIO();
-        fastaReader.readFastA(filepathFastA);
-        List<FastAEntry> fastaEntries = fastaReader.readFastA(filepathFastA);
+        List<FastAEntry> fastaEntries = fastaReader.readFastA(fasta);
 
         //Iterates throught all FastA Entries
         for(int i = 0; i < fastaEntries.size(); i++){

@@ -39,10 +39,8 @@ public class Main {
         //Test Methods for Test purposes preinitialized paths:
         try {
             Sample sample = SampleReader.read("res/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "res/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
-            String asdf = sample.getReads().get(0).getSequence();
-            System.out.println(asdf);
-            for (int i= 0; i <sample.getReads().size(); i++){
-                sample.getReads().get(i).getSequence();
+
+            for (int i= 0; i < sample.getReads().size(); i++){
                 System.out.println(sample.getReads().get(i).getGFFEntries().size());
                 System.out.println(sample.getReads().get(i).getGFFEntries());
                 //System.out.println(sample.getReads().get(sample.getReads().size() - 1).getGFFEntries());
