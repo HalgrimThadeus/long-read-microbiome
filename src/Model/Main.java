@@ -46,10 +46,9 @@ public class Main {
                 //System.out.println(sample.getReads().get(sample.getReads().size() - 1).getGFFEntries());
 
             }
-            //TaxIO treeReader = new TaxIO();
-            //treeReader.readInTaxTree("C:\\Users\\manug\\Desktop\\nodes.dmp", "C:\\Users\\manug\\Desktop\\names.dmp");
+            TaxIO treeReader = new TaxIO();
+            treeReader.readInTaxTree("res/TreeDumpFiles/nodesTest.dmp", "res/TreeDumpFiles/namesTest.dmp");
 
-            //test.allFastAEntriesAreInSample("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -44,12 +44,10 @@ public class FastAIO {
         readFastA(path);
     }
     /**
-     * With a given Reader this method is creating 2 lists with the input from the reader.
-     * Split up into header and sequence lists.
+     * With a given Reader this method is creating a List of the FastaEntrys
      *     * @param r
      * @throws IOException
      */
-
     public List<FastAEntry> readFastA(Reader r) throws IOException{
         String thisLine;
         String nextLine;
@@ -64,6 +62,7 @@ public class FastAIO {
                 if (thisLine.startsWith(">") && nextLine.startsWith(">")) {
                     thisLine = nextLine;
                     nextLine = reader.readLine();
+                    throw new IOException("Wrong File Format, still continued Reading");
                 } else if (thisLine.startsWith(">") && !(nextLine.startsWith(">"))) {
                     String header;
                     sequence.setLength(0);

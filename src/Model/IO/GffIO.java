@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class that reads an file in Gff-Format
+ */
 public class GffIO {
 
     private Reader reader;
