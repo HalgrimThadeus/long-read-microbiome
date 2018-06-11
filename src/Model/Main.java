@@ -2,6 +2,7 @@ package Model;
 
 import Model.IO.SampleReader;
 import Model.*;
+import Model.Tax.TaxIO;
 
 
 public class Main {
@@ -46,9 +47,11 @@ public class Main {
                 System.out.println(sample.getReads().get(i).getGFFEntries());
                 //System.out.println(sample.getReads().get(sample.getReads().size() - 1).getGFFEntries());
 
-
             }
-                //test.allFastAEntriesAreInSample("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
+            TaxIO treeReader = new TaxIO();
+            treeReader.readInTaxTree("C:\\Users\\manug\\Desktop\\nodes.dmp", "C:\\Users\\manug\\Desktop\\names.dmp");
+
+            //test.allFastAEntriesAreInSample("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta", "src/GffFile/GCF_000865085.1_ViralMultiSegProj15622_genomic.gff");
 
         } catch (Exception e) {
             e.printStackTrace();
