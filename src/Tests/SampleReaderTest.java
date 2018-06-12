@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import java.io.*;
 
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
+
 public class SampleReaderTest {
 
     @Test
@@ -29,28 +32,28 @@ public class SampleReaderTest {
         InputStreamReader gffReader = new InputStreamReader(gffInput);
 
         Sample sample = SampleReader.read(fastaReader, gffReader);
-        assert sample.getReads().size() == 1;
-        assert sample.getReads().get(0).getGFFEntries().size() == 3;
-        assert sample.getReads().get(0).getSequence().equals("AGCAAAAGCAGGTCAATTATATTCAGTATGGAAAGAATAAAAGAACTACGGAACCTGATGTCGCAGTCTCGCACTCGCGA");
+        assertEquals(sample.getReads().size(), 1);
+        assertEquals(sample.getReads().get(0).getGFFEntries().size(), 3);
+        assertEquals(sample.getReads().get(0).getSequence(),"AGCAAAAGCAGGTCAATTATATTCAGTATGGAAAGAATAAAAGAACTACGGAACCTGATGTCGCAGTCTCGCACTCGCGA");
 
         for(int i = 0; i < sample.getReads().get(0).getGFFEntries().size(); i++){
             GffEntry gffEnt = sample.getReads().get(0).getGFFEntries().get(i);
-            assert gffEnt.getSequence().equals("NC_007373.1");
-            assert gffEnt.getSource().equals("RefSeq");
+            assertEquals(gffEnt.getSequence(), "NC_007373.1");
+            assertEquals(gffEnt.getSource(), "RefSeq");
             switch(i){
-                case 0: assert gffEnt.getFeature().equals("region");
-                        assert gffEnt.getStart() == 1;
-                        assert gffEnt.getEnd() == 2341;
+                case 0: assertEquals(gffEnt.getFeature(),"region");
+                        assertEquals(gffEnt.getStart(),1);
+                        assertEquals(gffEnt.getEnd() , 2341);
                     break;
-                case 1: assert gffEnt.getFeature().equals("gene");
-                        assert gffEnt.getStart() == 28;
-                        assert gffEnt.getEnd() == 2307;
+                case 1: assertEquals(gffEnt.getFeature(),"gene");
+                        assertEquals(gffEnt.getStart(), 28);
+                        assertEquals(gffEnt.getEnd(), 2307);
                     break;
-                case 2: assert gffEnt.getFeature().equals("CDS");
-                        assert gffEnt.getStart() == 28;
-                        assert gffEnt.getEnd() == 2307;
+                case 2: assertEquals(gffEnt.getFeature(), "CDS");
+                        assertEquals(gffEnt.getStart(),28);
+                        assertEquals(gffEnt.getEnd(), 2307);
                     break;
-                default: assert false;
+                default: assertTrue(false);
             }
         }
 
@@ -59,13 +62,13 @@ public class SampleReaderTest {
 
     @Test
     /**
-     * With wrong filepaths the gff-Entry should report a specific error
+     * With wrong filepaths you shouldnt be able to read
      */
     public void wrongFilePath(){
         try {
             SampleReader.read("asdf", "asdf");
         } catch (Exception e) {
-            assert e.getMessage().equals("asdf (Das System kann die angegebene Datei nicht finden)");
+            assertTrue(true);
         }
     }
 
