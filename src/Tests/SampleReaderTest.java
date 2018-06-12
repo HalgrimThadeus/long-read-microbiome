@@ -1,4 +1,5 @@
 
+import Model.GffEntry;
 import Model.IO.SampleReader;
 import Model.Sample;
 import org.junit.Test;
@@ -31,6 +32,28 @@ public class SampleReaderTest {
         assert sample.getReads().size() == 1;
         assert sample.getReads().get(0).getGFFEntries().size() == 3;
         assert sample.getReads().get(0).getSequence().equals("AGCAAAAGCAGGTCAATTATATTCAGTATGGAAAGAATAAAAGAACTACGGAACCTGATGTCGCAGTCTCGCACTCGCGA");
+
+        for(int i = 0; i < sample.getReads().get(0).getGFFEntries().size(); i++){
+            GffEntry gffEnt = sample.getReads().get(0).getGFFEntries().get(i);
+            assert gffEnt.getSequence().equals("NC_007373.1");
+            assert gffEnt.getSource().equals("RefSeq");
+            switch(i){
+                case 0: assert gffEnt.getFeature().equals("region");
+                        assert gffEnt.getStart() == 1;
+                        assert gffEnt.getEnd() == 2341;
+                    break;
+                case 1: assert gffEnt.getFeature().equals("gene");
+                        assert gffEnt.getStart() == 28;
+                        assert gffEnt.getEnd() == 2307;
+                    break;
+                case 2: assert gffEnt.getFeature().equals("CDS");
+                        assert gffEnt.getStart() == 28;
+                        assert gffEnt.getEnd() == 2307;
+                    break;
+                default: assert false;
+            }
+        }
+
     }
 
 
