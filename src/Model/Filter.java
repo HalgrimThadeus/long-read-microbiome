@@ -20,7 +20,7 @@ public class Filter {
     private String[] criteriaarray = criteria.split(";"); //split the list to geht key=value pairs
     private List<String> keys = new ArrayList<>();
     private List<String> values= new ArrayList<>();
-
+    private List<String> criterias = new ArrayList<>();
     public Filter(List<Read> reads,String criteria){
         reads = this.reads;
         criteria = this.criteria;
@@ -96,6 +96,38 @@ public class Filter {
             System.err.println("Couldn't write out Reads !");
         }
     }
+
+
+
+
+
+
+    protected List<String> getFilterCriteria(){
+        List<String> criteria = new ArrayList();
+
+        for(Read read: reads) {
+            for (GffEntry gff : read.getGFFEntries()) {
+                List<String> attributes = new ArrayList<>();
+                attributes.addAll(gff.getAttributes().keySet());
+                for (String attribute : attributes) {
+                    if (!criteria.contains(attribute)) {
+                        criteria.add(attribute);
+                    }
+                }
+            }
+        }
+
+        return criteria;
+    }
+
+
+
+    protected List<String> getCriteria(){
+        return criterias;
+    }
+
+
+
 
 
 

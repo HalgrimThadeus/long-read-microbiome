@@ -1,4 +1,5 @@
 package Model;
+import javax.naming.Name;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -6,54 +7,108 @@ import java.util.function.Predicate;
 public class FilterBuilder {
 
     //examples:
-    public static Predicate<Read> scorePredicate = new Predicate<Read>(){
-        public boolean test (Read read){
-            boolean hasLargerScore = false;
-            for(GffEntry gff: read.getGFFEntries()){
-                if(gff.getScore()>=x){   //how can we add the x to compare with as a parameter??
-                    hasLargerScore = true;
+   public static Predicate<Read> isScoreHigher(Integer score){
+       return p-> {
+         boolean scoreis= false;
+         for(GffEntry gff: p.getGFFEntries()){
+             if(gff.getScore() >= score){
+                 scoreis = true;
+                 break;
+             }
+         }
+         return scoreis;
+       };
+
+   }
+
+    public static Predicate<Read> isCGContentEqual(Integer cgscore){
+       return p-> {
+        boolean cgcontentis = false;
+        for(GffEntry gff: p.getGFFEntries()){
+            if(Integer.parseInt(gff.getAttributes().get("CGConent")) == cgscore){
+                cgcontentis = true;
+                break;
+            }
+        }
+        return cgcontentis;
+       };
+   }
+
+
+
+    public static Predicate<Read> isCGContentHigher(Integer cgscore){
+        return p -> {
+            boolean cg = false;
+            for(GffEntry gff: p.getGFFEntries()){
+                if(Integer.parseInt(gff.getAttributes().get("CGContent")) >= cgscore){
+                    cg = true;
                     break;
                 }
             }
-            return hasLargerScore;
-        }
-    };
+            return cg;
+        };
+    }
 
+    public static Predicate<Read> isName(String name){
+        return p-> {
+            boolean isname = false;
+          for(GffEntry gff: p.getGFFEntries()){
+              if(gff.getAttributes().get("Name").equals(name)){
+               isname = true;
+               break;
+              }
+          }
+          return isname;
+        };
+    }
 
-    public static Predicate<Read> GCContentPredicate = new Predicate<Read>(){
-        public boolean test(Read read){
-            boolean hasLargerGCContent = false;
-            for(GffEntry gff: read.getGFFEntries()){
-                if(gff.getAttributes().get("CGContent")>=x){  //same here
-                    hasLargerGCContent = true;
+    public static Predicate<Read> isLengthGreater(Integer length){
+       return p-> {
+           boolean lengthis = false;
+            for(GffEntry gff: p.getGFFEntries()){
+            if(Integer.parseInt(gff.getAttributes().get("Length")) >= length){
+                lengthis = true;
+                break;
+            }
+            }
+            return lengthis;
+       };
+
+    }
+
+    public static Predicate<Read> isLenghtSmaller(Integer length){
+        return p-> {
+            boolean lengthis = false;
+            for(GffEntry gff: p.getGFFEntries()){
+                if(Integer.parseInt(gff.getAttributes().get("Length")) <= length){
+                    lengthis = true;
                     break;
                 }
             }
-            return hasLargerGCContent;
-        }
-    };
+            return lengthis;
+        };
+    }
 
-    //first try for ANY attribute in the attributes list... - e.g. name, same for others
-    public static Predicate<Read> namePredicate = new Predicate<Read>(){
-        public boolean test(Read read){
-            boolean hasSameName = false;
-            for(GffEntry gff: read.getGFFEntries()){
-                if(gff.getAttributes().containsKey("name")){
-                    if(gff.getAttributes().get("name").equals("xxx")){  //same here
-                        hasSameName = true;
-                        break;
-                    }
-                }
-            }
-            return hasSameName;
-        }
-    };
-
+    public static Predicate<Read> isLenghtEqual(Integer length){
+       return p-> {
+           boolean lengthis =  false;
+           for(GffEntry gff: p.getGFFEntries()){
+               if(Integer.parseInt(gff.getAttributes().get("Length")) == length){
+                   lengthis = true;
+                   break;
+               }
+           }
+           return lengthis;
+       };
+    }
     //how to use in the "real" filter function?? (not right place)
     //filter function: uses predicate as an argument
-    public static List<Read>  filter (List<Read> reads, Predicate<Read> pred){
-        List<Read> filteredReads = new ArrayList<Read>();
+    public static List<Read>  filter (List<Read> reads, Predicate pred){
+        List<Read> filteredReads = new ArrayList<>();
+
         //... apply(map?) predicate function to every read in the list
+
+
         return filteredReads;
     }
 }
