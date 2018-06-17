@@ -83,12 +83,11 @@ public class GffIO {
                         for (int i = 0; i < attributesArray.length; i++) {
                             String[] keyAttribute = attributesArray[i].split("=");
 
-                            //controls if really only the attribute itself consists of key and value
-                            if (keyAttribute.length != 2) {
-                                throw new Exception("The file is not correctly formated as a GFF-file. Because attributes and keys not match to eacht other");
+                            //there could be more than one value per key (so starting at 1 iterating through values)
+                            for (int j = 1; j < keyAttribute.length; j++) {
+                                //adding to Map of key and value
+                                attributes.put(keyAttribute[0], keyAttribute[j]);
                             }
-                            //adding to Map of key and value
-                            attributes.put(keyAttribute[0], keyAttribute[1]);
                         }
 
                         gffEntries.add(new GffEntry(sequence, source, feature, start, end, score, strand, frame, attributes));
