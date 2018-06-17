@@ -11,7 +11,10 @@ import Model.Sample;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 /**
  * $SampleReader
  *
@@ -30,8 +33,8 @@ public class SampleReader{
      * @return
      * @throws Exception
      */
-    public static Sample read(String filePathFasta, String filePathGff) throws Exception {
-        return read(new FileReader(filePathFasta), new FileReader(filePathGff));
+    public static Sample read(String filePathFasta, String filePathGff, String filePathTaxa) throws Exception {
+        return read(new FileReader(filePathFasta), new FileReader(filePathGff), new FileReader(filePathTaxa));
     }
 
     /**
@@ -44,9 +47,13 @@ public class SampleReader{
      *
      * @throws Exception if the File  was not found or...
      */
-    public static Sample read(Reader fasta, Reader gff) throws Exception {
+    public static Sample read(Reader fasta, Reader gff, Reader taxa) throws Exception {
         //New Sample is generated
         Sample sample = new Sample();
+        Map<String, Integer> taxaId;
+
+        CsvIO  taxaIds = new CsvIO(taxa);
+        taxaId = taxaIds.readCsv();
 
         //Read Gff File
         GffIO gffReader = new GffIO(gff);
@@ -56,11 +63,12 @@ public class SampleReader{
         FastAIO fastaReader = new FastAIO();
         List<FastAEntry> fastaEntries = fastaReader.readFastA(fasta);
 
-        //Iterates throught all FastA Entries
+        //Iterates throught all FastA Entries and creates new Reads
         for(int i = 0; i < fastaEntries.size(); i++){
 
             //Creating new Read and adding id and sequence of FastA
-            Read read = new Read(fastaEntries.get(i).getHeader(), fastaEntries.get(i).getSequence());
+            String header = fastaEntries.get(i).getHeader();
+            Read read = new Read(header, fastaEntries.get(i).getSequence(), taxaId);
 
             for(int j = 0; j < gffEntries.size(); j++){
                 GffEntry entry = gffEntries.get(j);

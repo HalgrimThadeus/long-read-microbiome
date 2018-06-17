@@ -2,6 +2,7 @@ package Model;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * models a Read, which contains the header of the FastaEntry, the id out of the header, the sequence and a list of GFF entries
@@ -13,20 +14,28 @@ public class Read extends FastAEntry{
      *id out of the header of the FastaEntry
      */
     private String id;
+    private int taxonomicId;
 
     /**
      *list of GFF entries
      */
     private List<GffEntry> gffEntries;
 
+    public Read(String header, String sequence){
+        super(header, sequence); //override
+        this.id = getIdFromHeader(header);
+        this.gffEntries = new ArrayList<GffEntry>(); //initialize gffEntries list, won't have to check if its null
+    }
+
     /**
      *make a new Read
      * @param header
      * @param sequence
      */
-    public Read(String header, String sequence){
+    public Read(String header, String sequence, Map taxonomicId){
         super(header, sequence); //override
         this.id = getIdFromHeader(header);
+        this.taxonomicId = (int) taxonomicId.get(this.id);
         this.gffEntries = new ArrayList<GffEntry>(); //initialize gffEntries list, won't have to check if its null
     }
     //old constructor:
@@ -51,7 +60,14 @@ public class Read extends FastAEntry{
     public List<GffEntry> getGFFEntries() {
         return this.gffEntries;
     }
-    
+
+    /**
+     * Returns taxaId
+     * @return
+     */
+    public int getTaxonomicId(){
+        return this.taxonomicId;
+    }
     //TODO: remove unnecessary setters?
     /*
     public void setId(String id){

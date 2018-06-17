@@ -18,6 +18,7 @@ public class CsvIO {
     public CsvIO(Reader reader) {
         this.reader = reader;
     }
+
     public CsvIO(String filePath) throws FileNotFoundException {
         this.reader = new FileReader(filePath);
     }
