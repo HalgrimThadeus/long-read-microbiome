@@ -21,17 +21,10 @@
       <file leaf-file-name="FilterBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/FilterBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="106" column="48" selection-start-line="106" selection-start-column="48" selection-end-line="106" selection-end-column="48" />
+            <state relative-caret-position="391">
+              <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#249#471#0" />
-                <element signature="e#589#721#0" />
-                <element signature="e#1801#2093#0" />
-                <element signature="e#2172#2440#0" />
-                <element signature="e#1326#1557#0" />
-                <element signature="e#1721#2014#0" />
-                <element signature="e#2110#2142#0" />
               </folding>
             </state>
           </provider>
@@ -40,7 +33,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="187">
               <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
               <folding>
                 <element signature="e#248#249#0" expanded="true" />
@@ -53,11 +46,10 @@
       <file leaf-file-name="Filter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Filter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
+            <state relative-caret-position="341">
+              <caret line="83" column="51" lean-forward="true" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
               <folding>
-                <element signature="e#4080#4081#0" expanded="true" />
-                <element signature="e#4111#4112#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,8 +82,8 @@
         <option value="$PROJECT_DIR$/src/View/filterview.fxml" />
         <option value="$PROJECT_DIR$/src/Model/filter/FilterView.java" />
         <option value="$PROJECT_DIR$/src/Model/filter/FilterBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Model/Filter.java" />
         <option value="$PROJECT_DIR$/src/Model/FilterBuilder.java" />
+        <option value="$PROJECT_DIR$/src/Model/Filter.java" />
       </list>
     </option>
   </component>
@@ -119,6 +111,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,7 +176,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -356,7 +348,8 @@
       <workItem from="1528787811099" duration="423000" />
       <workItem from="1528810389508" duration="548000" />
       <workItem from="1528897061526" duration="1159000" />
-      <workItem from="1529182084246" duration="7904000" />
+      <workItem from="1529182084246" duration="14146000" />
+      <workItem from="1529231800637" duration="939000" />
     </task>
     <task id="LOCAL-00001" summary="1 Line changed">
       <created>1528698333369</created>
@@ -400,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528898610619</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Predicates are now available for basic attributes like name, length and CG-content (which someone has to implement). &#10;Others are difficult because we can't implement them because like we said in the meeting they differ from entry to entry. &#10;Those are going to be filtered with the hashmap (implementation is going to follow later)">
+      <created>1529190683466</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1529190683466</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -436,7 +436,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26033000" />
+    <option name="totallyTimeSpent" value="33214000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -455,7 +455,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24466951" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24733475" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -473,33 +473,33 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32867134" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32917318" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24277908" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Capture Tool" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32917318" />
+      <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24277908" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +513,8 @@
     <MESSAGE value="SampleReader Test tests more" />
     <MESSAGE value="fxml Dateien im View Ordner" />
     <MESSAGE value="idea for filterview (just idea, wrong package,classes,... and no functionality)" />
-    <option name="LAST_COMMIT_MESSAGE" value="idea for filterview (just idea, wrong package,classes,... and no functionality)" />
+    <MESSAGE value="Predicates are now available for basic attributes like name, length and CG-content (which someone has to implement). &#10;Others are difficult because we can't implement them because like we said in the meeting they differ from entry to entry. &#10;Those are going to be filtered with the hashmap (implementation is going to follow later)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Predicates are now available for basic attributes like name, length and CG-content (which someone has to implement). &#10;Others are difficult because we can't implement them because like we said in the meeting they differ from entry to entry. &#10;Those are going to be filtered with the hashmap (implementation is going to follow later)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -526,8 +527,7 @@
         <state relative-caret-position="238">
           <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
           <folding>
-            <element signature="e#4080#4081#0" expanded="true" />
-            <element signature="e#4111#4112#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -538,13 +538,6 @@
           <caret line="75" column="24" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#249#471#0" />
-            <element signature="e#589#721#0" />
-            <element signature="e#1801#2093#0" />
-            <element signature="e#2172#2440#0" />
-            <element signature="e#1326#1557#0" />
-            <element signature="e#1721#2014#0" />
-            <element signature="e#2110#2142#0" />
           </folding>
         </state>
       </provider>
@@ -826,33 +819,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/filter/filter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/filter/FilterView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/filter/FilterBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/filter/filter.java" />
+    <entry file="file://$PROJECT_DIR$/src/Model/filter/FilterView.java" />
+    <entry file="file://$PROJECT_DIR$/src/Model/filter/FilterBuilder.java" />
     <entry file="file://$PROJECT_DIR$/src/View/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="187">
           <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
           <folding>
             <element signature="e#248#249#0" expanded="true" />
@@ -863,28 +835,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/FilterBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="106" column="48" selection-start-line="106" selection-start-column="48" selection-end-line="106" selection-end-column="48" />
+        <state relative-caret-position="391">
+          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#249#471#0" />
-            <element signature="e#589#721#0" />
-            <element signature="e#1801#2093#0" />
-            <element signature="e#2172#2440#0" />
-            <element signature="e#1326#1557#0" />
-            <element signature="e#1721#2014#0" />
-            <element signature="e#2110#2142#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Filter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
+        <state relative-caret-position="341">
+          <caret line="83" column="51" lean-forward="true" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
           <folding>
-            <element signature="e#4080#4081#0" expanded="true" />
-            <element signature="e#4111#4112#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

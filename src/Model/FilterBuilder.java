@@ -20,6 +20,34 @@ public class FilterBuilder {
        };
 
    }
+    public static Predicate<Read> isScoreLower(Integer score){
+        return p-> {
+            boolean scoreis= false;
+            for(GffEntry gff: p.getGFFEntries()){
+                if(gff.getScore() <= score){
+                    scoreis = true;
+                    break;
+                }
+            }
+            return scoreis;
+        };
+
+    }
+
+    public static Predicate<Read> isScoreEqual(Integer score){
+        return p-> {
+            boolean scoreis= false;
+            for(GffEntry gff: p.getGFFEntries()){
+                if(gff.getScore() == score){
+                    scoreis = true;
+                    break;
+                }
+            }
+            return scoreis;
+        };
+
+    }
+
 
     public static Predicate<Read> isCGContentEqual(Integer cgscore){
        return p-> {
@@ -76,7 +104,7 @@ public class FilterBuilder {
 
     }
 
-    public static Predicate<Read> isLenghtSmaller(Integer length){
+    public static Predicate<Read> isLengthSmaller(Integer length){
         return p-> {
             boolean lengthis = false;
             for(GffEntry gff: p.getGFFEntries()){
@@ -89,7 +117,7 @@ public class FilterBuilder {
         };
     }
 
-    public static Predicate<Read> isLenghtEqual(Integer length){
+    public static Predicate<Read> isLengthEqual(Integer length){
        return p-> {
            boolean lengthis =  false;
            for(GffEntry gff: p.getGFFEntries()){
@@ -103,7 +131,7 @@ public class FilterBuilder {
     }
     //how to use in the "real" filter function?? (not right place)
     //filter function: uses predicate as an argument
-    public static List<Read>  filter (List<Read> reads, Predicate pred){
+    public static List<Read>  filter (Read reads, Predicate pred){
         List<Read> filteredReads = new ArrayList<>();
 
         //... apply(map?) predicate function to every read in the list
