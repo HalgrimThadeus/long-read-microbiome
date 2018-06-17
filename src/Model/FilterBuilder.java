@@ -129,14 +129,4 @@ public class FilterBuilder {
            return lengthis;
        };
     }
-    //how to use in the "real" filter function?? (not right place)
-    //filter function: uses predicate as an argument
-    public static List<Read>  filter (Read reads, Predicate pred){
-        List<Read> filteredReads = new ArrayList<>();
-
-        //... apply(map?) predicate function to every read in the list
-
-
-        return filteredReads;
-    }
 }
