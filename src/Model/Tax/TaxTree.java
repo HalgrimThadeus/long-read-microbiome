@@ -1,5 +1,6 @@
 package Model.Tax;
 
+import javax.swing.tree.TreeNode;
 import java.util.*;
 
 /**
@@ -93,5 +94,19 @@ public class TaxTree {
         } else {
             return -1;
         }
+    }
+
+    /**
+     * returns the ancestor at a specific rank of the taxtree by calling it with an organisms name
+     * @param rank
+     * @param organismName
+     * @return
+     */
+    public TaxNode getAncestor(String rank,String organismName) {
+        TaxNode currentNode = this.tree.get(this.getId(organismName));
+        while(!rank.equals(currentNode.getRank())) {
+            currentNode = this.tree.get(currentNode.getParentId());
+        }
+        return currentNode;
     }
 }

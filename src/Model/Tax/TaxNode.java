@@ -91,4 +91,10 @@ public class TaxNode {
         return this.name;
     }
 
+    /**
+     * returns the rank of the taxNode
+     * @return
+     */
+    public String getRank() { return this.rank; }
+
 }
