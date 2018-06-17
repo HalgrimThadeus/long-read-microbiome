@@ -110,4 +110,12 @@ public class TaxNode {
                 ", ChildrenIDs: " + this.getChildrenIDs();
     }
 
+    /**
+     * returns true if node is root, because parent id is set to id of itself
+     * @return
+     */
+    public boolean isRoot() {
+        return this.getID() == this.getParentId();
+    }
+
 }

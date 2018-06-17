@@ -81,8 +81,8 @@ public class TaxTreeTest {
         shouldAddTwoNodesWithSettingName();
         shouldAddSubNodes();
 
-        assertEquals(new TaxNode(3, 1, "Family"), taxTree.getAncestor("Family", "Schüsselsprenger"));
         System.out.println(taxTree.getAncestor("Family", "Schüsselsprenger"));
+        System.out.println(taxTree.getAncestor("SuperFastKingdom", "Schüsselsprenger"));
         assertNull(taxTree.getAncestor("Family", "sbgnfgnargh"));
         assertNull(taxTree.getAncestor("xgdfg", "Schüsselsprenger"));
     }
