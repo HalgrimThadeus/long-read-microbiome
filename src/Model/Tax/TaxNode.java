@@ -63,7 +63,7 @@ public class TaxNode {
      * Retruns the List of the childrenIds
      * @return
      */
-    public Set<Integer> getChildren() {
+    public Set<Integer> getChildrenIDs() {
         return this.childrenIds;
     }
 
@@ -71,7 +71,7 @@ public class TaxNode {
      * Returns the id
      * @return
      */
-    public int getId(){
+    public int getID(){
         return this.id;
     }
 

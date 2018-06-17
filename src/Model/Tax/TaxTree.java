@@ -33,9 +33,9 @@ public class TaxTree {
      * @param taxNode
      */
     public void add(TaxNode taxNode) {
-        tree.put(taxNode.getId(), taxNode);
+        tree.put(taxNode.getID(), taxNode);
         if(taxNode.getName() != null) {
-            this.nameMap.put(taxNode.getName(),taxNode.getId());
+            this.nameMap.put(taxNode.getName(),taxNode.getID());
         }
     }
 
@@ -59,9 +59,9 @@ public class TaxTree {
         for (TaxNode child : this.tree.values()) {
 
             //tests if node is root, to not set child of root root itself
-            if(!(child.getId() == child.getParentId())) {
+            if(!(child.getID() == child.getParentId())) {
                 TaxNode parent = tree.get(child.getParentId());
-                parent.addChild(child.getId());
+                parent.addChild(child.getID());
             }
         }
     }
@@ -72,13 +72,13 @@ public class TaxTree {
      * @param id
      * @return
      */
-    public Set<Integer> getAllChildren(int id) {
-        Set<Integer> childrenList = tree.get(id).getChildren();
+    public Set<Integer> getAllChildrenIDs(int id) {
+        Set<Integer> childrenList = tree.get(id).getChildrenIDs();
         Set<Integer> allChildrenList = childrenList;
 
         Iterator<Integer> childrenIterator = childrenList.iterator();
         while(childrenIterator.hasNext()) {
-            allChildrenList.addAll(getAllChildren(childrenIterator.next()));
+            allChildrenList.addAll(getAllChildrenIDs(childrenIterator.next()));
         }
         return allChildrenList;
     }
