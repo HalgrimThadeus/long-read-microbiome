@@ -97,4 +97,17 @@ public class TaxNode {
      */
     public String getRank() { return this.rank; }
 
+    /**
+     * converts the object to string
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Name: " + this.name +
+                ", ID: " + this.id +
+                ", Rank: " + this.rank +
+                ", ParentID: " + this.parentId +
+                ", ChildrenIDs: " + this.getChildrenIDs();
+    }
+
 }

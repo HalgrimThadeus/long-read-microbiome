@@ -47,12 +47,12 @@ public class TaxTreeTest {
         shouldAddTwoNodesWithSettingName();
         shouldSetChildrenOfTree();
 
-        assertEquals(true, taxTree.getAllChildren(1).contains(3));
-        assertNotEquals(true, taxTree.getAllChildren(1).contains(1));
+        assertEquals(true, taxTree.getAllChildrenIDs(1).contains(3));
+        assertNotEquals(true, taxTree.getAllChildrenIDs(1).contains(1));
 
         shouldAddSubNodes();
         shouldSetChildrenOfTree();
-        System.out.println(taxTree.getAllChildren(1));
+        System.out.println(taxTree.getAllChildrenIDs(1));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class TaxTreeTest {
         shouldAddTwoNodesWithSettingName();
         shouldSetChildrenOfTree();
 
-        assertEquals(new HashSet<Integer>(), taxTree.getAllChildren(3));
+        assertEquals(new HashSet<Integer>(), taxTree.getAllChildrenIDs(3));
     }
 
     @Test
@@ -73,5 +73,17 @@ public class TaxTreeTest {
         assertNotEquals(2, taxTree.getId("Flatulenzae"));
         assertNotEquals(1, taxTree.getId("sdfsdfsdfdsfs"));
         assertEquals(-1, taxTree.getId("sbgnfgnargh"));
+    }
+
+    @Test
+    public void shouldGetAncestor() {
+        shouldAddRootToTree();
+        shouldAddTwoNodesWithSettingName();
+        shouldAddSubNodes();
+
+        assertEquals(new TaxNode(3, 1, "Family"), taxTree.getAncestor("Family", "Schüsselsprenger"));
+        System.out.println(taxTree.getAncestor("Family", "Schüsselsprenger"));
+        assertNull(taxTree.getAncestor("Family", "sbgnfgnargh"));
+        assertNull(taxTree.getAncestor("xgdfg", "Schüsselsprenger"));
     }
 }
