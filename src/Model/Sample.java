@@ -60,11 +60,12 @@ public class Sample {
 
     /**
      * Checks if the gene is contained in an entry
-     * @param criteria
+     * @param keys
+     * @param values
      * @return
      */
-    private List<Read> filter(String criteria){
-        Filter crit = new Filter(reads,criteria);
+    private List<Read> filter(List<String> keys, List<String> values){
+        Filter crit = new Filter(reads, keys,values);
         List<Read> acceptedreads = crit.getAcceptedReads();
         crit.writeAcceptedReads();
         return acceptedreads;
