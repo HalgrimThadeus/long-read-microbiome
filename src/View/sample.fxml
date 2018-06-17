@@ -10,14 +10,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="622.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="totalPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="622.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-      <TextField layoutX="43.0" layoutY="187.0" prefHeight="212.0" prefWidth="542.0" />
+      <TextField fx:id="outputTestField" layoutX="43.0" layoutY="187.0" prefHeight="212.0" prefWidth="542.0" />
         <TextField layoutX="176.0" layoutY="141.0" prefHeight="25.0" prefWidth="411.0" />
         <TextField layoutX="174.0" layoutY="97.0" prefHeight="25.0" prefWidth="411.0" />
         <Text layoutX="58.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNA sequence :" />
         <Text layoutX="42.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein sequence :" />
-        <Button layoutX="26.0" layoutY="55.0" mnemonicParsing="false" text="translate">
+        <Button fx:id="openFileButton" layoutX="26.0" layoutY="55.0" mnemonicParsing="false" text="open">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
@@ -26,7 +26,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Open" />
+              <MenuItem fx:id="openMenuItem" mnemonicParsing="false" text="Open" />
                   <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
