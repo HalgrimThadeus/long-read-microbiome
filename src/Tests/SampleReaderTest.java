@@ -22,6 +22,7 @@ public class SampleReaderTest {
                 "NC_007373.1\tRefSeq\tgene\t28\t2307\t.\t+\t.\tID=gene0;Dbxref=GeneID:3655161;Name=PB2;gbkey=Gene;gene=PB2;gene_biotype=protein_coding;locus_tag=FLUAVH3N2_s1p1\n" +
                 "NC_007373.1\tRefSeq\tCDS\t28\t2307\t.\t+\t0\tID=cds0;Parent=gene0;Dbxref=Genbank:YP_308849.1,GeneID:3655161;Name=YP_308849.1;gbkey=CDS;gene=PB2;product=polymerase PB2;protein_id=YP_308849.1";
         String taxaFile = "NC_007373.1\t1";
+
         byte[] fasta = fastaFile.getBytes();
         byte[] gff = gffFile.getBytes();
         byte[] taxa = taxaFile.getBytes();
