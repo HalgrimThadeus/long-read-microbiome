@@ -139,8 +139,16 @@ public class TaxNode {
     }
 
 
-
-    public TaxNode getAncestorAtRank() {
-
+    /**
+     * returns the ancestor which has the given rank
+     * @param rank
+     * @return
+     */
+    public TaxNode getAncestorAtRank(String rank) {
+        if(this.rank.equals(rank)) {
+            return this;
+        } else {
+            return this.parentNode.getAncestorAtRank(rank);
+        }
     }
 }
