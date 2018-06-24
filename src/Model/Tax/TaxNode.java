@@ -1,6 +1,7 @@
 package Model.Tax;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 /**
@@ -29,18 +30,42 @@ public class TaxNode {
     private String name;
 
     /**
+     * Reference to the parentNode
+     */
+    private TaxNode parentNode;
+    /**
+     * List of the all the childrenNodes
+     */
+    private LinkedList<TaxNode> listOfChildrenNodes = new LinkedList<TaxNode>();
+
+    /**
      * Constructor of the class
      *
      * @param id takes the id of the node as int
      * @param parentId takes the id of the parent of the node as int
      * @param rank takes the taxonomic rank of the node as String
      */
-    public TaxNode(int id, int parentId, String rank) {
+    public TaxNode(int id, int parentId, String rank, TaxNode parentNode) {
         //normally this should be out commented, because its not my job ;)
         this.id = id;
         this.parentId = parentId;
         this.rank = rank;
         this.name = null;
+        this.parentNode = parentNode;
+    }
+
+    /**
+     * 2nd constructor to initilize empty parent node when initilizing it from a child
+     */
+    public TaxNode(int id){
+        this.id = id;
+    }
+    /**
+     * method to complete a node, that was just initilized when the child was found
+     */
+    public void updateNode(int parentId, String rank, TaxNode parentNode){
+        this.rank = rank;
+        this.parentId = parentId;
     }
 
     /**
@@ -50,13 +75,17 @@ public class TaxNode {
     public void setName(String name) {
         this.name = name;
     }
+    /**
+     *
+     */
 
     /**
      * Add a Children of the node to the List of childrenIds
      * @param childId
      */
-    public void addChild(int childId) {
+    public void addChild(int childId, TaxNode child) {
         this.childrenIds.add(childId);
+        this.listOfChildrenNodes.add(child);
     }
 
     /**

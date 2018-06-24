@@ -54,7 +54,7 @@ public class TaxTree {
      *
      *THIS METHOD MUST BE CALLED after Addition Process
      */
-    public void setChildren() {
+    /**public void setChildren() { /TODO Removed, no more need
 
         for (TaxNode child : this.tree.values()) {
 
@@ -65,6 +65,7 @@ public class TaxTree {
             }
         }
     }
+     */
 
     /**
      * returns all children (inner nodes and leafes) of one node
@@ -123,5 +124,13 @@ public class TaxTree {
                 currentNode = this.tree.get(currentNode.getParentId());
             }
         }
+    }
+
+    /**
+     *
+     * @return the hash tree
+     */
+    public Map<Integer, TaxNode> getTree() {
+        return tree;
     }
 }

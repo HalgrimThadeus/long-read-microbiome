@@ -33,13 +33,36 @@ public class TaxIO {
             int parentId = Integer.parseInt(lineValues[1].trim());
             String rank = lineValues[2].trim();
 
-            TaxNode node = new TaxNode(id, parentId, rank);
-            tree.add(node);
+            //create almost empty parent node if it doesn't already exists, and initilize it completly later
+            TaxNode parentNode;
+            if(!tree.getTree().containsKey(parentId)){
+                parentNode = new TaxNode(parentId);
+            }
+            else{
+                parentNode = tree.getTree().get(parentId);
+            }
+
+            //Create node itself
+            //Node does not exist (check with HashMap):
+            TaxNode newNode;
+            if(!tree.getTree().containsKey(id)) {
+                newNode = new TaxNode(id, parentId, rank, parentNode);
+                tree.add(newNode);
+            }
+            else{
+                newNode = tree.getTree().get(id);
+                newNode.updateNode(parentId,rank, parentNode);
+            }
+
+            //Add Child to the parentNode
+            parentNode.addChild(id, newNode );
+
+
 
             nodeLine = nodeReader.readLine();
         }
 
-        tree.setChildren();
+        //tree.setChildren();
 
 
         //then read in names.dmp and use only the scientific names,which are then added to the corresponding TaxNode via TaxTree
