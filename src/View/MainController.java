@@ -3,6 +3,7 @@ package View;
 import Model.FastAEntry;
 import Model.IO.FastAIO;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,7 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
@@ -31,6 +32,9 @@ public class MainController implements Initializable {
      */
     @FXML
     public Accordion sampleAccordion;
+
+    @FXML
+    public AnchorPane tab1;
 
     @FXML
     public SplitPane mainSplitPain;
@@ -122,6 +126,21 @@ public class MainController implements Initializable {
         newAccordionPane.setText("Sample " + (sampleAccordion.getPanes().size() + 1));
         newAccordionPane.setContent(newAnchorPane);
 
+        newAccordionPane.setOnDragDetected(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent event) {
+                /* drag was detected, start a drag-and-drop gesture*/
+                /* allow any transfer mode */
+                Dragboard db = newAccordionPane.startDragAndDrop(TransferMode.ANY);
+
+                /* Put a string on a dragboard */
+                ClipboardContent content = new ClipboardContent();
+                content.putString(newAccordionPane.getText());
+                db.setContent(content);
+
+                event.consume();
+            }
+        });
+
         sampleAccordion.getPanes().add(newAccordionPane);
 
 
@@ -143,5 +162,6 @@ public class MainController implements Initializable {
         filterPopUp.setScene(new Scene(root, 400, 400));
         filterPopUp.show();
     }
+
 
 }

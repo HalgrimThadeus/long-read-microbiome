@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
