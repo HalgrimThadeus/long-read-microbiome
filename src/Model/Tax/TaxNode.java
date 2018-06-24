@@ -13,14 +13,6 @@ public class TaxNode {
      */
     private int id;
     /**
-     * Saves the Id from the parent node
-     */
-    private int parentId;
-    /**
-     * Contains the Children of this node
-     */
-    private Set<Integer> childrenIds = new HashSet<>();
-    /**
      * Contains the taxonomic rank of the node
      */
     private String rank;
@@ -42,25 +34,14 @@ public class TaxNode {
      * Constructor of the class
      *
      * @param id takes the id of the node as int
-     * @param parentId takes the id of the parent of the node as int
+     * @param parentNode takes parental node
      * @param rank takes the taxonomic rank of the node as String
      */
-    public TaxNode(int id, int parentId, String rank, TaxNode parentNode) {
-        //normally this should be out commented, because its not my job ;)
+    public TaxNode(int id, String rank, TaxNode parentNode) {
         this.id = id;
-        this.parentId = parentId;
         this.rank = rank;
         this.name = null;
         this.parentNode = parentNode;
-    }
-
-    public TaxNode(int id, int parentId, String rank) {
-        //normally this should be out commented, because its not my job ;)
-        this.id = id;
-        this.parentId = parentId;
-        this.rank = rank;
-        this.name = null;
-
     }
 
     /**
@@ -69,12 +50,13 @@ public class TaxNode {
     public TaxNode(int id){
         this.id = id;
     }
+
     /**
      * method to complete a node, that was just initilized when the child was found
      */
-    public void updateNode(int parentId, String rank, TaxNode parentNode){
+    public void completeNode(String rank, TaxNode parentNode){
         this.rank = rank;
-        this.parentId = parentId;
+        this.parentNode = parentNode;
     }
 
     /**
@@ -90,19 +72,10 @@ public class TaxNode {
 
     /**
      * Add a Children of the node to the List of childrenIds
-     * @param childId
+     * @param child as taxnode
      */
-    public void addChild(int childId, TaxNode child) {
-        this.childrenIds.add(childId);
+    public void addChild(TaxNode child) {
         this.listOfChildrenNodes.add(child);
-    }
-
-    /**
-     * Retruns the List of the childrenIds
-     * @return
-     */
-    public Set<Integer> getChildrenIDs() {
-        return this.childrenIds;
     }
 
     /**
@@ -111,14 +84,6 @@ public class TaxNode {
      */
     public int getID(){
         return this.id;
-    }
-
-    /**
-     * Returns the parent Id
-     * @return
-     */
-    public int getParentId(){
-        return parentId;
     }
 
     /**
@@ -144,8 +109,8 @@ public class TaxNode {
         return "Name: " + this.name +
                 ", ID: " + this.id +
                 ", Rank: " + this.rank +
-                ", ParentID: " + this.parentId +
-                ", ChildrenIDs: " + this.getChildrenIDs();
+                ", ParentID: " + this.parentNode +
+                ", ChildrenIDs: " + this.listOfChildrenNodes.toString();
     }
 
     /**
@@ -153,7 +118,7 @@ public class TaxNode {
      * @return
      */
     public boolean isRoot() {
-        return this.getID() == this.getParentId();
+        return this == this.parentNode;
     }
 
 }
