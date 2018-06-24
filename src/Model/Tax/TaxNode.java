@@ -1,8 +1,7 @@
 package Model.Tax;
 
-import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Datastructure of a TaxNode
@@ -12,14 +11,6 @@ public class TaxNode {
      * Saves the Id from the Node
      */
     private int id;
-    /**
-     * Saves the Id from the parent node
-     */
-    private int parentId;
-    /**
-     * Contains the Children of this node
-     */
-    private Set<Integer> childrenIds = new HashSet<>();
     /**
      * Contains the taxonomic rank of the node
      */
@@ -36,19 +27,17 @@ public class TaxNode {
     /**
      * List of the all the childrenNodes
      */
-    private LinkedList<TaxNode> listOfChildrenNodes = new LinkedList<TaxNode>();
+    private List<TaxNode> listOfChildrenNodes = new LinkedList<TaxNode>();
 
     /**
      * Constructor of the class
      *
      * @param id takes the id of the node as int
-     * @param parentId takes the id of the parent of the node as int
+     * @param parentNode takes parental node
      * @param rank takes the taxonomic rank of the node as String
      */
-    public TaxNode(int id, int parentId, String rank, TaxNode parentNode) {
-        //normally this should be out commented, because its not my job ;)
+    public TaxNode(int id, String rank, TaxNode parentNode) {
         this.id = id;
-        this.parentId = parentId;
         this.rank = rank;
         this.name = null;
         this.parentNode = parentNode;
@@ -60,12 +49,13 @@ public class TaxNode {
     public TaxNode(int id){
         this.id = id;
     }
+
     /**
      * method to complete a node, that was just initilized when the child was found
      */
-    public void updateNode(int parentId, String rank, TaxNode parentNode){
+    public void completeNode(String rank, TaxNode parentNode){
         this.rank = rank;
-        this.parentId = parentId;
+        this.parentNode = parentNode;
     }
 
     /**
@@ -81,19 +71,10 @@ public class TaxNode {
 
     /**
      * Add a Children of the node to the List of childrenIds
-     * @param childId
+     * @param child as taxnode
      */
-    public void addChild(int childId, TaxNode child) {
-        this.childrenIds.add(childId);
+    public void addChild(TaxNode child) {
         this.listOfChildrenNodes.add(child);
-    }
-
-    /**
-     * Retruns the List of the childrenIds
-     * @return
-     */
-    public Set<Integer> getChildrenIDs() {
-        return this.childrenIds;
     }
 
     /**
@@ -102,14 +83,6 @@ public class TaxNode {
      */
     public int getID(){
         return this.id;
-    }
-
-    /**
-     * Returns the parent Id
-     * @return
-     */
-    public int getParentId(){
-        return parentId;
     }
 
     /**
@@ -135,8 +108,8 @@ public class TaxNode {
         return "Name: " + this.name +
                 ", ID: " + this.id +
                 ", Rank: " + this.rank +
-                ", ParentID: " + this.parentId +
-                ", ChildrenIDs: " + this.getChildrenIDs();
+                ", ParentID: " + this.parentNode +
+                ", ChildrenIDs: " + this.listOfChildrenNodes.toString();
     }
 
     /**
@@ -144,7 +117,36 @@ public class TaxNode {
      * @return
      */
     public boolean isRoot() {
-        return this.getID() == this.getParentId();
+        return this == this.parentNode;
     }
 
+    /**
+     * recursevily iterates through the children giving back ALL children (childrenschildren...)
+     * @return list of children (taxNOde)
+     */
+    public List<TaxNode> getAllChildren() {
+        if(this.listOfChildrenNodes == null) {
+            return null;
+        } else {
+            List<TaxNode> childrenchilds = new LinkedList<>();
+            for (TaxNode tn : this.listOfChildrenNodes) {
+                childrenchilds.addAll(tn.getAllChildren());
+            }
+            return childrenchilds;
+        }
+    }
+
+
+    /**
+     * returns the ancestor which has the given rank
+     * @param rank
+     * @return
+     */
+    public TaxNode getAncestorAtRank(String rank) {
+        if(this.rank.equals(rank)) {
+            return this;
+        } else {
+            return this.parentNode.getAncestorAtRank(rank);
+        }
+    }
 }

@@ -28,12 +28,12 @@ public class TaxIO {
             nodeLine = nodeLine.replace('\t', '\0');
             String[] lineValues = nodeLine.trim().split("\\|");
 
-            //Set ID, parentID and rank to a node
+            //ID, parentID and rank for a node
             int id = Integer.parseInt(lineValues[0].trim());
             int parentId = Integer.parseInt(lineValues[1].trim());
             String rank = lineValues[2].trim();
 
-            //create almost empty parent node if it doesn't already exists, and initilize it completly later
+            //create almost empty parent node if it doesn't already exists, and initilize it completely later
             TaxNode parentNode;
             if(!tree.getTree().containsKey(parentId)){
                 parentNode = new TaxNode(parentId);
@@ -46,24 +46,20 @@ public class TaxIO {
             //Node does not exist (check with HashMap):
             TaxNode newNode;
             if(!tree.getTree().containsKey(id)) {
-                newNode = new TaxNode(id, parentId, rank, parentNode);
-                tree.add(newNode);
-            }
-            else{
+                newNode = new TaxNode(id, rank, parentNode);
+            } else{
                 newNode = tree.getTree().get(id);
-                newNode.updateNode(parentId,rank, parentNode);
+                newNode.completeNode(rank, parentNode);
             }
 
             //Add Child to the parentNode
-            parentNode.addChild(id, newNode );
+            parentNode.addChild(newNode);
 
-
+            //Also add the new Node newNode to the HashMap-Tree
+            tree.add(newNode);
 
             nodeLine = nodeReader.readLine();
         }
-
-        //tree.setChildren();
-
 
         //then read in names.dmp and use only the scientific names,which are then added to the corresponding TaxNode via TaxTree
 

@@ -49,39 +49,19 @@ public class TaxTree {
         tree.get(id).setName(name);
     }
 
-    /**
-     * cause the nodes.dmp only safe parent nodes, therefore the children have to be set afterwards !!TIME EXPENSIVE!!
-     *
-     *THIS METHOD MUST BE CALLED after Addition Process
-     */
-    /**public void setChildren() { /TODO Removed, no more need
-
-        for (TaxNode child : this.tree.values()) {
-
-            //tests if node is root, to not set child of root root itself
-            if(!(child.getID() == child.getParentId())) {
-                TaxNode parent = tree.get(child.getParentId());
-                parent.addChild(child.getID());
-            }
-        }
-    }
-     */
 
     /**
-     * returns all children (inner nodes and leafes) of one node
+     * returns all childrenNode (inner nodes and leafes) of one node,
+     * using the Node-getAllchildren Method
      * may cause problems if applied on root, because of a huge set
      * @param id
      * @return
      */
-    public Set<Integer> getAllChildrenIDs(int id) {
-        Set<Integer> childrenList = tree.get(id).getChildrenIDs();
-        Set<Integer> allChildrenList = childrenList;
+    public List<TaxNode> getAllChildrens(int id) {
+        TaxNode correspondingNode = tree.get(id);
+        List<TaxNode> allChildrenNodeList = correspondingNode.getAllChildren();
 
-        Iterator<Integer> childrenIterator = childrenList.iterator();
-        while(childrenIterator.hasNext()) {
-            allChildrenList.addAll(getAllChildrenIDs(childrenIterator.next()));
-        }
-        return allChildrenList;
+        return allChildrenNodeList;
     }
 
     /**
@@ -94,35 +74,6 @@ public class TaxTree {
             return this.nameMap.get(name);
         } else {
             return -1;
-        }
-    }
-
-    /**
-     * returns the ancestor at a specific rank of the taxtree by calling it with an organisms name
-     * @param rank
-     * @param organismName
-     * @return
-     */
-    public TaxNode getAncestor(String rank,String organismName) {
-        if(rank == null || organismName == null) {
-            return null;
-        } else {
-            TaxNode currentNode = this.tree.get(this.getId(organismName));
-
-            if(currentNode == null)
-                return null;
-
-            while (true) {
-                if(rank.equals(currentNode.getRank())) {
-                    return currentNode;
-                }
-
-                if(currentNode.isRoot()){
-                    return null;
-                }
-
-                currentNode = this.tree.get(currentNode.getParentId());
-            }
         }
     }
 
