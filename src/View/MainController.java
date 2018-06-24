@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +26,9 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    /**
+     * Important Containers
+     */
     @FXML
     public Accordion sampleAccordion;
 
@@ -32,17 +36,24 @@ public class MainController implements Initializable {
     public SplitPane mainSplitPain;
 
     @FXML
-    public Button toolbarBtnAddSamplePage;
-
-    @FXML
-    public Button newSampleBtn;
-
-    @FXML
     public ListView filterList;
 
     @FXML
     public HTMLEditor editor;
 
+
+    /**
+     * Important Buttons
+     */
+    @FXML
+    public Button toolbarBtnAddSamplePage;
+
+    @FXML
+    public Button newSampleBtn;
+
+    /**
+     * Menues
+     */
     @FXML
     public MenuItem addNewFilterContextMenu;
 
@@ -52,6 +63,11 @@ public class MainController implements Initializable {
 
     }
 
+    /**
+     * You can open a fastaFile at the Monoment and an item is added to the Accordion TODO Sample pop up???
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void newSampleBtnClicked(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -119,34 +135,13 @@ public class MainController implements Initializable {
         System.out.println(mainSplitPain.getItems());
     }
 
+    @FXML
     public void addNewFilterContextMenuClicked(ActionEvent event) throws IOException {
-        System.out.println("Open the Filter");
+        Stage filterPopUp = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("filterview2.fxml"));
+        filterPopUp.setTitle("New Filter");
+        filterPopUp.setScene(new Scene(root, 400, 400));
+        filterPopUp.show();
     }
-    /*
-    public void addedNewFastaItem(MouseEvent event) throws IOException {
-        File fastaFile = (File) fastaList.getSelectionModel().getSelectedItem();
-        FileReader reader = new FileReader(fastaFile);
-        FastAIO fastaReader = new FastAIO();
-        List<FastAEntry> fastaEntries = fastaReader.readFastA(reader);
-
-        String file = "";
-        for(int i = 0; i < fastaEntries.size(); i++){
-            file += fastaEntries.get(i).getHeader() + "\n"+ fastaEntries.get(i).getSequence() + "\n";
-        }
-
-        textAreaTab.setText(file);
-
-    }
-
-    public void checkedBox(ActionEvent event){
-        if(testCheckBox.isSelected()) {
-            textAreaTab.setStyle("-fx-control-inner-background:#000000; -fx-font-family: Consolas; -fx-highlight-fill: #ff00ff; -fx-highlight-text-fill: #ff00ff; -fx-text-fill: #ff00ff; ");
-        }
-        else{
-            textAreaTab.setStyle("-fx-control-inner-background:#ffffff; -fx-font-family: Consolas; -fx-highlight-fill: #000000; -fx-highlight-text-fill: #000000; -fx-text-fill: #000000; ");
-        }
-    }
-*/
-
 
 }
