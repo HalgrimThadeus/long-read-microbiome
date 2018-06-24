@@ -95,35 +95,6 @@ public class TaxTree {
     }
 
     /**
-     * returns the ancestor at a specific rank of the taxtree by calling it with an organisms name
-     * @param rank
-     * @param organismName
-     * @return
-     */
-    public TaxNode getAncestor(String rank,String organismName) {
-        if(rank == null || organismName == null) {
-            return null;
-        } else {
-            TaxNode currentNode = this.tree.get(this.getId(organismName));
-
-            if(currentNode == null)
-                return null;
-
-            while (true) {
-                if(rank.equals(currentNode.getRank())) {
-                    return currentNode;
-                }
-
-                if(currentNode.isRoot()){
-                    return null;
-                }
-
-                currentNode = this.tree.get(currentNode.getParentId());
-            }
-        }
-    }
-
-    /**
      *
      * @return the hash tree
      */

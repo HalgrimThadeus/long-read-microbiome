@@ -138,4 +138,9 @@ public class TaxNode {
         }
     }
 
+
+
+    public TaxNode getAncestorAtRank() {
+
+    }
 }

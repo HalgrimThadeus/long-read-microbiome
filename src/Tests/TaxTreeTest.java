@@ -36,10 +36,6 @@ public class TaxTreeTest {
         subNode2.setName("Flitzpiepe");
         taxTree.add(subNode2);
     }
-    /*
-    public void shouldSetChildrenOfTree() {
-        taxTree.setChildren();
-    }*/
 
     @Test
     public void shouldGetAllChildrenOfRoot() {
