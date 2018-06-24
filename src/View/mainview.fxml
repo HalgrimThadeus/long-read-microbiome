@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1081.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainController">
+   <children>
+      <MenuBar prefHeight="25.0" prefWidth="831.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Comperator">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.24581939799331104" layoutY="25.0" prefHeight="415.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="144.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" layoutY="90.0" orientation="VERTICAL" prefHeight="413.0" prefWidth="144.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0">
+                           <children>
+                              <Button fx:id="newSampleBtn" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#newSampleBtnClicked" prefHeight="25.0" prefWidth="103.0" text="New Sample" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0">
+                                <content>
+                                  <AnchorPane maxHeight="500">
+                                       <children>
+                                          <Accordion fx:id="sampleAccordion" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0">
+                                            <panes>
+
+                                            </panes>
+                                          </Accordion>
+                                       </children></AnchorPane>
+                                </content>
+                              </ScrollPane>
+
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" prefHeight="12.0" prefWidth="49.0" text="Filters:" />
+                              <ListView fx:id="filterList" layoutX="8.0" layoutY="39.0" prefHeight="300.0" prefWidth="244.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="39.0">
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem fx:id="addNewFilterContextMenu" mnemonicParsing="false" onAction="#addNewFilterContextMenuClicked" text="Add Filter" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu></ListView>
+                           </children></AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <SplitPane fx:id="mainSplitPain" layoutX="216.0" layoutY="79.0" prefHeight="708.0" prefWidth="811.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <items>
+                        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="100.0">
+                          <tabs>
+                            <Tab text="                         ">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="                      ">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </Tab>
+                              <Tab text="                       ">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </Tab>
+                              <Tab text="Editor">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <HTMLEditor fx:id="editor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="64.0" layoutY="50.0" prefHeight="677.0" prefWidth="809.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <ToolBar layoutX="811.0" layoutY="-2.0" maxHeight="25.0" maxWidth="250.0" minHeight="25.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <Button fx:id="toolbarBtnAddSamplePage" alignment="CENTER" contentDisplay="CENTER" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#toolbarBtnAddSamplePage" prefHeight="17.0" prefWidth="24.0" text="+">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+         </items>
+      </ToolBar>
+   </children>
+</AnchorPane>

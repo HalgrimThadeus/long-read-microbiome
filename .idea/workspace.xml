@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/View/MainController.java" line="124" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="cea520c4-fa3a-481d-93d1-6116cd66526f" name="Default" comment="A testgu">
-      <change afterPath="$PROJECT_DIR$/src/View/Controller2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Main2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/testGUI.fxml" afterDir="false" />
+    <list default="true" id="cea520c4-fa3a-481d-93d1-6116cd66526f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/View/tabPane.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/SampleReaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/SampleReaderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Controller2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Main2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/testGUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/mainview.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,30 +24,55 @@
       <file leaf-file-name="Main2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/Main2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="136">
+              <caret line="12" column="79" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="79" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller2.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/View/Controller2.java">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/View/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="92" column="184" selection-start-line="92" selection-start-column="184" selection-end-line="92" selection-end-column="184" />
+            <state relative-caret-position="-341">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta">
+      <file leaf-file-name="tabPane.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/tabPane.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file leaf-file-name="filterview.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/filterview.fxml">
           <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file leaf-file-name="TaxIOTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tests/TaxIOTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/sample.fxml">
           <provider selected="true" editor-type-id="text-editor" />
           <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file leaf-file-name="JetBrains.gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JetBrains.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="sampleP.fxml" pinned="false" current-in-tab="false">
@@ -57,8 +84,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="314">
+              <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,32 +93,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="long-read-microbiome.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/long-read-microbiome.iml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="JetBrains.gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JetBrains.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="testGUI.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/testGUI.fxml">
-          <provider selected="true" editor-type-id="text-editor" />
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="374">
-                <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="mainview.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/mainview.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="52" column="76" selection-start-line="52" selection-start-column="76" selection-end-line="52" selection-end-column="76" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -104,6 +113,15 @@
         <option value="FxmlFile" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>anchor</find>
+      <find>Accor</find>
+      <find>TabP</find>
+      <find>Tree</find>
+      <find>scrole</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -140,6 +158,9 @@
         <option value="$PROJECT_DIR$/src/Tests/SampleReaderTest.java" />
         <option value="$PROJECT_DIR$/src/View/testFile.fxml" />
         <option value="$PROJECT_DIR$/src/View/Controller2.java" />
+        <option value="$PROJECT_DIR$/src/View/tabPane.fxml" />
+        <option value="$PROJECT_DIR$/src/View/mainview.fxml" />
+        <option value="$PROJECT_DIR$/src/View/MainController.java" />
       </list>
     </option>
   </component>
@@ -164,8 +185,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,7 +265,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -438,7 +459,9 @@
       <workItem from="1529271597222" duration="7000" />
       <workItem from="1529328653507" duration="438000" />
       <workItem from="1529356494559" duration="2306000" />
-      <workItem from="1529386290721" duration="388000" />
+      <workItem from="1529386290721" duration="608000" />
+      <workItem from="1529776562783" duration="8678000" />
+      <workItem from="1529787653225" duration="5439000" />
     </task>
     <task id="LOCAL-00001" summary="FastAIO was changed">
       <created>1528056226697</created>
@@ -573,7 +596,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529256906866</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="A testgui">
+      <created>1529386694321</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1529386694321</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -609,14 +639,14 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30110000" />
+    <option name="totallyTimeSpent" value="44447000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="11" />
       <window_info anchor="bottom" id="TODO" order="14" />
+      <window_info anchor="bottom" id="Messages" order="4" weight="0.32624868" />
       <window_info anchor="right" id="Palette&#9;" order="14" />
       <window_info id="Image Layers" order="10" />
       <window_info anchor="right" id="Capture Analysis" order="12" />
@@ -642,20 +672,19 @@
       <window_info anchor="bottom" id="Message" order="8" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32943678" />
-      <window_info anchor="bottom" id="Messages" order="4" weight="0.32624868" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Version Control" order="2" />
+      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.2318584" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.17489879" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.2318584" />
+      <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
@@ -698,7 +727,8 @@
     <MESSAGE value="Now reads in the Tree from the file (file Path has to be adjusted manualy) because its to big to upload.&#10;Runtime with this implementation is bad ca. 30 sec to read in.&#10;&#10;Fixed some errors in Test Classes" />
     <MESSAGE value="fixed problem of &quot;=&quot; in gff files. (now one attribute with a key could contain more than one value)" />
     <MESSAGE value="added getAncestor method" />
-    <option name="LAST_COMMIT_MESSAGE" value="added getAncestor method" />
+    <MESSAGE value="A testgui" />
+    <option name="LAST_COMMIT_MESSAGE" value="A testgui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -706,20 +736,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Model/FastAEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-392">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/IO/SampleReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/ReadTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -837,13 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/TaxIOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/IO/SampleReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="967">
@@ -876,6 +885,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="43" column="76" selection-start-line="43" selection-start-column="76" selection-end-line="43" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -893,14 +905,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/filterview.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/long-read-microbiome.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JetBrains.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/testFile.fxml" />
@@ -914,42 +919,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.web/javafx/scene/web/HTMLEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="81" column="16" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
+          <folding>
+            <element signature="e#1927#1928#0" expanded="true" />
+            <element signature="e#1992#1993#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="79" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="314">
+          <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/sample.fxml">
+    <entry file="file://$PROJECT_DIR$/src/View/filterview.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/sampleP.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/Main2.java">
+    <entry file="file://$PROJECT_DIR$/src/Tests/TaxIOTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="85">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/testGUI.fxml">
+    <entry file="file://$PROJECT_DIR$/src/View/mainview.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="52" column="76" selection-start-line="52" selection-start-column="76" selection-end-line="52" selection-end-column="76" />
+        </state>
+      </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/sampleP.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/sample.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JetBrains.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/Controller2.java">
+    <entry file="file://$PROJECT_DIR$/src/View/tabPane.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="92" column="184" selection-start-line="92" selection-start-column="184" selection-end-line="92" selection-end-column="184" />
+        <state relative-caret-position="510">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-341">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
