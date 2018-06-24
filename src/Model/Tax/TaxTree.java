@@ -50,30 +50,12 @@ public class TaxTree {
     }
 
     /**
-     * cause the nodes.dmp only safe parent nodes, therefore the children have to be set afterwards !!TIME EXPENSIVE!!
-     *
-     *THIS METHOD MUST BE CALLED after Addition Process
-     */
-    /**public void setChildren() { //TODO should be removed
-
-        for (TaxNode child : this.tree.values()) {
-
-            //tests if node is root, to not set child of root root itself
-            if(!(child.getID() == child.getParentId())) {
-                TaxNode parent = tree.get(child.getParentId());
-                parent.addChild(child.getID());
-            }
-        }
-    }*/
-
-
-    /**
      * returns all children (inner nodes and leafes) of one node
      * may cause problems if applied on root, because of a huge set
      * @param id
      * @return
      */
-    public Set<Integer> getAllChildrenIDs(int id) {
+    public Set<Integer> getAllChildren(int id) {
         Set<Integer> childrenList = tree.get(id).getChildrenIDs();
         Set<Integer> allChildrenList = childrenList;
 

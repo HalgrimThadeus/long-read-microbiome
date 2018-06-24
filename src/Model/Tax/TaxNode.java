@@ -2,6 +2,7 @@ package Model.Tax;
 
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -28,7 +29,7 @@ public class TaxNode {
     /**
      * List of the all the childrenNodes
      */
-    private LinkedList<TaxNode> listOfChildrenNodes = new LinkedList<TaxNode>();
+    private List<TaxNode> listOfChildrenNodes = new LinkedList<TaxNode>();
 
     /**
      * Constructor of the class
@@ -119,6 +120,22 @@ public class TaxNode {
      */
     public boolean isRoot() {
         return this == this.parentNode;
+    }
+
+    /**
+     * recursevily iterates through the children giving back ALL children (childrenschildren...)
+     * @return list of children (taxNOde)
+     */
+    public List<TaxNode> getAllChildren() {
+        if(this.listOfChildrenNodes == null) {
+            return null;
+        } else {
+            List<TaxNode> childrenchilds = new LinkedList<>();
+            for (TaxNode tn : this.listOfChildrenNodes) {
+                childrenchilds.addAll(tn.getAllChildren());
+            }
+            return childrenchilds;
+        }
     }
 
 }
