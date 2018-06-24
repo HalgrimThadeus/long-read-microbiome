@@ -54,6 +54,15 @@ public class TaxNode {
         this.parentNode = parentNode;
     }
 
+    public TaxNode(int id, int parentId, String rank) {
+        //normally this should be out commented, because its not my job ;)
+        this.id = id;
+        this.parentId = parentId;
+        this.rank = rank;
+        this.name = null;
+
+    }
+
     /**
      * 2nd constructor to initilize empty parent node when initilizing it from a child
      */

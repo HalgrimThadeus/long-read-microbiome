@@ -54,7 +54,7 @@ public class TaxTree {
      *
      *THIS METHOD MUST BE CALLED after Addition Process
      */
-    /**public void setChildren() { /TODO Removed, no more need
+    /**public void setChildren() { //TODO should be removed
 
         for (TaxNode child : this.tree.values()) {
 
@@ -64,8 +64,8 @@ public class TaxTree {
                 parent.addChild(child.getID());
             }
         }
-    }
-     */
+    }*/
+
 
     /**
      * returns all children (inner nodes and leafes) of one node

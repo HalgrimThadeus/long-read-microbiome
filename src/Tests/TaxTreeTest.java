@@ -36,22 +36,22 @@ public class TaxTreeTest {
         subNode2.setName("Flitzpiepe");
         taxTree.add(subNode2);
     }
-
+    /*
     public void shouldSetChildrenOfTree() {
         taxTree.setChildren();
-    }
+    }*/
 
     @Test
     public void shouldGetAllChildrenOfRoot() {
         shouldAddRootToTree();
         shouldAddTwoNodesWithSettingName();
-        shouldSetChildrenOfTree();
+        //shouldSetChildrenOfTree();
 
         assertEquals(true, taxTree.getAllChildrenIDs(1).contains(3));
         assertNotEquals(true, taxTree.getAllChildrenIDs(1).contains(1));
 
         shouldAddSubNodes();
-        shouldSetChildrenOfTree();
+        //shouldSetChildrenOfTree();
         System.out.println(taxTree.getAllChildrenIDs(1));
     }
 
@@ -59,7 +59,7 @@ public class TaxTreeTest {
     public void shouldGetAllChildrenOfLeaf() {
         shouldAddRootToTree();
         shouldAddTwoNodesWithSettingName();
-        shouldSetChildrenOfTree();
+        //shouldSetChildrenOfTree();
 
         assertEquals(new HashSet<Integer>(), taxTree.getAllChildrenIDs(3));
     }
