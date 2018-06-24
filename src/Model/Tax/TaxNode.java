@@ -1,9 +1,7 @@
 package Model.Tax;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Datastructure of a TaxNode
