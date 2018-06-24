@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -136,7 +137,11 @@ public class MainController implements Initializable {
 
     @FXML
     public void addNewFilterContextMenuClicked(ActionEvent event) throws IOException {
-        System.out.println("Open the Filter");
+        Stage filterPopUp = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("filterview2.fxml"));
+        filterPopUp.setTitle("New Filter");
+        filterPopUp.setScene(new Scene(root, 400, 400));
+        filterPopUp.show();
     }
 
 }
