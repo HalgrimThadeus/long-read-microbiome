@@ -35,8 +35,7 @@ public class Main {
         FastAIO fastaFile = new FastAIO();
         fastaFile.readFastA("src/FastAFiles/GCF_000865085.1_ViralMultiSegProj15622_genomic.fasta");
          PushTest
-        **/
-        //Test Methods for Test purposes preinitialized paths:
+*/
         try {
             Sample sample = SampleReader.read("res/ehec/ehec.f1000000-ex.fasta", "res/ehec/ehec.f1000000-all.gff", "res/ehec/ehec.f1000000-readname2taxonid.txt");
 

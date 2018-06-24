@@ -54,7 +54,9 @@ public class Filter {
                             break;
                         }
                         //then all else keys are compared if they exist in the attributes
-                    } else if(gff.getAttributes().get(keys.get(i)) == null){
+                    }
+
+                    else if(gff.getAttributes().get(keys.get(i)) == null){
                         System.err.println("Key doesn't exist in attributes");
                         break;
                     }
@@ -63,6 +65,7 @@ public class Filter {
                         fits = false;
                         break;
                     }
+
 
                 }
                 // as soon as one gffEntry passes the filter you can continue with the next read
