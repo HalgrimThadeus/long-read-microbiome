@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class TaxTreeTest {
 
     private TaxTree taxTree = new TaxTree();
-
+    /*
     public void shouldAddRootToTree() {
         TaxNode root = new TaxNode(1, 1, "SuperFastKingdom");
         root.setName("Flatulenzae");
@@ -81,5 +81,5 @@ public class TaxTreeTest {
         System.out.println(taxTree.getAncestor("SuperFastKingdom", "Schüsselsprenger"));
         assertNull(taxTree.getAncestor("Family", "sbgnfgnargh"));
         assertNull(taxTree.getAncestor("xgdfg", "Schüsselsprenger"));
-    }
+    }*/
 }

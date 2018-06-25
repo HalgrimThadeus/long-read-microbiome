@@ -25,6 +25,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
 public class MainController implements Initializable {
 
     /**
@@ -113,6 +114,7 @@ public class MainController implements Initializable {
         newTreeView.setRoot(root);
         newTreeView.setShowRoot(false);
 
+
         AnchorPane.setLeftAnchor(newTreeView, 0d);
         AnchorPane.setRightAnchor(newTreeView, 0d);
         AnchorPane.setBottomAnchor(newTreeView, 0d);
@@ -125,6 +127,7 @@ public class MainController implements Initializable {
         newAccordionPane.setMinHeight(100);
         newAccordionPane.setText("Sample " + (sampleAccordion.getPanes().size() + 1));
         newAccordionPane.setContent(newAnchorPane);
+
 
         newAccordionPane.setOnDragDetected(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
