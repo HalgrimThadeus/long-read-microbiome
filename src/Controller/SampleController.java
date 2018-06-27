@@ -1,89 +1,31 @@
-package View;
+package Controller;
 
 import Model.FastAEntry;
 import Model.IO.FastAIO;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.input.*;
+import javafx.scene.control.Accordion;
+import javafx.scene.control.TitledPane;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
-import javafx.scene.web.HTMLEditor;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import jdk.nashorn.api.tree.Tree;
 
-import java.io.*;
-import java.net.URL;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
-import java.util.ResourceBundle;
+
+public class SampleController {
 
 
-public class MainController implements Initializable {
-
-    /**
-     * Important Containers
-     */
-    @FXML
-    public Accordion sampleAccordion;
-
-    @FXML
-    public AnchorPane tab1;
-
-    @FXML
-    public SplitPane mainSplitPain;
-
-    @FXML
-    public ListView filterList;
-
-    @FXML
-    public HTMLEditor editor;
-
-
-    /**
-     * Important Buttons
-     */
-    @FXML
-    public Button toolbarBtnAddSamplePage;
-
-    @FXML
-    public Button newSampleBtn;
-
-    /**
-     * Menues
-     */
-    @FXML
-    public MenuItem addNewFilterContextMenu;
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-    }
-
-    /**
-     * You can open a fastaFile at the Monoment and an item is added to the Accordion TODO Sample pop up???
-     * @param event
-     * @throws IOException
-     */
-    @FXML
-    public void newSampleBtnClicked(ActionEvent event) throws IOException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("BioFiles","*.fasta", "*.gff", "*.csv")
-        );
-
-        File selectedFile = fileChooser.showOpenDialog(new Stage());
-
-        FileReader reader = new FileReader(selectedFile);
+    public String readInFastaFileInHtml(File fastaFile) throws IOException {
+        FileReader reader = new FileReader(fastaFile);
         FastAIO fastaReader = new FastAIO();
         List<FastAEntry> fastaEntries = fastaReader.readFastA(reader);
 
@@ -94,6 +36,24 @@ public class MainController implements Initializable {
             file += "\n";
         }
 
+        return file;
+
+    }
+
+
+    public File getNewFiles(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("BioFiles","*.fasta", "*.gff", "*.csv")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+        return selectedFile;
+    }
+
+    public void addNewSampleInAccordion(Accordion sampleAccordion){
         TitledPane newAccordionPane = new TitledPane();
         AnchorPane newAnchorPane = new AnchorPane();
         TreeView newTreeView = new TreeView();
@@ -145,25 +105,6 @@ public class MainController implements Initializable {
         });
 
         sampleAccordion.getPanes().add(newAccordionPane);
-
-
-        editor.setHtmlText(file);
-    }
-
-    @FXML
-    public void toolbarBtnAddSamplePage(ActionEvent event) throws IOException {
-        TabPane newSampleTabPane = FXMLLoader.load(getClass().getResource("tabPane.fxml"));
-        mainSplitPain.getItems().add(newSampleTabPane);
-        System.out.println(mainSplitPain.getItems());
-    }
-
-    @FXML
-    public void addNewFilterContextMenuClicked(ActionEvent event) throws IOException {
-        Stage filterPopUp = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("filterview2.fxml"));
-        filterPopUp.setTitle("New Filter");
-        filterPopUp.setScene(new Scene(root, 400, 400));
-        filterPopUp.show();
     }
 
 
