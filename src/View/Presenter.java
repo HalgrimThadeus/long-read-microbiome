@@ -2,6 +2,7 @@ package View;
 
 import Controller.FilterController;
 import Controller.MainTabViewController;
+import Controller.SaveProjectController;
 import Model.FastAEntry;
 import Model.IO.FastAIO;
 import javafx.event.ActionEvent;
@@ -52,6 +53,9 @@ public class Presenter implements Initializable {
     @FXML
     public Button newSampleBtn;
 
+    @FXML
+    public Button saveProjectBtn;
+
     /**
      * Menues
      */
@@ -91,6 +95,18 @@ public class Presenter implements Initializable {
         FilterController controller = new FilterController();
 
         controller.openNewFilterDialog();
+    }
+
+    @FXML
+    public void saveProjectButtonClicked(ActionEvent clickEvent) throws Exception {
+        SaveProjectController controller = new SaveProjectController();
+
+        try {
+            controller.saveProject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
