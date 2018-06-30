@@ -8,34 +8,32 @@ import java.util.List;
 import static Model.FilterBuilder.*;
 import java.util.function.Predicate;
 /**
- * New idea with GUI
  * List of key are the selected criteria
  * List of values the user entered in the Textfield
  *
  * It now is given to the method and depending on what kind of key we got we use a given predicate or the hashmap
+ *
+ *TODO : method for GC Content , Taxa, Length etc.
+ *
+ *
+ *
  */
 public class Filter {
-    private List<Read> reads;
-    private String criteria;
     private List<Read> acceptedreads = new ArrayList<>();
     private List<String> keys;
     private List<String> values;
-    private List<String> criterias = new ArrayList<>();
-    public Filter(Sample sample,List<String> keys, List<String> values){
-        List<Read> r = sample.getReads();
-        r = this.reads;
-        keys = this.keys;
-        values = this.values;
+    private List<String> criterias;
+    String name;
+
+    public Filter(String name,List<String> keys, List<String> values){
+        this.keys = keys;
+        this.values = values;
+        this.name = name;
     }
 
-    protected List<Read> getAcceptedReads(){
-        return suitable();
-    }
-
-
-
-    protected List<Read> suitable(){
-        List<Read> suitablereads = reads;
+    protected List<Read> suitable(Sample sample){
+        List<Read> reads = sample.getReads();
+        List<Read> suitablereads = sample.getReads();
              for(int k = 0; k < keys.size(); k++){
                 if(keys.get(k).equals("Length")){
                     suitablereads.removeIf(isLengthEqual(Integer.parseInt(values.get(k))).negate());
@@ -93,24 +91,22 @@ public class Filter {
 
 /**
  * gets all the attributes so we can display them in the UI. With that the user will be abel to filter
+ * and sets them to criteria
  */
-
-    protected List<String> getFilterCriteria(){
-        List<String> criteria = new ArrayList();
-
+    protected void getFilterCriteria(Sample sample){
+        criterias = new ArrayList();
+        List<Read> reads = sample.getReads();
         for(Read read: reads) {
             for (GffEntry gff : read.getGFFEntries()) {
                 List<String> attributes = new ArrayList<>();
                 attributes.addAll(gff.getAttributes().keySet());
                 for (String attribute : attributes) {
-                    if (!criteria.contains(attribute)) {
-                        criteria.add(attribute);
+                    if (!criterias.contains(attribute)) {
+                        criterias.add(attribute);
                     }
                 }
             }
         }
-
-        return criteria;
     }
 
 
