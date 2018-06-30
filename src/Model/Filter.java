@@ -18,12 +18,12 @@ public class Filter {
     private List<Read> reads;
     private String criteria;
     private List<Read> acceptedreads = new ArrayList<>();
-    private String[] criteriaarray = criteria.split(";"); //split the list to geht key=value pairs
     private List<String> keys;
     private List<String> values;
     private List<String> criterias = new ArrayList<>();
-    public Filter(List<Read> reads,List<String> keys, List<String> values){
-        reads = this.reads;
+    public Filter(Sample sample,List<String> keys, List<String> values){
+        List<Read> r = sample.getReads();
+        r = this.reads;
         keys = this.keys;
         values = this.values;
     }
@@ -33,52 +33,8 @@ public class Filter {
     }
 
 
-  /*    private void findReads(){
-        splitKeyValuePairs();
-        for(Read read: reads){
-            for(GffEntry gff: read.getGFFEntries()){
-                boolean fits = true;
-                for(int i = 0; i < keys.size(); i++){
 
-                    //First
-                    //if there is a size span look at min and max values and compare them to the length
-                    if(keys.get(i).equals("min")){
-                        if(Integer.parseInt(gff.getAttributes().get("Length")) < Integer.parseInt(values.get(i))){
-                            fits = false;
-                            break;
-                        }
-                    }
-                    else if(keys.get(i).equals("max")){
-                        if(Integer.parseInt(gff.getAttributes().get("Length")) < Integer.parseInt(values.get(i))){
-                            fits = false;
-                            break;
-                        }
-                        //then all else keys are compared if they exist in the attributes
-                    }
-
-                    else if(gff.getAttributes().get(keys.get(i)) == null){
-                        System.err.println("Key doesn't exist in attributes");
-                        break;
-                    }
-                     // if the key is something else look up the value of the gffEntry and compare to value
-                    else if(!(gff.getAttributes().get(keys.get(i)).equals(values.get(i)))){
-                        fits = false;
-                        break;
-                    }
-
-
-                }
-                // as soon as one gffEntry passes the filter you can continue with the next read
-                if(fits){
-                    acceptedreads.add(read);
-                    break;
-                }
-            }
-        }
-    }
-
-*/
-    private List<Read> suitable(){
+    protected List<Read> suitable(){
         List<Read> suitablereads = reads;
              for(int k = 0; k < keys.size(); k++){
                 if(keys.get(k).equals("Length")){
@@ -116,16 +72,6 @@ public class Filter {
         return suitablereads;
     }
 
-
-
-    private void splitKeyValuePairs() {
-        //Split key=value pairs to use them in findread;
-        for (String pairs : criteriaarray) {
-
-            keys.add(pairs.split("=")[0]);
-            values.add(pairs.split("=")[1]);
-        }
-    }
 
     protected void writeAcceptedReads(){
         Writer writer ;
