@@ -105,11 +105,17 @@ public class TaxNode {
      */
     @Override
     public String toString() {
-        return "Name: " + this.name +
-                ", ID: " + this.id +
-                ", Rank: " + this.rank +
-                ", ParentID: " + this.parentNode +
-                ", ChildrenIDs: " + this.listOfChildrenNodes.toString();
+        if(parentNode == null){
+            return "Name: " + this.name +
+                    ", ID: " + this.id +
+                    ", Rank: " + this.rank +
+                    ", ROOT";
+        } else {
+            return "Name: " + this.name +
+                    ", ID: " + this.id +
+                    ", Rank: " + this.rank +
+                    ", Parent: " + this.parentNode.toString();
+        }
     }
 
     /**
@@ -130,6 +136,7 @@ public class TaxNode {
         } else {
             List<TaxNode> childrenchilds = new LinkedList<>();
             for (TaxNode tn : this.listOfChildrenNodes) {
+                childrenchilds.add(tn);
                 childrenchilds.addAll(tn.getAllChildren());
             }
             return childrenchilds;

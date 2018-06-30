@@ -64,10 +64,11 @@ public class Sample {
      * @param values
      * @return
      */
+    /*
     private List<Read> filter(List<String> keys, List<String> values){
         Filter crit = new Filter(reads, keys,values);
         List<Read> acceptedreads = crit.getAcceptedReads();
         crit.writeAcceptedReads();
         return acceptedreads;
-    }
+    }*/
 }

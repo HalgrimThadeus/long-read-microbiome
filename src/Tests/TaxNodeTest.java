@@ -11,25 +11,41 @@ import static org.junit.Assert.*;
 
 public class TaxNodeTest {
 
-    private TaxNode rootNode = new TaxNode(1, "family", null);
-
     @Test
-    public void shoulGetAllChildrenOfRoot(){
-        //shouldAddNodesToRoot
+    public void shouldGetAllChildrenOfRoot(){
+        //builds up the tree
+        TaxNode rootNode = new TaxNode(1, "family", null);
         TaxNode parentNode = new TaxNode(2, "genus", rootNode);
         rootNode.addChild(parentNode);
         TaxNode parentNode2 = new TaxNode(3, "genus", rootNode);
         rootNode.addChild(parentNode2);
-        TaxNode childrenNode = new TaxNode(4, "family", parentNode);
-        rootNode.addChild(childrenNode);
+        TaxNode childrenNode = new TaxNode(4, "species", parentNode);
+        parentNode.addChild(childrenNode);
 
 
         List<TaxNode> expectedChildrenList = new LinkedList<TaxNode>();
-        expectedChildrenList.add(parentNode);
-        expectedChildrenList.add(parentNode2);
-        expectedChildrenList.add(childrenNode);
 
-        assertEquals(expectedChildrenList , rootNode.getAllChildren());
+        expectedChildrenList = rootNode.getAllChildren();
+
+        for(TaxNode tn: expectedChildrenList) {
+            System.out.println(tn.toString());
+        }
+    }
+
+
+    @Test
+    public void shouldGetAncestorAtRankFamily() {
+        //builds up the tree
+        TaxNode rootNode = new TaxNode(1, "family", null);
+        TaxNode parentNode = new TaxNode(2, "genus", rootNode);
+        rootNode.addChild(parentNode);
+        TaxNode parentNode2 = new TaxNode(3, "genus", rootNode);
+        rootNode.addChild(parentNode2);
+        TaxNode childrenNode = new TaxNode(4, "species", parentNode);
+        parentNode.addChild(childrenNode);
+
+        System.out.println(childrenNode.getAncestorAtRank("family"));
+        System.out.println(childrenNode.getAncestorAtRank("genus"));
     }
 
 
