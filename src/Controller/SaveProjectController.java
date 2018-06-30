@@ -2,6 +2,8 @@ package Controller;
 
 import Model.IO.ConfigIO;
 import Model.Sample;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.*;
 
@@ -21,20 +23,51 @@ public class SaveProjectController {
         saveFilePathToFile(test);
 
     }
-
+    //Information: FileFormat *.lrcfg stands for "long read config File".
     public void saveFilePathToFile(String[] filePaths) throws Exception {
+        //TODO store the information in a represententive and easy readable to the config file
+        //TODO also check if file already exists, otherwise make new one istead of overwriting the existing
         try {
-            ConfigIO configIO = new ConfigIO("config1");
+            ConfigIO WriteConfigIO = new ConfigIO("config1.lrcfg");
             String stringToWrite = "";
             for (int i = 0; i < filePaths.length; i++) {
                 stringToWrite += filePaths[i] + "\n";
             }
 
-            configIO.writeToFile(stringToWrite);
+            WriteConfigIO.writeToFile(stringToWrite);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public void readConfigFile(){
+        //first get the new File from FileBrowser:
+        File configFile =  getNewFiles();
+
+        //then read the file
+
+        try {
+            ConfigIO readConfigIO = new ConfigIO(configFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //TODO then add then add the samples to the view!.
+
+    }
+
+
+
+    public File getNewFiles(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Config File");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Config", "*.lrcfg")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+        return selectedFile;
     }
 
 

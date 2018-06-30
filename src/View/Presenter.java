@@ -109,5 +109,13 @@ public class Presenter implements Initializable {
 
     }
 
+    @FXML
+    public void addSamplesClicked(ActionEvent clickEvent) throws Exception {
+        SaveProjectController controller = new SaveProjectController();
+
+        controller.readConfigFile();
+
+    }
+
 
 }

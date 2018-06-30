@@ -2,9 +2,6 @@ package Model.IO;
 
 
 import java.io.*;
-import java.nio.Buffer;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ConfigIO {
 
@@ -14,12 +11,21 @@ public class ConfigIO {
 
 
     /**
-     * Constructors for Writing, initialized by using fileName
+     * Constructor for Writing, initialized by using fileName
      *
      * @param fileName
      */
     public ConfigIO(String fileName) throws IOException {
         this.writer = new FileWriter(fileName);
+    }
+
+    /**
+     * Constructor for Reading, initilized by using File
+     * @param file
+     * @throws Exception
+     */
+    public ConfigIO(File file) throws IOException{
+        this.reader = new FileReader(file);
     }
 
 
@@ -33,6 +39,13 @@ public class ConfigIO {
             System.out.println("Succesfully wrote something to file");
             bufferedWriter.close();
         }
+    }
+
+    public void readInConfigFile(File configFile) {
+        //TODO instantly add all the new samples to the View
+
+
+
     }
 
 }
