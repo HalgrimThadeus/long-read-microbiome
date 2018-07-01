@@ -25,8 +25,8 @@ public class Project {
      * Add a new Sample
      * @param sampleToAdd
      */
-    public void addSamples(Sample sampleToAdd){
-        this.listOfSamples.add(sampleToAdd);
+    public static void addSamples(Sample sampleToAdd){
+        listOfSamples.add(sampleToAdd);
     }
 
 }
