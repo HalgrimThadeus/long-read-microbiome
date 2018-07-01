@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 import Controller.SampleController;
 
 
-public class Presenter implements Initializable {
+public class MainView implements Initializable {
 
     /**
      * Important Containers
