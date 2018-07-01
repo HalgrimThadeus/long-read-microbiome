@@ -1,7 +1,4 @@
 package Model;
-import javax.naming.Name;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
 
 public class FilterBuilder {
@@ -49,32 +46,19 @@ public class FilterBuilder {
     }
 
 
-    public static Predicate<Read> isCGContentEqual(Integer cgscore){
-       return p-> {
-        boolean cgcontentis = false;
-        for(GffEntry gff: p.getGFFEntries()){
-            if(Integer.parseInt(gff.getAttributes().get("CGConent")) == cgscore){
-                cgcontentis = true;
-                break;
-            }
-        }
-        return cgcontentis;
-       };
+    public static Predicate<Read> isGCContentEqual(Integer gcscore){
+        return p -> (p.getGc_content() == gcscore);
+
    }
 
 
 
-    public static Predicate<Read> isCGContentHigher(Integer cgscore){
-        return p -> {
-            boolean cg = false;
-            for(GffEntry gff: p.getGFFEntries()){
-                if(Integer.parseInt(gff.getAttributes().get("CGContent")) >= cgscore){
-                    cg = true;
-                    break;
-                }
-            }
-            return cg;
-        };
+    public static Predicate<Read> isGCContentHigherEq(double gcscore){
+        return p -> (p.getGc_content() >= gcscore);
+    }
+
+    public static Predicate<Read> isGCContentLowerEq(double gcscore){
+        return p -> (p.getGc_content() <= gcscore);
     }
 
     public static Predicate<Read> isName(String name){
@@ -94,7 +78,7 @@ public class FilterBuilder {
        return p-> {
            boolean lengthis = false;
             for(GffEntry gff: p.getGFFEntries()){
-            if(Integer.parseInt(gff.getAttributes().get("Length")) >= length){
+            if(gff.getLength() >= length){
                 lengthis = true;
                 break;
             }
@@ -108,7 +92,7 @@ public class FilterBuilder {
         return p-> {
             boolean lengthis = false;
             for(GffEntry gff: p.getGFFEntries()){
-                if(Integer.parseInt(gff.getAttributes().get("Length")) <= length){
+                if(gff.getLength() <= length){
                     lengthis = true;
                     break;
                 }
@@ -121,12 +105,17 @@ public class FilterBuilder {
        return p-> {
            boolean lengthis =  false;
            for(GffEntry gff: p.getGFFEntries()){
-               if(Integer.parseInt(gff.getAttributes().get("Length")) == length){
+               if(gff.getLength() == length){
                    lengthis = true;
                    break;
                }
            }
            return lengthis;
        };
+    }
+
+    public static Predicate<Read> isTaxa(Integer taxaId){
+       return p-> p.getTaxonomicId() == taxaId ;
+
     }
 }
