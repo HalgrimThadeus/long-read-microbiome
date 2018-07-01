@@ -94,12 +94,6 @@ public class TaxNode {
     }
 
     /**
-     * returns the rank of the taxNode
-     * @return
-     */
-    public String getRank() { return this.rank; }
-
-    /**
      * converts the object to string
      * @return
      */

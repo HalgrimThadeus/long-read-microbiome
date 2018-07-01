@@ -33,30 +33,8 @@ public class TaxIO {
             int parentId = Integer.parseInt(lineValues[1].trim());
             String rank = lineValues[2].trim();
 
-            //create almost empty parent node if it doesn't already exists, and initilize it completely later
-            TaxNode parentNode;
-            if(!tree.getTree().containsKey(parentId)){
-                parentNode = new TaxNode(parentId);
-            }
-            else{
-                parentNode = tree.getTree().get(parentId);
-            }
-
-            //Create node itself
-            //Node does not exist (check with HashMap):
-            TaxNode newNode;
-            if(!tree.getTree().containsKey(id)) {
-                newNode = new TaxNode(id, rank, parentNode);
-            } else{
-                newNode = tree.getTree().get(id);
-                newNode.completeNode(rank, parentNode);
-            }
-
-            //Add Child to the parentNode
-            parentNode.addChild(newNode);
-
             //Also add the new Node newNode to the HashMap-Tree
-            tree.add(newNode);
+            tree.addNode(id, rank, parentId);
 
             nodeLine = nodeReader.readLine();
         }

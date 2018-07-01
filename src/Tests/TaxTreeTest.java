@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class TaxTreeTest {
 
     private TaxTree taxTree = new TaxTree();
-    /*
+
     public void shouldAddRootToTree() {
         TaxNode root = new TaxNode(1, 1, "SuperFastKingdom");
         root.setName("Flatulenzae");
@@ -38,29 +38,6 @@ public class TaxTreeTest {
     }
 
     @Test
-    public void shouldGetAllChildrenOfRoot() {
-        shouldAddRootToTree();
-        shouldAddTwoNodesWithSettingName();
-        //shouldSetChildrenOfTree();
-
-        assertEquals(true, taxTree.getAllChildrenIDs(1).contains(3));
-        assertNotEquals(true, taxTree.getAllChildrenIDs(1).contains(1));
-
-        shouldAddSubNodes();
-        //shouldSetChildrenOfTree();
-        System.out.println(taxTree.getAllChildrenIDs(1));
-    }
-
-    @Test
-    public void shouldGetAllChildrenOfLeaf() {
-        shouldAddRootToTree();
-        shouldAddTwoNodesWithSettingName();
-        //shouldSetChildrenOfTree();
-
-        assertEquals(new HashSet<Integer>(), taxTree.getAllChildrenIDs(3));
-    }
-
-    @Test
     public void shouldGetIdOfRoot() {
         shouldAddRootToTree();
         shouldAddTwoNodesWithSettingName();
@@ -70,16 +47,4 @@ public class TaxTreeTest {
         assertNotEquals(1, taxTree.getId("sdfsdfsdfdsfs"));
         assertEquals(-1, taxTree.getId("sbgnfgnargh"));
     }
-
-    @Test
-    public void shouldGetAncestor() {
-        shouldAddRootToTree();
-        shouldAddTwoNodesWithSettingName();
-        shouldAddSubNodes();
-
-        System.out.println(taxTree.getAncestor("Family", "Schüsselsprenger"));
-        System.out.println(taxTree.getAncestor("SuperFastKingdom", "Schüsselsprenger"));
-        assertNull(taxTree.getAncestor("Family", "sbgnfgnargh"));
-        assertNull(taxTree.getAncestor("xgdfg", "Schüsselsprenger"));
-    }*/
 }

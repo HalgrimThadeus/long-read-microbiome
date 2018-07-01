@@ -17,7 +17,6 @@ public class TaxTree {
     /**
      * in this map the search for ids by name is made possible, for easy use in later applications as genus filtering
      */
-    //this is one idea how to store the taxdump entries...could be maybe spaceexpensive, but makes access easy
     private Map<String, Integer> nameMap;
 
     /**
@@ -29,14 +28,31 @@ public class TaxTree {
     }
 
     /**
-     * adds the taxNode to the tree, including the name if exists
-     * @param taxNode
+     * adds the taxNode to the tree, by creting a node out of the different components
+     * @param id, rank, parentId
      */
-    public void add(TaxNode taxNode) {
-        tree.put(taxNode.getID(), taxNode);
-        if(taxNode.getName() != null) {
-            this.nameMap.put(taxNode.getName(),taxNode.getID());
+    public void addNode(int id, String rank, int parentId) {
+
+        //create almost empty parent node if it doesn't already exists, and initilize it completely later
+        TaxNode parentNode;
+        if(!this.tree.containsKey(parentId)){
+            parentNode = new TaxNode(parentId);
         }
+        else{
+            parentNode = this.tree.get(parentId);
+        }
+
+        //Create node itself and putting it into the tree
+        //if Node does not exist (check with HashMap):
+        TaxNode newNode;
+        if(!this.tree.containsKey(id)) {
+            this.tree.put(id, new TaxNode(id, rank, parentNode));
+        } else{
+            newNode = this.tree.get(id);
+            newNode.completeNode(rank, parentNode);
+        }
+
+
     }
 
     /**
@@ -47,21 +63,6 @@ public class TaxTree {
     public void setNameOfId(int id, String name) {
         nameMap.put(name,id);
         tree.get(id).setName(name);
-    }
-
-
-    /**
-     * returns all childrenNode (inner nodes and leafes) of one node,
-     * using the Node-getAllchildren Method
-     * may cause problems if applied on root, because of a huge set
-     * @param id
-     * @return
-     */
-    public List<TaxNode> getAllChildrens(int id) {
-        TaxNode correspondingNode = tree.get(id);
-        List<TaxNode> allChildrenNodeList = correspondingNode.getAllChildren();
-
-        return allChildrenNodeList;
     }
 
     /**
