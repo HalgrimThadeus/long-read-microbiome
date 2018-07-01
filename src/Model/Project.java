@@ -18,6 +18,8 @@ public class Project {
 
     /**
      * static List contains all the Files for the Samples including the filepaths
+     * for every List element, File[0] = File for fasta entry, File[1] = file for gff entry, File[2] = file for csv
+     *
      */
     public static List<File[]> listOfSamplesFilePaths;
 
@@ -25,8 +27,7 @@ public class Project {
      * Add a new Sample
      * @param sampleToAdd
      */
-    public void addSamples(Sample sampleToAdd){
-        this.listOfSamples.add(sampleToAdd);
+    public static void addSamples(Sample sampleToAdd){ listOfSamples.add(sampleToAdd);
     }
 
 }

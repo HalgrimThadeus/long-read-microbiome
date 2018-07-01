@@ -10,6 +10,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class SaveProjectController {
 
     public void saveProject() throws Exception {
@@ -19,17 +21,23 @@ public class SaveProjectController {
 
         List<File[]> listOfPaths= Project.listOfSamplesFilePaths;
 
+        for(File[] file: listOfPaths){
+            //create the StringFilePath arrays (with the 3 filepaths of fasta, gff, and csv)
+            String fastaPath = file[0].getAbsolutePath();
+            String gffPath = file[1].getAbsolutePath();
+            String csvPath = file[2].getAbsolutePath();
 
-        for(Sample sample: listOfSamples){
-            //saveFilePathToFile(sample.getFilePaths());
+            String[] pathsToPass = new String[3];
+            pathsToPass[0] = fastaPath;
+            pathsToPass[1] = gffPath;
+            pathsToPass[2] =csvPath;
+
+            saveFilePathToFile(pathsToPass);
         }
-
-
     }
 
     //Information: FileFormat *.lrcfg stands for "long read config File".
     public void saveFilePathToFile(String[] filePaths) throws Exception {
-        //TODO store the information in a represententive and easy readable to the config file
         try {
             File fileToWrite = null;
 
