@@ -1,6 +1,7 @@
 package Model.IO;
 
 
+import javax.swing.*;
 import java.io.*;
 
 public class ConfigIO {
@@ -11,25 +12,19 @@ public class ConfigIO {
 
 
     /**
-     * Constructor for Writing, initialized by using fileName
+     * Constructor for Writing and Reading, initialized by passing a File
      *
-     * @param fileName
-     */
-    public ConfigIO(String fileName) throws IOException {
-        this.writer = new FileWriter(fileName);
-    }
-
-    /**
-     * Constructor for Reading, initilized by using File
      * @param file
-     * @throws Exception
      */
-    public ConfigIO(File file) throws IOException{
+    public ConfigIO(File file) throws IOException {
+        this.writer = new FileWriter(file);
         this.reader = new FileReader(file);
     }
 
 
+
     public void writeToFile(String stringToWrite) throws Exception {
+
 
         if (this.writer == null) {
             throw new Exception("Config-Reader has not been initializied yet");
