@@ -52,10 +52,15 @@ public class TaxNode {
 
     /**
      * method to complete a node, that was just initilized when the child was found
+     * it updates the links to children automatically (links to parents not necessary cause they are already right)
      */
     public void completeNode(String rank, TaxNode parentNode){
         this.rank = rank;
         this.parentNode = parentNode;
+
+        for (TaxNode child : this.listOfChildrenNodes) {
+            child.setParentNode(this);
+        }
     }
 
     /**
@@ -94,12 +99,6 @@ public class TaxNode {
     }
 
     /**
-     * returns the rank of the taxNode
-     * @return
-     */
-    public String getRank() { return this.rank; }
-
-    /**
      * converts the object to string
      * @return
      */
@@ -123,7 +122,10 @@ public class TaxNode {
      * @return
      */
     public boolean isRoot() {
-        return this == this.parentNode;
+        if(this == this.parentNode || this.parentNode == null)
+            return true;
+        else
+            return false;
     }
 
     /**
@@ -153,7 +155,15 @@ public class TaxNode {
         if(this.rank.equals(rank)) {
             return this;
         } else {
-            return this.parentNode.getAncestorAtRank(rank);
+            if(this.isRoot()) {
+                return null;
+            } else {
+                return this.parentNode.getAncestorAtRank(rank);
+            }
         }
+    }
+
+    public void setParentNode(TaxNode parentNode) {
+        this.parentNode = parentNode;
     }
 }

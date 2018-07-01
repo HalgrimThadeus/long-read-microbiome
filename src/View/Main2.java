@@ -11,7 +11,7 @@ public class Main2 extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("mainview.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Long Read Microbiom");
         primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
     }

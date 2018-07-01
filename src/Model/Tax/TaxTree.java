@@ -2,6 +2,7 @@ package Model.Tax;
 
 import javax.swing.tree.TreeNode;
 import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * @class the datastorage for the taxdump files, where information about species and their taxonomic classification is put in
@@ -17,7 +18,6 @@ public class TaxTree {
     /**
      * in this map the search for ids by name is made possible, for easy use in later applications as genus filtering
      */
-    //this is one idea how to store the taxdump entries...could be maybe spaceexpensive, but makes access easy
     private Map<String, Integer> nameMap;
 
     /**
@@ -29,59 +29,72 @@ public class TaxTree {
     }
 
     /**
-     * adds the taxNode to the tree, including the name if exists
-     * @param taxNode
+     * adds the taxNode to the tree, by creting a node out of the different components
+     * @param id, rank, parentId
      */
-    public void add(TaxNode taxNode) {
-        tree.put(taxNode.getID(), taxNode);
-        if(taxNode.getName() != null) {
-            this.nameMap.put(taxNode.getName(),taxNode.getID());
+    public void addNode(int id, String rank, int parentId) {
+
+        //create almost empty parent node if it doesn't already exists, and initilize it completely later
+        //if the added node is root set parent to null
+        TaxNode parentNode;
+        if (parentId == id) {
+            parentNode = null;
+        } else if (!this.tree.containsKey(parentId)) {
+            parentNode = new TaxNode(parentId);
+            this.tree.put(parentId, parentNode);
+        } else {
+            parentNode = this.tree.get(parentId);
         }
+
+        //Create node itself and putting it into the tree
+        //if Node does not exist (check with HashMap):
+        if(!this.tree.containsKey(id)) {
+            this.tree.put(id, new TaxNode(id, rank, parentNode));
+        } else{
+            this.tree.get(id).completeNode(rank, parentNode);
+        }
+
+        if(parentNode != null)
+            parentNode.addChild(this.tree.get(id));
+
     }
 
     /**
      * method to be called if name is set a posteriori (e.g. file parsing from name.dmp)
+     * the name and id for all entries are fixed after putting it into the datastructure
      * @param id
      * @param name
      */
     public void setNameOfId(int id, String name) {
-        nameMap.put(name,id);
-        tree.get(id).setName(name);
-    }
+        if(tree.containsKey(id)) {
+            //if(!nameMap.containsKey(name)) {
+            //}
 
-
-    /**
-     * returns all childrenNode (inner nodes and leafes) of one node,
-     * using the Node-getAllchildren Method
-     * may cause problems if applied on root, because of a huge set
-     * @param id
-     * @return
-     */
-    public List<TaxNode> getAllChildrens(int id) {
-        TaxNode correspondingNode = tree.get(id);
-        List<TaxNode> allChildrenNodeList = correspondingNode.getAllChildren();
-
-        return allChildrenNodeList;
-    }
-
-    /**
-     * returns the name of one id
-     * @param name
-     * @return
-     */
-    public int getId(String name) {
-        if (this.nameMap.containsKey(name)) {
-            return this.nameMap.get(name);
-        } else {
-            return -1;
+            //prevents collision of two names naming the same node
+            if(!nameMap.containsValue(id)) {
+                //adds "-" to name of an organism if name already exists
+                if(!nameMap.containsKey(name)) {
+                    nameMap.put(name,id);
+                    tree.get(id).setName(name);
+                } else {
+                    name = name + "-";
+                    nameMap.put(name,id);
+                    tree.get(id).setName(name);
+                }
+            }
         }
     }
 
     /**
-     *
-     * @return the hash tree
+     * returns the node with a specific name
+     * @param name
+     * @return
      */
-    public Map<Integer, TaxNode> getTree() {
-        return tree;
+    public TaxNode getNode(String name) {
+        if (this.nameMap.containsKey(name)) {
+            return this.tree.get(this.nameMap.get(name));
+        } else {
+            return null;
+        }
     }
 }

@@ -67,6 +67,8 @@ public class Presenter implements Initializable {
     @FXML
     public Button searchCsvFile;
 
+    public Button createNewSample;
+
     public TextField fastaFileTextField;
 
     public TextField gffFileTextField;
@@ -86,7 +88,7 @@ public class Presenter implements Initializable {
     }
 
     /**
-     * You can open a fastaFile at the Monoment and an item is added to the Accordion TODO Sample pop up???
+     * You can open a fastaFile at the Monoment and an item is added to the Accordion
      * @param event
      * @throws IOException
      */
@@ -94,6 +96,7 @@ public class Presenter implements Initializable {
     public void newSampleBtnClicked(ActionEvent event) throws IOException {
         SampleController controller = new SampleController();
         controller.openSamplePane();
+        controller.addNewSampleInAccordion(sampleAccordion);
     }
 
     public void addNewFilesClicked(ActionEvent event){
@@ -107,9 +110,14 @@ public class Presenter implements Initializable {
             gffFileTextField.setText(fastaFile.getAbsolutePath());
         }
         if(event.getSource().equals(searchCsvFile)){
-            File fastaFile = controller.getNewFiles("csv");
+            File fastaFile = controller.getNewFiles("dmp");
             csvFileTextField.setText(fastaFile.getAbsolutePath());
         }
+    }
+
+    public void createNewSampleClicked(ActionEvent event){
+
+
     }
 
     @FXML

@@ -12,17 +12,41 @@ import java.util.Map;
 public class TaxIO {
 
     /**
+     * two reader for each file type
+     */
+    private BufferedReader nodeReader;
+    private BufferedReader nameReader;
+
+    /**
+     * Constructor for testing
+     * @param nodeReader
+     * @param nameReader
+     */
+    public TaxIO(Reader nodeReader, Reader nameReader) {
+        this.nodeReader = new BufferedReader(nodeReader);
+        this.nameReader = new BufferedReader(nameReader);
+    }
+
+    /**
+     * Contructor for normal use
+     * @param filePathToNodes
+     * @param filePathToNames
+     */
+    public TaxIO(String filePathToNodes, String filePathToNames) throws FileNotFoundException {
+        this.nodeReader = new BufferedReader(new FileReader(filePathToNodes));
+        this.nameReader = new BufferedReader(new FileReader(filePathToNames));
+    }
+    /**
      * this static mathod readInTaxTree gets the filepaths and produces the tree
      * @return the completed tree from the files
      * @throws IOException
      */
-    public TaxTree readInTaxTree(String filePathToNodes,String filePathToNames ) throws IOException {
+    public TaxTree readInTaxTree() throws IOException {
         //Initialise a emptry tree to start
         TaxTree tree = new TaxTree();
         //read in first the nodes.dmp and create TaxNodes in TaxTree
-        BufferedReader nodeReader = new BufferedReader(new FileReader(filePathToNodes));
         //get the first line
-        String nodeLine = nodeReader.readLine();
+        String nodeLine = this.nodeReader.readLine();
         //as long as there are lines, we make new nodes and add them to the tree
         while(nodeLine != null){
             nodeLine = nodeLine.replace('\t', '\0');
@@ -33,39 +57,13 @@ public class TaxIO {
             int parentId = Integer.parseInt(lineValues[1].trim());
             String rank = lineValues[2].trim();
 
-            //create almost empty parent node if it doesn't already exists, and initilize it completely later
-            TaxNode parentNode;
-            if(!tree.getTree().containsKey(parentId)){
-                parentNode = new TaxNode(parentId);
-            }
-            else{
-                parentNode = tree.getTree().get(parentId);
-            }
-
-            //Create node itself
-            //Node does not exist (check with HashMap):
-            TaxNode newNode;
-            if(!tree.getTree().containsKey(id)) {
-                newNode = new TaxNode(id, rank, parentNode);
-            } else{
-                newNode = tree.getTree().get(id);
-                newNode.completeNode(rank, parentNode);
-            }
-
-            //Add Child to the parentNode
-            parentNode.addChild(newNode);
-
             //Also add the new Node newNode to the HashMap-Tree
-            tree.add(newNode);
+            tree.addNode(id, rank, parentId);
 
             nodeLine = nodeReader.readLine();
         }
 
         //then read in names.dmp and use only the scientific names,which are then added to the corresponding TaxNode via TaxTree
-
-        BufferedReader nameReader = new BufferedReader(new FileReader(filePathToNames));
-        //read in first the nodes.dmp and create TaxNodes in TaxTree
-
         //useful to only take the first line with a ID
         String nameLine = nameReader.readLine();
 
