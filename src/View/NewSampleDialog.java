@@ -99,16 +99,11 @@ public class NewSampleDialog {
             return;
         }
 
-        Service newSampleService = new NewSampleService(fastaFile.getAbsolutePath(), gffFile.getAbsolutePath(), csvFile.getAbsolutePath());
+        Service newSampleService = new NewSampleService(fastaFile, gffFile, csvFile);
 
         newSampleService.setOnSucceeded(event1 -> {
             Sample sample = ((NewSampleService)event1.getSource()).getValue();
-            Project.addSamples(sample);
-            File[] files = new File[3];
-            files[0] = fastaFile;
-            files[1] = gffFile;
-            files[2] = csvFile;
-            Project.listOfSamplesFilePaths.add(files);
+            sampleController.addSampleToProject(fastaFile, gffFile, csvFile, sample);
         });
 
         newSampleService.setOnFailed(event1 -> {

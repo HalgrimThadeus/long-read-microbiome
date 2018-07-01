@@ -4,7 +4,10 @@ import Model.Sample;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
+import java.io.File;
 import java.io.FileReader;
+
+import static java.lang.Thread.sleep;
 
 /**
  * NewSampleService
@@ -12,14 +15,14 @@ import java.io.FileReader;
  * @author Patrick Schirm
  */
 public class NewSampleService extends Service<Sample> {
-    private final String csvPath;
-    private final String gffPath;
-    private final String fastaPath;
+    private final File csvFile;
+    private final File gffFile;
+    private final File fastaFile;
 
-    public NewSampleService(String fastAPath, String gffPath, String csvPath){
-        this.fastaPath = fastAPath;
-        this.gffPath = gffPath;
-        this.csvPath = csvPath;
+    public NewSampleService(File fastaFile, File gffFile, File csvFile){
+        this.fastaFile = fastaFile;
+        this.gffFile = gffFile;
+        this.csvFile = csvFile;
     }
 
     @Override
@@ -28,10 +31,10 @@ public class NewSampleService extends Service<Sample> {
         return new Task<>() {
             @Override
             protected Sample call() throws Exception {
-                FileReader fastaFileReader = new FileReader(fastaPath);
-//                sleep(15000);
-                FileReader gffFileReader = new FileReader(gffPath);
-                FileReader csvFileReader = new FileReader(csvPath);
+//                sleep(5000);
+                FileReader fastaFileReader = new FileReader(fastaFile.getAbsolutePath());
+                FileReader gffFileReader = new FileReader(gffFile.getAbsolutePath());
+                FileReader csvFileReader = new FileReader(csvFile.getAbsolutePath());
                 return SampleReader.read(fastaFileReader,gffFileReader,csvFileReader);
             }
         };

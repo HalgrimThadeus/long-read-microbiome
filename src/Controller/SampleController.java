@@ -38,11 +38,7 @@ public class SampleController {
         this.context = context;
     }
 
-    public void loadSampleFromFile(File fastaFile, File gffFile,File csvFile) throws Exception {
-        FileReader fastaFileReader = new FileReader(fastaFile.getAbsolutePath());
-        FileReader gffFileReader = new FileReader(gffFile.getAbsolutePath());
-        FileReader csvFileReader = new FileReader(csvFile.getAbsolutePath());
-        Sample newSample = SampleReader.read(fastaFileReader,gffFileReader,csvFileReader);
+    public void addSampleToProject(File fastaFile, File gffFile, File csvFile, Sample newSample) {
         Project.addSamples(newSample);
         File[] files = new File[3];
         files[0] = fastaFile;
@@ -55,8 +51,6 @@ public class SampleController {
             readHeaders.add(read.getHeader());
         }
 
-
         context.sampleAdded("Testsample", fastaFile.getName(), gffFile.getName(), readHeaders);
     }
-
 }
