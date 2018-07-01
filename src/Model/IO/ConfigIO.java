@@ -3,6 +3,8 @@ package Model.IO;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConfigIO {
 
@@ -35,11 +37,34 @@ public class ConfigIO {
         }
     }
 
-    public void readInConfigFile(File configFile) {
-        //TODO instantly add all the new samples to the View
+    /**
+     * TODO until now should just return listofPaths
+     * @param configFile
+     * @return
+     * @throws Exception
+     */
+    public List<String[]> readInConfigFile(File configFile) throws Exception {
+        List<String[]> listOfListOfPaths = new ArrayList<String[]>();
+        if (this.reader == null) {
+            throw new Exception("CSV-Reader has not been initializied yet");
+        } else {
+            BufferedReader bufferedReader = new BufferedReader(this.reader);
 
-
-
+            String currentLine = "";
+            int positionInArray = 0;
+            int positionInList = 0;
+            while ((currentLine = bufferedReader.readLine()) != null ) {
+                if(currentLine.startsWith("#")){
+                   positionInList++;
+                   listOfListOfPaths.add(new String[3]);
+                }
+                else{
+                    listOfListOfPaths.get(positionInList)[positionInList] = currentLine;
+                    positionInArray++;
+                }
+            }
+            return listOfListOfPaths;
+        }
     }
 
 }
