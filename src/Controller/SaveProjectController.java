@@ -19,6 +19,7 @@ public class SaveProjectController {
         SAVE CURRENT FILTER FOR THE SAMPLE
          */
 
+
         //first mini-test:
         String[] test = {"a", "b", "c"};
         saveFilePathToFile(test);
@@ -28,7 +29,6 @@ public class SaveProjectController {
     //Information: FileFormat *.lrcfg stands for "long read config File".
     public void saveFilePathToFile(String[] filePaths) throws Exception {
         //TODO store the information in a represententive and easy readable to the config file
-        //TODO also check if file already exists, otherwise make new one istead of overwriting the existing
         try {
             int configVersionName = 1;
             File fileToWrite = null;
@@ -68,9 +68,10 @@ public class SaveProjectController {
         File configFile = getNewFiles();
 
         //then read the file
-
         try {
             ConfigIO readConfigIO = new ConfigIO(configFile);
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
