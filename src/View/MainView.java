@@ -100,7 +100,7 @@ public class MainView implements ProjectChangedListener {
      * @throws Exception
      */
     @FXML
-    public void addSamplesClicked(ActionEvent clickEvent) throws Exception {
+    public void loadSamplesClicked(ActionEvent clickEvent) throws Exception {
         saveProjectController.readConfigFile();
     }
 

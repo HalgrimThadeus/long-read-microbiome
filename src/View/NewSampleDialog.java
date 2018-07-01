@@ -29,7 +29,7 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
-public class NewSampleDialog implements Initializable {
+public class NewSampleDialog {
 
     @FXML
     private Button searchFastaFile;
@@ -54,14 +54,9 @@ public class NewSampleDialog implements Initializable {
 
     private SampleController sampleController;
 
-    public NewSampleDialog() {
 
-    }
-
-    public NewSampleDialog(ProjectChangedListener context) throws IOException {
+    public NewSampleDialog(ProjectChangedListener context) {
         this.sampleController = new SampleController(context);
-
-
     }
 
     private File getNewFiles(String extension){
@@ -94,7 +89,6 @@ public class NewSampleDialog implements Initializable {
         }
     }
 
-    //move this one in presenter?
     @FXML
     public void createNewSampleClicked(ActionEvent event){
         Stage stage = (Stage) createNewSample.getScene().getWindow();
@@ -112,10 +106,5 @@ public class NewSampleDialog implements Initializable {
         }
 
         stage.close();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }
