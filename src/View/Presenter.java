@@ -137,6 +137,12 @@ public class Presenter implements Initializable {
 
     }
 
+
+    /**
+     * Method to add multiple samples form a config (.lrcfg) File
+     * @param clickEvent
+     * @throws Exception
+     */
     @FXML
     public void addSamplesClicked(ActionEvent clickEvent) throws Exception {
         SaveProjectController controller = new SaveProjectController();

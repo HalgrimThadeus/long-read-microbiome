@@ -113,7 +113,8 @@ public class Chart extends Application {
                 rectangle.setHeight(yAxis.getCategorySpacing()/4);
                 rectangle.setX(yAxis.getWidth() + yAxis.getLayoutX()+yAxis.getScaleX() + 4 + xAxis.getDisplayPosition(start));
                 rectangle.setY(yAxis.getDisplayPosition(seqNames.get(i)) + yAxis.getCategorySpacing());
-                rectangle.setFill(Color.RED);
+                rectangle.setFill(Color.rgb(178,34,34,0.5));
+                rectangle.setStrokeWidth(0.5);
                 rectangle.setStroke(Color.BLACK);
                 root.getChildren().add(rectangle);
 
