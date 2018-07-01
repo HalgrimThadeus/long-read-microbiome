@@ -14,12 +14,12 @@ public class Project {
     /**
      * static List contains all the Samples created while the program runs
      */
-    public static List listOfSamples;
+    public static List listOfSamples = new ArrayList();
 
     /**
      * static List contains all the Files for the Samples including the filepaths
      */
-    public static List<File[]> listOfSamplesFilePaths;
+    public static List<File[]> listOfSamplesFilePaths = new ArrayList<>();
 
     /**
      * Add a new Sample
