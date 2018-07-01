@@ -101,7 +101,6 @@ public class NewSampleDialog {
         //if not all files were declared return a warnning notice
         if(fastaFile == null || gffFile == null || csvFile == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "At least one file is missing!", ButtonType.OK);
-            alert.getDialogPane().setMinHeight(100);
             alert.show();
             return;
         }
@@ -111,7 +110,6 @@ public class NewSampleDialog {
         } catch(Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "Loading of Sample FAILED", ButtonType.CANCEL);
-            alert.getDialogPane().setMinHeight(100);
             alert.show();
         }
 

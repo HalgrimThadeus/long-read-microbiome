@@ -128,7 +128,7 @@ public class MainView implements ProjectChangedListener {
     }
 
     @Override
-    public void sampleAdded(String sampleName, String fastaFileName, String gffFileName) {
+    public void sampleAdded(String sampleName, String fastaFileName, String gffFileName, List<String> readHeaders) {
 
         //adds the sample information to the accordion pane
         TitledPane newAccordionPane = new TitledPane();
@@ -142,7 +142,13 @@ public class MainView implements ProjectChangedListener {
         fastaChild.setExpanded(false);
 
         TreeItem<String> gffChild = new TreeItem<>(gffFileName);
-        fastaChild.setExpanded(false);
+        gffChild.setExpanded(false);
+
+        for (String readName: readHeaders) {
+            TreeItem<String> readChild = new TreeItem<>(readName);
+            readChild.setExpanded(false);
+            fastaChild.getChildren().add(readChild);
+        }
 
         root.getChildren().add(fastaChild);
         root.getChildren().add(gffChild);

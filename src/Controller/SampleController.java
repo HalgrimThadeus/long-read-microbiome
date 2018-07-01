@@ -4,6 +4,7 @@ import Model.FastAEntry;
 import Model.IO.FastAIO;
 import Model.IO.SampleReader;
 import Model.Project;
+import Model.Read;
 import Model.Sample;
 import View.MainView;
 import View.ProjectChangedListener;
@@ -26,6 +27,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SampleController {
@@ -48,7 +50,13 @@ public class SampleController {
         files[2] = csvFile;
         Project.listOfSamplesFilePaths.add(files);
 
-        context.sampleAdded("Testsample", fastaFile.getName(), gffFile.getName());
+        List<String> readHeaders = new ArrayList<>();
+        for (Read read:newSample.getReads()) {
+            readHeaders.add(read.getHeader());
+        }
+
+
+        context.sampleAdded("Testsample", fastaFile.getName(), gffFile.getName(), readHeaders);
     }
 
 }
