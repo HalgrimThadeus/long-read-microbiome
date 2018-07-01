@@ -41,11 +41,12 @@ public class SampleController {
     }
 
 
-    public File getNewFiles(){
+    public File getNewFiles(String extension){
+        String usedExtension = "*." + extension;
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("BioFiles","*.fasta", "*.gff", "*.csv")
+                new FileChooser.ExtensionFilter("BioFiles",usedExtension)
         );
 
         File selectedFile = fileChooser.showOpenDialog(new Stage());
