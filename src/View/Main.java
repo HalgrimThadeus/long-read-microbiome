@@ -6,12 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main2 extends Application {
+public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("mainview.fxml"));
-        primaryStage.setTitle("Long Read Microbiom");
+        primaryStage.setTitle("Long Read Microbiome");
         primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
     }
