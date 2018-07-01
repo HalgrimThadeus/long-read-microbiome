@@ -123,7 +123,10 @@ public class TaxNode {
      * @return
      */
     public boolean isRoot() {
-        return this == this.parentNode;
+        if(this == this.parentNode || this.parentNode == null)
+            return true;
+        else
+            return false;
     }
 
     /**
@@ -153,7 +156,11 @@ public class TaxNode {
         if(this.rank.equals(rank)) {
             return this;
         } else {
-            return this.parentNode.getAncestorAtRank(rank);
+            if(this.isRoot()) {
+                return null;
+            } else {
+                return this.parentNode.getAncestorAtRank(rank);
+            }
         }
     }
 }

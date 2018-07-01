@@ -13,7 +13,6 @@ public class TaxNodeTest {
 
     @Test
     public void shouldGetAllChildrenOfRoot(){
-        //builds up the tree
         TaxNode rootNode = new TaxNode(1, "family", null);
         TaxNode parentNode = new TaxNode(2, "genus", rootNode);
         rootNode.addChild(parentNode);
@@ -23,13 +22,15 @@ public class TaxNodeTest {
         parentNode.addChild(childrenNode);
 
 
+        //order is important
         List<TaxNode> expectedChildrenList = new LinkedList<TaxNode>();
+        expectedChildrenList.add(parentNode);
+        expectedChildrenList.add(childrenNode);
+        expectedChildrenList.add(parentNode2);
 
-        expectedChildrenList = rootNode.getAllChildren();
-
-        for(TaxNode tn: expectedChildrenList) {
-            System.out.println(tn.toString());
-        }
+        assertEquals(expectedChildrenList,rootNode.getAllChildren());
+        assertEquals(0,childrenNode.getAllChildren().size());
+        assertNotEquals(expectedChildrenList, parentNode.getAllChildren());
     }
 
 
@@ -44,8 +45,10 @@ public class TaxNodeTest {
         TaxNode childrenNode = new TaxNode(4, "species", parentNode);
         parentNode.addChild(childrenNode);
 
-        System.out.println(childrenNode.getAncestorAtRank("family"));
-        System.out.println(childrenNode.getAncestorAtRank("genus"));
+        assertEquals(rootNode,childrenNode.getAncestorAtRank("family"));
+        assertEquals(parentNode,childrenNode.getAncestorAtRank("genus"));
+        assertEquals(childrenNode,childrenNode.getAncestorAtRank("species"));
+        assertNull(childrenNode.getAncestorAtRank("SuperKINGDOM"));
     }
 
 
