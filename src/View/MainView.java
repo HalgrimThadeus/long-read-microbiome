@@ -7,6 +7,7 @@ import Model.FastAEntry;
 import Model.IO.FastAIO;
 import Model.Sample;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +15,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
@@ -25,14 +30,11 @@ import java.util.ResourceBundle;
 import Controller.SampleController;
 
 
-public class MainView implements Initializable {
+public class MainView {
 
     /**
      * Important Containers
      */
-    @FXML
-    public Accordion sampleAccordion;
-
     @FXML
     public AnchorPane tab1;
 
@@ -53,27 +55,7 @@ public class MainView implements Initializable {
     public Button toolbarBtnAddSamplePage;
 
     @FXML
-    public Button newSampleBtn;
-
-    @FXML
     public Button saveProjectBtn;
-
-    @FXML
-    public Button searchFastaFile;
-
-    @FXML
-    public Button searchGffFile;
-
-    @FXML
-    public Button searchCsvFile;
-
-    public Button createNewSample;
-
-    public TextField fastaFileTextField;
-
-    public TextField gffFileTextField;
-
-    public TextField csvFileTextField;
 
     /**
      * Menues
@@ -81,52 +63,15 @@ public class MainView implements Initializable {
     @FXML
     public MenuItem addNewFilterContextMenu;
 
+    @FXML
+    private Accordion sampleAccordion;
+
     /**
      *needed controller in this case
      */
-    private SampleController sampleController = new SampleController();
     private MainTabViewController mainTabViewController = new MainTabViewController();
     private FilterController filterController = new FilterController();
     private SaveProjectController saveProjectController = new SaveProjectController();
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-    }
-
-    /**
-     * You can open a fastaFile at the Monoment and an item is added to the Accordion
-     * @param event
-     * @throws IOException
-     */
-    @FXML
-    public void newSampleBtnClicked(ActionEvent event) throws IOException {
-        sampleController.openSamplePane();
-        sampleController.addNewSampleInAccordion(sampleAccordion);
-        System.out.println(sampleAccordion);
-    }
-
-    public void addNewFilesClicked(ActionEvent event){
-        if(event.getSource().equals(searchFastaFile)){
-            File fastaFile = sampleController.getNewFiles("fasta");
-            fastaFileTextField.setText(fastaFile.getAbsolutePath());
-        }
-        if(event.getSource().equals(searchGffFile)){
-            File fastaFile = sampleController.getNewFiles("gff");
-            gffFileTextField.setText(fastaFile.getAbsolutePath());
-        }
-        if(event.getSource().equals(searchCsvFile)){
-            File fastaFile = sampleController.getNewFiles("dmp");
-            csvFileTextField.setText(fastaFile.getAbsolutePath());
-        }
-    }
-
-    public void createNewSampleClicked(ActionEvent event){
-        Stage stage = (Stage)createNewSample.getScene().getWindow();
-        stage.close();
-
-    }
 
     @FXML
     public void toolbarBtnAddSamplePage(ActionEvent event) throws IOException {
@@ -159,5 +104,70 @@ public class MainView implements Initializable {
         saveProjectController.readConfigFile();
     }
 
+    //########################################################################################################################################
+    //SAMPLE PANE PART
+    //########################################################################################################################################
 
+    @FXML
+    public void newSampleBtnClicked(ActionEvent event) throws IOException {
+        openSamplePane();
+        addNewSampleInAccordion(sampleAccordion);
+    }
+
+    private void openSamplePane() throws IOException {
+        Stage filterPopUp = new Stage();
+        Parent root = FXMLLoader.load(MainView.class.getResource("addNewSampleView.fxml"));
+        filterPopUp.setTitle("New Sample");
+        filterPopUp.setScene(new Scene(root, 600, 250));
+        filterPopUp.show();
+    }
+
+    private void addNewSampleInAccordion(Accordion sampleAccordion){
+        TitledPane newAccordionPane = new TitledPane();
+        AnchorPane newAnchorPane = new AnchorPane();
+        TreeView newTreeView = new TreeView();
+
+        TreeItem<String> root = new TreeItem<>("Sample 1");
+        root.setExpanded(true);
+
+        TreeItem<String> fastaChild = new TreeItem<>("Files");
+        fastaChild.setExpanded(false);
+
+
+        root.getChildren().add(fastaChild);
+        newTreeView.setRoot(root);
+        newTreeView.setShowRoot(false);
+
+
+        AnchorPane.setLeftAnchor(newTreeView, 0d);
+        AnchorPane.setRightAnchor(newTreeView, 0d);
+        AnchorPane.setBottomAnchor(newTreeView, 0d);
+        AnchorPane.setTopAnchor(newTreeView, 0d);
+        newAnchorPane.getChildren().add(newTreeView);
+
+        newTreeView.setMaxHeight(100);
+        newAccordionPane.setMaxHeight(100);
+        newTreeView.setMinHeight(100);
+        newAccordionPane.setMinHeight(100);
+        newAccordionPane.setText("Sample " + (sampleAccordion.getPanes().size() + 1));
+        newAccordionPane.setContent(newAnchorPane);
+
+
+        newAccordionPane.setOnDragDetected(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent event) {
+                /* drag was detected, start a drag-and-drop gesture*/
+                /* allow any transfer mode */
+                Dragboard db = newAccordionPane.startDragAndDrop(TransferMode.ANY);
+
+                /* Put a string on a dragboard */
+                ClipboardContent content = new ClipboardContent();
+                content.putString(newAccordionPane.getText());
+                db.setContent(content);
+
+                event.consume();
+            }
+        });
+
+        sampleAccordion.getPanes().add(newAccordionPane);
+    }
 }
