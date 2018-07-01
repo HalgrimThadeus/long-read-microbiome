@@ -75,16 +75,11 @@ public class SampleController {
         TreeItem<String> root = new TreeItem<>("Sample 1");
         root.setExpanded(true);
 
-        TreeItem<String> fastaChild = new TreeItem<>("Fasta-Files");
+        TreeItem<String> fastaChild = new TreeItem<>("Files");
         fastaChild.setExpanded(false);
-        TreeItem<String> gffChild = new TreeItem<>("Gff-Files");
-        gffChild.setExpanded(false);
-        TreeItem<String> taxaChild = new TreeItem<>("Taxonomic-Files");
-        taxaChild.setExpanded(false);
+
 
         root.getChildren().add(fastaChild);
-        root.getChildren().add(gffChild);
-        root.getChildren().add(taxaChild);
         newTreeView.setRoot(root);
         newTreeView.setShowRoot(false);
 

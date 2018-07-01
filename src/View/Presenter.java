@@ -97,6 +97,7 @@ public class Presenter implements Initializable {
         SampleController controller = new SampleController();
         controller.openSamplePane();
         controller.addNewSampleInAccordion(sampleAccordion);
+        System.out.println(sampleAccordion);
     }
 
     public void addNewFilesClicked(ActionEvent event){
@@ -116,7 +117,8 @@ public class Presenter implements Initializable {
     }
 
     public void createNewSampleClicked(ActionEvent event){
-
+        Stage stage = (Stage)createNewSample.getScene().getWindow();
+        stage.close();
 
     }
 

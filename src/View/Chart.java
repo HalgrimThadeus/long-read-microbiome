@@ -65,6 +65,7 @@ public class Chart extends Application {
 
         //Creating the Bar chart
         BarChart<Number, String> BarChart = new BarChart<>(xAxis, yAxis);
+        BarChart.setMinWidth(1920);
         BarChart.setTitle("Sequences with Reads");
 
 
