@@ -1,28 +1,29 @@
 package Controller;
-
 import Model.IO.ConfigIO;
+import Model.Project;
 import Model.Sample;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SaveProjectController {
 
     public void saveProject() throws Exception {
-        /*TODO THIS IS JUST ALL PSEUDOCODE; FOR IMPLEMENTATION IS NEEDED:
-          TODO - CONTAINER CLASS OF ALL SAMPLES WITH FILE PATH (FOR SAMPLEPANE NEEDED)
-          TODO - OBSERVABLE LIST OF FILTERS FOR EVERY SAMPLE
-        for every sample of sample container Class
-        SAVE FILEPATHS TO FILE
-        SAVE CURRENT FILTER FOR THE SAMPLE
-         */
+
+        //get the list of samples and the filepaths of the samples
+        List<Sample> listOfSamples = Project.listOfSamples;
+
+        List<File[]> listOfPaths= Project.listOfSamplesFilePaths;
 
 
-        //first mini-test:
-        String[] test = {"a", "b", "c"};
-        saveFilePathToFile(test);
+        for(Sample sample: listOfSamples){
+            //saveFilePathToFile(sample.getFilePaths());
+        }
+
 
     }
 
@@ -30,14 +31,16 @@ public class SaveProjectController {
     public void saveFilePathToFile(String[] filePaths) throws Exception {
         //TODO store the information in a represententive and easy readable to the config file
         try {
-            int configVersionName = 1;
             File fileToWrite = null;
 
+            //choose the save-directory
+            int configVersionName = 1;
             JFileChooser f = new JFileChooser();
             f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             f.showSaveDialog(null);
             System.out.println(f.getSelectedFile());
 
+            //make a config file, that doesnt exist already
             do {
                 String fileToWritePath = f.getSelectedFile() + "\\config" + configVersionName + ".lrcfg";
 
@@ -47,9 +50,9 @@ public class SaveProjectController {
 
             } while (fileToWrite.isFile());
 
-
+            //
             ConfigIO WriteConfigIO = new ConfigIO(fileToWrite);
-            String stringToWrite = "";
+            String stringToWrite = "#Sample" + "\n";
             for (int i = 0; i < filePaths.length; i++) {
                 stringToWrite += filePaths[i] + "\n";
             }
