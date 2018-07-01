@@ -77,15 +77,20 @@ public class NewSampleDialog {
 
         if(event.getSource().equals(searchFastaFile)){
             fastaFile = this.getNewFiles("fasta");
-            fastaFileTextField.setText(fastaFile.getAbsolutePath());
+
+            if(fastaFile != null)
+                fastaFileTextField.setText(fastaFile.getAbsolutePath());
         }
         if(event.getSource().equals(searchGffFile)){
             gffFile = this.getNewFiles("gff");
-            gffFileTextField.setText(fastaFile.getAbsolutePath());
+
+            if(gffFile != null)
+                gffFileTextField.setText(fastaFile.getAbsolutePath());
         }
         if(event.getSource().equals(searchCsvFile)){
             csvFile = this.getNewFiles("txt");
-            csvFileTextField.setText(fastaFile.getAbsolutePath());
+            if(csvFile != null)
+                csvFileTextField.setText(fastaFile.getAbsolutePath());
         }
     }
 
@@ -94,15 +99,20 @@ public class NewSampleDialog {
         Stage stage = (Stage) createNewSample.getScene().getWindow();
 
         //if not all files were declared return a warnning notice
-        //todo: warning dialog
-        if(fastaFile == null || gffFile == null || csvFile == null)
-            stage.close();
+        if(fastaFile == null || gffFile == null || csvFile == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "At least one file is missing!", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(100);
+            alert.show();
+            return;
+        }
 
         try {
             sampleController.loadSampleFromFile(fastaFile,gffFile,csvFile);
         } catch(Exception e) {
             e.printStackTrace();
-            //todo: show up error dialog in window
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Loading of Sample FAILED", ButtonType.CANCEL);
+            alert.getDialogPane().setMinHeight(100);
+            alert.show();
         }
 
         stage.close();
