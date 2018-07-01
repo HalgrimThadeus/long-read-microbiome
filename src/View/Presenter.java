@@ -81,6 +81,14 @@ public class Presenter implements Initializable {
     @FXML
     public MenuItem addNewFilterContextMenu;
 
+    /**
+     *needed controller in this case
+     */
+    private SampleController sampleController = new SampleController();
+    private MainTabViewController mainTabViewController = new MainTabViewController();
+    private FilterController filterController = new FilterController();
+    private SaveProjectController saveProjectController = new SaveProjectController();
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -94,24 +102,22 @@ public class Presenter implements Initializable {
      */
     @FXML
     public void newSampleBtnClicked(ActionEvent event) throws IOException {
-        SampleController controller = new SampleController();
-        controller.openSamplePane();
-        controller.addNewSampleInAccordion(sampleAccordion);
+        sampleController.openSamplePane();
+        sampleController.addNewSampleInAccordion(sampleAccordion);
         System.out.println(sampleAccordion);
     }
 
     public void addNewFilesClicked(ActionEvent event){
-        SampleController controller = new SampleController();
         if(event.getSource().equals(searchFastaFile)){
-            File fastaFile = controller.getNewFiles("fasta");
+            File fastaFile = sampleController.getNewFiles("fasta");
             fastaFileTextField.setText(fastaFile.getAbsolutePath());
         }
         if(event.getSource().equals(searchGffFile)){
-            File fastaFile = controller.getNewFiles("gff");
+            File fastaFile = sampleController.getNewFiles("gff");
             gffFileTextField.setText(fastaFile.getAbsolutePath());
         }
         if(event.getSource().equals(searchCsvFile)){
-            File fastaFile = controller.getNewFiles("dmp");
+            File fastaFile = sampleController.getNewFiles("dmp");
             csvFileTextField.setText(fastaFile.getAbsolutePath());
         }
     }
@@ -124,23 +130,18 @@ public class Presenter implements Initializable {
 
     @FXML
     public void toolbarBtnAddSamplePage(ActionEvent event) throws IOException {
-        MainTabViewController controller = new MainTabViewController();
-        controller.addNewMainTabView(mainSplitPain);
+        mainTabViewController.addNewMainTabView(mainSplitPain);
     }
 
     @FXML
     public void addNewFilterContextMenuClicked(ActionEvent event) throws IOException {
-        FilterController controller = new FilterController();
-
-        controller.openNewFilterDialog();
+        filterController.openNewFilterDialog();
     }
 
     @FXML
     public void saveProjectButtonClicked(ActionEvent clickEvent) throws Exception {
-        SaveProjectController controller = new SaveProjectController();
-
         try {
-            controller.saveProject();
+            saveProjectController.saveProject();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -155,10 +156,7 @@ public class Presenter implements Initializable {
      */
     @FXML
     public void addSamplesClicked(ActionEvent clickEvent) throws Exception {
-        SaveProjectController controller = new SaveProjectController();
-
-        controller.readConfigFile();
-
+        saveProjectController.readConfigFile();
     }
 
 
