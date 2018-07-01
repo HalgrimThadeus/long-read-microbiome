@@ -37,40 +37,36 @@ public class Filter {
     protected List<Read> suitable(Sample sample){
         List<Read> reads = sample.getReads();
         List<Read> suitablereads = sample.getReads();
-             for(int k = 0; k < keys.size(); k++){
-                if(keys.get(k).equals("Length")){
-                    suitablereads.removeIf(isLengthEqual(Integer.parseInt(values.get(k))).negate());
-                }
-                else if(keys.get(k).equals("GCContent")){
-                    suitablereads.removeIf(isGCContentEqual(Integer.parseInt(values.get(k))).negate());
-                }
-                else if(keys.get(k).equals("Gen")){
-                    suitablereads.removeIf(isGen(values.get(k)).negate());
-                }
-                else if(keys.get(k).equals("Score")){
-                    suitablereads.removeIf(isScoreEqual(Integer.parseInt(values.get(k))).negate());
-                }
-                else if(keys.get(k).equals("TaxaId")){
-                    suitablereads.remove((isTaxa(Integer.parseInt(values.get(k)))).negate());
-                }
-                else{
-                    for(Read read: reads){
-                        boolean fits = false;
-                        for(GffEntry gff: read.getGFFEntries()){
-                            if(gff.getAttributes().get(keys.get(k)).equals(values.get(k))){
-                                fits = true;
-                                break;
-                            }
-                        }
-                        if(!fits){
-                            suitablereads.remove(read);
-                        }
-                    }
-                }
+             for(int k = 0; k < keys.size(); k++) {
+                 if (values.get(k) != null) {
+                     if (keys.get(k).equals("Length")) {
+                         suitablereads.removeIf(isLengthEqual(Integer.parseInt(values.get(k))).negate());
+                     } else if (keys.get(k).equals("GCContent")) {
+                         suitablereads.removeIf(isGCContentEqual(Integer.parseInt(values.get(k))).negate());
+                     } else if (keys.get(k).equals("Gen")) {
+                         suitablereads.removeIf(isGen(values.get(k)).negate());
+                     } else if (keys.get(k).equals("Score")) {
+                         suitablereads.removeIf(isScoreEqual(Integer.parseInt(values.get(k))).negate());
+                     } else if (keys.get(k).equals("TaxaId")) {
+                         suitablereads.remove((isTaxa(Integer.parseInt(values.get(k)))).negate());
+                     } else {
+                         for (Read read : reads) {
+                             boolean fits = false;
+                             for (GffEntry gff : read.getGFFEntries()) {
+                                 if (gff.getAttributes().get(keys.get(k)).equals(values.get(k))) {
+                                     fits = true;
+                                     break;
+                                 }
+                             }
+                             if (!fits) {
+                                 suitablereads.remove(read);
+                             }
+                         }
+                     }
+
+                 }
 
              }
-
-
 
 
         return suitablereads;
