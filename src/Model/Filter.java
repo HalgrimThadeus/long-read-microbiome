@@ -23,12 +23,15 @@ public class Filter {
     private List<String> keys;
     private List<String> values;
     private List<String> criterias;
-    String name;
+    private String name;
 
     public Filter(String name,List<String> keys, List<String> values){
         this.keys = keys;
         this.values = values;
         this.name = name;
+    }
+    public String getName(){
+        return name;
     }
 
     protected List<Read> suitable(Sample sample){
@@ -38,14 +41,17 @@ public class Filter {
                 if(keys.get(k).equals("Length")){
                     suitablereads.removeIf(isLengthEqual(Integer.parseInt(values.get(k))).negate());
                 }
-                else if(keys.get(k).equals("CGContent")){
+                else if(keys.get(k).equals("GCContent")){
                     suitablereads.removeIf(isGCContentEqual(Integer.parseInt(values.get(k))).negate());
                 }
-                else if(keys.get(k).equals("Name")){
-                    suitablereads.removeIf(isName(values.get(k)).negate());
+                else if(keys.get(k).equals("Gen")){
+                    suitablereads.removeIf(isGen(values.get(k)).negate());
                 }
                 else if(keys.get(k).equals("Score")){
                     suitablereads.removeIf(isScoreEqual(Integer.parseInt(values.get(k))).negate());
+                }
+                else if(keys.get(k).equals("TaxaId")){
+                    suitablereads.remove((isTaxa(Integer.parseInt(values.get(k)))).negate());
                 }
                 else{
                     for(Read read: reads){
