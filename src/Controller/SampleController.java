@@ -2,7 +2,11 @@ package Controller;
 
 import Model.FastAEntry;
 import Model.IO.FastAIO;
+import View.Presenter;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.TreeItem;
@@ -39,6 +43,15 @@ public class SampleController {
         return file;
 
     }
+
+    public void openSamplePane() throws IOException {
+        Stage filterPopUp = new Stage();
+        Parent root = FXMLLoader.load(Presenter.class.getResource("addNewSampleView.fxml"));
+        filterPopUp.setTitle("New Sample");
+        filterPopUp.setScene(new Scene(root, 600, 250));
+        filterPopUp.show();
+    }
+
 
 
     public File getNewFiles(String extension){

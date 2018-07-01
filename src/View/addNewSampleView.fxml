@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Presenter">
+   <children>
+      <VBox layoutY="55.0" prefHeight="137.0" prefWidth="435.0" spacing="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <Label text="FastaFiles" />
+            <TextField fx:id="fastaFileTextField" />
+            <Label text="GffFiles" />
+            <TextField fx:id="gffFileTextField" />
+            <Label text="Csv-Files" />
+            <TextField fx:id="csvFileTextField" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <VBox layoutX="506.0" layoutY="73.0" prefHeight="120.0" prefWidth="24.0" spacing="30.0" AnchorPane.leftAnchor="506.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Button fx:id="searchFastaFile" mnemonicParsing="false" onAction="#addNewFilesClicked" text="..." />
+            <Button fx:id="searchGffFile" mnemonicParsing="false" onAction="#addNewFilesClicked" text="..." />
+            <Button fx:id="searchCsvFile" mnemonicParsing="false" onAction="#addNewFilesClicked" text="..." />
+         </children>
+      </VBox>
+      <Button layoutX="431.0" layoutY="238.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Create new Sample" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+   </children>
+</AnchorPane>
