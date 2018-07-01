@@ -23,6 +23,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
+import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -117,6 +118,11 @@ public class Chart extends Application {
                 rectangle.setFill(Color.rgb(178,34,34,0.5));
                 rectangle.setStrokeWidth(0.5);
                 rectangle.setStroke(Color.BLACK);
+
+                Tooltip t = new Tooltip(sample.getReads().get(i).getGFFEntries().get(j).getAttributes().get(" Name"));
+                Tooltip.install(rectangle, t);
+
+
                 root.getChildren().add(rectangle);
 
             }
