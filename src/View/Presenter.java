@@ -88,7 +88,7 @@ public class Presenter implements Initializable {
     }
 
     /**
-     * You can open a fastaFile at the Monoment and an item is added to the Accordion TODO Sample pop up???
+     * You can open a fastaFile at the Monoment and an item is added to the Accordion
      * @param event
      * @throws IOException
      */
@@ -116,7 +116,7 @@ public class Presenter implements Initializable {
     }
 
     public void createNewSampleClicked(ActionEvent event){
-        SampleController controller = new SampleController();
+
 
     }
 
