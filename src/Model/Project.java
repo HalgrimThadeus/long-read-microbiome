@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,19 +11,22 @@ import java.util.List;
 
 public class Project {
 
-    private List listOfSamples;
+    /**
+     * static List contains all the Samples created while the program runs
+     */
+    public static List listOfSamples;
 
-    public Project(){
-        this.listOfSamples = new ArrayList();
-    }
+    /**
+     * static List contains all the Files for the Samples including the filepaths
+     */
+    public static List<File[]> listOfSamplesFilePaths;
 
     /**
      * Add a new Sample
      * @param sampleToAdd
      */
-    public void addSamples(Sample sampleToAdd){
-        this.listOfSamples.add(sampleToAdd);
+    public static void addSamples(Sample sampleToAdd){
+        listOfSamples.add(sampleToAdd);
     }
-
 
 }
