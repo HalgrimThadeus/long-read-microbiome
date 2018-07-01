@@ -1,28 +1,17 @@
 package View;
 
-import Model.IO.SampleReader;
+import Model.IO.NewSampleService;
 import Model.Project;
 import Model.Sample;
+import javafx.concurrent.Service;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.print.DocFlavor;
 import java.io.File;
-import java.io.FileReader;
-import java.io.Reader;
 
 public class NewSampleDialog {
 
@@ -92,22 +81,23 @@ public class NewSampleDialog {
         if(fastaFile == null || gffFile == null || csvFile == null)
             stage.close();
 
-        try {
-            FileReader fastaFileReader = new FileReader(fastaFile.getAbsolutePath());
-            FileReader gffFileReader = new FileReader(gffFile.getAbsolutePath());
-            FileReader csvFileReader = new FileReader(csvFile.getAbsolutePath());
-            Sample newSample = SampleReader.read(fastaFileReader,gffFileReader,csvFileReader);
-            Project.addSamples(newSample);
+        Service newSampleService = new NewSampleService(fastaFile.getAbsolutePath(), gffFile.getAbsolutePath(), csvFile.getAbsolutePath());
+
+        newSampleService.setOnSucceeded(event1 -> {
+            Sample sample = ((NewSampleService)event1.getSource()).getValue();
+            Project.addSamples(sample);
             File[] files = new File[3];
             files[0] = fastaFile;
             files[1] = gffFile;
             files[2] = csvFile;
             Project.listOfSamplesFilePaths.add(files);
+        });
 
-        } catch(Exception e) {
-            e.printStackTrace();
-            //todo: show up error dialog in window
-        }
+        newSampleService.setOnFailed(event1 -> {
+            //TODO: On error
+        });
+
+        newSampleService.start();
 
         stage.close();
     }

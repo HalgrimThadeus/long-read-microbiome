@@ -1,14 +1,15 @@
+import Model.IO.ReadInTaxTreeService;
 import Model.Tax.TaxIO;
 import Model.Tax.TaxNode;
 import Model.Tax.TaxTree;
+import javafx.application.Platform;
+import javafx.concurrent.Service;
+import javafx.embed.swing.JFXPanel;
 import org.junit.Test;
 
 import java.io.CharArrayReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.stream.Stream;
-
-import static org.junit.Assert.*;
 
 public class TaxIOTest {
 
@@ -56,5 +57,20 @@ public class TaxIOTest {
         for (TaxNode tn: testTree.getNode("Lutra").getAncestorAtRank("family").getAllChildren()) {
             System.out.println(tn);
         }
+    }
+
+    @Test
+    public void shouldReadInTaxTreeFromFilesWithService() {
+        new JFXPanel();
+        Platform.runLater(() -> {
+            Service readInTaxTreeService = new ReadInTaxTreeService("res/TreeDumpFiles/nodesTest.dmp", "res/TreeDumpFiles/namesTest.dmp");
+            readInTaxTreeService.setOnSucceeded(event -> {
+                TaxTree testTree = ((ReadInTaxTreeService)event.getSource()).getValue();
+                for (TaxNode tn: testTree.getNode("Lutra").getAncestorAtRank("family").getAllChildren()) {
+                    System.out.println(tn);
+                }
+            });
+            readInTaxTreeService.start();
+        });
     }
 }
