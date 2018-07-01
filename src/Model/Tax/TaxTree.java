@@ -2,6 +2,7 @@ package Model.Tax;
 
 import javax.swing.tree.TreeNode;
 import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * @class the datastorage for the taxdump files, where information about species and their taxonomic classification is put in
@@ -34,11 +35,13 @@ public class TaxTree {
     public void addNode(int id, String rank, int parentId) {
 
         //create almost empty parent node if it doesn't already exists, and initilize it completely later
+        //if the added node is root set parent to null
         TaxNode parentNode;
-        if(!this.tree.containsKey(parentId)){
+        if (parentId == id) {
+            parentNode = null;
+        } else if (!this.tree.containsKey(parentId)) {
             parentNode = new TaxNode(parentId);
-        }
-        else{
+        } else {
             parentNode = this.tree.get(parentId);
         }
 
@@ -57,32 +60,37 @@ public class TaxTree {
 
     /**
      * method to be called if name is set a posteriori (e.g. file parsing from name.dmp)
+     * the name and id for all entries are fixed after putting it into the datastructure
      * @param id
      * @param name
      */
     public void setNameOfId(int id, String name) {
-        nameMap.put(name,id);
-        tree.get(id).setName(name);
-    }
+        if(tree.containsKey(id)) {
+            //if(!nameMap.containsKey(name)) {
+            //}
 
-    /**
-     * returns the name of one id
-     * @param name
-     * @return
-     */
-    public int getId(String name) {
-        if (this.nameMap.containsKey(name)) {
-            return this.nameMap.get(name);
-        } else {
-            return -1;
+            //prevents collision of two names naming the same node
+            if(!nameMap.containsValue(id)) {
+                //doesnt do anything if name of an organism already exists
+                //ADD WARNING??
+                if(!nameMap.containsKey(name)) {
+                    nameMap.put(name,id);
+                    tree.get(id).setName(name);
+                }
+            }
         }
     }
 
     /**
-     *
-     * @return the hash tree
+     * returns the node with a specific name
+     * @param name
+     * @return
      */
-    public Map<Integer, TaxNode> getTree() {
-        return tree;
+    public TaxNode getNode(String name) {
+        if (this.nameMap.containsKey(name)) {
+            return this.tree.get(this.nameMap.get(name));
+        } else {
+            return null;
+        }
     }
 }
