@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cea520c4-fa3a-481d-93d1-6116cd66526f" name="Default" comment="">
+    <list default="true" id="cea520c4-fa3a-481d-93d1-6116cd66526f" name="Default" comment="modified, bu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Tax/TaxIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Tax/TaxIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Tax/TaxNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Tax/TaxNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Tax/TaxTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Tax/TaxTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/TaxIOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/TaxIOTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tests/TaxTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/TaxTreeTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,29 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TaxTreeTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-159">
-              <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TaxTree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="74" column="31" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaxIO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxIO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="36" column="45" lean-forward="true" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+            <state relative-caret-position="256">
+              <caret line="74" column="58" selection-start-line="74" selection-start-column="58" selection-end-line="74" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -46,17 +32,53 @@
       <file leaf-file-name="TaxNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="741">
-              <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+            <state relative-caret-position="437">
+              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaxIOTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TaxIOTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Tests/TaxIOTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+            <state relative-caret-position="276">
+              <caret line="54" column="51" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nodesTest.dmp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/TreeDumpFiles/nodesTest.dmp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="namesTest.dmp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/TreeDumpFiles/namesTest.dmp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaxTreeTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="261">
+              <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -108,7 +130,6 @@
         <option value="$PROJECT_DIR$/src/Tests/ReadTest.java" />
         <option value="$PROJECT_DIR$/src/Model/Read.java" />
         <option value="$PROJECT_DIR$/src/Model/IO/GffIO.java" />
-        <option value="$PROJECT_DIR$/src/Model/Main.java" />
         <option value="$PROJECT_DIR$/src/Tests/SampleReaderTest.java" />
         <option value="$PROJECT_DIR$/src/View/testFile.fxml" />
         <option value="$PROJECT_DIR$/src/View/Controller2.java" />
@@ -122,10 +143,12 @@
         <option value="$PROJECT_DIR$/src/Model/FilteredSample.java" />
         <option value="$PROJECT_DIR$/src/Model/Sample.java" />
         <option value="$PROJECT_DIR$/src/Tests/TaxNodeTest.java" />
-        <option value="$PROJECT_DIR$/src/Model/Tax/TaxNode.java" />
         <option value="$PROJECT_DIR$/src/Model/Tax/TaxIO.java" />
-        <option value="$PROJECT_DIR$/src/Model/Tax/TaxTree.java" />
+        <option value="$PROJECT_DIR$/src/Model/Tax/TaxNode.java" />
         <option value="$PROJECT_DIR$/src/Tests/TaxTreeTest.java" />
+        <option value="$PROJECT_DIR$/src/Model/Main.java" />
+        <option value="$PROJECT_DIR$/src/Model/Tax/TaxTree.java" />
+        <option value="$PROJECT_DIR$/src/Tests/TaxIOTest.java" />
       </list>
     </option>
   </component>
@@ -164,6 +187,12 @@
               <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
               <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="long-read-microbiome" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="TreeDumpFiles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="long-read-microbiome" type="b2602c69:ProjectViewProjectNode" />
@@ -257,17 +286,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TaxTreeTest.shouldGetNodesByName">
+  <component name="RunManager" selected="JUnit.TaxIOTest.shouldReadInTaxTreeFromFiles">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="TaxNodeTest.shouldGetAllChildrenOfRoot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TaxIOTest.shouldReadInTaxTree" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="long-read-microbiome" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TaxNodeTest" />
-      <option name="METHOD_NAME" value="shouldGetAllChildrenOfRoot" />
+      <option name="MAIN_CLASS_NAME" value="TaxIOTest" />
+      <option name="METHOD_NAME" value="shouldReadInTaxTree" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -278,13 +307,13 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="TaxNodeTest.shouldGetAncestorAtRankFamily" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TaxIOTest.shouldReadInTaxTreeFromFiles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="long-read-microbiome" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TaxNodeTest" />
-      <option name="METHOD_NAME" value="shouldGetAncestorAtRankFamily" />
+      <option name="MAIN_CLASS_NAME" value="TaxIOTest" />
+      <option name="METHOD_NAME" value="shouldReadInTaxTreeFromFiles" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -312,13 +341,13 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="TaxTreeTest.shouldCreateTestTreeWithNames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TaxTreeTest.shouldCreateTestTreeUnordered" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="long-read-microbiome" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TaxTreeTest" />
-      <option name="METHOD_NAME" value="shouldCreateTestTreeWithNames" />
+      <option name="METHOD_NAME" value="shouldCreateTestTreeUnordered" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -385,19 +414,19 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="JUnit.TaxNodeTest.shouldGetAllChildrenOfRoot" />
-      <item itemvalue="JUnit.TaxNodeTest.shouldGetAncestorAtRankFamily" />
       <item itemvalue="JUnit.TaxTreeTest.shouldCreateTestTree" />
-      <item itemvalue="JUnit.TaxTreeTest.shouldCreateTestTreeWithNames" />
       <item itemvalue="JUnit.TaxTreeTest.shouldGetNodesByName" />
+      <item itemvalue="JUnit.TaxIOTest.shouldReadInTaxTree" />
+      <item itemvalue="JUnit.TaxTreeTest.shouldCreateTestTreeUnordered" />
+      <item itemvalue="JUnit.TaxIOTest.shouldReadInTaxTreeFromFiles" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TaxTreeTest.shouldGetNodesByName" />
-        <item itemvalue="JUnit.TaxTreeTest.shouldCreateTestTreeWithNames" />
+        <item itemvalue="JUnit.TaxIOTest.shouldReadInTaxTreeFromFiles" />
+        <item itemvalue="JUnit.TaxIOTest.shouldReadInTaxTree" />
+        <item itemvalue="JUnit.TaxTreeTest.shouldCreateTestTreeUnordered" />
         <item itemvalue="JUnit.TaxTreeTest.shouldCreateTestTree" />
-        <item itemvalue="JUnit.TaxNodeTest.shouldGetAncestorAtRankFamily" />
-        <item itemvalue="JUnit.TaxNodeTest.shouldGetAllChildrenOfRoot" />
+        <item itemvalue="JUnit.TaxTreeTest.shouldGetNodesByName" />
       </list>
     </recent_temporary>
   </component>
@@ -612,39 +641,46 @@
       <option name="project" value="LOCAL" />
       <updated>1530440912599</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="added test to taxtreetest">
+      <created>1530443578466</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1530443578466</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TaxTreeTest_shouldCreateTestTreeWithNames - 2018.07.01 at 12h 50m 46s.xml">
-      <configuration name="TaxTreeTest.shouldCreateTestTreeWithNames" configurationId="JUnit" />
+    <history-entry file="TaxTreeTest_shouldCreateTestTreeUnordered - 2018.07.01 at 15h 27m 47s.xml">
+      <configuration name="TaxTreeTest.shouldCreateTestTreeUnordered" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest_shouldCreateTestTreeWithNames - 2018.07.01 at 12h 58m 19s.xml">
-      <configuration name="TaxTreeTest.shouldCreateTestTreeWithNames" configurationId="JUnit" />
+    <history-entry file="TaxTreeTest_shouldCreateTestTreeUnordered - 2018.07.01 at 15h 27m 48s.xml">
+      <configuration name="TaxTreeTest.shouldCreateTestTreeUnordered" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest_shouldCreateTestTreeWithNames - 2018.07.01 at 12h 59m 33s.xml">
-      <configuration name="TaxTreeTest.shouldCreateTestTreeWithNames" configurationId="JUnit" />
+    <history-entry file="TaxTreeTest_shouldCreateTestTreeUnordered - 2018.07.01 at 15h 29m 00s.xml">
+      <configuration name="TaxTreeTest.shouldCreateTestTreeUnordered" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest_shouldGetNodesByName - 2018.07.01 at 13h 06m 33s.xml">
-      <configuration name="TaxTreeTest.shouldGetNodesByName" configurationId="JUnit" />
+    <history-entry file="TaxTreeTest_shouldCreateTestTreeUnordered - 2018.07.01 at 15h 29m 59s.xml">
+      <configuration name="TaxTreeTest.shouldCreateTestTreeUnordered" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest_shouldGetNodesByName - 2018.07.01 at 13h 07m 26s.xml">
-      <configuration name="TaxTreeTest.shouldGetNodesByName" configurationId="JUnit" />
+    <history-entry file="TaxIOTest_shouldReadInTaxTree - 2018.07.01 at 15h 31m 10s.xml">
+      <configuration name="TaxIOTest.shouldReadInTaxTree" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest_shouldGetNodesByName - 2018.07.01 at 13h 07m 39s.xml">
-      <configuration name="TaxTreeTest.shouldGetNodesByName" configurationId="JUnit" />
+    <history-entry file="TaxIOTest_shouldReadInTaxTreeFromFiles - 2018.07.01 at 15h 43m 22s.xml">
+      <configuration name="TaxIOTest.shouldReadInTaxTreeFromFiles" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest_shouldGetNodesByName - 2018.07.01 at 13h 11m 10s.xml">
-      <configuration name="TaxTreeTest.shouldGetNodesByName" configurationId="JUnit" />
+    <history-entry file="TaxIOTest_shouldReadInTaxTreeFromFiles - 2018.07.01 at 15h 44m 16s.xml">
+      <configuration name="TaxIOTest.shouldReadInTaxTreeFromFiles" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest_shouldGetNodesByName - 2018.07.01 at 13h 11m 42s.xml">
-      <configuration name="TaxTreeTest.shouldGetNodesByName" configurationId="JUnit" />
+    <history-entry file="TaxIOTest_shouldReadInTaxTreeFromFiles - 2018.07.01 at 15h 45m 12s.xml">
+      <configuration name="TaxIOTest.shouldReadInTaxTreeFromFiles" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest_shouldGetNodesByName - 2018.07.01 at 13h 12m 07s.xml">
-      <configuration name="TaxTreeTest.shouldGetNodesByName" configurationId="JUnit" />
+    <history-entry file="TaxIOTest_shouldReadInTaxTreeFromFiles - 2018.07.01 at 15h 45m 29s.xml">
+      <configuration name="TaxIOTest.shouldReadInTaxTreeFromFiles" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TaxTreeTest_shouldGetNodesByName - 2018.07.01 at 13h 12m 21s.xml">
-      <configuration name="TaxTreeTest.shouldGetNodesByName" configurationId="JUnit" />
+    <history-entry file="TaxIOTest_shouldReadInTaxTreeFromFiles - 2018.07.01 at 15h 46m 18s.xml">
+      <configuration name="TaxIOTest.shouldReadInTaxTreeFromFiles" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -672,7 +708,7 @@
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info id="UI Designer" order="12" />
       <window_info anchor="right" id="Theme Preview" order="13" />
-      <window_info anchor="bottom" id="Debug" order="11" weight="0.3990964" />
+      <window_info anchor="bottom" id="Debug" order="11" weight="0.686747" />
       <window_info id="Favorites" order="13" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
@@ -685,31 +721,33 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.2318584" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.17489879" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="0" />
-      <window_info id="UI Designer" order="1" />
-      <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.23893805" />
-      <window_info anchor="right" id="Palette&#9;" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Messages" order="3" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="3" weight="0.32943678" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.3253012" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18594436" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="bottom" id="TODO" order="8" />
+      <window_info anchor="bottom" id="Message" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="5" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.3990964" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.3253012" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info id="Favorites" order="6" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -719,7 +757,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="FastAIO was changed" />
     <MESSAGE value="changed constructor and getIDFromHeader in Read class, added JavaDoc" />
     <MESSAGE value="tests in a seperate package, modified ReadTest" />
     <MESSAGE value="added View" />
@@ -744,11 +781,38 @@
     <MESSAGE value="fixed the tax node and added running tests" />
     <MESSAGE value="fixed more tax node methods and added running tests" />
     <MESSAGE value="refactored the taxtreeIO nd moved parts of the creation of the taxtree to the taxtree itself" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored the taxtreeIO nd moved parts of the creation of the taxtree to the taxtree itself" />
+    <MESSAGE value="added test to taxtreetest" />
+    <option name="LAST_COMMIT_MESSAGE" value="added test to taxtreetest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="42" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests/TaxIOTest.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests/TaxIOTest.java</url>
+          <line>52</line>
+          <properties />
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="57" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -761,31 +825,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/View/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/TaxIOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/MainController.java" />
-    <entry file="file://$PROJECT_DIR$/src/Model/Read.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="43" column="35" lean-forward="true" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Object.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Throwable.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.instrument/sun/instrument/InstrumentationImpl.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.instrument/sun/instrument/TransformerManager.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.instrument/java/lang/instrument/ClassFileTransformer.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/util/HashMap.java" />
@@ -842,13 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-179">
           <caret line="41" column="67" lean-forward="true" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="43" column="76" selection-start-line="43" selection-start-column="76" selection-end-line="43" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -975,38 +1007,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/TaxIOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="36" column="45" lean-forward="true" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+        <state relative-caret-position="522">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxTree.java">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="74" column="31" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+        <state relative-caret-position="120">
+          <caret line="9" column="62" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runners/BlockJUnit4ClassRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="129" selection-start-line="11" selection-start-column="129" selection-end-line="11" selection-end-column="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="47" column="82" selection-start-line="47" selection-start-column="82" selection-end-line="47" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/internal/runners/statements/InvokeMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runners/model/FrameworkMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="13" column="127" selection-start-line="13" selection-start-column="127" selection-end-line="13" selection-end-column="127" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/TaxTreeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-159">
-          <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+        <state relative-caret-position="137">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Tax/TaxTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="74" column="58" selection-start-line="74" selection-start-column="58" selection-end-line="74" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/TreeDumpFiles/namesTest.dmp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/TreeDumpFiles/nodesTest.dmp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/TaxIOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="54" column="51" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
         </state>
       </provider>
     </entry>

@@ -52,10 +52,15 @@ public class TaxNode {
 
     /**
      * method to complete a node, that was just initilized when the child was found
+     * it updates the links to children automatically (links to parents not necessary cause they are already right)
      */
     public void completeNode(String rank, TaxNode parentNode){
         this.rank = rank;
         this.parentNode = parentNode;
+
+        for (TaxNode child : this.listOfChildrenNodes) {
+            child.setParentNode(this);
+        }
     }
 
     /**
@@ -156,5 +161,9 @@ public class TaxNode {
                 return this.parentNode.getAncestorAtRank(rank);
             }
         }
+    }
+
+    public void setParentNode(TaxNode parentNode) {
+        this.parentNode = parentNode;
     }
 }

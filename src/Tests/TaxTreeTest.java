@@ -23,6 +23,19 @@ public class TaxTreeTest {
     }
 
     @Test
+    public void shouldCreateTestTreeUnordered() {
+        TaxTree taxTree = new TaxTree();
+
+        taxTree.addNode(3,"Species",2);
+        taxTree.addNode(4,"Species",2);
+        taxTree.addNode(1,"SuperFastKingdom",1);
+        taxTree.addNode(2,"Family",1);
+
+        //DEBUG for seeing structure
+        int i = 1;
+    }
+
+    @Test
     public void shouldCreateTestTreeWithNames() {
         TaxTree taxTree = new TaxTree();
         taxTree.addNode(1,"SuperFastKingdom",1);

@@ -45,8 +45,6 @@ public class Main {
                 //System.out.println(sample.getReads().get(sample.getReads().size() - 1).getGFFEntries());
 
             }
-            TaxIO treeReader = new TaxIO();
-            treeReader.readInTaxTree("res/TreeDumpFiles/nodesTest.dmp", "res/TreeDumpFiles/namesTest.dmp");
 
 
         } catch (Exception e) {

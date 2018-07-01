@@ -41,20 +41,21 @@ public class TaxTree {
             parentNode = null;
         } else if (!this.tree.containsKey(parentId)) {
             parentNode = new TaxNode(parentId);
+            this.tree.put(parentId, parentNode);
         } else {
             parentNode = this.tree.get(parentId);
         }
 
         //Create node itself and putting it into the tree
         //if Node does not exist (check with HashMap):
-        TaxNode newNode;
         if(!this.tree.containsKey(id)) {
             this.tree.put(id, new TaxNode(id, rank, parentNode));
         } else{
-            newNode = this.tree.get(id);
-            newNode.completeNode(rank, parentNode);
+            this.tree.get(id).completeNode(rank, parentNode);
         }
 
+        if(parentNode != null)
+            parentNode.addChild(this.tree.get(id));
 
     }
 
@@ -71,9 +72,12 @@ public class TaxTree {
 
             //prevents collision of two names naming the same node
             if(!nameMap.containsValue(id)) {
-                //doesnt do anything if name of an organism already exists
-                //ADD WARNING??
+                //adds "-" to name of an organism if name already exists
                 if(!nameMap.containsKey(name)) {
+                    nameMap.put(name,id);
+                    tree.get(id).setName(name);
+                } else {
+                    name = name + "-";
                     nameMap.put(name,id);
                     tree.get(id).setName(name);
                 }
