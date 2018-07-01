@@ -1,4 +1,5 @@
 package Controller;
+
 import Model.IO.ConfigIO;
 import Model.Project;
 import Model.Sample;
@@ -10,6 +11,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class SaveProjectController {
 
     public void saveProject() throws Exception {
@@ -17,73 +19,80 @@ public class SaveProjectController {
         //get the list of samples and the filepaths of the samples
         List<Sample> listOfSamples = Project.listOfSamples;
 
-        List<File[]> listOfPaths= Project.listOfSamplesFilePaths;
+        List<File[]> listOfPaths = Project.listOfSamplesFilePaths;
 
+        File configFileToWrite = createEmptyFile();
 
-        for(Sample sample: listOfSamples){
-            //saveFilePathToFile(sample.getFilePaths());
-        }
+        saveFilePathToFile(listOfSamples, listOfPaths, configFileToWrite);
 
+    }
+
+    private File createEmptyFile() {
+        File fileToWrite = null;
+
+        //choose the save-directory
+        int configVersionName = 1;
+        JFileChooser f = new JFileChooser();
+        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        f.showSaveDialog(null);
+        System.out.println(f.getSelectedFile());
+
+        //make a config file, that doesnt exist already
+        do {
+            String fileToWritePath = f.getSelectedFile() + "\\config" + configVersionName + ".lrcfg";
+
+            fileToWrite = new File(fileToWritePath);
+
+            configVersionName++;
+
+        } while (fileToWrite.isFile());
+
+        return fileToWrite;
 
     }
 
     //Information: FileFormat *.lrcfg stands for "long read config File".
-    public void saveFilePathToFile(String[] filePaths) throws Exception {
-        //TODO store the information in a represententive and easy readable to the config file
-        try {
-            File fileToWrite = null;
+    public void saveFilePathToFile(List<Sample> listOfSamples, List<File[]> listOfPaths, File configFileToWrite) throws Exception {
+        String stringToWrite = "";
 
-            //choose the save-directory
-            int configVersionName = 1;
-            JFileChooser f = new JFileChooser();
-            f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            f.showSaveDialog(null);
-            System.out.println(f.getSelectedFile());
+        for (int i = 0; i < listOfPaths.size(); i++) {
+            //create the StringFilePath arrays (with the 3 filepaths of fasta, gff, and csv)
 
-            //make a config file, that doesnt exist already
-            do {
-                String fileToWritePath = f.getSelectedFile() + "\\config" + configVersionName + ".lrcfg";
+            File[] file = listOfPaths.get(i);
 
-                fileToWrite = new File(fileToWritePath);
+            String fastaPath = file[0].getAbsolutePath();
+            String gffPath = file[1].getAbsolutePath();
+            String csvPath = file[2].getAbsolutePath();
 
-                configVersionName++;
-
-            } while (fileToWrite.isFile());
-
-            //
-            ConfigIO WriteConfigIO = new ConfigIO(fileToWrite);
-            String stringToWrite = "#Sample" + "\n";
-            for (int i = 0; i < filePaths.length; i++) {
-                stringToWrite += filePaths[i] + "\n";
-            }
-
-
-            WriteConfigIO.writeToFile(stringToWrite);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            stringToWrite += "#Sample" + i + "\n";
+            stringToWrite += fastaPath + "\n";
+            stringToWrite += gffPath + "\n";
+            stringToWrite += csvPath + "\n";
         }
 
+        ConfigIO WriteConfigIO = new ConfigIO(configFileToWrite);
+        WriteConfigIO.writeToFile(stringToWrite);
     }
 
-    public void readConfigFile() {
+    public void readConfigFile() throws Exception {
         //first get the new File from FileBrowser:
-        File configFile = getNewFiles();
+        File configFile = getNewFile();
 
         //then read the file
         try {
             ConfigIO readConfigIO = new ConfigIO(configFile);
 
+            readConfigIO.readInConfigFile(configFile);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //TODO then add then add the samples to the view!.
+        //TODO then add then add the samples to the view!
 
     }
 
 
-    public File getNewFiles() {
+    public File getNewFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Config File");
         fileChooser.getExtensionFilters().add(

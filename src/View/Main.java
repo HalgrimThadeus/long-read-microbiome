@@ -24,9 +24,8 @@ import java.util.ResourceBundle;
 public class Main extends Application {
 
     public static void main(String[] args) {
-        launch(args);
+        Application.launch(Main.class, args);
     }
-
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -35,5 +34,4 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
     }
-
 }

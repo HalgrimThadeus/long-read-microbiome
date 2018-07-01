@@ -25,7 +25,7 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem fx:id="addSamplesClicked" mnemonicParsing="false" onAction="#addSamplesClicked" text="Add New Samples from ConfigFile" />
+                  <MenuItem fx:id="addSamplesClicked" mnemonicParsing="false" onAction="#loadSamplesClicked" text="Add New Samples from ConfigFile" />
                   <MenuItem mnemonicParsing="false" onAction="#saveProjectButtonClicked" text="Save  Project (Samples to configFile)" />
             </items>
           </Menu>
