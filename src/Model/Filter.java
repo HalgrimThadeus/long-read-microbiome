@@ -39,7 +39,7 @@ public class Filter {
                     suitablereads.removeIf(isLengthEqual(Integer.parseInt(values.get(k))).negate());
                 }
                 else if(keys.get(k).equals("CGContent")){
-                    suitablereads.removeIf(isCGContentEqual(Integer.parseInt(values.get(k))).negate());
+                    //suitablereads.removeIf(isCGContentEqual(Integer.parseInt(values.get(k))).negate()); //TODO Fehler???
                 }
                 else if(keys.get(k).equals("Name")){
                     suitablereads.removeIf(isName(values.get(k)).negate());
