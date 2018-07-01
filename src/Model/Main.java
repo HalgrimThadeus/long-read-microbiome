@@ -40,6 +40,7 @@ public class Main {
             Sample sample = SampleReader.read("res/ehec/ehec.f1000000-ex.fasta", "res/ehec/ehec.f1000000-all.gff", "res/ehec/ehec.f1000000-readname2taxonid.txt");
             //Sample sample2 = SampleReader.read("res/ehec/ehec.f1000000-ex.fasta", "res/ehec/ehec.f1000000-all.gff");
             for (int i= 0; i < sample.getReads().size(); i++){
+                System.out.println(sample.getReads().get(i).getSequence().length());
                 System.out.println(sample.getReads().get(i).getTaxonomicId());
                 System.out.println(sample.getReads().get(i).getGFFEntries());
                 //System.out.println(sample.getReads().get(sample.getReads().size() - 1).getGFFEntries());
