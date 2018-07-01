@@ -75,7 +75,7 @@ public class NewSampleDialog {
             gffFileTextField.setText(fastaFile.getAbsolutePath());
         }
         if(event.getSource().equals(searchCsvFile)){
-            csvFile = this.getNewFiles("dmp");
+            csvFile = this.getNewFiles("txt");
             csvFileTextField.setText(fastaFile.getAbsolutePath());
         }
 
