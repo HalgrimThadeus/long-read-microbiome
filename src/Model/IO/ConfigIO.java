@@ -22,7 +22,6 @@ public class ConfigIO {
     }
 
 
-
     public void writeToFile(String stringToWrite) throws Exception {
 
 

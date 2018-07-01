@@ -30,15 +30,22 @@ public class SaveProjectController {
         //TODO store the information in a represententive and easy readable to the config file
         //TODO also check if file already exists, otherwise make new one istead of overwriting the existing
         try {
+            int configVersionName = 1;
+            File fileToWrite = null;
 
             JFileChooser f = new JFileChooser();
             f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             f.showSaveDialog(null);
             System.out.println(f.getSelectedFile());
 
-            String fileToWritePath = f.getSelectedFile() + "\\config.lrcfg";
+            do {
+                String fileToWritePath = f.getSelectedFile() + "\\config" + configVersionName + ".lrcfg";
 
-            File fileToWrite = new File(fileToWritePath);
+                fileToWrite = new File(fileToWritePath);
+
+                configVersionName++;
+
+            } while (fileToWrite.isFile());
 
 
             ConfigIO WriteConfigIO = new ConfigIO(fileToWrite);
