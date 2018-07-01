@@ -1,5 +1,7 @@
 package Model;
 
+import javax.sound.midi.Sequence;
+
 /**
  *This class models a FastAEntry, so it's a seqeunce with its header (incl. title)
  * It is the motherclass of a Read, which gets additional information from a GFF-File
@@ -16,6 +18,10 @@ package Model;
      */
     private String sequence;
 
+    /**
+     * GC content for filter:
+     */
+    private double gc_content;
     /**
      * Make a new FastaEntry
      * @param header
@@ -40,6 +46,19 @@ package Model;
      */
     public String getSequence(){
         return sequence;
+    }
+
+    public void calculateGCContent(){
+        int cg = 0;
+        for(char i: sequence.toCharArray()){
+            if((i == 'C') || (i == 'G')){
+                cg++;
+            }
+        }
+         gc_content = cg/sequence.length() * 100;
+    }
+    public double getGc_content(){
+        return gc_content;
     }
 
 }

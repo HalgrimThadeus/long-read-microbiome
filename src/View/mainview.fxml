@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1081.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Presenter">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1081.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="831.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -54,7 +54,7 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="260.0">
                            <children>
-                               <Button fx:id="newSampleBtn" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#newSampleBtnClicked" prefHeight="25.0" prefWidth="103.0" text="New Sample" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+                               <Button fx:id="newSampleButton" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#newSampleBtnClicked" prefHeight="25.0" prefWidth="103.0" text="New Sample" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
                               <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0">
                                 <content>
                                   <AnchorPane maxHeight="500">
@@ -70,9 +70,10 @@
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="293.0" prefWidth="260.0">
-                           <children>
-                              <Label layoutX="14.0" layoutY="14.0" prefHeight="12.0" prefWidth="49.0" text="Filters:" />
-                              <ListView fx:id="filterList" layoutX="8.0" layoutY="39.0" prefHeight="300.0" prefWidth="244.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="39.0">
+                          <children>
+                              <Button fx:id="newFilter" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#addNewFilterContextMenuClicked"  prefHeight="25.0" prefWidth="103.0" text="New Filter"  AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+                               <Label layoutX="14.0" layoutY="14.0" prefHeight="12.0" prefWidth="49.0" text="Filters:" />
+                              <ListView fx:id="filterList" layoutX="8.0" layoutY="39.0" prefHeight="258.0" prefWidth="244.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="39.0">
                                  <contextMenu>
                                     <ContextMenu>
                                       <items>

@@ -37,6 +37,11 @@ public class GffEntry {
      */
     private int frame;
 
+    /**
+     * length of the GffEntry calculated through end-start
+     */
+    private int length;
+
     private Map<String,String> attributes; //All the other information pertaining to this feature. The format, structure and content of this field is the one which varies the most between the three competing file formats.
 
     /**
@@ -154,5 +159,13 @@ public class GffEntry {
         }
 
         return output;
+    }
+
+    public void setLength(){
+        length = getEnd()-getStart();
+    }
+
+    public int getLength(){
+        return length;
     }
 }
