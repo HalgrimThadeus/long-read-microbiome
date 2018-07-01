@@ -38,14 +38,6 @@ public class Read extends FastAEntry{
         this.taxonomicId = (int) taxonomicId.get(this.id);
         this.gffEntries = new ArrayList<GffEntry>(); //initialize gffEntries list, won't have to check if its null
     }
-    //old constructor:
-    /*
-    public Read(FastAEntry fastaEntry){
-        super(fastaEntry.getHeader(), fastaEntry.getSequence()); //override
-        this.id = getIdFromHeader(fastaEntry.getHeader());
-        this.gffEntries = new ArrayList<GffEntry>(); //initialize gffEntries list, won't have to check if its null
-    }*/
-
     /**
      *
      * @return id
@@ -68,15 +60,6 @@ public class Read extends FastAEntry{
     public int getTaxonomicId(){
         return this.taxonomicId;
     }
-    //TODO: remove unnecessary setters?
-    /*
-    public void setId(String id){
-        this.id = id;
-    }
-    public void setGffEntries(ArrayList<GffEntry> gffEntries){
-        this.gffEntries = gffEntries;
-    }
-    */
 
     /**
      * processes id out of the header

@@ -5,10 +5,12 @@ import Controller.MainTabViewController;
 import Controller.SaveProjectController;
 import Model.FastAEntry;
 import Model.IO.FastAIO;
+import Model.Sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -56,6 +58,23 @@ public class Presenter implements Initializable {
     @FXML
     public Button saveProjectBtn;
 
+    @FXML
+    public Button searchFastaFile;
+
+    @FXML
+    public Button searchGffFile;
+
+    @FXML
+    public Button searchCsvFile;
+
+    public Button createNewSample;
+
+    public TextField fastaFileTextField;
+
+    public TextField gffFileTextField;
+
+    public TextField csvFileTextField;
+
     /**
      * Menues
      */
@@ -69,19 +88,36 @@ public class Presenter implements Initializable {
     }
 
     /**
-     * You can open a fastaFile at the Monoment and an item is added to the Accordion TODO Sample pop up???
+     * You can open a fastaFile at the Monoment and an item is added to the Accordion
      * @param event
      * @throws IOException
      */
     @FXML
     public void newSampleBtnClicked(ActionEvent event) throws IOException {
-
         SampleController controller = new SampleController();
-
+        controller.openSamplePane();
         controller.addNewSampleInAccordion(sampleAccordion);
+    }
 
-        File selectedFile = controller.getNewFiles();
-        editor.setHtmlText(controller.readInFastaFileInHtml(selectedFile));
+    public void addNewFilesClicked(ActionEvent event){
+        SampleController controller = new SampleController();
+        if(event.getSource().equals(searchFastaFile)){
+            File fastaFile = controller.getNewFiles("fasta");
+            fastaFileTextField.setText(fastaFile.getAbsolutePath());
+        }
+        if(event.getSource().equals(searchGffFile)){
+            File fastaFile = controller.getNewFiles("gff");
+            gffFileTextField.setText(fastaFile.getAbsolutePath());
+        }
+        if(event.getSource().equals(searchCsvFile)){
+            File fastaFile = controller.getNewFiles("dmp");
+            csvFileTextField.setText(fastaFile.getAbsolutePath());
+        }
+    }
+
+    public void createNewSampleClicked(ActionEvent event){
+
+
     }
 
     @FXML
