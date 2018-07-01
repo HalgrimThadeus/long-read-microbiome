@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
 import Controller.SampleController;
 
 
-public class MainView {
+public class MainView implements ProjectChangedListener {
 
     /**
      * Important Containers
@@ -111,30 +111,41 @@ public class MainView {
     @FXML
     public void newSampleBtnClicked(ActionEvent event) throws IOException {
         openSamplePane();
-        addNewSampleInAccordion(sampleAccordion);
     }
 
     private void openSamplePane() throws IOException {
+        NewSampleDialog newSampleDialog = new NewSampleDialog(this);
+
         Stage filterPopUp = new Stage();
-        Parent root = FXMLLoader.load(MainView.class.getResource("addNewSampleView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("addNewSampleView.fxml"));
+
+        loader.setController(newSampleDialog);
+        Parent root = loader.load();
+
         filterPopUp.setTitle("New Sample");
         filterPopUp.setScene(new Scene(root, 600, 250));
         filterPopUp.show();
     }
 
-    private void addNewSampleInAccordion(Accordion sampleAccordion){
+    @Override
+    public void sampleAdded(String sampleName, String fastaFileName, String gffFileName) {
+
+        //adds the sample information to the accordion pane
         TitledPane newAccordionPane = new TitledPane();
         AnchorPane newAnchorPane = new AnchorPane();
         TreeView newTreeView = new TreeView();
 
-        TreeItem<String> root = new TreeItem<>("Sample 1");
+        TreeItem<String> root = new TreeItem<>(sampleName);
         root.setExpanded(true);
 
-        TreeItem<String> fastaChild = new TreeItem<>("Files");
+        TreeItem<String> fastaChild = new TreeItem<>(fastaFileName);
         fastaChild.setExpanded(false);
 
+        TreeItem<String> gffChild = new TreeItem<>(gffFileName);
+        fastaChild.setExpanded(false);
 
         root.getChildren().add(fastaChild);
+        root.getChildren().add(gffChild);
         newTreeView.setRoot(root);
         newTreeView.setShowRoot(false);
 
@@ -149,7 +160,7 @@ public class MainView {
         newAccordionPane.setMaxHeight(100);
         newTreeView.setMinHeight(100);
         newAccordionPane.setMinHeight(100);
-        newAccordionPane.setText("Sample " + (sampleAccordion.getPanes().size() + 1));
+        newAccordionPane.setText(sampleName);
         newAccordionPane.setContent(newAnchorPane);
 
 

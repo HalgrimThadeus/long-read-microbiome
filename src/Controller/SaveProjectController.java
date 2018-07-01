@@ -24,7 +24,6 @@ public class SaveProjectController {
             //saveFilePathToFile(sample.getFilePaths());
         }
 
-
     }
 
     //Information: FileFormat *.lrcfg stands for "long read config File".

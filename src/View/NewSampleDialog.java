@@ -1,5 +1,6 @@
 package View;
 
+import Controller.SampleController;
 import Model.IO.SampleReader;
 import Model.Project;
 import Model.Sample;
@@ -22,9 +23,13 @@ import javafx.stage.Stage;
 import javax.print.DocFlavor;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.ResourceBundle;
 
-public class NewSampleDialog {
+public class NewSampleDialog implements Initializable {
 
     @FXML
     private Button searchFastaFile;
@@ -43,10 +48,21 @@ public class NewSampleDialog {
     @FXML
     private Button createNewSample;
 
-
     private File fastaFile = null;
     private File gffFile = null;
     private File csvFile = null;
+
+    private SampleController sampleController;
+
+    public NewSampleDialog() {
+
+    }
+
+    public NewSampleDialog(ProjectChangedListener context) throws IOException {
+        this.sampleController = new SampleController(context);
+
+
+    }
 
     private File getNewFiles(String extension){
         String usedExtension = "*." + extension;
@@ -60,8 +76,6 @@ public class NewSampleDialog {
 
         return selectedFile;
     }
-
-
 
     @FXML
     public void addNewFilesClicked(ActionEvent event){
@@ -78,8 +92,6 @@ public class NewSampleDialog {
             csvFile = this.getNewFiles("txt");
             csvFileTextField.setText(fastaFile.getAbsolutePath());
         }
-
-
     }
 
     //move this one in presenter?
@@ -93,22 +105,17 @@ public class NewSampleDialog {
             stage.close();
 
         try {
-            FileReader fastaFileReader = new FileReader(fastaFile.getAbsolutePath());
-            FileReader gffFileReader = new FileReader(gffFile.getAbsolutePath());
-            FileReader csvFileReader = new FileReader(csvFile.getAbsolutePath());
-            Sample newSample = SampleReader.read(fastaFileReader,gffFileReader,csvFileReader);
-            Project.addSamples(newSample);
-            File[] files = new File[3];
-            files[0] = fastaFile;
-            files[1] = gffFile;
-            files[2] = csvFile;
-            Project.listOfSamplesFilePaths.add(files);
-
+            sampleController.loadSampleFromFile(fastaFile,gffFile,csvFile);
         } catch(Exception e) {
             e.printStackTrace();
             //todo: show up error dialog in window
         }
 
         stage.close();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }
