@@ -61,7 +61,7 @@ public class FilterBuilder {
         return p -> (p.getGc_content() <= gcscore);
     }
 
-    public static Predicate<Read> isName(String name){
+    public static Predicate<Read> isGen(String name){
         return p-> {
             boolean isname = false;
           for(GffEntry gff: p.getGFFEntries()){

@@ -1,6 +1,7 @@
 package View;
 
 import Model.IO.SampleReader;
+import Model.Project;
 import Model.Sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -74,7 +75,7 @@ public class NewSampleDialog {
             gffFileTextField.setText(fastaFile.getAbsolutePath());
         }
         if(event.getSource().equals(searchCsvFile)){
-            csvFile = this.getNewFiles("dmp");
+            csvFile = this.getNewFiles("txt");
             csvFileTextField.setText(fastaFile.getAbsolutePath());
         }
 
@@ -96,6 +97,13 @@ public class NewSampleDialog {
             FileReader gffFileReader = new FileReader(gffFile.getAbsolutePath());
             FileReader csvFileReader = new FileReader(csvFile.getAbsolutePath());
             Sample newSample = SampleReader.read(fastaFileReader,gffFileReader,csvFileReader);
+            Project.addSamples(newSample);
+            File[] files = new File[3];
+            files[0] = fastaFile;
+            files[1] = gffFile;
+            files[2] = csvFile;
+            Project.listOfSamplesFilePaths.add(files);
+
         } catch(Exception e) {
             e.printStackTrace();
             //todo: show up error dialog in window

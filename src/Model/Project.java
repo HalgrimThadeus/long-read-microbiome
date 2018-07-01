@@ -14,20 +14,19 @@ public class Project {
     /**
      * static List contains all the Samples created while the program runs
      */
-    public static List listOfSamples;
+    public static List listOfSamples = new ArrayList();
 
     /**
      * static List contains all the Files for the Samples including the filepaths
-     * for every List element, File[0] = File for fasta entry, File[1] = file for gff entry, File[2] = file for csv
-     *
      */
-    public static List<File[]> listOfSamplesFilePaths;
+    public static List<File[]> listOfSamplesFilePaths = new ArrayList<>();
 
     /**
      * Add a new Sample
      * @param sampleToAdd
      */
-    public static void addSamples(Sample sampleToAdd){ listOfSamples.add(sampleToAdd);
+    public static void addSamples(Sample sampleToAdd){
+        listOfSamples.add(sampleToAdd);
     }
 
 }
