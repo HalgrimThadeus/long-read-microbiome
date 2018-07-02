@@ -12,6 +12,5 @@ public class MainTabViewController {
     public void addNewMainTabView(SplitPane mainSplitPain) throws IOException {
         TabPane newSampleTabPane = FXMLLoader.load(MainView.class.getResource("tabPane.fxml"));
         mainSplitPain.getItems().add(newSampleTabPane);
-        System.out.println(mainSplitPain.getItems());
     }
 }

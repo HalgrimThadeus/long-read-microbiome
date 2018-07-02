@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<TabPane prefHeight="344.0" prefWidth="589.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.TabPaneView">
+<TabPane onDragDropped="#sampleDropped" prefHeight="344.0" prefWidth="589.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.TabPaneView">
     <tabs>
         <Tab text="ReadChart">
             <content>
                 <AnchorPane fx:id="readChartPane" minHeight="0.0" minWidth="0.0" prefHeight="245.0" prefWidth="291.0">
                <children>
-                  <VBox alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="99.0" spacing="20.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="480.0" AnchorPane.topAnchor="40.0" />
-                  <VBox fx:id="sequences" alignment="BOTTOM_LEFT" layoutX="120.0" layoutY="22.0" prefHeight="238.0" prefWidth="469.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                  <VBox fx:id="names" alignment="BOTTOM_RIGHT" layoutX="14.0" layoutY="14.0" prefHeight="211.0" prefWidth="85.0" spacing="20.0" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                  <VBox fx:id="sequences" alignment="BOTTOM_LEFT" layoutX="120.0" layoutY="22.0" prefHeight="220.0" prefWidth="469.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
                    <NumberAxis label="Sequence Length" layoutX="120.0" layoutY="14.0" prefHeight="40.0" prefWidth="469.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="10.0" fx:id="xAxis">
 
                    </NumberAxis>

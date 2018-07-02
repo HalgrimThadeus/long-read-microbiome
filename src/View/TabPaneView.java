@@ -1,16 +1,18 @@
 package View;
 
 import Model.GffEntry;
+import Model.IO.ReadInTaxTreeService;
 import Model.IO.SampleReader;
 import Model.Read;
 import Model.Sample;
+import Model.Tax.TaxIO;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -30,6 +32,9 @@ public class TabPaneView implements Initializable {
     public VBox sequences;
 
     @FXML
+    public VBox names;
+
+    @FXML
     public NumberAxis xAxis;
 
     @FXML
@@ -44,15 +49,29 @@ public class TabPaneView implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             Sample sample = SampleReader.read("res/ehec/ehec.f1000000-ex.fasta", "res/ehec/ehec.f1000000-all.gff", "res/ehec/ehec.f1000000-readname2taxonid.txt");
+
             choseReadChoiceBox.getItems().addAll(sample.getReads());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        //TODO make drag and drop work
+        readChartPane.setOnDragOver((DragEvent event) -> {
+            event.acceptTransferModes(TransferMode.ANY);
+            event.consume();
+        });
+
+        readChartPane.setOnDragDropped((DragEvent event) -> {
+            TitledPane source = (TitledPane) event.getGestureSource();
+            String sample = (String)((TreeView)(((AnchorPane)(source.getContent())).getChildren().get(0))).getRoot().getValue();
+            System.out.println(sample);
+            event.setDropCompleted(true);
+            event.consume();
+        });
 
         xAxis.setLowerBound(0);
         xAxis.setUpperBound(2000);
-        xAxis.setTickUnit(200);
+        xAxis.setTickUnit(1000);
         xAxis.setMinorTickLength(1);
 
 
@@ -61,32 +80,49 @@ public class TabPaneView implements Initializable {
 
     }
 
+    public void sampleDropped(DragEvent event){
+        System.out.println("asdf");
+    }
 
+
+    /**
+     * If the addReadButton is clicked, a new Sequence + Genes is drawed if there is something selected in the
+     * choseReadChoiceBox.
+     * @param actionEvent
+     */
     public void addReadButtonClicked(ActionEvent actionEvent) {
         if(choseReadChoiceBox.getSelectionModel().getSelectedItem() == null){
             return;
-            //TODO Error pop up nothing selected
+            //TODO Error pop up nothing selected or somthing else
         }else{
             Read read = (Read)choseReadChoiceBox.getSelectionModel().getSelectedItem();
             int length = read.getSequence().length();
+            double oldUpperBound = xAxis.getUpperBound();
             List<GffEntry> gffEntries = read.getGFFEntries();
 
-
+            //Has do be done like this, because the getDisplayedValue can only be calculated when the xAxis is drawn...
             if(xAxisSetHigherBoundIfNeeded(length)){
-                //TODO IT IS problematic, that the frame isnt repainted, so the Displaypositions for the first time are not correct
-                xAxis.getScene().getRoot().requestLayout();
+                addSequenceLength(length, oldUpperBound);
+                addGenes(gffEntries, oldUpperBound);
+            }
+            else{
+                addSequenceLength(length, -1);
+                addGenes(gffEntries, -1);
             }
 
-            readChartPane.requestLayout();
+            addName(read.getTaxonomicId() + "");
 
-            addSequenceLength(length);
-            addGenes(gffEntries);
+
         }
 
 
     }
 
-
+    /**
+     * If you add a Sequenze longer then the xAxis, the xAxis is getting bigger
+     * @param length
+     * @return
+     */
     private boolean xAxisSetHigherBoundIfNeeded(int length){
         boolean wasNeeded = false;
         if(xAxis.getUpperBound() < length){
@@ -98,13 +134,26 @@ public class TabPaneView implements Initializable {
         return wasNeeded;
     }
 
-    private void addSequenceLength(int length){
+    /**
+     * Add the sequenceLengths to the plot
+     * @param length
+     * @param oldUpperBound
+     */
+    private void addSequenceLength(int length, double oldUpperBound){
+        System.out.println(length);
 
-
+        System.out.println(xAxis.getDisplayPosition(length));
+        System.out.println(xAxis.getDisplayPosition(length* (oldUpperBound/xAxis.getUpperBound())));
         Rectangle newSequence = new Rectangle();
         newSequence.setHeight(BAR_WIDTH);
-        newSequence.setWidth(xAxis.getDisplayPosition(length));
-        System.out.println(length);
+
+        if(oldUpperBound == -1)
+            newSequence.setWidth(xAxis.getDisplayPosition(length));
+        else{
+            newSequence.setWidth(xAxis.getDisplayPosition(length* (oldUpperBound/xAxis.getUpperBound())));
+        }
+
+
         newSequence.setFill(Color.GRAY);
         sequences.getChildren().add(newSequence);
 
@@ -121,7 +170,12 @@ public class TabPaneView implements Initializable {
         Tooltip.install(newSequence, t);
     }
 
-    private void addGenes(List<GffEntry> gffEntries){
+    /**
+     * Add all Genes to the plot
+     * @param gffEntries
+     * @param oldUpperBound
+     */
+    private void addGenes(List<GffEntry> gffEntries, double oldUpperBound){
         AnchorPane pane = new AnchorPane();
         pane.setMaxHeight(BAR_WIDTH);
 
@@ -129,9 +183,17 @@ public class TabPaneView implements Initializable {
             int start =gffEntries.get(j).getStart();
             int end = gffEntries.get(j).getEnd();
             Rectangle rectangle = new Rectangle();
-            rectangle.setWidth(xAxis.getDisplayPosition(end)-xAxis.getDisplayPosition(start));
+            if(oldUpperBound == -1){
+                rectangle.setWidth(xAxis.getDisplayPosition(end)-xAxis.getDisplayPosition(start));
+                rectangle.setX(xAxis.getDisplayPosition(start));
+            }
+            else{
+                rectangle.setWidth(xAxis.getDisplayPosition(end * (oldUpperBound/xAxis.getUpperBound()))-xAxis.getDisplayPosition(start * (oldUpperBound/xAxis.getUpperBound())));
+                rectangle.setX(xAxis.getDisplayPosition(start * (oldUpperBound/xAxis.getUpperBound())));
+            }
+
             rectangle.setHeight(BAR_WIDTH);
-            rectangle.setX(xAxis.getDisplayPosition(start));
+
             rectangle.setFill(Color.rgb(178,34,34,0.5));
             rectangle.setStrokeWidth(0.5);
             rectangle.setStroke(Color.BLACK);
@@ -155,6 +217,15 @@ public class TabPaneView implements Initializable {
         }
 
         sequences.getChildren().add(pane);
+    }
+
+    /**
+     * Add the names to the Plot
+     * @param name
+     */
+    private void addName(String name){
+        //TODO Transform them to names
+        names.getChildren().add(new Label(name));
     }
 
 }
