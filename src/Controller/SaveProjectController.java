@@ -25,7 +25,6 @@ public class SaveProjectController {
 
         saveFilePathToFile(listOfSamples, listOfPaths, configFileToWrite);
 
-
     }
 
     private File createEmptyFile() {
@@ -65,7 +64,7 @@ public class SaveProjectController {
             String gffPath = file[1].getAbsolutePath();
             String csvPath = file[2].getAbsolutePath();
 
-            stringToWrite += "Sample" + i + "\n";
+            stringToWrite += "#Sample" + i + "\n";
             stringToWrite += fastaPath + "\n";
             stringToWrite += gffPath + "\n";
             stringToWrite += csvPath + "\n";
@@ -75,14 +74,15 @@ public class SaveProjectController {
         WriteConfigIO.writeToFile(stringToWrite);
     }
 
-    public void readConfigFile() {
+    public void readConfigFile() throws Exception {
         //first get the new File from FileBrowser:
-        File configFile = getNewFiles();
+        File configFile = getNewFile();
 
         //then read the file
         try {
             ConfigIO readConfigIO = new ConfigIO(configFile);
 
+            readConfigIO.readInConfigFile(configFile);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -92,7 +92,7 @@ public class SaveProjectController {
     }
 
 
-    public File getNewFiles() {
+    public File getNewFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Config File");
         fileChooser.getExtensionFilters().add(
