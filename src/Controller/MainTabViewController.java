@@ -1,16 +1,16 @@
 package Controller;
 
-import View.MainView;
+import View.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TabPane;
 
 import java.io.IOException;
 
-public class MainTabViewController {
+public class MainTabViewController extends Controller{
 
     public void addNewMainTabView(SplitPane mainSplitPain) throws IOException {
-        TabPane newSampleTabPane = FXMLLoader.load(MainView.class.getResource("tabPane.fxml"));
+        TabPane newSampleTabPane = FXMLLoader.load(View.class.getResource("tabPaneView.fxml"));
         mainSplitPain.getItems().add(newSampleTabPane);
     }
 }

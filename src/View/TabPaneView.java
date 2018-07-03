@@ -24,7 +24,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class TabPaneView implements Initializable {
+public class TabPaneView extends View implements Initializable {
     @FXML
     public AnchorPane readChartPane;
 

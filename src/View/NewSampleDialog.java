@@ -23,7 +23,7 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
-public class NewSampleDialog {
+public class NewSampleDialog extends View{
 
     @FXML
     private Button searchFastaFile;
