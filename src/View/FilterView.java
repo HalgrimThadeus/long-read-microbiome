@@ -41,7 +41,7 @@ public class FilterView {
     TextField scorevalue;
 
     @FXML
-    public void addtoListoffilters() {
+    public void addtoListoffilters(){
 
         List<String> keys = new ArrayList<>();
         keys.add("Gen");
