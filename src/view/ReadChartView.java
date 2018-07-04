@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -39,7 +36,12 @@ public class ReadChartView implements Initializable {
     @FXML
     public ChoiceBox choseReadChoiceBox;
 
-    private final double BAR_WIDTH = 20;
+    @FXML
+    public Spinner<Integer> barWidthSpinner;
+
+    private final int BAR_WIDTH = 20;
+
+    private List<Read> filteredReads;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,6 +53,9 @@ public class ReadChartView implements Initializable {
             e.printStackTrace();
         }
 
+        SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 60);
+        barWidthSpinner.setValueFactory(valueFactory);
+        barWidthSpinner.getValueFactory().setValue(BAR_WIDTH);
 
     }
 
@@ -66,6 +71,7 @@ public class ReadChartView implements Initializable {
             //TODO Error pop up nothing selected or somthing else
         }else{
             Read read = (Read)choseReadChoiceBox.getSelectionModel().getSelectedItem();
+            filteredReads.add(read);
             int length = read.getSequence().length();
             double oldUpperBound = xAxis.getUpperBound();
             List<GffEntry> gffEntries = read.getGFFEntries();
@@ -134,6 +140,10 @@ public class ReadChartView implements Initializable {
             newSequence.setWidth((oldVal.doubleValue()/newVal.doubleValue()) * newSequence.getWidth());
         });
 
+        barWidthSpinner.valueProperty().addListener(((observable, oldValue, newValue) -> {
+            newSequence.setHeight(newValue);
+        }));
+
         Tooltip t = new Tooltip("Länge: " + length);
         Tooltip.install(newSequence, t);
     }
@@ -179,6 +189,10 @@ public class ReadChartView implements Initializable {
                 rectangle.setX(rectangle.getX() * (oldVal.doubleValue()/newVal.doubleValue()) );
             });
 
+            barWidthSpinner.valueProperty().addListener(((observable, oldValue, newValue) -> {
+                rectangle.setHeight(newValue);
+            }));
+
 
             pane.getChildren().add(rectangle);
 
@@ -192,7 +206,7 @@ public class ReadChartView implements Initializable {
      * @param name
      */
     private void addName(String name){
-        //TODO Transform them to names
+        //TODO Transform them to names add listener to spinner
         Label label = new Label(name);
         names.getChildren().add(label);
         names.setSpacing(BAR_WIDTH*1.25);
