@@ -1,7 +1,7 @@
 
 import org.junit.*;
-import Model.FastAEntry;
-import Model.Read;
+import model.FastAEntry;
+import model.Read;
 //import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -1,7 +1,7 @@
 
-import Model.GffEntry;
-import Model.IO.SampleReader;
-import Model.Sample;
+import model.GffEntry;
+import model.io.SampleReader;
+import model.Sample;
 import org.junit.Test;
 
 import java.io.*;

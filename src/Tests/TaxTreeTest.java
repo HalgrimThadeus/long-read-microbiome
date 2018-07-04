@@ -1,10 +1,7 @@
 
-import Model.Tax.TaxNode;
-import Model.Tax.TaxTree;
+import model.tax.TaxNode;
+import model.tax.TaxTree;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 
 import static org.junit.Assert.*;
 

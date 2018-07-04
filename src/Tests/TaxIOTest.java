@@ -1,7 +1,7 @@
-import Model.IO.ReadInTaxTreeService;
-import Model.Tax.TaxIO;
-import Model.Tax.TaxNode;
-import Model.Tax.TaxTree;
+import model.services.ReadInTaxTreeService;
+import model.io.TaxIO;
+import model.tax.TaxNode;
+import model.tax.TaxTree;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.embed.swing.JFXPanel;
