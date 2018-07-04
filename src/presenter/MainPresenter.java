@@ -2,9 +2,6 @@ package presenter;
 
 import model.Project;
 import view.MainView;
-import view.NewFilterPopUp;
-import view.WorkView;
-import view.WorkViewContainer;
 
 public class MainPresenter {
 
@@ -32,7 +29,7 @@ public class MainPresenter {
         this.samplePresenter = this.mainView.getSampleView().getSamplePresenter();
         //todo initiliaize model to presenter
         this.workViewPresenter = new WorkViewPresenter();
-        this.workViewContainerPresenter = new WorkViewContainerPresenter();
+        this.workViewContainerPresenter = this.mainView.getWorkViewContainer().getWorkViewContainerPresenter();
 
     }
 

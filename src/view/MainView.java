@@ -3,11 +3,8 @@ package view;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
-import javafx.scene.layout.AnchorPane;
-import org.w3c.dom.html.HTMLAnchorElement;
 import presenter.MainPresenter;
 
 import java.io.IOException;
@@ -59,9 +56,13 @@ public class MainView {
         return (FilterView) this.filterView;
     }
 
+    public WorkViewContainer getWorkViewContainer() {
+        return workViewContainer;
+    }
+
     @FXML
     public void toolbarBtnAddSamplePage(ActionEvent event) throws IOException {
-        ((WorkViewContainer) workViewContainer).addNewMainTabView(mainSplitPain);
+        ((WorkViewContainer) workViewContainer).addNewMainTabView();
     }
 
     @FXML

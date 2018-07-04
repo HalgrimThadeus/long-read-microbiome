@@ -2,11 +2,11 @@ package presenter;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TabPane;
 import view.MainView;
+import view.WorkView;
+import view.WorkViewContainer;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Contains all the WorkViews
@@ -14,9 +14,21 @@ import java.util.List;
 
 public class WorkViewContainerPresenter {
 
-    public void addNewMainTabView(SplitPane mainSplitPain) throws IOException {
-        TabPane newSampleTabPane = FXMLLoader.load(MainView.class.getResource("workView.fxml"));
-        mainSplitPain.getItems().add(newSampleTabPane);
+    private WorkViewContainer workViewContainer;
+
+    public WorkViewContainerPresenter(WorkViewContainer workViewContainer) {
+        this.workViewContainer = workViewContainer;
+    }
+
+
+    public void addNewMainTabView() throws IOException {
+        WorkView newSampleTabPane;
+        FXMLLoader loader = new FXMLLoader(MainView.class.getResource("workView.fxml"));
+        //loader.setController(this.workViewContainer);
+
+        newSampleTabPane = loader.load();
+
+        ((SplitPane)(workViewContainer.getChildren().get(0))).getItems().add(newSampleTabPane);
     }
 
 }
