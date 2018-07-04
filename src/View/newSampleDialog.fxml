@@ -7,10 +7,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="250.0" maxWidth="500.0" prefHeight="250.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox layoutY="55.0" prefHeight="137.0" prefWidth="435.0" spacing="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="30.0">
+      <VBox layoutY="55.0" prefHeight="157.0" prefWidth="450.0" spacing="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
+            <Label text="Sample Name" />
+            <TextField />
             <Label text="FastaFiles" />
             <TextField fx:id="fastaFileTextField" />
             <Label text="GffFiles" />
@@ -22,13 +24,13 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <VBox layoutX="506.0" layoutY="73.0" prefHeight="120.0" prefWidth="24.0" spacing="30.0" AnchorPane.leftAnchor="506.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="50.0">
+      <VBox layoutX="463.0" layoutY="73.0" prefHeight="135.0" prefWidth="19.0" spacing="30.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="463.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="73.0">
          <children>
             <Button fx:id="searchFastaFile" mnemonicParsing="false" onAction="#addNewFilesClicked" text="..." />
             <Button fx:id="searchGffFile" mnemonicParsing="false" onAction="#addNewFilesClicked" text="..." />
             <Button fx:id="searchCsvFile" mnemonicParsing="false" onAction="#addNewFilesClicked" text="..." />
          </children>
       </VBox>
-      <Button fx:id="createNewSample" layoutX="431.0" layoutY="238.0" mnemonicParsing="false" onAction="#createNewSampleClicked" prefHeight="25.0" prefWidth="140.0" text="Create new Sample" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Button fx:id="createNewSample" layoutX="352.0" layoutY="217.0" mnemonicParsing="false" onAction="#createNewSampleClicked" prefHeight="25.0" prefWidth="140.0" text="Create new Sample" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
    </children>
 </AnchorPane>

@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterView {
+public class FilterView extends View{
 
     /**
      * List of filters (idk if it belongs here)
@@ -41,7 +41,7 @@ public class FilterView {
     TextField scorevalue;
 
     @FXML
-    public void addtoListoffilters() {
+    public void addtoListoffilters(){
 
         List<String> keys = new ArrayList<>();
         keys.add("Gen");

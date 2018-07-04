@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SaveProjectController {
+public class SaveProjectController extends Controller {
 
     public void saveProject() throws Exception {
 

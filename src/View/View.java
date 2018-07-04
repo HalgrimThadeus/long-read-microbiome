@@ -3,15 +3,10 @@ package View;
 import Controller.FilterController;
 import Controller.MainTabViewController;
 import Controller.SaveProjectController;
-import Model.FastAEntry;
-import Model.IO.FastAIO;
-import Model.Sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -24,13 +19,10 @@ import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
-import Controller.SampleController;
 
 
-public class MainView implements ProjectChangedListener {
+public class View implements ProjectChangedListener {
 
     /**
      * Important Containers
@@ -117,7 +109,7 @@ public class MainView implements ProjectChangedListener {
         NewSampleDialog newSampleDialog = new NewSampleDialog(this);
 
         Stage filterPopUp = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("addNewSampleView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("newSampleDialog.fxml"));
 
         loader.setController(newSampleDialog);
         Parent root = loader.load();
