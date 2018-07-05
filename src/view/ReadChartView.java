@@ -15,6 +15,7 @@ import model.Sample;
 import model.io.SampleReader;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -39,9 +40,12 @@ public class ReadChartView implements Initializable {
     @FXML
     public Spinner<Integer> barWidthSpinner;
 
+    @FXML Slider zoomSlider1;
+
     private final int BAR_WIDTH = 20;
 
-    private List<Read> filteredReads;
+    //For testing
+    private List<Read> filteredReads = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,6 +60,8 @@ public class ReadChartView implements Initializable {
         SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 60);
         barWidthSpinner.setValueFactory(valueFactory);
         barWidthSpinner.getValueFactory().setValue(BAR_WIDTH);
+
+
 
     }
 

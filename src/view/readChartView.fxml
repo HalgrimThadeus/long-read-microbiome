@@ -13,8 +13,8 @@
 
             <ChoiceBox fx:id="choseReadChoiceBox" layoutX="10.0" layoutY="2.0" prefWidth="150.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="2.0" />
             <Button fx:id="addReadButton" layoutX="160.0" layoutY="2.0" mnemonicParsing="false" onAction="#addReadButtonClicked" prefHeight="25.0" prefWidth="26.0" text="+" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="2.0" />
-      <Slider layoutX="306.0" layoutY="8.0" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="8.0" />
-      <Slider layoutX="446.0" layoutY="8.0" value="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="8.0" />
+      <Slider fx:id="zoomSlider1" layoutX="306.0" layoutY="8.0" prefHeight="14.0" prefWidth="275.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="8.0" />
+      <Slider layoutX="446.0" layoutY="8.0" prefHeight="14.0" prefWidth="263.0" value="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="8.0" />
       <Label layoutX="247.0" layoutY="6.0" text="Zoom Area:" AnchorPane.rightAnchor="291.0" AnchorPane.topAnchor="6.0" />
       <Spinner fx:id="barWidthSpinner" editable="true" layoutX="305.0" layoutY="3.0" prefHeight="25.0" prefWidth="62.0" AnchorPane.rightAnchor="367.0" AnchorPane.topAnchor="3.0" />
       <Label layoutX="246.0" layoutY="7.0" text="Bar Width:" AnchorPane.rightAnchor="432.0" AnchorPane.topAnchor="7.0" />
