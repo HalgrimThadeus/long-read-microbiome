@@ -1,5 +1,9 @@
 package model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,22 +15,28 @@ import java.util.List;
 
 public class Project {
 
-    /**
-     * static List contains all the Samples created while the program runs
-     */
-    public static List listOfSamples = new ArrayList();
+    private ObservableList<Sample> samples = FXCollections.observableArrayList();
+    private ObservableList<Filter> filters = FXCollections.observableArrayList();
 
     /**
      * static List contains all the Files for the Samples including the filepaths
      */
-    public static List<File[]> listOfSamplesFilePaths = new ArrayList<>();
+    private List<File> listOfSamplesFilePaths = new ArrayList<>();
 
     /**
      * Add a new Sample
-     * @param sampleToAdd
+     * @param sample
      */
-    public static void addSamples(Sample sampleToAdd){
-        listOfSamples.add(sampleToAdd);
+    public void addSamples(Sample sample){
+        samples.add(sample);
+    }
+
+    public ObservableList<Sample> getSamples() {
+        return this.samples;
+    }
+
+    public ObservableList<Filter> getFilters() {
+        return this.filters;
     }
 
 }
