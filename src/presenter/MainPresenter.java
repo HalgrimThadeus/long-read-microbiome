@@ -75,18 +75,18 @@ public class MainPresenter {
         return comparatorPopUpPresenter;
     }
 
-    public void openStartComperatorPopup() throws IOException {
-        ComparatorPopUp comparatorPopUp = new ComparatorPopUp(comparatorPopUpPresenter);
+    public void openStartComparatorPopup() throws IOException {
+        ComparatorPopUp newComparatorPopUp = new ComparatorPopUp(comparatorPopUpPresenter);
 
-        Stage comperatorPopUp = new Stage();
+        Stage comparatorPopUp = new Stage();
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("comparatorPopUp.fxml"));
 
-        loader.setController(comparatorPopUp);
+        loader.setController(newComparatorPopUp);
         Parent root = loader.load();
 
-        comperatorPopUp.setTitle("New Comperator");
-        comperatorPopUp.setScene(new Scene(root, 600, 250));
-        comperatorPopUp.show();
+        comparatorPopUp.setTitle("New Comparator");
+        comparatorPopUp.setScene(new Scene(root, 600, 250));
+        comparatorPopUp.show();
     }
 
     //TODO add stuff, that all Controllers share

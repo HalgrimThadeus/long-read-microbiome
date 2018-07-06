@@ -86,7 +86,7 @@ public class MainView {
     @FXML
     public void onStartComperatorButtonClicked(ActionEvent clickEvent) throws Exception{
         try {
-            mainPresenter.openStartComperatorPopup();
+            mainPresenter.openStartComparatorPopup();
         }catch (Exception e){
             e.printStackTrace();
         }
