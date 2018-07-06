@@ -1,7 +1,14 @@
 package presenter;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import model.Project;
+import view.ComparatorPopUp;
 import view.MainView;
+
+import java.io.IOException;
 
 public class MainPresenter {
 
@@ -15,6 +22,7 @@ public class MainPresenter {
     private WorkViewContainerPresenter workViewContainerPresenter;
     private NewSamplePopUpPresenter newSamplePopUpPresenter;
     private NewFilterPopUpPresenter newFilterPopUpPresenter;
+    private ComparatorPopUpPresenter comparatorPopUpPresenter;
     //... more Presenter
 
     public MainPresenter(Project project, MainView mainView){
@@ -30,6 +38,7 @@ public class MainPresenter {
         //todo initiliaize model to presenter
         this.workViewPresenter = new WorkViewPresenter();
         this.workViewContainerPresenter = this.mainView.getWorkViewContainer().getWorkViewContainerPresenter();
+        this.comparatorPopUpPresenter = new ComparatorPopUpPresenter();
 
     }
 
@@ -60,6 +69,24 @@ public class MainPresenter {
 
     public NewFilterPopUpPresenter getNewFilterPopUpPresenter() {
         return newFilterPopUpPresenter;
+    }
+
+    public ComparatorPopUpPresenter getComparatorPopUpPresenter() {
+        return comparatorPopUpPresenter;
+    }
+
+    public void openStartComperatorPopup() throws IOException {
+        ComparatorPopUp comparatorPopUp = new ComparatorPopUp(comparatorPopUpPresenter);
+
+        Stage comperatorPopUp = new Stage();
+        FXMLLoader loader = new FXMLLoader(MainView.class.getResource("comparatorPopUp.fxml"));
+
+        loader.setController(comparatorPopUp);
+        Parent root = loader.load();
+
+        comperatorPopUp.setTitle("New Comperator");
+        comperatorPopUp.setScene(new Scene(root, 600, 250));
+        comperatorPopUp.show();
     }
 
     //TODO add stuff, that all Controllers share

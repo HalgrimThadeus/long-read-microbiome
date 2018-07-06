@@ -1,11 +1,11 @@
-import model.Project;
-import presenter.MainPresenter;
-import view.MainView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Project;
+import presenter.MainPresenter;
+import view.MainView;
 
 public class Main extends Application {
 
@@ -27,6 +27,7 @@ public class Main extends Application {
         Parent root = loader.load();
 
         MainPresenter mainPresenter = new MainPresenter(project, mainView);
+        mainView.setMainPresenter(mainPresenter);
         primaryStage.setTitle("Long Read Microbiome");
         primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
