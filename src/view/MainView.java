@@ -32,7 +32,7 @@ public class MainView {
 
 
     /**
-     *
+     * text
      */
     @FXML
     private WorkViewContainer workViewContainer;

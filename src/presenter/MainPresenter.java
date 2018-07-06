@@ -23,6 +23,7 @@ public class MainPresenter {
     private NewSamplePopUpPresenter newSamplePopUpPresenter;
     private NewFilterPopUpPresenter newFilterPopUpPresenter;
     private ComparatorPopUpPresenter comparatorPopUpPresenter;
+    private ComparatorViewPresenter comparatorViewPresenter;
     //... more Presenter
 
     public MainPresenter(Project project, MainView mainView){
@@ -39,6 +40,7 @@ public class MainPresenter {
         this.workViewPresenter = new WorkViewPresenter();
         this.workViewContainerPresenter = this.mainView.getWorkViewContainer().getWorkViewContainerPresenter();
         this.comparatorPopUpPresenter = new ComparatorPopUpPresenter();
+        this.comparatorViewPresenter = new ComparatorViewPresenter();
 
     }
 
@@ -73,6 +75,10 @@ public class MainPresenter {
 
     public ComparatorPopUpPresenter getComparatorPopUpPresenter() {
         return comparatorPopUpPresenter;
+    }
+
+    public ComparatorViewPresenter getComparatorViewPresenter(){
+        return comparatorViewPresenter;
     }
 
     public void openStartComparatorPopup() throws IOException {

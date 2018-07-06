@@ -1,39 +1,33 @@
-package presenter;
+package view;
 
+import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
-import view.ComparatorPopUp;
-import view.ComparatorView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ComparatorPopUpPresenter {
 
-    private ComparatorViewPresenter comparatorViewPresenter;
-    private ComparatorPopUp comparatorPopUp;
+public class ComparatorViewExample extends Application {
 
-    public ComparatorPopUpPresenter(){
-    }
 
-    public void openComparatorView() throws IOException {
-        ComparatorView newComparatorView = new ComparatorView(comparatorViewPresenter);
+    @Override public void start(Stage stage) {
 
-        Stage comparatorView = new Stage();
-//        FXMLLoader loader = new FXMLLoader(MainView.class.getResource("comparatorView.fxml"));
-//        loader.setController(newComparatorView);
-//        Parent root = loader.load();
-
-        //comparatorView.setTitle("Comparator");
-        //comparatorView.setScene(new Scene(root, 600, 250));
-        //comparatorView.show();
+        /*
+        int numberOfBins; //given as default/Freedman–Diaconis rule or user input (can be changed) - determines size of counts & categories list
+        final int minNumberOfBins = 0;
+        final int maxNumberOfBins = 100;
+        double sizeOfRanges; //calculated by concrete data values (smallest-biggest) & number of bins
+        ArrayList<Double> data; //data array - stores calculated data for each read in the sample
+        ArrayList<Integer> counts = new ArrayList<Integer>(); //count array - stores number of reads within one range in one field
+        ArrayList<String> categories = new ArrayList<String>(); //string array - stores names for categories/ranges
+        */
 
         String name1 = "Sample1";
         ArrayList<Double> data1
@@ -54,7 +48,15 @@ public class ComparatorPopUpPresenter {
         ArrayList<Integer> counts1 = groupData(data1, numberOfBins, sizeOfRanges);
         ArrayList<Integer> counts2 = groupData(data2, numberOfBins, sizeOfRanges);
 
-        comparatorView.setTitle("Comparison");
+        System.out.println(numberOfBins);
+        System.out.println(sizeOfRanges);
+        System.out.println(categories);
+        System.out.println(counts1);
+        System.out.println(counts2);
+
+        /////////////////////////////////////////////////
+
+        stage.setTitle("Comparison");
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("GC content [%]");
@@ -77,10 +79,16 @@ public class ComparatorPopUpPresenter {
 
         Scene scene  = new Scene(lineChart,800,600);
         lineChart.getData().addAll(series1, series2);
-        comparatorView.setScene(scene);
-        comparatorView.show();
+        stage.setScene(scene);
+        stage.show();
     }
 
+//    public static void main(String[] args) {
+//
+//        launch(args);
+//    }
+
+    //////////////////////////////////// Freedman–Diaconis rule:
     public static int calculateNumberOfBins(ArrayList<Double> data){
         return (int)(2*(interquantileRange(data)/Math.pow(data.size(),1.0/3.0)));
     }
@@ -158,4 +166,45 @@ public class ComparatorPopUpPresenter {
         }
         return counts;
     }
+
+
+    /*
+    //gc-content
+    public ArrayList<Double> getDataCGContent(Sample sample){
+        ArrayList<Double> data = new ArrayList<Double>(sample.getReads().size());
+        for(Read read : sample.getReads()){
+            data.add(read.calculateGCContent());
+        }
+        return data;
+    }
+
+    //length of the genes
+    public ArrayList<Double> getDataLength (Sample sample){
+        ArrayList<Double> data = new ArrayList<Double>(sample.getReads().size());
+        for(Read read : sample.getReads()){
+            data.add((double)read.getSequence().length());
+        }
+        return data;
+    }
+
+    //number of genes
+    public ArrayList<Double> getDataNumberOfGenes (Sample sample){
+        ArrayList<Double> data = new ArrayList<Double>(sample.getReads().size());
+        for(Read read : sample.getReads()){
+            data.add((double)read.getGFFEntries().size());
+        }
+        return data;
+    }
+
+    //gene density
+    public ArrayList<Double> getDataGeneDensity (Sample sample){
+        ArrayList<Double> data = new ArrayList<Double>(sample.getReads().size());
+        for(Read read : sample.getReads()){
+            int numberOfGenes = read.getGFFEntries().size();
+            int length = read.getSequence().length();
+            data.add((double)numberOfGenes/length); //average number of genes per basepair
+        }
+        return data;
+    }
+    */
 }
