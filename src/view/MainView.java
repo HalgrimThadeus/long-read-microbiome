@@ -43,6 +43,9 @@ public class MainView {
 
     private MainPresenter mainPresenter;
 
+    public void setMainPresenter(MainPresenter mainPresenter) {
+        this.mainPresenter = mainPresenter;
+    }
 
     /**
      * TODO refactor method names by our convention
@@ -80,6 +83,14 @@ public class MainView {
 
     }
 
+    @FXML
+    public void onStartComperatorButtonClicked(ActionEvent clickEvent) throws Exception{
+        try {
+            mainPresenter.openStartComperatorPopup();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Method to add multiple samples form a config (.lrcfg) File
