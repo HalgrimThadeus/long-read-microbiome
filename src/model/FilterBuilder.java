@@ -3,6 +3,20 @@ import java.util.function.Predicate;
 
 public class FilterBuilder {
 
+    private Predicate<Read> mainPredicate = new Predicate<Read>() {
+        @Override
+        public boolean test(Read read) {
+            return true;
+        }
+    };
+
+
+    public void addMainPredicate(Predicate<Read> additionalPredicate){
+       mainPredicate = mainPredicate.and(additionalPredicate);
+    }
+    public Predicate<Read> getMainPredicate(){
+        return mainPredicate;
+    }
     //examples:
    public static Predicate<Read> isScoreHigher(Integer score){
        return p-> {
@@ -46,7 +60,7 @@ public class FilterBuilder {
     }
 
 
-    public static Predicate<Read> isGCContentEqual(Integer gcscore){
+    public static Predicate<Read> isGCContentEqual(double gcscore){
         return p -> (p.getGCcontent() == gcscore);
 
    }
@@ -114,8 +128,13 @@ public class FilterBuilder {
        };
     }
 
-    public static Predicate<Read> isTaxa(Integer taxaId){
+    public static Predicate<Read> isTaxaId(Integer taxaId){
        return p-> p.getTaxonomicId() == taxaId ;
-
     }
+
+    public boolean applyMainPredicate(Read read){
+        return (mainPredicate.test(read));
+    }
+
+
 }

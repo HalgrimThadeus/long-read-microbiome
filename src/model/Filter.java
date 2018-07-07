@@ -1,11 +1,8 @@
 package model;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-import static model.FilterBuilder.*;
+import java.util.function.Predicate;
 
 /**
  * List of key are the selected criteria
@@ -19,57 +16,85 @@ import static model.FilterBuilder.*;
  *
  */
 public class Filter {
-    private List<Read> acceptedreads = new ArrayList<>();
-    private List<String> keys;
-    private List<String> values;
-    private List<String> criterias;
+    private Predicate<Read> filterPredicate;
     private String name;
-
-    public Filter(String name,List<String> keys, List<String> values){
-        this.keys = keys;
-        this.values = values;
+    public Filter(String name, Predicate<Read> filterPredicate){
+        this.filterPredicate = filterPredicate;
         this.name = name;
     }
     public String getName(){
         return name;
     }
 
+
+
+
+    public List<Read> suitable(Sample sample){
+        List<Read> acceptedReads = new ArrayList<>();
+        for(Read read: sample.getReads()){
+            if(filterPredicate.test(read)){
+                acceptedReads.add(read);
+            }
+        }
+
+        return acceptedReads;
+    }
+
+
+    /**
     public List<Read> suitable(Sample sample){
         List<Read> reads = sample.getReads();
-        List<Read> suitablereads = sample.getReads();
-             for(int k = 0; k < keys.size(); k++) {
-                 if (values.get(k) != null) {
-                     if (keys.get(k).equals("Length")) {
-                         suitablereads.removeIf(isLengthEqual(Integer.parseInt(values.get(k))).negate());
-                     } else if (keys.get(k).equals("GCContent")) {
-                         suitablereads.removeIf(isGCContentEqual(Integer.parseInt(values.get(k))).negate());
-                     } else if (keys.get(k).equals("Gen")) {
-                         suitablereads.removeIf(isGen(values.get(k)).negate());
-                     } else if (keys.get(k).equals("Score")) {
-                         suitablereads.removeIf(isScoreEqual(Integer.parseInt(values.get(k))).negate());
-                     } else if (keys.get(k).equals("TaxaId")) {
-                         suitablereads.remove((isTaxa(Integer.parseInt(values.get(k)))).negate());
-                     } else {
-                         for (Read read : reads) {
-                             boolean fits = false;
-                             for (GffEntry gff : read.getGFFEntries()) {
-                                 if (gff.getAttributes().get(keys.get(k)).equals(values.get(k))) {
-                                     fits = true;
-                                     break;
-                                 }
-                             }
-                             if (!fits) {
-                                 suitablereads.remove(read);
-                             }
-                         }
-                     }
+        List<Read> suitablereads = new ArrayList<>();
+        for(Read read: reads) {
+            boolean fits = true;
+            for (int k = 0; k < keys.size(); k++) {
+                if (!values.get(k).equals("")) {
+                    if (keys.get(k).equals("Length")) {
+                        if(!isLengthEqual(Integer.parseInt(values.get(k))).test(read)) {
+                            fits = false;
+                            break;
+                        }
 
-                 }
+                    } else if (keys.get(k).equals("GCContent")) {
+                        if(!isGCContentEqual(Integer.parseInt(values.get(k))).test(read)){
+                            fits = false;
+                            break;
+                        }
+                    } else if (keys.get(k).equals("Gen")) {
+                        if(!isGen(values.get(k)).test(read)){
+                            fits = false;
+                            break;
+                        }
+                    } else if (keys.get(k).equals("Score")) {
+                        if (!isScoreEqual(Integer.parseInt(values.get(k))).test(read)){
+                            fits = false;
+                            break;
+                        }
+                    } else if (keys.get(k).equals("TaxaId")) {
+                        if(!isTaxa(Integer.parseInt(values.get(k))).test(read)){
+                            fits = false;
+                            break;
+                        }
+                    } else {
+                            for (GffEntry gff : read.getGFFEntries()) {
+                                if (!gff.getAttributes().get(keys.get(k)).equals(values.get(k))) {
+                                    fits = false;
+                                    break;
+                                }
+                            }
+                            if (fits) {
+                                suitablereads.add(read);
+                            }
+                        }
 
-             }
 
+                }
 
+            }
+
+        }
         return suitablereads;
+
     }
 
 
@@ -88,13 +113,13 @@ public class Filter {
         }
     }
 
-
+**/
 
 
 /**
  * gets all the attributes so we can display them in the UI. With that the user will be abel to filter
  * and sets them to criteria
- */
+
     protected void getFilterCriteria(Sample sample){
         criterias = new ArrayList();
         List<Read> reads = sample.getReads();
@@ -117,7 +142,7 @@ public class Filter {
         return criterias;
     }
 
-
+**/
 
 
 

@@ -2,9 +2,9 @@ package presenter;
 
 import javafx.collections.ObservableList;
 import model.Filter;
+import model.Read;
 
-import java.security.Provider;
-import java.util.List;
+import java.util.function.Predicate;
 
 
 public class NewFilterPopUpPresenter {
@@ -14,9 +14,9 @@ public class NewFilterPopUpPresenter {
         this.listOfFilter = listOfFilter;
     }
 
-    public void updateFilterList(String name,List<String> keys, List<String> values){
+    public void updateFilterList(String name, Predicate<Read> filterPredicate){
 
-        Filter newFilter = new Filter(name,keys,values);
+        Filter newFilter = new Filter(name, filterPredicate );
 
         listOfFilter.add(newFilter);
 
