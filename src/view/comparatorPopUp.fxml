@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="238.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="238.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="37.0" layoutY="42.0" text="select 2 filtered samples:" />
-      <ChoiceBox layoutX="37.0" layoutY="75.0" prefHeight="25.0" prefWidth="198.0" />
-      <ChoiceBox layoutX="37.0" layoutY="122.0" prefHeight="25.0" prefWidth="198.0" />
-      <Button layoutX="167.0" layoutY="174.0" mnemonicParsing="false" onAction="#onCompareButtonClicked" text="compare" textAlignment="CENTER">
+      <Label layoutX="37.0" layoutY="42.0" text="select 2 samples:" />
+      <ChoiceBox layoutX="37.0" layoutY="75.0" prefHeight="25.0" prefWidth="153.0" />
+      <ChoiceBox layoutX="37.0" layoutY="122.0" prefHeight="25.0" prefWidth="153.0" />
+      <Button layoutX="377.0" layoutY="179.0" mnemonicParsing="false" onAction="#onCompareButtonClicked" text="compare" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Label layoutX="200.0" layoutY="79.0" text="with filter" />
+      <Label layoutX="200.0" layoutY="126.0" text="with filter" />
+      <ChoiceBox layoutX="264.0" layoutY="75.0" prefHeight="25.0" prefWidth="153.0" />
+      <ChoiceBox layoutX="264.0" layoutY="122.0" prefHeight="25.0" prefWidth="153.0" />
    </children>
 </AnchorPane>
