@@ -32,18 +32,17 @@ public class MainView {
 
 
     /**
-     *
+     *  with these attributes you could access the fxcontroller of the subviews and the subview itself
+     *  !!!DONT CHANGE THE ATTRIBUTES NAMES!!! (they get automatically bound by fxml)
      */
     @FXML
-    private WorkViewContainer workViewContainer;
+    private WorkViewContainer workViewContainerController;
     @FXML
-    private FilterView filterView;
-
-    /**
-     * this is the SampleView, which is in this case a fx:controller
-     */
+    private FilterView filterViewController;
     @FXML
     private SampleView sampleViewController;
+
+
 
     private MainPresenter mainPresenter;
 
@@ -51,34 +50,31 @@ public class MainView {
         this.mainPresenter = mainPresenter;
     }
 
-    /**
-     * TODO refactor method names by our convention
-     */
 
-    public SampleView getSampleViewController() {
+    public SampleView getSampleView() {
         return sampleViewController;
     }
 
     public FilterView getFilterView() {
-        return this.filterView;
+        return this.filterViewController;
     }
 
     public WorkViewContainer getWorkViewContainer() {
-        return workViewContainer;
+        return workViewContainerController;
     }
 
     @FXML
-    public void toolbarBtnAddSamplePage(ActionEvent event) throws IOException {
-        ((WorkViewContainer) workViewContainer).addNewMainTabView();
+    public void onAddSamplePageToolbarButtonClicked(ActionEvent event) throws IOException {
+        ((WorkViewContainer) workViewContainerController).addNewMainTabView();
     }
 
     @FXML
-    public void addNewFilterContextMenuClicked(ActionEvent event) throws IOException {
+    public void onAddNewFilterContextMenuClicked(ActionEvent event) throws IOException {
         mainPresenter.getNewFilterPopUpPresenter().openNewFilterDialog();
     }
 
     @FXML
-    public void saveProjectButtonClicked(ActionEvent clickEvent) throws Exception {
+    public void onSaveProjectButtonClicked(ActionEvent clickEvent) throws Exception {
         try {
             mainPresenter.getSaveProjectPresenter().saveProject();
         } catch (Exception e) {
@@ -102,7 +98,7 @@ public class MainView {
      * @throws Exception
      */
     @FXML
-    public void loadSamplesClicked(ActionEvent clickEvent) throws Exception {
+    public void onLoadSamplesContextMenuClicked(ActionEvent clickEvent) throws Exception {
         mainPresenter.getSaveProjectPresenter().readConfigFile();
     }
 }

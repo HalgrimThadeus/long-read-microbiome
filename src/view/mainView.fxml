@@ -11,8 +11,8 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem fx:id="addSamplesClicked" mnemonicParsing="false" onAction="#loadSamplesClicked" text="Add New Samples from ConfigFile" />
-                  <MenuItem mnemonicParsing="false" onAction="#saveProjectButtonClicked" text="Save  Project (Samples to configFile)" />
+                  <MenuItem fx:id="addSamplesClicked" mnemonicParsing="false" onAction="#onLoadSamplesContextMenuClicked" text="Add New Samples from ConfigFile" />
+                  <MenuItem mnemonicParsing="false" onAction="#onSaveProjectButtonClicked" text="Save  Project (Samples to configFile)" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -49,7 +49,7 @@
       </SplitPane>
       <ToolBar layoutX="811.0" layoutY="-2.0" maxHeight="25.0" maxWidth="250.0" minHeight="25.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <Button fx:id="toolbarBtnAddSamplePage" alignment="CENTER" contentDisplay="CENTER" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#toolbarBtnAddSamplePage" prefHeight="17.0" prefWidth="24.0" text="+">
+            <Button fx:id="toolbarBtnAddSamplePage" alignment="CENTER" contentDisplay="CENTER" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#onAddSamplePageToolbarButtonClicked" prefHeight="17.0" prefWidth="24.0" text="+">
                <font>
                   <Font size="11.0" />
                </font>

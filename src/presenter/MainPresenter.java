@@ -39,7 +39,7 @@ public class MainPresenter {
 
         this.saveProjectPresenter = new SaveProjectPresenter();
 
-        this.samplePresenter = this.mainView.getSampleViewController().getSamplePresenter();
+        this.samplePresenter = this.mainView.getSampleView().getSamplePresenter();
         this.samplePresenter.initialize(this.newSamplePopUpPresenter, project.getSamples());
 
         this.workViewPresenter = new WorkViewPresenter();
