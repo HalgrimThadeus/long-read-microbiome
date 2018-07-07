@@ -11,6 +11,8 @@ import java.io.CharArrayReader;
 import java.io.IOException;
 import java.io.Reader;
 
+import static org.junit.Assert.assertEquals;
+
 public class TaxIOTest {
 
     //plus adding test data in resources
@@ -34,9 +36,11 @@ public class TaxIOTest {
             ex.printStackTrace();
         }
 
-        testTree.getNode("Pardus");
-        //view in DEBUG
-        int i = 1;
+        assertEquals("Pardus", testTree.getNode("Pardus").getName());
+        assertEquals(1, testTree.getNode("Pardus").getID());
+        assertEquals("Pardus", testTree.getNode("Panthera").getAllChildren().get(0).getName());
+        assertEquals(false, testTree.getNode("Pardus").isRoot());
+        assertEquals(false, testTree.getNode("Panthera").isRoot());
     }
 
     @Test
@@ -50,13 +54,16 @@ public class TaxIOTest {
             e.printStackTrace();
         }
 
-        //view in DEBUG
-        int i = 1;
-
-        //following works only with working taxnode
-        for (TaxNode tn: testTree.getNode("Lutra").getAncestorAtRank("family").getAllChildren()) {
-            System.out.println(tn);
-        }
+        assertEquals("Pardus", testTree.getNode("Pardus").getName());
+        assertEquals(1, testTree.getNode("Pardus").getID());
+        assertEquals("Pardus", testTree.getNode("Panthera").getAllChildren().get(0).getName());
+        assertEquals(false, testTree.getNode("Pardus").isRoot());
+        assertEquals(false, testTree.getNode("Panthera").isRoot());
+        assertEquals(8, testTree.getNode("Mustelidae").getID());
+        assertEquals(6, testTree.getNode("Lutra_species").getID());
+        assertEquals(7, testTree.getNode("Lutra_genus").getID());
+        assertEquals(7, testTree.getNode("Lutra_species").getAncestorAtRank("genus").getID());
+        assertEquals("Canidae", testTree.getNode("Lupus").getAncestorAtRank("family").getName());
     }
 
     @Test
@@ -66,9 +73,17 @@ public class TaxIOTest {
             Service readInTaxTreeService = new ReadInTaxTreeService("res/TreeDumpFiles/nodesTest.dmp", "res/TreeDumpFiles/namesTest.dmp");
             readInTaxTreeService.setOnSucceeded(event -> {
                 TaxTree testTree = ((ReadInTaxTreeService)event.getSource()).getValue();
-                for (TaxNode tn: testTree.getNode("Lutra").getAncestorAtRank("family").getAllChildren()) {
-                    System.out.println(tn);
-                }
+
+                assertEquals("Pardus", testTree.getNode("Pardus").getName());
+                assertEquals(1, testTree.getNode("Pardus").getID());
+                assertEquals("Pardus", testTree.getNode("Panthera").getAllChildren().get(0).getName());
+                assertEquals(false, testTree.getNode("Pardus").isRoot());
+                assertEquals(false, testTree.getNode("Panthera").isRoot());
+                assertEquals(8, testTree.getNode("Mustelidae").getID());
+                assertEquals(6, testTree.getNode("Lutra_species").getID());
+                assertEquals(7, testTree.getNode("Lutra_genus").getID());
+                assertEquals(7, testTree.getNode("Lutra_species").getAncestorAtRank("genus").getID());
+                assertEquals("Canidae", testTree.getNode("Lupus").getAncestorAtRank("family").getName());
             });
             readInTaxTreeService.start();
         });

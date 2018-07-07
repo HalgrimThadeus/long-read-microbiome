@@ -32,10 +32,11 @@ public class Read extends FastAEntry{
      * @param header
      * @param sequence
      */
-    public Read(String header, String sequence, Map taxonomicId){
+
+    public Read(String header, String sequence, int taxonomicId){
         super(header, sequence); //override
         this.id = getIdFromHeader(header);
-        this.taxonomicId = (int) taxonomicId.get(this.id);
+        this.taxonomicId = taxonomicId;
         this.gffEntries = new ArrayList<>(); //initialize gffEntries list, won't have to check if its null
     }
     /**
@@ -66,7 +67,7 @@ public class Read extends FastAEntry{
      * @param header
      * @return id
      */
-    public String getIdFromHeader(String header){
+    public static String getIdFromHeader(String header){
         //starts with 1 to ignore/delete "<" at the beginning of the header & ends before first whitespace " "
         String id = header.substring(1,header.indexOf(' '));
         return id;

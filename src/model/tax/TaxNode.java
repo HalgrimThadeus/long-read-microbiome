@@ -166,4 +166,8 @@ public class TaxNode {
     public void setParentNode(TaxNode parentNode) {
         this.parentNode = parentNode;
     }
+
+    public String getRank() {
+        return this.rank;
+    }
 }

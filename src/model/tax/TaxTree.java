@@ -70,12 +70,17 @@ public class TaxTree {
 
             //prevents collision of two names naming the same node
             if(!nameMap.containsValue(id)) {
-                //adds "-" to name of an organism if name already exists
+                //adds "_" to name of an organism if name already exists and puts the rank too
                 if(!nameMap.containsKey(name)) {
                     nameMap.put(name,id);
                     tree.get(id).setName(name);
                 } else {
-                    name = name + "-";
+                    TaxNode existingNode = tree.get(nameMap.get(name));
+                    nameMap.remove(existingNode.getName());
+                    nameMap.put(existingNode.getName() + "_" + existingNode.getRank(), existingNode.getID());
+                    existingNode.setName(existingNode.getName() + "_" + existingNode.getRank());
+
+                    name = name + "_" + tree.get(id).getRank();
                     nameMap.put(name,id);
                     tree.get(id).setName(name);
                 }
