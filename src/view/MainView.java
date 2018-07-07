@@ -70,7 +70,7 @@ public class MainView {
 
     @FXML
     public void onAddNewFilterContextMenuClicked(ActionEvent event) throws IOException {
-        mainPresenter.getNewFilterPopUpPresenter().openNewFilterDialog();
+        mainPresenter.getFilterPresenter().openNewFilterDialog();
     }
 
     @FXML

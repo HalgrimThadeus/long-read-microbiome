@@ -30,12 +30,12 @@ public class MainPresenter {
         this.mainView = mainView;
         this.project = project;
 
-        this.newFilterPopUpPresenter = new NewFilterPopUpPresenter();
+        this.newFilterPopUpPresenter = new NewFilterPopUpPresenter(project.getFilters());
 
         this.newSamplePopUpPresenter = new NewSamplePopUpPresenter(project.getSamples());
 
         this.filterPresenter = this.mainView.getFilterView().getFilterPresenter();
-        //todo initiliaize model to presenter
+        this.filterPresenter.initialize(this.newFilterPopUpPresenter, project.getFilters());
 
         this.saveProjectPresenter = new SaveProjectPresenter();
 

@@ -1,11 +1,22 @@
 package view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import presenter.FilterPresenter;
 
+import java.io.IOException;
+
 public class FilterView extends AnchorPane {
+
+    final ObservableList<String>  names = FXCollections.observableArrayList();
+    @FXML
+    private ListView<String> filterList = new ListView(names);
+
+
     private FilterPresenter filterPresenter;
 
     public FilterView() {
@@ -16,6 +27,15 @@ public class FilterView extends AnchorPane {
         return filterPresenter;
     }
 
-    public void addNewFilterContextMenuClicked(ActionEvent actionEvent) {
+    @FXML
+    public void newFilterBtnClicked(ActionEvent actionEvent) throws IOException {
+        filterPresenter.openNewFilterDialog();
     }
+
+    public void updateFilterListView(String name){
+        names.add(name);
+        filterList.setItems(names);
+    }
+
+
 }

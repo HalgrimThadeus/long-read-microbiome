@@ -6,7 +6,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.NewFilterPopUp">
+<AnchorPane maxHeight="250.0" maxWidth="500.0"
+            prefHeight="400.0"
+            prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane prefHeight="400.0" prefWidth="516.0">
          <content>
@@ -27,6 +30,6 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button fx:id="saveNewfFlter" layoutX="525.0" layoutY="339.0" mnemonicParsing="false" onAction="#addtoListoffilters" prefHeight="47.0" prefWidth="69.0" text="Save" />
+      <Button fx:id="saveNewFilter" layoutX="525.0" layoutY="339.0" mnemonicParsing="false" onAction="#saveFilterBtnClicked" prefHeight="47.0" prefWidth="69.0" text="Save" />
    </children>
 </AnchorPane>
