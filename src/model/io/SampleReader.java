@@ -68,7 +68,7 @@ public class SampleReader{
 
             //Creating new Read and adding id and sequence of FastA
             String header = fastaEntries.get(i).getHeader();
-            Read read = new Read(header, fastaEntries.get(i).getSequence(), taxaId);
+            Read read = new Read(header, fastaEntries.get(i).getSequence(), taxaId.get(Read.getIdFromHeader(header)));
 
             for(int j = 0; j < gffEntries.size(); j++){
                 GffEntry entry = gffEntries.get(j);
@@ -77,7 +77,7 @@ public class SampleReader{
                 }
             }
             //Adds the read to the new Sample
-            sample.addReads(read);
+            sample.addRead(read);
         }
         return  sample;
     }

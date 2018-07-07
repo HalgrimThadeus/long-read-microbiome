@@ -13,7 +13,10 @@ public class Sample {
     private String fastaFileName;
 
     public Sample() {
-        new Sample("gffFileName not set", "fastaFileName not set");
+        this.name = "SampleName not set";
+        this.gffFileName = "gffFileName not set";
+        this.fastaFileName = "fastaFileName not set";
+        this.reads = new ArrayList<>();
     }
 
     public Sample(String gffFileName, String fastaFileName) {
@@ -64,13 +67,13 @@ public class Sample {
 
     /**
      * Add a new Read to to current List of Reads
-     * @param newread
+     * @param newRead
      */
-    public void addReads(Read newread){
-        reads.add(newread);
+    public void addRead(Read newRead){
+        reads.add(newRead);
     }
 
-    //TODO Is this working??? --> now this should (not safe) work , but it's not intended to be in Filter, not here
+    //TODO Is this working??? --> now this should (not safe) work , but it's intended to be in Filter, not here
     /*
       //Picks up all reads with the demanded gene (id?) from the reads list.
    private List<Read> getReadsWithGene(String geneID){

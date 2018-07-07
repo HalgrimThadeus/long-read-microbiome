@@ -34,7 +34,7 @@ public class Filter {
         return name;
     }
 
-    protected List<Read> suitable(Sample sample){
+    public List<Read> suitable(Sample sample){
         List<Read> reads = sample.getReads();
         List<Read> suitablereads = sample.getReads();
              for(int k = 0; k < keys.size(); k++) {
