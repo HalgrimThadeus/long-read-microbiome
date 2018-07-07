@@ -55,7 +55,7 @@ package model;
         }
         return gc_content = cg/sequence.length() * 100;
     }
-    public double getGc_content(){
+    public double getGCcontent(){
         return calculateGCContent();
     }
 

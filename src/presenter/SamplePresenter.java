@@ -36,7 +36,6 @@ public class SamplePresenter {
         this.samples = samples;
 
         samples.addListener((ListChangeListener<Sample>) change -> {
-
             change.next();
             List<Sample> addedSamples = (List<Sample>) change.getAddedSubList();
 

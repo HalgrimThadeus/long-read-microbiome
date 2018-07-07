@@ -47,18 +47,18 @@ public class FilterBuilder {
 
 
     public static Predicate<Read> isGCContentEqual(Integer gcscore){
-        return p -> (p.getGc_content() == gcscore);
+        return p -> (p.getGCcontent() == gcscore);
 
    }
 
 
 
     public static Predicate<Read> isGCContentHigherEq(double gcscore){
-        return p -> (p.getGc_content() >= gcscore);
+        return p -> (p.getGCcontent() >= gcscore);
     }
 
     public static Predicate<Read> isGCContentLowerEq(double gcscore){
-        return p -> (p.getGc_content() <= gcscore);
+        return p -> (p.getGCcontent() <= gcscore);
     }
 
     public static Predicate<Read> isGen(String name){

@@ -77,7 +77,7 @@ public class SampleReader{
                 }
             }
             //Adds the read to the new Sample
-            sample.addReads(read);
+            sample.addRead(read);
         }
         return  sample;
     }
