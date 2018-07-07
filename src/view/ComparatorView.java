@@ -1,20 +1,59 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
-import javafx.scene.layout.VBox;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import presenter.ComparatorViewPresenter;
 
-public class ComparatorView {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ComparatorView implements Initializable {
 
     ComparatorViewPresenter comparatorViewPresenter;
     @FXML
-    private VBox vBox;
+    CategoryAxis xAxis;
     @FXML
-    private LineChart<String,Number> lineChart;
+    NumberAxis yAxis;
+    @FXML
+    LineChart<String, Number> lineChart;
+
 
     public ComparatorView(ComparatorViewPresenter comparatorViewPresenter){
         this.comparatorViewPresenter = comparatorViewPresenter;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        //xAxis = new CategoryAxis();
+        //yAxis = new NumberAxis();
+        xAxis.setLabel("GC content [%]");
+        yAxis.setLabel("number of reads");
+        //lineChart = new LineChart<String,Number>(xAxis,yAxis);
+        lineChart.setTitle("Comparison GC content");
+
+        //sample 1
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Sample 1");
+        series1.getData().add(new XYChart.Data("0-10" , 8));
+        series1.getData().add(new XYChart.Data("10-20" , 10));
+        series1.getData().add(new XYChart.Data("20-30" , 18));
+        series1.getData().add(new XYChart.Data("30-40" , 15));
+        series1.getData().add(new XYChart.Data("40-50" , 8));
+        //sample 2
+        XYChart.Series series2 = new XYChart.Series();
+        series2.setName("Sample 2");
+        series2.getData().add(new XYChart.Data("0-10" , 6));
+        series2.getData().add(new XYChart.Data("10-20" , 8));
+        series2.getData().add(new XYChart.Data("20-30" , 20));
+        series2.getData().add(new XYChart.Data("30-40" , 16));
+        series2.getData().add(new XYChart.Data("40-50" , 7));
+
+        lineChart.getData().addAll(series1, series2);
+
     }
 
         /*String name1 = "Sample1";

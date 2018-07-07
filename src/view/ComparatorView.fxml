@@ -10,10 +10,10 @@
       <Slider layoutX="61.0" layoutY="51.0" prefHeight="26.0" prefWidth="140.0" value="50.0" />
       <LineChart fx:id="lineChart" layoutX="24.0" layoutY="113.0" prefHeight="274.0" prefWidth="380.0">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <CategoryAxis fx:id="xAxis" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis side="LEFT" />
+          <NumberAxis fx:id="yAxis" side="LEFT" />
         </yAxis>
       </LineChart>
    </children>

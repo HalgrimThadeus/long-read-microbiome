@@ -8,8 +8,4 @@ public class ComparatorViewPresenter {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-
-    public ComparatorViewPresenter(){
-        stage.setScene();
-    }
 }
