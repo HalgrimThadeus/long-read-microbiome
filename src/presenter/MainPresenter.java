@@ -45,7 +45,7 @@ public class MainPresenter {
         this.workViewPresenter = new WorkViewPresenter();
 
         this.workViewContainerPresenter = this.mainView.getWorkViewContainer().getWorkViewContainerPresenter();
-        this.comparatorPopUpPresenter = new ComparatorPopUpPresenter();
+        this.comparatorPopUpPresenter = new ComparatorPopUpPresenter(this);
         this.comparatorViewPresenter = new ComparatorViewPresenter();
 
     }
