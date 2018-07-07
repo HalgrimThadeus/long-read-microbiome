@@ -1,7 +1,9 @@
 package presenter;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.SplitPane;
+import model.Sample;
 import view.MainView;
 import view.WorkView;
 import view.WorkViewContainer;
@@ -15,6 +17,9 @@ import java.io.IOException;
 public class WorkViewContainerPresenter {
 
     private WorkViewContainer workViewContainer;
+
+    private ObservableList<Sample> samples;
+
 
     public WorkViewContainerPresenter(WorkViewContainer workViewContainer) {
         this.workViewContainer = workViewContainer;

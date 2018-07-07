@@ -76,10 +76,10 @@ public class ReadChartView implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //For testing
         try {
-            Sample sample = SampleReader.read("res/ehec/ehec.f1000000-ex.fasta", "res/ehec/ehec.f1000000-all.gff", "res/ehec/ehec.f1000000-readname2taxonid.txt");
-            TaxIO tree = new TaxIO("res/TreeDumpFiles/nodesTest.dmp", "res/TreeDumpFiles/namesTest.dmp");
-            this.tree = tree.readInTaxTree();
-            choseReadChoiceBox.getItems().addAll(sample.getReads());
+            //Sample sample = SampleReader.read("res/ehec/ehec.f1000000-ex.fasta", "res/ehec/ehec.f1000000-all.gff", "res/ehec/ehec.f1000000-readname2taxonid.txt");
+            //TaxIO tree = new TaxIO("res/TreeDumpFiles/nodesTest.dmp", "res/TreeDumpFiles/namesTest.dmp");
+            //this.tree = tree.readInTaxTree();
+            //choseReadChoiceBox.getItems().addAll(sample.getReads());
         } catch (Exception e) {
             e.printStackTrace();
         }

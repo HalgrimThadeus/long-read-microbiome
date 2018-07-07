@@ -11,21 +11,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fx:id="scrollPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ReadChartView">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ReadChartView">
+    <children>
+        <ToolBar fx:id="toolBar" prefWidth="740" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <ChoiceBox fx:id="choseReadChoiceBox" prefWidth="200.0" />
+                <Button fx:id="addReadButton" onAction="#addReadButtonClicked" text="+" />
+                <Label text="Bar Width:" />
+                <Spinner fx:id="barWidthSpinner" editable="true" prefWidth="80.0" />
+                <Label text="Zoom In:" />
+                <Slider fx:id="zoomSlider" blockIncrement="0.5" max="100.0" min="1.0" prefWidth="250.0" />
+            </items>
+        </ToolBar>
+<ScrollPane fx:id="scrollPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
         <content>
             <AnchorPane fx:id="readChartPane" prefHeight="450.0" prefWidth="740.0">
                 <children>
-                <ToolBar fx:id="toolBar" AnchorPane.leftAnchor="0.0" prefWidth="740" AnchorPane.topAnchor="0.0">
-                    <items>
-                        <ChoiceBox fx:id="choseReadChoiceBox" />
-                        <Button fx:id="addReadButton" onAction="#addReadButtonClicked" text="+" />
-                        <Label text="Bar Width:" />
-                        <Spinner fx:id="barWidthSpinner" editable="true" />
-                        <Label text="Zoom In:" />
-                        <Slider fx:id="zoomSlider" blockIncrement="0.5"  max="100.0" min="1.0" />
-                    </items>
-                </ToolBar>
-
                 <VBox fx:id="names" alignment="BOTTOM_RIGHT" layoutX="14.0" layoutY="14.0" prefHeight="211.0" prefWidth="85.0" spacing="20.0" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
                 <VBox fx:id="sequences" alignment="BOTTOM_LEFT" layoutX="120.0" layoutY="22.0" prefHeight="220.0" prefWidth="469.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
                 <NumberAxis autoRanging="false" label="Sequence Length" layoutX="120.0" layoutY="14.0" prefHeight="50.0" prefWidth="469.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="10.0" fx:id="xAxis">
@@ -34,3 +35,5 @@
             </AnchorPane>
         </content>
 </ScrollPane>
+    </children>
+</AnchorPane>

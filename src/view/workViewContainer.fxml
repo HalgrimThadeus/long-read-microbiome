@@ -17,7 +17,6 @@
                AnchorPane.topAnchor="0.0">
         <items>
 
-
         </items>
     </SplitPane>
 </children>

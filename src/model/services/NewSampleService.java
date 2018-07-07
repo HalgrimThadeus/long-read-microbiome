@@ -29,7 +29,7 @@ public class NewSampleService extends Service<Sample> {
     @Override
     protected Task<Sample> createTask() {
 
-        return new Task<>() {
+        return new Task<Sample>() {
             @Override
             protected Sample call() throws Exception {
                 //sleep(5000);

@@ -22,7 +22,7 @@ public class ReadInTaxTreeService extends Service<TaxTree> {
 
     @Override
     protected Task<TaxTree> createTask() {
-        return new Task<>() {
+        return new Task<TaxTree>() {
             @Override
             protected TaxTree call() throws Exception {
                 TaxIO treeReader = new TaxIO(filePathToNodes, filePathToNames);
