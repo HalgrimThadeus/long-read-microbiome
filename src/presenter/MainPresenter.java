@@ -42,8 +42,6 @@ public class MainPresenter {
         this.samplePresenter = this.mainView.getSampleView().getSamplePresenter();
         this.samplePresenter.initialize(this.newSamplePopUpPresenter, project.getSamples());
 
-        this.workViewPresenter = new WorkViewPresenter();
-
         this.workViewContainerPresenter = this.mainView.getWorkViewContainer().getWorkViewContainerPresenter();
         this.comparatorPopUpPresenter = new ComparatorPopUpPresenter();
 
@@ -95,6 +93,7 @@ public class MainPresenter {
         comperatorPopUp.setScene(new Scene(root, 600, 250));
         comperatorPopUp.show();
     }
+
 
     //TODO add stuff, that all Controllers share
 }

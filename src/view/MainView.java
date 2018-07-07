@@ -35,8 +35,10 @@ public class MainView {
      *  with these attributes you could access the fxcontroller of the subviews and the subview itself
      *  !!!DONT CHANGE THE ATTRIBUTES NAMES!!! (they get automatically bound by fxml)
      */
+
+    //TODO Which this bindings the workViewContainer is somehow empty so i changed this.
     @FXML
-    private WorkViewContainer workViewContainerController;
+    private WorkViewContainer workViewContainer;
     @FXML
     private FilterView filterViewController;
     @FXML
@@ -60,12 +62,12 @@ public class MainView {
     }
 
     public WorkViewContainer getWorkViewContainer() {
-        return workViewContainerController;
+        return workViewContainer;
     }
 
     @FXML
     public void onAddSamplePageToolbarButtonClicked(ActionEvent event) throws IOException {
-        ((WorkViewContainer) workViewContainerController).addNewMainTabView();
+        ((WorkViewContainer) workViewContainer).addNewMainTabView();
     }
 
     @FXML
