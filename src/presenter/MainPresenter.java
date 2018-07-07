@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import model.Project;
 import view.ComparatorPopUp;
 import view.MainView;
+import view.SampleView;
 
 import java.io.IOException;
 
@@ -30,13 +31,19 @@ public class MainPresenter {
         this.project = project;
 
         this.newFilterPopUpPresenter = new NewFilterPopUpPresenter();
-        this.newSamplePopUpPresenter = new NewSamplePopUpPresenter();
+
+        this.newSamplePopUpPresenter = new NewSamplePopUpPresenter(project.getSamples());
+
         this.filterPresenter = this.mainView.getFilterView().getFilterPresenter();
         //todo initiliaize model to presenter
+
         this.saveProjectPresenter = new SaveProjectPresenter();
-        this.samplePresenter = this.mainView.getSampleView().getSamplePresenter();
-        //todo initiliaize model to presenter
+
+        this.samplePresenter = this.mainView.getSampleViewController().getSamplePresenter();
+        this.samplePresenter.initialize(this.newSamplePopUpPresenter, project.getSamples());
+
         this.workViewPresenter = new WorkViewPresenter();
+
         this.workViewContainerPresenter = this.mainView.getWorkViewContainer().getWorkViewContainerPresenter();
         this.comparatorPopUpPresenter = new ComparatorPopUpPresenter();
 

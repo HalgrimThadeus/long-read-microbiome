@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,9 +19,16 @@ public class SaveProjectPresenter {
     public void saveProject() throws Exception {
 
         //get the list of samples and the filepaths of the samples
-        List<Sample> listOfSamples = Project.listOfSamples;
 
-        List<File[]> listOfPaths = Project.listOfSamplesFilePaths;
+        //todo: change that a peoject object is loaded correctly
+        List<Sample> listOfSamples = new ArrayList<>();
+
+        List<File[]> listOfPaths = new ArrayList<>();
+
+
+
+
+
 
         File configFileToWrite = createEmptyFile();
 

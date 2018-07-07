@@ -31,6 +31,8 @@ public class NewSamplePopUp {
     private TextField gffFileTextField;
     @FXML
     private TextField csvFileTextField;
+    @FXML
+    private TextField sampleName;
 
     @FXML
     private Button createNewSample;
@@ -91,19 +93,13 @@ public class NewSamplePopUp {
             return;
         }
 
-        Service newSampleService = new NewSampleService(fastaFile, gffFile, csvFile);
-
-        newSampleService.setOnSucceeded(event1 -> {
-            Sample sample = ((NewSampleService)event1.getSource()).getValue();
-            newSamplePopUpPresenter.addSampleToProject(fastaFile, gffFile, csvFile, sample);
-        });
-
-        newSampleService.setOnFailed(event1 -> {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Loading of Sample FAILED", ButtonType.CANCEL);
+        if(sampleName.getText() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please set a sample name", ButtonType.OK);
             alert.show();
-        });
+            return;
+        }
 
-        newSampleService.start();
+        newSamplePopUpPresenter.addSampleToProject(fastaFile,gffFile,csvFile,sampleName.getText());
 
         stage.close();
     }

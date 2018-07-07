@@ -32,11 +32,8 @@ public class NewSampleService extends Service<Sample> {
         return new Task<>() {
             @Override
             protected Sample call() throws Exception {
-//                sleep(5000);
-                FileReader fastaFileReader = new FileReader(fastaFile.getAbsolutePath());
-                FileReader gffFileReader = new FileReader(gffFile.getAbsolutePath());
-                FileReader csvFileReader = new FileReader(csvFile.getAbsolutePath());
-                return SampleReader.read(fastaFileReader,gffFileReader,csvFileReader);
+                //sleep(5000);
+                return SampleReader.read(fastaFile.getAbsolutePath(),gffFile.getAbsolutePath(),csvFile.getAbsolutePath());
             }
         };
     }

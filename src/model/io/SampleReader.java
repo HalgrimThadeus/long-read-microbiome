@@ -30,7 +30,11 @@ public class SampleReader{
      * @throws Exception
      */
     public static Sample read(String filePathFasta, String filePathGff, String filePathTaxa) throws Exception {
-        return read(new FileReader(filePathFasta), new FileReader(filePathGff), new FileReader(filePathTaxa));
+        return read(new FileReader(filePathFasta), new FileReader(filePathGff), new FileReader(filePathTaxa), filePathGff, filePathFasta);
+    }
+
+    public static Sample read(Reader fasta, Reader gff, Reader taxa) throws Exception{
+        return read(fasta, gff, taxa, "No GFF File Name Added", "No Fasta File Name Added");
     }
 
     /**
@@ -43,9 +47,9 @@ public class SampleReader{
      *
      * @throws Exception if the File  was not found or...
      */
-    public static Sample read(Reader fasta, Reader gff, Reader taxa) throws Exception {
+    public static Sample read(Reader fasta, Reader gff, Reader taxa, String gffFileName, String fastaFileName) throws Exception {
         //New Sample is generated
-        Sample sample = new Sample();
+        Sample sample = new Sample(gffFileName, fastaFileName);
         Map<String, Integer> taxaId;
 
         CsvIO  taxaIds = new CsvIO(taxa);

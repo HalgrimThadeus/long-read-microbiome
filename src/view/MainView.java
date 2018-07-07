@@ -38,8 +38,12 @@ public class MainView {
     private WorkViewContainer workViewContainer;
     @FXML
     private FilterView filterView;
+
+    /**
+     * this is the SampleView, which is in this case a fx:controller
+     */
     @FXML
-    private SampleView sampleView;
+    private SampleView sampleViewController;
 
     private MainPresenter mainPresenter;
 
@@ -51,12 +55,12 @@ public class MainView {
      * TODO refactor method names by our convention
      */
 
-    public SampleView getSampleView() {
-        return (SampleView) sampleView;
+    public SampleView getSampleViewController() {
+        return sampleViewController;
     }
 
     public FilterView getFilterView() {
-        return (FilterView) this.filterView;
+        return this.filterView;
     }
 
     public WorkViewContainer getWorkViewContainer() {

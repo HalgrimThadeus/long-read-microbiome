@@ -12,7 +12,7 @@
       <VBox layoutY="55.0" prefHeight="157.0" prefWidth="450.0" spacing="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <Label text="Sample Name" />
-            <TextField />
+            <TextField fx:id="sampleName" />
             <Label text="FastaFiles" />
             <TextField fx:id="fastaFileTextField" />
             <Label text="GffFiles" />

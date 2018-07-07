@@ -8,6 +8,19 @@ public class Sample {
      * Contains the List of the Reads in this Sample
      */
     private List<Read> reads = new ArrayList<>();
+    private String name;
+    private String gffFileName;
+    private String fastaFileName;
+
+    public Sample(String gffFileName, String fastaFileName) {
+        this.name = "Sample";
+        this.gffFileName = gffFileName;
+        this.fastaFileName = fastaFileName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * Returns the List of Reads
@@ -15,6 +28,26 @@ public class Sample {
      */
     public List<Read> getReads() {
         return reads;
+    }
+
+    public List<String> getReadNames() {
+        List<String> readNames = new ArrayList<>();
+        for (Read r: this.reads) {
+            readNames.add(r.getId());
+        }
+        return readNames;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getFastaFileName() {
+        return fastaFileName;
+    }
+
+    public String getGffFileName() {
+        return gffFileName;
     }
 
     /**

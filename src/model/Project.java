@@ -19,11 +19,6 @@ public class Project {
     private ObservableList<Filter> filters = FXCollections.observableArrayList();
 
     /**
-     * static List contains all the Files for the Samples including the filepaths
-     */
-    private List<File> listOfSamplesFilePaths = new ArrayList<>();
-
-    /**
      * Add a new Sample
      * @param sample
      */
