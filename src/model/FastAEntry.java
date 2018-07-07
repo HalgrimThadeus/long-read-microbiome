@@ -46,14 +46,14 @@ package model;
         return sequence;
     }
 
-    public double calculateGCContent(){
+    private double calculateGCContent(){
         int cg = 0;
         for(char i: sequence.toCharArray()){
             if((i == 'C') || (i == 'G')){
                 cg++;
             }
         }
-        return gc_content = cg/sequence.length() * 100;
+        return (cg * 100.0)/sequence.length();
     }
     public double getGCcontent(){
         return calculateGCContent();
