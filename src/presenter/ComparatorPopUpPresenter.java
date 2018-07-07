@@ -27,7 +27,7 @@ public class ComparatorPopUpPresenter {
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("ComparatorView.fxml"));
         loader.setController(newComparatorView);
         Parent root = loader.load();
-        Scene scene = new Scene(root, 700, 700);
+        Scene scene = new Scene(root, 700, 600);
         comparatorView.setTitle("Comparison");
         comparatorView.setScene(scene);
         comparatorView.show();

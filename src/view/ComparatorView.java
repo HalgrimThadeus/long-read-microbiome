@@ -40,17 +40,27 @@ public class ComparatorView implements Initializable {
         series1.setName("Sample 1");
         series1.getData().add(new XYChart.Data("0-10" , 8));
         series1.getData().add(new XYChart.Data("10-20" , 10));
-        series1.getData().add(new XYChart.Data("20-30" , 18));
-        series1.getData().add(new XYChart.Data("30-40" , 15));
-        series1.getData().add(new XYChart.Data("40-50" , 8));
+        series1.getData().add(new XYChart.Data("20-30" , 15));
+        series1.getData().add(new XYChart.Data("30-40" , 18));
+        series1.getData().add(new XYChart.Data("40-50" , 20));
+        series1.getData().add(new XYChart.Data("50-60" , 30));
+        series1.getData().add(new XYChart.Data("60-70" , 17));
+        series1.getData().add(new XYChart.Data("70-80" , 15));
+        series1.getData().add(new XYChart.Data("80-90" , 15));
+        series1.getData().add(new XYChart.Data("90-100" , 5));
         //sample 2
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("Sample 2");
         series2.getData().add(new XYChart.Data("0-10" , 6));
         series2.getData().add(new XYChart.Data("10-20" , 8));
-        series2.getData().add(new XYChart.Data("20-30" , 20));
+        series2.getData().add(new XYChart.Data("20-30" , 10));
         series2.getData().add(new XYChart.Data("30-40" , 16));
-        series2.getData().add(new XYChart.Data("40-50" , 7));
+        series2.getData().add(new XYChart.Data("40-50" , 31));
+        series2.getData().add(new XYChart.Data("50-60" , 25));
+        series2.getData().add(new XYChart.Data("60-70" , 20));
+        series2.getData().add(new XYChart.Data("70-80" , 20));
+        series2.getData().add(new XYChart.Data("80-90" , 16));
+        series2.getData().add(new XYChart.Data("90-100" , 7));
 
         lineChart.getData().addAll(series1, series2);
 
