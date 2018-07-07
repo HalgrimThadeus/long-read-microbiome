@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import model.Project;
 import view.ComparatorPopUp;
 import view.MainView;
-import view.SampleView;
 
 import java.io.IOException;
 
