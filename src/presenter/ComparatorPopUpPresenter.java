@@ -1,19 +1,14 @@
 package presenter;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 import view.ComparatorPopUp;
 import view.ComparatorView;
+import view.MainView;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class ComparatorPopUpPresenter {
 
@@ -27,15 +22,17 @@ public class ComparatorPopUpPresenter {
         ComparatorView newComparatorView = new ComparatorView(comparatorViewPresenter);
 
         Stage comparatorView = new Stage();
-//        FXMLLoader loader = new FXMLLoader(MainView.class.getResource("comparatorView.fxml"));
-//        loader.setController(newComparatorView);
-//        Parent root = loader.load();
+        FXMLLoader loader = new FXMLLoader(MainView.class.getResource("ComperatorView.fxml"));
+        loader.setController(newComparatorView);
+        Parent root = loader.load();
 
-        //comparatorView.setTitle("Comparator");
-        //comparatorView.setScene(new Scene(root, 600, 250));
-        //comparatorView.show();
+        comparatorView.setTitle("Compararison");
+        comparatorView.setScene(new Scene(root, 600, 250));
+        comparatorView.show();
 
-        String name1 = "Sample1";
+
+
+        /*String name1 = "Sample1";
         ArrayList<Double> data1
                 = new ArrayList<>(Arrays.asList(5.0,10.0,10.0,20.0,25.0,25.0,30.0,30.0,30.0,40.0,40.0,40.0,40.0,40.0,45.0,45.0,50.0,55.0,60.0,80.0));
         String name2 = "Sample2";
@@ -53,6 +50,8 @@ public class ComparatorPopUpPresenter {
         ArrayList<String> categories = setCategoryNames(data1, data2, numberOfBins, sizeOfRanges);
         ArrayList<Integer> counts1 = groupData(data1, numberOfBins, sizeOfRanges);
         ArrayList<Integer> counts2 = groupData(data2, numberOfBins, sizeOfRanges);
+
+        /////////////////
 
         comparatorView.setTitle("Comparison");
         final CategoryAxis xAxis = new CategoryAxis();
@@ -79,83 +78,6 @@ public class ComparatorPopUpPresenter {
         lineChart.getData().addAll(series1, series2);
         comparatorView.setScene(scene);
         comparatorView.show();
-    }
-
-    public static int calculateNumberOfBins(ArrayList<Double> data){
-        return (int)(2*(interquantileRange(data)/Math.pow(data.size(),1.0/3.0)));
-    }
-    public static int calculateNumberOfBins(ArrayList<Double> data1, ArrayList<Double> data2){
-        return (Math.max(calculateNumberOfBins(data1), calculateNumberOfBins(data2)));
-    }
-    public static double interquantileRange(List<Double> data){
-        double q1 = 0;
-        double q3 = 0;
-        if(data.size()%2 == 0) {
-            q1 = median(data.subList(0, data.size() / 2 -1));
-            q3 = median(data.subList(data.size() / 2, data.size()-1));
-        }
-        else{
-            q1 = median(data.subList(0, (data.size()-1) / 2 -1));
-            q3 = median(data.subList((data.size()+1) / 2, data.size()-1));
-        }
-        double interquantileRange = q3-q1;
-        return interquantileRange;
-    }
-    public static double median(List<Double> data){
-        double median;
-        Collections.sort(data);
-        if(data.size()%2 == 1) {
-            median = data.get((data.size()-1) / 2);
-        }
-        else{
-            median = (data.get(data.size()/2 -1) + data.get(data.size()/2)) / 2;
-        }
-        return median;
-    }
-    ////////////////////////////////////
-
-    public static double calculateBoundaries(ArrayList<Double> data, int numberOfBins){
-        double minValue = Collections.min(data);
-        double maxValue = Collections.max(data);
-        return (maxValue-minValue)/numberOfBins;
-    }
-    public static double calculateBoundaries(ArrayList<Double> data1, ArrayList<Double> data2, int numberOfBins) {
-        //get maximum and minimum of the data and divide them by the given number of bins to get the size of the rages
-        double sizeOfRanges;
-        double minValue = Math.min(Collections.min(data1),Collections.min(data2));
-        double maxValue = Math.max(Collections.max(data1),Collections.max(data2));
-        return (maxValue-minValue)/numberOfBins;
-    }
-
-    public static ArrayList<String> setCategoryNames(ArrayList<Double> data, int numberOfBins, double sizeOfRanges){
-        double minValue = Collections.min(data);
-        ArrayList<String> categories = new ArrayList<String>(numberOfBins);
-        for(int i=0; i<numberOfBins; i++){
-            categories.add(i*sizeOfRanges+minValue + "-" + ((i+1)*sizeOfRanges+minValue));
-        }
-        return categories;
-    }
-    public static ArrayList<String> setCategoryNames(ArrayList<Double> data1, ArrayList<Double> data2, int numberOfBins, double sizeOfRanges){
-        double minValue = Math.min(Collections.min(data1),Collections.min(data2));
-        ArrayList<String> categories = new ArrayList<String>(numberOfBins);
-        for(int i=0; i<numberOfBins; i++){
-            categories.add(i*sizeOfRanges+minValue + "-" + ((i+1)*sizeOfRanges+minValue));
-        }
-        return categories;
-    }
-
-    public static ArrayList<Integer> groupData(ArrayList<Double> data, int numberOfBins, double sizeOfRanges){
-        //sort data in right ranges - how many values fall into a specific range?
-        double minValue = Collections.min(data);
-        ArrayList<Integer> counts = new ArrayList<Integer>(numberOfBins);
-        for(int i = 0; i<numberOfBins; i++){ counts.add(0); }
-        for(double d : data){
-            for(int i=0; i<numberOfBins; i++){
-                if (d>=i*sizeOfRanges+minValue && d<=(i+1)*sizeOfRanges+minValue){
-                    counts.set(i, counts.get(i)+1); //number of reads with value in this range increases (+1)
-                }
-            }
-        }
-        return counts;
+     */
     }
 }

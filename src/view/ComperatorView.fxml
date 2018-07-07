@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ComperatorView">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <Slider layoutX="61.0" layoutY="51.0" prefHeight="26.0" prefWidth="140.0" value="50.0" />
-      <VBox layoutX="402.0" layoutY="13.0" prefHeight="200.0" prefWidth="184.0" />
-      <ScatterChart layoutX="14.0" layoutY="92.0" prefHeight="294.0" prefWidth="335.0">
+      <LineChart fx:id="lineChart" layoutX="24.0" layoutY="113.0" prefHeight="274.0" prefWidth="380.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis side="LEFT" />
         </yAxis>
-      </ScatterChart>
+      </LineChart>
    </children>
 </AnchorPane>
