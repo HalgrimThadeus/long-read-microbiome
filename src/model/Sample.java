@@ -12,8 +12,12 @@ public class Sample {
     private String gffFileName;
     private String fastaFileName;
 
+    public Sample() {
+        new Sample("gffFileName not set", "fastaFileName not set");
+    }
+
     public Sample(String gffFileName, String fastaFileName) {
-        this.name = "Sample";
+        this.name = "SampleName not set";
         this.gffFileName = gffFileName;
         this.fastaFileName = fastaFileName;
     }

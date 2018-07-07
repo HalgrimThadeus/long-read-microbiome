@@ -36,7 +36,7 @@ public class Read extends FastAEntry{
         super(header, sequence); //override
         this.id = getIdFromHeader(header);
         this.taxonomicId = (int) taxonomicId.get(this.id);
-        this.gffEntries = new ArrayList<GffEntry>(); //initialize gffEntries list, won't have to check if its null
+        this.gffEntries = new ArrayList<>(); //initialize gffEntries list, won't have to check if its null
     }
     /**
      *
