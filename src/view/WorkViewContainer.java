@@ -1,5 +1,6 @@
 package view;
 
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import presenter.WorkViewContainerPresenter;
 
@@ -17,7 +18,8 @@ public class WorkViewContainer extends AnchorPane {
         return workViewContainerPresenter;
     }
 
-    public void addNewMainTabView() throws IOException {
-        workViewContainerPresenter.addNewMainTabView();
+    public void onNewMainTabViewButtonClicked() throws IOException {
+        WorkView newSampleTabPane = workViewContainerPresenter.addNewMainTabView();
+        ((SplitPane)(this.getChildren().get(0))).getItems().add(newSampleTabPane);
     }
 }

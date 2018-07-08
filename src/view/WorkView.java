@@ -40,8 +40,8 @@ public class WorkView extends TabPane implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //TODO make drag and drop work
 
+        //Set drop listeners for the pane
         workView.setOnDragOver((DragEvent event) -> {
             event.acceptTransferModes(TransferMode.ANY);
             event.consume();

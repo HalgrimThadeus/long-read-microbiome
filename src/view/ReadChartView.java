@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -16,18 +15,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
-import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import model.GffEntry;
 import model.Read;
-import model.Sample;
-import model.io.SampleReader;
-import model.io.TaxIO;
-import model.services.ReadInTaxTreeService;
-import model.tax.TaxTree;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -66,25 +58,12 @@ public class ReadChartView implements Initializable {
     private IntegerProperty barWidth = new SimpleIntegerProperty(20);
     private DoubleProperty zoomFactor = new SimpleDoubleProperty(1);
 
-    //For testing
-    private List<Read> filteredReads = new ArrayList<>();
-    private TaxTree tree;
+
 
     private final int BASIC_WIDTH = 740;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //For testing
-        try {
-            //Sample sample = SampleReader.read("res/ehec/ehec.f1000000-ex.fasta", "res/ehec/ehec.f1000000-all.gff", "res/ehec/ehec.f1000000-readname2taxonid.txt");
-            //TaxIO tree = new TaxIO("res/TreeDumpFiles/nodesTest.dmp", "res/TreeDumpFiles/namesTest.dmp");
-            //this.tree = tree.readInTaxTree();
-            //choseReadChoiceBox.getItems().addAll(sample.getReads());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
 
         //Spiner is initialized
         SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 200);
@@ -94,10 +73,9 @@ public class ReadChartView implements Initializable {
             barWidth.set(newValue);
         });
 
+        //Bindings
         toolBar.prefWidthProperty().bind(scrollPane.widthProperty());
-
         zoomFactor.bind(zoomSlider.valueProperty());
-
         readChartPane.prefWidthProperty().bind(zoomFactor.multiply(BASIC_WIDTH));
         readChartPane.maxWidthProperty().bind(zoomFactor.multiply(BASIC_WIDTH));
         readChartPane.minWidthProperty().bind(zoomFactor.multiply(BASIC_WIDTH));
@@ -111,13 +89,12 @@ public class ReadChartView implements Initializable {
      * choseReadChoiceBox.
      * @param actionEvent
      */
-    public void addReadButtonClicked(ActionEvent actionEvent) {
+    public void onAddReadButtonClicked(ActionEvent actionEvent) {
         if(choseReadChoiceBox.getSelectionModel().getSelectedItem() == null){
             return;
-            //TODO Error pop up nothing selected or somthing else
         }else{
             Read read = (Read)choseReadChoiceBox.getSelectionModel().getSelectedItem();
-            filteredReads.add(read);
+
             int length = read.getSequence().length();
             double oldUpperBound = xAxis.getUpperBound();
             List<GffEntry> gffEntries = read.getGFFEntries();
@@ -187,7 +164,6 @@ public class ReadChartView implements Initializable {
         });
 
         //Tooltip
-        //TODO may add sequence id
         Tooltip t = new Tooltip("Sequence-Id: " + id + "\n" + "Length: " + length);
         Tooltip.install(newSequence, t);
     }
@@ -222,6 +198,7 @@ public class ReadChartView implements Initializable {
 
             LinearGradient lg1;
 
+            //Genes with start reds the get blue
             if(isReversed){
                 Stop[] stops = new Stop[] {new Stop(1, Color.rgb(178,34,34,0.5)), new Stop(0, Color.rgb(34,34,178,0.5))};
                 lg1 = new LinearGradient(0, 0, 1, 1, true, CycleMethod.NO_CYCLE, stops);
@@ -237,7 +214,7 @@ public class ReadChartView implements Initializable {
             rectangle.setStrokeWidth(0.5);
             rectangle.setStroke(Color.BLACK);
 
-
+            //Right resizing
             xAxis.widthProperty().addListener((obs, oldVal, newVal) -> {
                 rectangle.setWidth(rectangle.getWidth()* (newVal.doubleValue()/oldVal.doubleValue()));
                 rectangle.setX(rectangle.getX() * (newVal.doubleValue()/oldVal.doubleValue()) );
