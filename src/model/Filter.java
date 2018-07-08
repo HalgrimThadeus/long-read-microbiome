@@ -30,7 +30,7 @@ public class Filter {
     **/
     public List<Read> suitable(Sample sample){
         List<Read> acceptedReads = new ArrayList<>();
-        if(sample != null) {
+        if((sample != null) && !sample.getReads().isEmpty()) {
             for (Read read : sample.getReads()) {
                 if (filterPredicate.test(read)) {
                     acceptedReads.add(read);

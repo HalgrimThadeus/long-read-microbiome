@@ -75,37 +75,32 @@ public class FilterBuilder {
         return p -> (p.getGCcontent() <= gcscore);
     }
 
-    public static Predicate<Read> isGen(String name){
+    public  static Predicate<Read> isGen(String name){
         return p-> {
-            boolean isname = false;
-          for(GffEntry gff: p.getGFFEntries()){
-              if(gff.getAttributes().get("Name").equals(name)){
-               isname = true;
-               break;
-              }
-          }
-          return isname;
+                for (GffEntry gff : p.getGFFEntries()) {
+                    if (gff.getAttributes().containsKey("Name")) {
+                        if (gff.getAttributes().get("Name").equals(name)) {
+                            System.err.println(gff.getAttributes().get("Name"));
+                            return true;
+                        }
+                    }
+                }
+                return false;
+
         };
     }
 
     public static Predicate<Read> isLengthGreater(Integer length){
-       return p-> {
-           return  (p.getSequence().length() >= length);
-       };
-
+       return p-> (p.getSequence().length() >= length);
     }
 
     public static Predicate<Read> isLengthSmaller(Integer length){
-        return p-> {
-
-            return p.getSequence().length() <= length;
-        };
+        return p-> p.getSequence().length() <= length;
     }
 
     public static Predicate<Read> isLengthEqual(Integer length){
-       return p-> {
-           return p.getSequence().length() == length;
-       };
+       return p->  p.getSequence().length() == length;
+
     }
 
     public static Predicate<Read> isTaxaId(Integer taxaId){
