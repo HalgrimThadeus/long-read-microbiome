@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TitledPane;
 import javafx.stage.Stage;
 import model.Sample;
 import view.MainView;
@@ -13,12 +14,14 @@ import view.SampleView;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public class SamplePresenter {
 
     private NewSamplePopUpPresenter newSamplePopUpPresenter = null;
     private SampleView sampleView;
     private ObservableList<Sample> samples;
+    private Map<TitledPane,Sample> view2Sample;
     private boolean initialized = false;
 
 
