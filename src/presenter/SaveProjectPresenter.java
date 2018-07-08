@@ -31,6 +31,8 @@ public class SaveProjectPresenter {
     public void saveProject() throws Exception {
         //TODO get the file from the filebrowser located in the VIEW package
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File
+                (System.getProperty("user.home") ));
         fileChooser.setTitle("Save Project to File...");
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("Project", "*.project"));

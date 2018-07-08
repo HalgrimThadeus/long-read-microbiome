@@ -50,6 +50,8 @@ public class NewSamplePopUp {
     private File getNewFiles(String extension){
         String usedExtension = "*." + extension;
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File
+                (System.getProperty("user.home") ));
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("BioFiles",usedExtension)

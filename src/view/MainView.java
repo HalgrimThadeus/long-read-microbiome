@@ -12,6 +12,7 @@ import presenter.MainPresenter;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class MainView {
 
@@ -101,7 +102,12 @@ public class MainView {
     @FXML
     public void onLoadProjectMenuItemClicked(ActionEvent clickEvent) throws Exception {
         //Choose File here:
+
+
         FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setInitialDirectory(new File
+                (System.getProperty("user.home") ));
         fileChooser.setTitle("Open Project File");
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("Project", "*.project"));
