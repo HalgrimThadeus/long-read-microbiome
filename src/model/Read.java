@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.Map;
  * models a Read, which contains the header of the FastaEntry, the id out of the header, the sequence and a list of GFF entries
  * extends the FastAEntry class; adds more information (adds id and list of GFF entries)
  */
-public class Read extends FastAEntry{
+public class Read extends FastAEntry implements Serializable {
 
     /**
      *id out of the header of the FastaEntry

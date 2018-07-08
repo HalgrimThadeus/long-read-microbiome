@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sample {
+public class Sample implements Serializable {
     /**
      * Contains the List of the Reads in this Sample
      */

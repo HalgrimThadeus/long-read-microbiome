@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -12,7 +13,7 @@ import java.util.function.Predicate;
  *
  *
  */
-public class Filter {
+public class Filter implements Serializable {
     private Predicate<Read> filterPredicate;
     private String name;
     public Filter(String name, Predicate<Read> filterPredicate){

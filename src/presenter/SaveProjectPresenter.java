@@ -1,6 +1,9 @@
 package presenter;
 
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.stage.Window;
+import model.Filter;
 import model.io.ConfigIO;
 import model.Project;
 import model.Sample;
@@ -10,24 +13,51 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class SaveProjectPresenter {
 
+    private Project project;
+
+    public SaveProjectPresenter(Project project){
+        this.project = project;
+    }
+
+
     public void saveProject() throws Exception {
+        //TODO get the file from the filebrowser located in the VIEW package
+        File file = new File("savedProject.project");
 
-        //get the list of samples and the filepaths of the samples
+        ConfigIO configIO = new ConfigIO(file);
+        List<Sample> nonObservedSampleList =  project.getSamples();
+        configIO.writeProjectToFile(nonObservedSampleList);
+    }
 
-        //todo: change that a peoject object is loaded correctly
+    public void loadProject(File file) throws Exception{
+
+        //first clear the Project
+        project.clear();
+
+        //then add all the samples back into the observable list:
+        ConfigIO configIO = new ConfigIO(file);
+        List<Sample> samples = configIO.readProjectFromFile();
+        for (Sample sample: samples
+             ) { project.addSamples(sample);
+
+        }
+
+
+    }
+
+
+        /*//get the list of samples and the filepaths of the samples
+
         List<Sample> listOfSamples = new ArrayList<>();
 
         List<File[]> listOfPaths = new ArrayList<>();
-
-
-
-
 
 
         File configFileToWrite = createEmptyFile();
@@ -115,5 +145,5 @@ public class SaveProjectPresenter {
         return selectedFile;
     }
 
-
+*/
 }

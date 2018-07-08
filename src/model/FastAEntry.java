@@ -1,12 +1,14 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  *This class models a FastAEntry, so it's a seqeunce with its header (incl. title)
  * It is the motherclass of a Read, which gets additional information from a GFF-File
  *
  **/
 
- public class FastAEntry {
+ public class FastAEntry implements Serializable {
     /**
      * Header of the FastaEntry
      */

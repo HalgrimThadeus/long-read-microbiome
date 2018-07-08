@@ -5,8 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import presenter.MainPresenter;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MainView {
@@ -75,15 +78,7 @@ public class MainView {
         mainPresenter.getFilterPresenter().openNewFilterDialog();
     }
 
-    @FXML
-    public void onSaveProjectButtonClicked(ActionEvent clickEvent) throws Exception {
-        try {
-            mainPresenter.getSaveProjectPresenter().saveProject();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-    }
 
     @FXML
     public void onStartComperatorButtonClicked(ActionEvent clickEvent) throws Exception{
@@ -93,14 +88,34 @@ public class MainView {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Method to add multiple samples form a config (.lrcfg) File
-     * @param clickEvent
-     * @throws Exception
-     */
+    //Save and Load Project----------;
     @FXML
-    public void onLoadSamplesContextMenuClicked(ActionEvent clickEvent) throws Exception {
-        mainPresenter.getSaveProjectPresenter().readConfigFile();
+    public void onSaveProjectMenuItemClicked(ActionEvent clickEvent) throws Exception {
+        try {
+            mainPresenter.getSaveProjectPresenter().saveProject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
+
+    @FXML
+    public void onLoadProjectMenuItemClicked(ActionEvent clickEvent) throws Exception {
+        //Choose File here:
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Project File");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Project", "*.project"));
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+
+        try {
+            mainPresenter.getSaveProjectPresenter().loadProject(selectedFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    //-----------------------------;
 }

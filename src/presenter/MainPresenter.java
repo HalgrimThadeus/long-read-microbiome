@@ -36,7 +36,7 @@ public class MainPresenter {
         this.filterPresenter = this.mainView.getFilterView().getFilterPresenter();
         this.filterPresenter.initialize(this.newFilterPopUpPresenter, project.getFilters());
 
-        this.saveProjectPresenter = new SaveProjectPresenter();
+        this.saveProjectPresenter = new SaveProjectPresenter(project);
 
         this.samplePresenter = this.mainView.getSampleView().getSamplePresenter();
         this.samplePresenter.initialize(this.newSamplePopUpPresenter, project.getSamples());

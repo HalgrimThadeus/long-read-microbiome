@@ -5,6 +5,7 @@ import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * All Samples get added to the list of Samples in here
  */
 
-public class Project {
+public class Project implements Serializable {
 
     private ObservableList<Sample> samples = FXCollections.observableArrayList();
     private ObservableList<Filter> filters = FXCollections.observableArrayList();
@@ -33,5 +34,13 @@ public class Project {
     public ObservableList<Filter> getFilters() {
         return this.filters;
     }
+
+    public void clear(){
+        this.samples.clear();
+        this.filters.clear();
+    }
+
+
+
 
 }

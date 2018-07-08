@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.lang.String;
 import java.util.Map;
 
-public class GffEntry {
+public class GffEntry implements Serializable {
     /**
      * The name of the sequence where the feature is located
      */
