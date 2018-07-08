@@ -12,16 +12,17 @@ public class FilterTest {
     private Sample shouldCreateNewSample() {
         Sample sample = new Sample();
 
-        Read read1 = new Read(">read1 bla bla", "ACTGCGCGCGCGCGCGCGCGCG");
+        Read read1 = new Read(">read1 bla bla", "ACTGCGCGCGCGCGCGCGCGCG", 23);
         Map<String,String> attributes = new HashMap<>(){
             {
                 put("Fancyness", "quiet amazing");
                 put("Stickyness", "doesnt let you down");
+                put("Name", "ZUCCHINI");
             }
         };
         read1.addGffEntries(new GffEntry("read1", "Test", "gene", 0, 10, 3, '+', 4, attributes));
 
-        Read read2 = new Read(">read2 bla bla", "ACTAAAAAAA");
+        Read read2 = new Read(">read2 bla bla", "ACTAAAAAAA", 22);
         read2.addGffEntries(new GffEntry("read2", "Test", "gene", 0, 10, 3, '+', 4, null));
 
         sample.addRead(read1);
@@ -69,11 +70,47 @@ public class FilterTest {
     public void shouldFilterListWithTwoStatements() {
         //test THREE
         FilterBuilder filterBuilder = new FilterBuilder();
-        filterBuilder.addMainPredicate(FilterBuilder.isLengthGreater(4));
         filterBuilder.addMainPredicate(FilterBuilder.isGCContentHigherEq(0.0));
+        filterBuilder.addMainPredicate(FilterBuilder.isTaxaId(23));
         Filter filter = new Filter("TestFilter", filterBuilder.getMainPredicate());
 
-        assertEquals(2, filter.suitable(shouldCreateNewSample()).size());
+        assertEquals(1, filter.suitable(shouldCreateNewSample()).size());
+        assertEquals("read1", filter.suitable(shouldCreateNewSample()).get(0).getId());
+    }
+
+    @Test
+    public void shouldFilterListWithTwoStatements2() {
+        //test THREE
+        FilterBuilder filterBuilder = new FilterBuilder();
+        filterBuilder.addMainPredicate(FilterBuilder.isGCContentHigherEq(0.0));
+        filterBuilder.addMainPredicate(FilterBuilder.isTaxaId(23));
+        filterBuilder.addMainPredicate(FilterBuilder.isTaxaId(22));
+        Filter filter = new Filter("TestFilter", filterBuilder.getMainPredicate());
+
+        assertEquals(0, filter.suitable(shouldCreateNewSample()).size());
+    }
+
+    @Test
+    public void shouldFilterByGeneName() {
+
+        //test FOUR
+        FilterBuilder filterBuilder = new FilterBuilder();
+        filterBuilder.addMainPredicate(FilterBuilder.isGen("ZUCCHINI"));
+        Filter filter = new Filter("TestFilter", filterBuilder.getMainPredicate());
+
+        assertEquals(1, filter.suitable(shouldCreateNewSample()).size());
+        assertEquals("read1", filter.suitable(shouldCreateNewSample()).get(0).getId());
+    }
+
+    @Test
+    public void shouldFilterByGeneName2() {
+
+        //test FOUR
+        FilterBuilder filterBuilder = new FilterBuilder();
+        filterBuilder.addMainPredicate(FilterBuilder.isGen("sgsd"));
+        Filter filter = new Filter("TestFilter", filterBuilder.getMainPredicate());
+
+        assertEquals(0, filter.suitable(shouldCreateNewSample()).size());
     }
 
     @Test
