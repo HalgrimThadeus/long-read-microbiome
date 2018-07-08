@@ -90,41 +90,21 @@ public class FilterBuilder {
 
     public static Predicate<Read> isLengthGreater(Integer length){
        return p-> {
-           boolean lengthis = false;
-            for(GffEntry gff: p.getGFFEntries()){
-            if(gff.getLength() >= length){
-                lengthis = true;
-                break;
-            }
-            }
-            return lengthis;
+           return  (p.getSequence().length() >= length);
        };
 
     }
 
     public static Predicate<Read> isLengthSmaller(Integer length){
         return p-> {
-            boolean lengthis = false;
-            for(GffEntry gff: p.getGFFEntries()){
-                if(gff.getLength() <= length){
-                    lengthis = true;
-                    break;
-                }
-            }
-            return lengthis;
+
+            return p.getSequence().length() <= length;
         };
     }
 
     public static Predicate<Read> isLengthEqual(Integer length){
        return p-> {
-           boolean lengthis =  false;
-           for(GffEntry gff: p.getGFFEntries()){
-               if(gff.getLength() == length){
-                   lengthis = true;
-                   break;
-               }
-           }
-           return lengthis;
+           return p.getSequence().length() == length;
        };
     }
 

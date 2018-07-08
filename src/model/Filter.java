@@ -5,10 +5,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
- * List of key are the selected criteria
- * List of values the user entered in the Textfield
- *
- * It now is given to the method and depending on what kind of key we got we use a given predicate or the hashmap
+ *Takes a predicate and applies it to the reads of the sample
  *
  *TODO : method for GC Content , Taxa, Length etc.
  *
@@ -28,15 +25,18 @@ public class Filter {
 
 
 
-
+    /**applies predicate to the List of Reads
+     * @return List of accepted reads
+    **/
     public List<Read> suitable(Sample sample){
         List<Read> acceptedReads = new ArrayList<>();
-        for(Read read: sample.getReads()){
-            if(filterPredicate.test(read)){
-                acceptedReads.add(read);
+        if(sample != null) {
+            for (Read read : sample.getReads()) {
+                if (filterPredicate.test(read)) {
+                    acceptedReads.add(read);
+                }
             }
         }
-
         return acceptedReads;
     }
 
