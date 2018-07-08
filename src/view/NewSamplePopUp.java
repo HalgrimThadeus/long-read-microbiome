@@ -56,7 +56,6 @@ public class NewSamplePopUp {
         );
 
         File selectedFile = fileChooser.showOpenDialog(new Stage());
-
         return selectedFile;
     }
 
@@ -65,20 +64,22 @@ public class NewSamplePopUp {
 
         if(event.getSource().equals(searchFastaFile)){
             fastaFile = this.getNewFiles("fasta");
-
             if(fastaFile != null)
                 fastaFileTextField.setText(fastaFile.getAbsolutePath());
+            else return;
         }
         if(event.getSource().equals(searchGffFile)){
             gffFile = this.getNewFiles("gff");
 
             if(gffFile != null)
                 gffFileTextField.setText(fastaFile.getAbsolutePath());
+            else return;
         }
         if(event.getSource().equals(searchCsvFile)){
             csvFile = this.getNewFiles("txt");
             if(csvFile != null)
                 csvFileTextField.setText(fastaFile.getAbsolutePath());
+            else return;
         }
     }
 
