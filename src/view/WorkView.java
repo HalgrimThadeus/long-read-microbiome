@@ -1,15 +1,20 @@
 package view;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TitledPane;
+import javafx.scene.control.ToolBar;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
-import model.Sample;
+import model.Read;
+import presenter.WorkViewContainerPresenter;
 import presenter.WorkViewPresenter;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class WorkView extends TabPane implements Initializable {
@@ -22,9 +27,15 @@ public class WorkView extends TabPane implements Initializable {
 
     private WorkViewPresenter workViewPresenter;
 
+    private WorkViewContainerPresenter workViewContainerPresenter;
+
 
     public WorkView(){
         workViewPresenter = new WorkViewPresenter(this);
+    }
+
+    public void setWorkViewContainerPresenter(WorkViewContainerPresenter workViewContainerPresenter){
+        this.workViewContainerPresenter = workViewContainerPresenter;
     }
 
     @Override
@@ -40,10 +51,15 @@ public class WorkView extends TabPane implements Initializable {
             TitledPane source = (TitledPane) event.getGestureSource();
             String sampleName = source.getText();
 
-            Sample addedSample = workViewPresenter.addNewSampleToMainPain(sampleName);
-            ((ChoiceBox)((ToolBar)this.readChartView.getChildren().get(0)).getItems().get(0)).getItems().addAll(addedSample.getReads());
+            List<Object> sampleData = workViewContainerPresenter.addNewSampleToMainTabView(sampleName);
 
-            fastaEditor.setHtmlText(getFastaFileHtmlCode(addedSample));
+            List<Read> reads = (List<Read>)sampleData.get(0);
+            String fastaFile = (String)sampleData.get(1);
+
+
+            ((ChoiceBox)((ToolBar)this.readChartView.getChildren().get(0)).getItems().get(0)).getItems().addAll(reads);
+
+            fastaEditor.setHtmlText(fastaFile);
 
 
             event.setDropCompleted(true);
@@ -52,13 +68,5 @@ public class WorkView extends TabPane implements Initializable {
 
     }
 
-    private String getFastaFileHtmlCode(Sample sample){
-        String fastaFile = "";
 
-        for(int i = 0; i < sample.getReads().size(); i++){
-            fastaFile += sample.getReads().get(i).getHeader() + "<br/>" + sample.getReads().get(i).getSequence() + "<br/>";
-        }
-
-        return fastaFile;
-    }
 }

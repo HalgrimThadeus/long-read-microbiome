@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import model.Project;
 import view.ComparatorPopUp;
 import view.MainView;
-import view.SampleView;
 
 import java.io.IOException;
 
@@ -43,6 +42,8 @@ public class MainPresenter {
         this.samplePresenter.initialize(this.newSamplePopUpPresenter, project.getSamples());
 
         this.workViewContainerPresenter = this.mainView.getWorkViewContainer().getWorkViewContainerPresenter();
+        workViewContainerPresenter.initialize(project.getSamples());
+
         this.comparatorPopUpPresenter = new ComparatorPopUpPresenter();
 
     }
