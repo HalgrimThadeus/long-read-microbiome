@@ -107,6 +107,9 @@ public class MainView {
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("Project", "*.project"));
         File selectedFile = fileChooser.showOpenDialog(new Stage());
+        if (selectedFile == null){
+            return;
+        }
 
 
         try {

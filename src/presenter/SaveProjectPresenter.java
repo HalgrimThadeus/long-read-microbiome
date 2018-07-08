@@ -36,6 +36,9 @@ public class SaveProjectPresenter {
                 new FileChooser.ExtensionFilter("Project", "*.project"));
         fileChooser.setInitialFileName("save01.project");
         File file = fileChooser.showSaveDialog(new Stage());
+        if (file == null){
+            return;
+        }
 
         ConfigIO configIO = new ConfigIO(file);
         List<Sample> nonObservedSampleList =  project.getSamples();
