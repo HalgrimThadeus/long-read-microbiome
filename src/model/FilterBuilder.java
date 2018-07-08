@@ -78,10 +78,11 @@ public class FilterBuilder {
     public  static Predicate<Read> isGen(String name){
         return p-> {
                 for (GffEntry gff : p.getGFFEntries()) {
-                    if (gff.getAttributes().containsKey("Name")) {
-                        if (gff.getAttributes().get("Name").equals(name)) {
-                            System.err.println(gff.getAttributes().get("Name"));
-                            return true;
+                    if(gff.getAttributes() != null) {
+                        if (gff.getAttributes().containsKey("Name")) {
+                            if (gff.getAttributes().get("Name").equals(name)) {
+                                return true;
+                            }
                         }
                     }
                 }
