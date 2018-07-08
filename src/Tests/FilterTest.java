@@ -98,7 +98,7 @@ public class FilterTest {
         filterBuilder.addMainPredicate(FilterBuilder.isGen("ZUCCHINI"));
         Filter filter = new Filter("TestFilter", filterBuilder.getMainPredicate());
 
-        assertEquals(1, filter.suitable(new Sample()).size());
+        assertEquals(1, filter.suitable(shouldCreateNewSample()).size());
         assertEquals("read1", filter.suitable(shouldCreateNewSample()).get(0).getId());
     }
 
@@ -110,7 +110,7 @@ public class FilterTest {
         filterBuilder.addMainPredicate(FilterBuilder.isGen("sgsd"));
         Filter filter = new Filter("TestFilter", filterBuilder.getMainPredicate());
 
-        assertEquals(0, filter.suitable(new Sample()).size());
+        assertEquals(0, filter.suitable(shouldCreateNewSample()).size());
     }
 
     @Test
