@@ -70,7 +70,7 @@ public class MainView {
 
     @FXML
     public void onAddSamplePageToolbarButtonClicked(ActionEvent event) throws IOException {
-        ((WorkViewContainer) workViewContainer).addNewMainTabView();
+        ((WorkViewContainer) workViewContainer).onNewMainTabViewButtonClicked();
     }
 
     @FXML

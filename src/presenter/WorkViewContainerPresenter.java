@@ -2,7 +2,6 @@ package presenter;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.SplitPane;
 import model.Sample;
 import view.MainView;
 import view.WorkView;
@@ -34,17 +33,16 @@ public class WorkViewContainerPresenter {
     }
 
 
-    public void addNewMainTabView() throws IOException {
+    public WorkView addNewMainTabView() throws IOException {
         WorkView newSampleTabPane;
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("workView.fxml"));
-        //loader.setController(this.workViewContainer);
 
         newSampleTabPane = loader.load();
 
         workViewController.add(loader.getController());
         ((WorkView) loader.getController()).setWorkViewContainerPresenter(this);
 
-        ((SplitPane)(workViewContainer.getChildren().get(0))).getItems().add(newSampleTabPane);
+        return newSampleTabPane;
     }
 
     public List<Object> addNewSampleToMainTabView(String name){
