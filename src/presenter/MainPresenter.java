@@ -97,7 +97,7 @@ public class MainPresenter {
         Parent root = loader.load();
 
         comparatorPopUp.setTitle("New Comparator");
-        comparatorPopUp.setScene(new Scene(root, 600, 250));
+        comparatorPopUp.setScene(new Scene(root, 450, 300));
         comparatorPopUp.show();
     }
 
