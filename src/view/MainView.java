@@ -9,6 +9,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import presenter.MainPresenter;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -35,8 +36,8 @@ public class MainView {
 
 
     /**
-     *  with these attributes you could access the fxcontroller of the subviews and the subview itself
-     *  !!!DONT CHANGE THE ATTRIBUTES NAMES!!! (they get automatically bound by fxml)
+     * with these attributes you could access the fxcontroller of the subviews and the subview itself
+     * !!!DONT CHANGE THE ATTRIBUTES NAMES!!! (they get automatically bound by fxml)
      */
 
     //TODO Which this bindings the workViewContainer is somehow empty so i changed this.
@@ -46,8 +47,6 @@ public class MainView {
     private FilterView filterViewController;
     @FXML
     private SampleView sampleViewController;
-
-
 
     private MainPresenter mainPresenter;
 
@@ -79,15 +78,15 @@ public class MainView {
     }
 
 
-
     @FXML
-    public void onStartComperatorButtonClicked(ActionEvent clickEvent) throws Exception{
+    public void onStartComperatorButtonClicked(ActionEvent clickEvent) throws Exception {
         try {
             mainPresenter.openStartComperatorPopup();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     //Save and Load Project----------;
     @FXML
     public void onSaveProjectMenuItemClicked(ActionEvent clickEvent) throws Exception {
@@ -107,7 +106,7 @@ public class MainView {
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("Project", "*.project"));
         File selectedFile = fileChooser.showOpenDialog(new Stage());
-        if (selectedFile == null){
+        if (selectedFile == null) {
             return;
         }
 
@@ -121,4 +120,8 @@ public class MainView {
 
     }
     //-----------------------------;
+
+    public void onCloseMenuItemClicked(ActionEvent e) {
+        System.exit(0);
+    }
 }
