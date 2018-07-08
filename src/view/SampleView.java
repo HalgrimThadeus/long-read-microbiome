@@ -19,7 +19,9 @@ import javafx.stage.Stage;
 import presenter.SamplePresenter;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SampleView extends AnchorPane {
 
@@ -28,9 +30,11 @@ public class SampleView extends AnchorPane {
     private Accordion sampleAccordion;
 
     private SamplePresenter samplePresenter;
+    private Map<String,TitledPane> sampleAccordionPanes;
 
     public SampleView() {
         this.samplePresenter = new SamplePresenter(this);
+        this.sampleAccordionPanes = new HashMap<>();
     }
 
     @FXML
@@ -95,7 +99,12 @@ public class SampleView extends AnchorPane {
             }
         });
 
+        this.sampleAccordionPanes.put(sampleName, newAccordionPane);
         sampleAccordion.getPanes().add(newAccordionPane);
+    }
+
+    public void sampleRemoved(String sampleName) {
+        sampleAccordion.getPanes().remove(this.sampleAccordionPanes.get(sampleName));
     }
 
     public SamplePresenter getSamplePresenter() {

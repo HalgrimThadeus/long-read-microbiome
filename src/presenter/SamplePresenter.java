@@ -39,11 +39,21 @@ public class SamplePresenter {
         this.samples = samples;
 
         samples.addListener((ListChangeListener<Sample>) change -> {
-            change.next();
-            List<Sample> addedSamples = (List<Sample>) change.getAddedSubList();
+            while(change.next()) {
+                if(change.wasAdded()) {
+                    List<Sample> addedSamples = (List<Sample>) change.getAddedSubList();
 
-            for (Sample s:addedSamples) {
-                sampleView.sampleAdded(s.getName(), s.getFastaFileName(), s.getGffFileName(), s.getReadNames());
+                    for (Sample s:addedSamples) {
+                        sampleView.sampleAdded(s.getName(), s.getFastaFileName(), s.getGffFileName(), s.getReadNames());
+                    }
+                } else if(change.wasRemoved()) {
+                    List<Sample> removedSamples = (List<Sample>) change.getRemoved();
+
+                    for (Sample s:removedSamples) {
+                        sampleView.sampleRemoved(s.getName());
+                    }
+                }
+
             }
         });
     }
