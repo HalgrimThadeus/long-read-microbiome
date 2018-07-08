@@ -9,8 +9,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import presenter.MainPresenter;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class MainView {
 
@@ -35,8 +37,8 @@ public class MainView {
 
 
     /**
-     *  with these attributes you could access the fxcontroller of the subviews and the subview itself
-     *  !!!DONT CHANGE THE ATTRIBUTES NAMES!!! (they get automatically bound by fxml)
+     * with these attributes you could access the fxcontroller of the subviews and the subview itself
+     * !!!DONT CHANGE THE ATTRIBUTES NAMES!!! (they get automatically bound by fxml)
      */
 
     //TODO Which this bindings the workViewContainer is somehow empty so i changed this.
@@ -46,8 +48,6 @@ public class MainView {
     private FilterView filterViewController;
     @FXML
     private SampleView sampleViewController;
-
-
 
     private MainPresenter mainPresenter;
 
@@ -79,15 +79,15 @@ public class MainView {
     }
 
 
-
     @FXML
-    public void onStartComperatorButtonClicked(ActionEvent clickEvent) throws Exception{
+    public void onStartComperatorButtonClicked(ActionEvent clickEvent) throws Exception {
         try {
             mainPresenter.openStartComperatorPopup();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     //Save and Load Project----------;
     @FXML
     public void onSaveProjectMenuItemClicked(ActionEvent clickEvent) throws Exception {
@@ -102,11 +102,19 @@ public class MainView {
     @FXML
     public void onLoadProjectMenuItemClicked(ActionEvent clickEvent) throws Exception {
         //Choose File here:
+
+
         FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setInitialDirectory(new File
+                (System.getProperty("user.home") ));
         fileChooser.setTitle("Open Project File");
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("Project", "*.project"));
         File selectedFile = fileChooser.showOpenDialog(new Stage());
+        if (selectedFile == null) {
+            return;
+        }
 
 
         try {
@@ -118,4 +126,8 @@ public class MainView {
 
     }
     //-----------------------------;
+
+    public void onCloseMenuItemClicked(ActionEvent e) {
+        System.exit(0);
+    }
 }
