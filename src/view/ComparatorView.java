@@ -53,7 +53,7 @@ public class ComparatorView implements Initializable {
         //chart:
         xAxis.setLabel("GC content [%]");
         yAxis.setLabel("number of reads");
-        lineChart.setTitle("Comparison GC content" + name1 + " , " + name2);
+        lineChart.setTitle("Comparison GC content " + name1 + " , " + name2);
         //sample 1
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Sample 1");

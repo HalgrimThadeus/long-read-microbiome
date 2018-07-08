@@ -45,6 +45,7 @@ public class ComparatorPopUp implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> comparisonModeChoices = FXCollections.observableArrayList("GC content", "length", "number of genes", "gene density");
         comparisonModeChoiceBox.setItems(comparisonModeChoices);
+        comparisonModeChoiceBox.getSelectionModel().selectFirst();
 
         //comparisonModeChoiceBox.getSelectionModel().selectedItemProperty().addListener(comparisonModeChangeListener);
 
