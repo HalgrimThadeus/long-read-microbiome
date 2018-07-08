@@ -34,6 +34,10 @@ public class FilteredSample {
         return filter;
     }
 
+    public void setSample(Sample sample) {
+        this.sample = sample;
+    }
+
     /**
      * applies the given filter to the given sample; updates the samples list of reads
      * @param

@@ -42,7 +42,7 @@ public class MainPresenter {
         this.samplePresenter.initialize(this.newSamplePopUpPresenter, project.getSamples());
 
         this.workViewContainerPresenter = this.mainView.getWorkViewContainer().getWorkViewContainerPresenter();
-        workViewContainerPresenter.initialize(project.getSamples());
+        workViewContainerPresenter.initialize(project);
 
         this.comparatorPopUpPresenter = new ComparatorPopUpPresenter();
 

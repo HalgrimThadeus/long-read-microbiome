@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.HTMLEditor?>
 <?import view.WorkView?>
-<WorkView fx:id="workView" prefHeight="344.0" prefWidth="589.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.WorkView">
+<WorkView fx:id="workView" prefHeight="344.0" prefWidth="589.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <tabs>
         <Tab text="ReadChart">
             <content>

@@ -2,6 +2,9 @@ package presenter;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import model.Filter;
+import model.FilteredSample;
+import model.Project;
 import model.Sample;
 import view.MainView;
 import view.WorkView;
@@ -19,59 +22,35 @@ public class WorkViewContainerPresenter {
 
     private WorkViewContainer workViewContainer;
 
-    private ObservableList<Sample> samples;
+    private Project project;
 
-    private List<WorkView> workViewController = new ArrayList<WorkView>();
+    private List<WorkView> workViews = new ArrayList<WorkView>();
 
 
     public WorkViewContainerPresenter(WorkViewContainer workViewContainer) {
         this.workViewContainer = workViewContainer;
     }
 
-    public void initialize( ObservableList<Sample> samples){
-        this.samples = samples;
+    public void initialize(Project project){
+        this.project = project;
     }
 
 
     public WorkView addNewMainTabView() throws IOException {
-        WorkView newSampleTabPane;
+        WorkView newSampleTabPane = new WorkView();
+
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("workView.fxml"));
+        loader.setController(newSampleTabPane);
+        //TODO HOW CHANGE this , so that workviews are presented in splited panes???
+        loader.load();
 
-        newSampleTabPane = loader.load();
-
-        workViewController.add(loader.getController());
-        ((WorkView) loader.getController()).setWorkViewContainerPresenter(this);
+        //initiliazie new sampletabpane with null so nothing to see...
+        WorkViewPresenter workViewPresenter = new WorkViewPresenter(this.project, newSampleTabPane);
+        newSampleTabPane.setWorkViewPresenter(workViewPresenter);
 
         return newSampleTabPane;
     }
 
-    public List<Object> addNewSampleToMainTabView(String name){
-        List<Object> sampleData = new ArrayList<>();
-        Sample sample = null;
-        for(int i = 0; i < samples.size(); i++){
-            if(samples.get(i).getName().equals(name)){
-                sample = samples.get(i);
-            }
-        }
 
-        sampleData.add(sample.getReads());
-        sampleData.add(getFastaFileHtmlCode(sample));
-
-        return sampleData;
-    }
-
-    private String getFastaFileHtmlCode(Sample sample){
-
-        StringBuilder builder = new StringBuilder();
-
-        for(int i = 0; i < sample.getReads().size(); i++){
-            builder.append(sample.getReads().get(i).getHeader());
-            builder.append( "<br/>");
-            builder.append(sample.getReads().get(i).getSequence());
-            builder.append("<br/>");
-        }
-
-        return builder.toString();
-    }
 
 }

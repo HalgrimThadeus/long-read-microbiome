@@ -1,5 +1,6 @@
 package view;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TabPane;
@@ -17,56 +18,47 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class WorkView extends TabPane implements Initializable {
+public class WorkView extends TabPane {
 
-    public WorkView workView;
+    @FXML
+    private AnchorPane readChartView;
 
-    public AnchorPane readChartView;
-
-    public HTMLEditor fastaEditor;
+    @FXML
+    private HTMLEditor fastaEditor;
 
     private WorkViewPresenter workViewPresenter;
 
-    private WorkViewContainerPresenter workViewContainerPresenter;
-
-
     public WorkView(){
-        workViewPresenter = new WorkViewPresenter(this);
-    }
-
-    public void setWorkViewContainerPresenter(WorkViewContainerPresenter workViewContainerPresenter){
-        this.workViewContainerPresenter = workViewContainerPresenter;
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
         //Set drop listeners for the pane
-        workView.setOnDragOver((DragEvent event) -> {
+        this.setOnDragOver((DragEvent event) -> {
+            System.out.println("Drag is now  over the workview");
+
             event.acceptTransferModes(TransferMode.ANY);
             event.consume();
         });
 
-        workView.setOnDragDropped((DragEvent event) -> {
+        this.setOnDragDropped((DragEvent event) -> {
             TitledPane source = (TitledPane) event.getGestureSource();
             String sampleName = source.getText();
 
-            List<Object> sampleData = workViewContainerPresenter.addNewSampleToMainTabView(sampleName);
-
-            List<Read> reads = (List<Read>)sampleData.get(0);
-            String fastaFile = (String)sampleData.get(1);
-
-
-            ((ChoiceBox)((ToolBar)this.readChartView.getChildren().get(0)).getItems().get(0)).getItems().addAll(reads);
-
-            fastaEditor.setHtmlText(fastaFile);
-
-
+            workViewPresenter.setNewSampleToTabView(sampleName);
+            System.out.println("ITem: "+ source.getText() + " dropped");
             event.setDropCompleted(true);
             event.consume();
         });
 
     }
 
+    public void setWorkViewPresenter(WorkViewPresenter workViewPresenter) {
+        this.workViewPresenter = workViewPresenter;
+    }
 
+    public void setTextTab(String fastaFileHtmlCode) {
+        this.fastaEditor.setHtmlText(fastaFileHtmlCode);
+    }
+
+    public void setChartTab(List<Read> reads) {
+        ((ChoiceBox)((ToolBar)this.readChartView.getChildren().get(0)).getItems().get(0)).getItems().addAll(reads);
+    }
 }
