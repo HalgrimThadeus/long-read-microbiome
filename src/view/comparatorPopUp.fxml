@@ -6,8 +6,8 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="288.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="37.0" layoutY="51.0" text="select 2 samples:" />
-      <ChoiceBox layoutX="27.0" layoutY="75.0" prefHeight="25.0" prefWidth="153.0" />
-      <ChoiceBox layoutX="27.0" layoutY="114.0" prefHeight="25.0" prefWidth="153.0" />
+      <ChoiceBox fx:id="sampleChoiceBox1" layoutX="27.0" layoutY="75.0" prefHeight="25.0" prefWidth="153.0" />
+      <ChoiceBox fx:id="sampleChoiceBox2" layoutX="27.0" layoutY="114.0" prefHeight="25.0" prefWidth="153.0" />
       <Button layoutX="347.0" layoutY="217.0" mnemonicParsing="false" onAction="#onCompareButtonClicked" text="compare" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -15,9 +15,9 @@
       </Button>
       <Label layoutX="187.0" layoutY="79.0" text="with filter" />
       <Label layoutX="187.0" layoutY="118.0" text="with filter" />
-      <ChoiceBox layoutX="244.0" layoutY="75.0" prefHeight="25.0" prefWidth="153.0" />
-      <ChoiceBox layoutX="244.0" layoutY="114.0" prefHeight="25.0" prefWidth="153.0" />
+      <ChoiceBox fx:id="filterChoiceBox1" layoutX="244.0" layoutY="75.0" prefHeight="25.0" prefWidth="153.0" />
+      <ChoiceBox fx:id="filterChoiceBox2" layoutX="244.0" layoutY="114.0" prefHeight="25.0" prefWidth="153.0" />
       <Label layoutX="37.0" layoutY="183.0" text="select comparison mode:" />
-      <ChoiceBox layoutX="37.0" layoutY="204.0" prefHeight="25.0" prefWidth="153.0" />
+      <ChoiceBox fx:id="comparisonModeChoiceBox" layoutX="37.0" layoutY="204.0" prefHeight="25.0" prefWidth="153.0" />
    </children>
 </AnchorPane>

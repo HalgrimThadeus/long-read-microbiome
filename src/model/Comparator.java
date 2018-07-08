@@ -45,7 +45,6 @@ public class Comparator {
     }
 
 
-
     public static int calculateNumberOfBins(ArrayList<Double> data){
         return (int)(2*(interquantileRange(data)/Math.pow(data.size(),1.0/3.0)));
     }
