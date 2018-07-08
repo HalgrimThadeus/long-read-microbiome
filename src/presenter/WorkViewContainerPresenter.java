@@ -1,11 +1,8 @@
 package presenter;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import model.Filter;
-import model.FilteredSample;
+import javafx.scene.control.SplitPane;
 import model.Project;
-import model.Sample;
 import view.MainView;
 import view.WorkView;
 import view.WorkViewContainer;
@@ -42,7 +39,9 @@ public class WorkViewContainerPresenter {
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("workView.fxml"));
         loader.setController(newSampleTabPane);
         //TODO HOW CHANGE this , so that workviews are presented in splited panes???
-        loader.load();
+        //loader.load();
+        //TODO Just for showing
+        ((SplitPane)(workViewContainer.getChildren().get(0))).getItems().add(loader.load());
 
         //initiliazie new sampletabpane with null so nothing to see...
         WorkViewPresenter workViewPresenter = new WorkViewPresenter(this.project, newSampleTabPane);
