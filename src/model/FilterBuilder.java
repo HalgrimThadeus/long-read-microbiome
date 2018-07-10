@@ -1,7 +1,12 @@
 package model;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 
 public class FilterBuilder {
+
+    private List<String> usedKey = new ArrayList<>();
+    private List<String> usedValues = new ArrayList<>();
 
     private Predicate<Read> mainPredicate = new Predicate<Read>() {
         @Override
@@ -10,6 +15,18 @@ public class FilterBuilder {
         }
     };
 
+
+    public void addKeyValue(String key, String value){
+        usedKey.add(key);
+        usedValues.add(value);
+    }
+
+    public List<String> getUsedKey(){
+        return usedKey;
+    }
+    public List<String> getUsedValues(){
+        return usedValues;
+    }
 
     public void addMainPredicate(Predicate<Read> additionalPredicate){
        mainPredicate = mainPredicate.and(additionalPredicate);
@@ -108,9 +125,6 @@ public class FilterBuilder {
        return p-> p.getTaxonomicId() == taxaId ;
     }
 
-    public boolean applyMainPredicate(Read read){
-        return (mainPredicate.test(read));
-    }
 
 
 }

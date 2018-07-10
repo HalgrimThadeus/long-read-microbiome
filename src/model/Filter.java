@@ -14,6 +14,7 @@ import java.util.function.Predicate;
  *
  */
 public class Filter implements Serializable {
+    private FilterBuilder filterBuilder = new FilterBuilder();
     private Predicate<Read> filterPredicate;
     private String name;
     public Filter(String name, Predicate<Read> filterPredicate){
@@ -24,6 +25,12 @@ public class Filter implements Serializable {
         return name;
     }
 
+    public FilterBuilder getFilterBuilder(){
+        return filterBuilder;
+    }
+    public void setFilterBuilder(FilterBuilder fb){
+        filterBuilder = fb;
+    }
 
 
     /**applies predicate to the List of Reads
@@ -40,115 +47,6 @@ public class Filter implements Serializable {
         }
         return acceptedReads;
     }
-
-
-    /**
-    public List<Read> suitable(Sample sample){
-        List<Read> reads = sample.getReads();
-        List<Read> suitablereads = new ArrayList<>();
-        for(Read read: reads) {
-            boolean fits = true;
-            for (int k = 0; k < keys.size(); k++) {
-                if (!values.get(k).equals("")) {
-                    if (keys.get(k).equals("Length")) {
-                        if(!isLengthEqual(Integer.parseInt(values.get(k))).test(read)) {
-                            fits = false;
-                            break;
-                        }
-
-                    } else if (keys.get(k).equals("GCContent")) {
-                        if(!isGCContentEqual(Integer.parseInt(values.get(k))).test(read)){
-                            fits = false;
-                            break;
-                        }
-                    } else if (keys.get(k).equals("Gen")) {
-                        if(!isGen(values.get(k)).test(read)){
-                            fits = false;
-                            break;
-                        }
-                    } else if (keys.get(k).equals("Score")) {
-                        if (!isScoreEqual(Integer.parseInt(values.get(k))).test(read)){
-                            fits = false;
-                            break;
-                        }
-                    } else if (keys.get(k).equals("TaxaId")) {
-                        if(!isTaxa(Integer.parseInt(values.get(k))).test(read)){
-                            fits = false;
-                            break;
-                        }
-                    } else {
-                            for (GffEntry gff : read.getGFFEntries()) {
-                                if (!gff.getAttributes().get(keys.get(k)).equals(values.get(k))) {
-                                    fits = false;
-                                    break;
-                                }
-                            }
-                            if (fits) {
-                                suitablereads.add(read);
-                            }
-                        }
-
-
-                }
-
-            }
-
-        }
-        return suitablereads;
-
-    }
-
-
-    protected void writeAcceptedReads(){
-        Writer writer ;
-        try {
-            writer = new FileWriter("AcceptedReads.txt");
-            for (Read accepted: acceptedreads) {
-                writer.write(accepted.getId());
-                writer.append("\n");
-            }
-            writer.close();
-        }
-        catch(IOException e){
-            System.err.println("Couldn't write out Reads !");
-        }
-    }
-
-**/
-
-
-/**
- * gets all the attributes so we can display them in the UI. With that the user will be abel to filter
- * and sets them to criteria
-
-    protected void getFilterCriteria(Sample sample){
-        criterias = new ArrayList();
-        List<Read> reads = sample.getReads();
-        for(Read read: reads) {
-            for (GffEntry gff : read.getGFFEntries()) {
-                List<String> attributes = new ArrayList<>();
-                attributes.addAll(gff.getAttributes().keySet());
-                for (String attribute : attributes) {
-                    if (!criterias.contains(attribute)) {
-                        criterias.add(attribute);
-                    }
-                }
-            }
-        }
-    }
-
-
-
-    protected List<String> getCriteria(){
-        return criterias;
-    }
-
-**/
-
-
-
-
-
 
 
 }
