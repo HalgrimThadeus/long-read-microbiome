@@ -22,17 +22,16 @@ public class WorkViewPresenter {
 
     private Project project;
     private WorkView workView;
-    private Property<FilteredSample> filteredSample;
+    private FilteredSample filteredSample;
 
     public WorkViewPresenter(Project project, WorkView workView){
         this.project = project;
         this.workView = workView;
 
-        //todo: the null has to be changed maybe
-        this.filteredSample = new SimpleObjectProperty<>(new FilteredSample(null,null));
-        this.filteredSample.addListener((observable, oldValue, newValue) -> {
-            this.workView.setTextTab(getFastaFileHtmlCode(newValue.getSample()));
-            this.workView.setChartTab(newValue.getSample().getReads());
+        this.filteredSample = new FilteredSample();
+        this.filteredSample.getSample().addListener((observable, oldValue, newValue) -> {
+            this.workView.setTextTab(getFastaFileHtmlCode(newValue));
+            this.workView.setChartTab(newValue.getReads());
         });
     }
 
@@ -45,8 +44,7 @@ public class WorkViewPresenter {
                 sample4Presenting = sample;
         }
 
-        //todo: the null has to be changed maybe
-        this.filteredSample.setValue(new FilteredSample(sample4Presenting, null));
+        this.filteredSample.setSample(sample4Presenting);
     }
 
     private String getFastaFileHtmlCode(Sample sample){
