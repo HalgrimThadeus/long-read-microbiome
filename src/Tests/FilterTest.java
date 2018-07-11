@@ -44,6 +44,18 @@ public class FilterTest {
     }
 
     @Test
+    public void shouldFilterListByScore(){
+        FilterBuilder filterBuilder = new FilterBuilder();
+        filterBuilder.addMainPredicate(FilterBuilder.isScoreEqual(3));
+        Filter filter = new Filter("TestFilter", filterBuilder.getMainPredicate());
+
+        List<Read> suitableRead = filter.suitable(shouldCreateNewSample());
+        assertEquals(2, suitableRead.size());
+        assertEquals("read1", filter.suitable(shouldCreateNewSample()).get(0).getId());
+        assertEquals("read2", filter.suitable(shouldCreateNewSample()).get(1).getId());
+    }
+
+    @Test
     public void shouldFilterListByGCContent2() {
         FilterBuilder filterBuilder = new FilterBuilder();
         filterBuilder.addMainPredicate(FilterBuilder.isGCContentEqual(2000.0/22));
@@ -114,7 +126,7 @@ public class FilterTest {
     }
 
     @Test
-    public void shouldFilterEmpytSample() {
+    public void shouldFilterEmptySample() {
 
         //test FOUR
         FilterBuilder filterBuilder = new FilterBuilder();

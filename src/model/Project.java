@@ -21,9 +21,10 @@ public class Project implements Serializable {
 
     /**
      * Add a new Sample
+     *
      * @param sample
      */
-    public void addSamples(Sample sample){
+    public void addSamples(Sample sample) {
         samples.add(sample);
     }
 
@@ -35,12 +36,24 @@ public class Project implements Serializable {
         return this.filters;
     }
 
-    public void clear(){
+    public void clear() {
         this.samples.clear();
         this.filters.clear();
     }
 
 
+    @Override
+    public String toString() {
+        String res = "";
+        for (Sample sample : samples) {
+            res += sample.toString();
+        }
+        res += "##########" + '\n'; //10 # for seperating the samples from the filters
+        for (Filter filter: filters){
+            res += filter.toString();
+        }
+        return res;
+    }
 
 
 }

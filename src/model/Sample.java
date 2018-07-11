@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sample implements Serializable {
+public class Sample{
     /**
      * Contains the List of the Reads in this Sample
      */
@@ -12,6 +12,7 @@ public class Sample implements Serializable {
     private String name;
     private String gffFileName;
     private String fastaFileName;
+    private String taxaFileName;
 
     public Sample() {
         this.name = "SampleName not set";
@@ -20,10 +21,11 @@ public class Sample implements Serializable {
         this.reads = new ArrayList<>();
     }
 
-    public Sample(String gffFileName, String fastaFileName) {
+    public Sample(String gffFileName, String fastaFileName, String taxaFileName) {
         this.name = "SampleName not set";
         this.gffFileName = gffFileName;
         this.fastaFileName = fastaFileName;
+        this.taxaFileName = taxaFileName;
     }
 
     public void setName(String name) {
@@ -74,42 +76,15 @@ public class Sample implements Serializable {
         reads.add(newRead);
     }
 
-    //TODO Is this working??? --> now this should (not safe) work , but it's intended to be in Filter, not here
-    /*
-      //Picks up all reads with the demanded gene (id?) from the reads list.
-   private List<Read> getReadsWithGene(String geneID){
-
-        List<Read> readswithgene = new ArrayList<>();
-
-
-        for(Read possibleread: reads){
-          List<GffEntry> entries = possibleread.getGFFEntries();    //List of entries in the current read
-            //checks if the current entries contains the gene . if yes it adds read to result else not
-            for(GffEntry entry: entries){
-                if (entry.getAttributefromKey("ID") == geneID){
-                    readswithgene.add(possibleread);
-                    break;
-                }
-          }
-
-        }
-
-        return readswithgene;
-    }
-    */
-
-
     /**
-     * Checks if the gene is contained in an entry
-     * @param keys
-     * @param values
-     * @return
+     * @return a two-line-String with the FilePaths of a Sample, SampleName \n FASTAFilePath \t GFFFilePath \t CSVFilePath
      */
-    /*
-    private List<Read> filter(List<String> keys, List<String> values){
-        Filter crit = new Filter(reads, keys,values);
-        List<Read> acceptedreads = crit.getAcceptedReads();
-        crit.writeAcceptedReads();
-        return acceptedreads;
-    }*/
+    @Override
+    public String toString(){
+        String res = name + '\n';
+        res += fastaFileName + '\t';
+        res += gffFileName + '\t';
+        res += taxaFileName + '\n';
+        return res;
+    }
 }

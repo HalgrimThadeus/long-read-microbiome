@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.lang.String;
 import java.util.Map;
 
-public class GffEntry implements Serializable {
+public class GffEntry {
     /**
      * The name of the sequence where the feature is located
      */
