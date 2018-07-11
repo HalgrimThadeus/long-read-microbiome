@@ -8,7 +8,6 @@
     <tabs>
         <Tab text="ReadChart">
             <content>
-                <fx:include fx:id="readChartView" source="readChartView.fxml"></fx:include>
             </content>
         </Tab>
         <Tab text="                      ">

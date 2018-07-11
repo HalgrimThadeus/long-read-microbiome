@@ -1,9 +1,13 @@
 package presenter;
 
 import javafx.collections.ListChangeListener;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Tab;
 import model.*;
+import view.ReadChartView;
 import view.WorkView;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -29,6 +33,21 @@ public class WorkViewPresenter {
                 }
             }
             });
+    }
+
+    /**
+     * Is called by workView, because the Tab has to be initialized before adding something.
+     * @param readChartTab
+     * @throws IOException
+     */
+    public void addReadChartView(Tab readChartTab) throws IOException {
+        ReadChartView readChartView = new ReadChartView();
+        ReadChartViewPresenter readChartViewPresenter = new ReadChartViewPresenter(this.filteredSample, readChartView);
+        FXMLLoader loader = new FXMLLoader(WorkView.class.getResource("readChartView.fxml"));
+        loader.setController(readChartView);
+
+        readChartView.setReadChartViewPresenter(readChartViewPresenter);
+        readChartTab.setContent(loader.load());
     }
 
     public void setNewSampleToWorkView(String sampleName) {

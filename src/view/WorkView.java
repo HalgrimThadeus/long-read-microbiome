@@ -2,20 +2,16 @@ package view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.TitledPane;
-import javafx.scene.control.ToolBar;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
-import model.Read;
 import presenter.WorkViewPresenter;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class WorkView extends TabPane implements Initializable {
@@ -40,10 +36,6 @@ public class WorkView extends TabPane implements Initializable {
 
     public void setTextTab(String fastaFileHtmlCode) {
         this.fastaTextShow.setHtmlText(fastaFileHtmlCode);
-    }
-
-    public void setChartTab(List<Read> reads) {
-        ((ChoiceBox)((ToolBar)this.readChartView.getChildren().get(0)).getItems().get(0)).getItems().addAll(reads);
     }
 
     @Override
@@ -73,5 +65,13 @@ public class WorkView extends TabPane implements Initializable {
             event.setDropCompleted(true);
             event.consume();
         });
+
+        try {
+            workViewPresenter.addReadChartView(workView.getTabs().get(0));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+
 }

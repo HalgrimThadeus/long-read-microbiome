@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import presenter.MainPresenter;
@@ -12,7 +13,7 @@ import presenter.MainPresenter;
 import java.io.File;
 import java.io.IOException;
 
-public class MainView {
+public class MainView extends AnchorPane {
 
     /**
      * Important Containers

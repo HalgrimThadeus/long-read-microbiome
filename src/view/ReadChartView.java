@@ -12,19 +12,24 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import model.GffEntry;
 import model.Read;
+import presenter.ReadChartViewPresenter;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class ReadChartView implements Initializable {
+
+
+    private ReadChartViewPresenter readChartViewPresenter;
+
+
 
     @FXML
     public VBox sequences;
@@ -55,12 +60,24 @@ public class ReadChartView implements Initializable {
     @FXML
     ToolBar toolBar;
 
+    @FXML
+    Button searchGeneButton;
+
+    @FXML
+    TextField searchGeneTextField;
+
     private IntegerProperty barWidth = new SimpleIntegerProperty(20);
     private DoubleProperty zoomFactor = new SimpleDoubleProperty(1);
 
 
 
     private final int BASIC_WIDTH = 740;
+
+
+    public void addReads(List<Read> reads){
+        choseReadChoiceBox.getItems().addAll(reads);
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,12 +91,15 @@ public class ReadChartView implements Initializable {
         });
 
         //Bindings
-        toolBar.prefWidthProperty().bind(scrollPane.widthProperty());
+        toolBar.prefWidthProperty().bind(scrollPane.widthProperty().subtract(10));
         zoomFactor.bind(zoomSlider.valueProperty());
+        readChartPane.prefHeightProperty().bind(scrollPane.heightProperty());
         readChartPane.prefWidthProperty().bind(zoomFactor.multiply(BASIC_WIDTH));
         readChartPane.maxWidthProperty().bind(zoomFactor.multiply(BASIC_WIDTH));
         readChartPane.minWidthProperty().bind(zoomFactor.multiply(BASIC_WIDTH));
 
+
+        sequences.setSpacing(10);
 
     }
 
@@ -99,23 +119,32 @@ public class ReadChartView implements Initializable {
             double oldUpperBound = xAxis.getUpperBound();
             List<GffEntry> gffEntries = read.getGFFEntries();
 
+            VBox readBox = new VBox();
+
             //Has do be done like this, because the getDisplayedValue can only be calculated when the xAxis is drawn...
             if(xAxisSetHigherBoundIfNeeded(length)){
-                addSequenceLength(read.getId(), length, oldUpperBound);
-                addGenes(gffEntries, oldUpperBound);
+                readBox.getChildren().add(addGenes(gffEntries, oldUpperBound)[0]);
+                readBox.getChildren().add(addSequenceLength(read.getId(), length, oldUpperBound));
+                readBox.getChildren().add(addGenes(gffEntries, oldUpperBound)[1]);
             }
             else{
-                addSequenceLength(read.getId(), length, -1);
-                addGenes(gffEntries, -1);
+                readBox.getChildren().add(addGenes(gffEntries, -1)[0]);
+                readBox.getChildren().add(addSequenceLength(read.getId(), length, -1));
+                readBox.getChildren().add(addGenes(gffEntries, -1)[1]);
             }
 
             addName(read.getTaxonomicId() + "");
-
+            sequences.getChildren().add(readBox);
+            System.out.println(readChartViewPresenter);
         }
 
 
 
 
+    }
+
+    public void setReadChartViewPresenter(ReadChartViewPresenter readChartViewPresenter){
+        this.readChartViewPresenter = readChartViewPresenter;
     }
 
     /**
@@ -139,7 +168,7 @@ public class ReadChartView implements Initializable {
      * @param length
      * @param oldUpperBound
      */
-    private void addSequenceLength(String id, int length, double oldUpperBound){
+    private Rectangle addSequenceLength(String id, int length, double oldUpperBound){
         Rectangle newSequence = new Rectangle();
         newSequence.heightProperty().bind(barWidth);
 
@@ -151,7 +180,7 @@ public class ReadChartView implements Initializable {
         }
 
         newSequence.setFill(Color.GRAY);
-        sequences.getChildren().add(newSequence);
+        //sequences.getChildren().add(newSequence);
 
         //Right resizing
         xAxis.widthProperty().addListener((obs, oldVal, newVal) -> {
@@ -166,6 +195,8 @@ public class ReadChartView implements Initializable {
         //Tooltip
         Tooltip t = new Tooltip("Sequence-Id: " + id + "\n" + "Length: " + length);
         Tooltip.install(newSequence, t);
+
+        return newSequence;
     }
 
     /**
@@ -173,9 +204,12 @@ public class ReadChartView implements Initializable {
      * @param gffEntries
      * @param oldUpperBound
      */
-    private void addGenes(List<GffEntry> gffEntries, double oldUpperBound){
-        AnchorPane pane = new AnchorPane();
-        pane.prefHeightProperty().bind(barWidth);
+    private AnchorPane[] addGenes(List<GffEntry> gffEntries, double oldUpperBound){
+        AnchorPane genes = new AnchorPane();
+        AnchorPane genesReversed = new AnchorPane();
+
+        genes.prefHeightProperty().bind(barWidth);
+        genesReversed.prefHeightProperty().bind(barWidth);
 
         for(int j = 0; j < gffEntries.size(); j++){
 
@@ -200,17 +234,17 @@ public class ReadChartView implements Initializable {
 
             //Genes with start reds the get blue
             if(isReversed){
-                Stop[] stops = new Stop[] {new Stop(1, Color.rgb(178,34,34,0.5)), new Stop(0, Color.rgb(34,34,178,0.5))};
-                lg1 = new LinearGradient(0, 0, 1, 1, true, CycleMethod.NO_CYCLE, stops);
+                rectangle.setFill(Color.rgb(34,34,178, 0.5));
+                genesReversed.getChildren().add(rectangle);
+
             }
             else{
-                Stop[] stops = new Stop[] {new Stop(1, Color.rgb(178,34,34,0.5)), new Stop(0, Color.rgb(34,34,178,0.5))};
-                lg1 = new LinearGradient(1, 1, 0, 0, true, CycleMethod.NO_CYCLE, stops);
+                rectangle.setFill(Color.rgb(178,34,34, 0.5));
+                genes.getChildren().add(rectangle);
             }
 
 
             rectangle.heightProperty().bind(barWidth);
-            rectangle.setFill(lg1);
             rectangle.setStrokeWidth(0.5);
             rectangle.setStroke(Color.BLACK);
 
@@ -235,11 +269,15 @@ public class ReadChartView implements Initializable {
             Tooltip.install(rectangle, t);
 
 
-            pane.getChildren().add(rectangle);
+            //genes.getChildren().add(rectangle);
 
         }
 
-        sequences.getChildren().add(pane);
+        //sequences.getChildren().add(pane);
+        AnchorPane[] allGenes = new AnchorPane[2];
+        allGenes[0] = genes;
+        allGenes[1] = genesReversed;
+        return allGenes;
     }
 
     /**
@@ -249,8 +287,41 @@ public class ReadChartView implements Initializable {
     private void addName(String name){
         //TODO Transform them to names add listener to spinner
         Label label = new Label(name);
-        label.prefHeightProperty().bind(barWidth);
+        label.prefHeightProperty().bind(barWidth.multiply(3).add(3));
+        names.setSpacing(10);
         names.getChildren().add(label);
-        names.spacingProperty().bind(barWidth);
+
+    }
+
+    private void searchGen(String genName, List<GffEntry> gffEntries){
+
+        //Setting up Data;
+        int minStart = Integer.MAX_VALUE;
+        int minEnd = Integer.MIN_VALUE;
+        final int SPACE_FROM_START_END = (minEnd-minStart)/2;
+        List<GffEntry> toDraw = new ArrayList<>();
+
+        for(int i = 0; i < gffEntries.size(); i++){
+            String name = gffEntries.get(i).getAttributes().get(" Name");
+            int start = gffEntries.get(i).getStart();
+            int end = gffEntries.get(i).getEnd();
+            if(name.equals(genName.trim())){
+                toDraw.add(gffEntries.get(i));
+                if(start < minStart){
+                    minStart = start;
+                }
+                if(end > minStart){
+                    minEnd = end;
+                }
+            }
+        }
+
+        //Setting up xAxis
+        double oldUpperBound = xAxis.getUpperBound();
+        double oldLowerBound = xAxis.getLowerBound();
+
+        xAxis.setLowerBound(minStart-SPACE_FROM_START_END);
+        xAxis.setUpperBound(minEnd+SPACE_FROM_START_END);
+
     }
 }

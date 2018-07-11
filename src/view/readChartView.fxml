@@ -3,29 +3,41 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ReadChartView">
+<AnchorPane prefHeight="533.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ToolBar fx:id="toolBar" prefWidth="740" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ToolBar fx:id="toolBar" layoutY="10.0" prefHeight="25.0" prefWidth="742.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <ChoiceBox fx:id="choseReadChoiceBox" prefWidth="200.0" />
                 <Button fx:id="addReadButton" onAction="#onAddReadButtonClicked" text="+" />
                 <Label text="Bar Width:" />
-                <Spinner fx:id="barWidthSpinner" editable="true" prefWidth="80.0" />
+                <Spinner fx:id="barWidthSpinner" editable="true" prefHeight="25.0" prefWidth="67.0" />
                 <Label text="Zoom In:" />
-                <Slider fx:id="zoomSlider" blockIncrement="0.5" max="100.0" min="1.0" prefWidth="250.0" />
+                <Slider fx:id="zoomSlider" blockIncrement="0.5" max="100.0" min="1.0" prefHeight="14.0" prefWidth="149.0" />
             </items>
         </ToolBar>
-<ScrollPane fx:id="scrollPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
-        <content>
-            <AnchorPane fx:id="readChartPane" prefHeight="450.0" prefWidth="740.0">
-                <children>
-                <VBox fx:id="names" alignment="BOTTOM_RIGHT" layoutX="14.0" layoutY="14.0" prefHeight="211.0" prefWidth="85.0" spacing="20.0" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
-                <VBox fx:id="sequences" alignment="BOTTOM_LEFT" layoutX="120.0" layoutY="22.0" prefHeight="220.0" prefWidth="469.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
-                <NumberAxis autoRanging="false" label="Sequence Length" layoutX="120.0" layoutY="14.0" prefHeight="50.0" prefWidth="469.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="10.0" fx:id="xAxis">
-                </NumberAxis>
-                </children>
-            </AnchorPane>
-        </content>
-</ScrollPane>
+        <ScrollPane fx:id="scrollPane" prefWidth="771.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+            <content>
+                <AnchorPane fx:id="readChartPane" prefHeight="468.0" prefWidth="740.0">
+                    <children>
+                        <VBox fx:id="names" alignment="BOTTOM_RIGHT" layoutX="14.0" layoutY="14.0" prefHeight="211.0" prefWidth="85.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0" />
+                        <VBox fx:id="sequences" alignment="BOTTOM_LEFT" layoutX="120.0" layoutY="22.0" prefHeight="220.0" prefWidth="469.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0" />
+                        <NumberAxis autoRanging="false" label="Sequence Length" layoutX="120.0" layoutY="14.0" prefHeight="41.0" prefWidth="620.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="10.0" fx:id="xAxis">
+                        </NumberAxis>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+        <ToolBar prefHeight="30.0" prefWidth="404.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="338.0">
+            <items>
+                <Button mnemonicParsing="false" text="Add Sample" />
+                <ChoiceBox prefWidth="150.0" />
+            </items>
+        </ToolBar>
+        <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0">
+            <items>
+                <Button fx:id="searchGeneButton" mnemonicParsing="false" text="Search Gene" />
+                <TextField fx:id="searchGeneTextField" prefHeight="25.0" prefWidth="203.0" />
+            </items>
+        </ToolBar>
     </children>
 </AnchorPane>
