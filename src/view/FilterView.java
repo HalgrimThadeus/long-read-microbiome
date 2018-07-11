@@ -27,6 +27,9 @@ public class FilterView extends AnchorPane {
         this.filterPresenter = new FilterPresenter(this);
     }
 
+    public ListView getFilterView(){
+        return filterList;
+    }
     public FilterPresenter getFilterPresenter() {
         return filterPresenter;
     }
