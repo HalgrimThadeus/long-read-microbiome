@@ -6,6 +6,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToolBar;
+import javafx.scene.input.DataFormat;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
@@ -18,6 +19,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class WorkView extends TabPane implements Initializable {
+
+    public static DataFormat FILTER = new DataFormat("Filter");
+    public static DataFormat SAMPLE = new DataFormat("Sample");
 
     @FXML
     private WorkView workView;
@@ -55,11 +59,17 @@ public class WorkView extends TabPane implements Initializable {
         });
 
         workView.setOnDragDropped((DragEvent event) -> {
-            TitledPane source = (TitledPane) event.getGestureSource();
-            String sampleName = source.getText();
+            String filterName = (String) event.getDragboard().getContent(FILTER);
+            String sampleName = (String) event.getDragboard().getContent(SAMPLE);
 
-            workViewPresenter.setNewSampleToTabView(sampleName);
-            System.out.println("ITem: "+ source.getText() + " dropped in " + this);
+            if(filterName != null) {
+                workViewPresenter.setNewFilterToWorkView(filterName);
+                System.out.println("Filter-Item: "+ filterName + " dropped in " + this);
+            } else if(sampleName != null) {
+                workViewPresenter.setNewSampleToWorkView(sampleName);
+                System.out.println("Sample-Item: "+ sampleName + " dropped in " + this);
+            }
+
             event.setDropCompleted(true);
             event.consume();
         });

@@ -1,23 +1,11 @@
 package presenter;
 
-
-import javafx.beans.InvalidationListener;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.ObjectPropertyBase;
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ToolBar;
-import model.FilteredSample;
-import model.Project;
-import model.Sample;
+import javafx.collections.ListChangeListener;
+import model.*;
 import view.WorkView;
 
-import java.beans.PropertyEditor;
-import java.util.ArrayList;
 import java.util.List;
+
 
 public class WorkViewPresenter {
 
@@ -30,13 +18,20 @@ public class WorkViewPresenter {
         this.workView = workView;
 
         this.filteredSample = new FilteredSample();
-        this.filteredSample.getSample().addListener((observable, oldValue, newValue) -> {
-            this.workView.setTextTab(getFastaFileHtmlCode(newValue));
-            this.workView.setChartTab(newValue.getReads());
-        });
+
+        this.filteredSample.getFilteredReads().addListener((ListChangeListener<? super Read>) change -> {
+            while(change.next()) {
+
+                if(change.wasAdded()) {
+                    this.workView.setTextTab(this.getFastaFileHtmlCode((List<Read>) change.getList()));
+                } else if(change.wasRemoved()) {
+                    this.workView.setTextTab(this.getFastaFileHtmlCode((List<Read>) change.getList()));
+                }
+            }
+            });
     }
 
-    public void setNewSampleToTabView(String sampleName) {
+    public void setNewSampleToWorkView(String sampleName) {
         Sample sample4Presenting = null;
 
         for (Sample sample: project.getSamples()) {
@@ -47,15 +42,24 @@ public class WorkViewPresenter {
         this.filteredSample.setSample(sample4Presenting);
     }
 
-    private String getFastaFileHtmlCode(Sample sample){
+    public void setNewFilterToWorkView(String filterName) {
+        Filter filter4Applying = null;
+
+        for (Filter filter: project.getFilters()) {
+            if(filter.getName().equals(filterName))
+                filter4Applying = filter;
+        }
+
+        this.filteredSample.setFilter(filter4Applying);
+    }
+
+    private String getFastaFileHtmlCode(List<Read> reads){
 
         StringBuilder builder = new StringBuilder();
 
-        for(int i = 0; i < sample.getReads().size(); i++){
-            builder.append(sample.getReads().get(i).getHeader());
+        for (Read r: reads) {
+            builder.append(r.getHeader());
             builder.append( "<br/>");
-            builder.append(sample.getReads().get(i).getSequence());
-            builder.append("<br/>");
         }
 
         return builder.toString();

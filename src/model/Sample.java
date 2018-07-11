@@ -1,5 +1,8 @@
 package model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +11,8 @@ public class Sample{
     /**
      * Contains the List of the Reads in this Sample
      */
-    private List<Read> reads = new ArrayList<>();
+    private ObservableList<Read> reads = FXCollections.observableArrayList();
+
     private String name;
     private String gffFileName;
     private String fastaFileName;
@@ -18,7 +22,6 @@ public class Sample{
         this.name = "SampleName not set";
         this.gffFileName = "gffFileName not set";
         this.fastaFileName = "fastaFileName not set";
-        this.reads = new ArrayList<>();
     }
 
     public Sample(String gffFileName, String fastaFileName, String taxaFileName) {
@@ -36,7 +39,7 @@ public class Sample{
      * Returns the List of Reads
      * @return reads
      */
-    public List<Read> getReads() {
+    public ObservableList<Read> getReads() {
         return reads;
     }
 
@@ -65,7 +68,7 @@ public class Sample{
      * @param newreads
      */
     public void setReads(List<Read> newreads) {
-        reads = newreads;
+        reads.addAll(newreads);
     }
 
     /**

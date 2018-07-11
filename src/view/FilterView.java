@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import presenter.FilterPresenter;
 
@@ -59,16 +59,21 @@ public class FilterView extends AnchorPane {
             }
         });
     }
+
     public void onDragListItem(){
-        filterList.setOnDragDetected(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.isDragDetect()){
-                    String selectedFilter = filterList.getSelectionModel().getSelectedItem();
-                    }
-            }
+        filterList.setOnDragDetected(event -> {
+
+            Dragboard db = filterList.startDragAndDrop(TransferMode.ANY);
+
+            /* Put a string on a dragboard */
+            ClipboardContent content = new ClipboardContent();
+            content.put(WorkView.FILTER, filterList.getSelectionModel().getSelectedItem());
+            db.setContent(content);
+
+            event.consume();
         });
     }
+
     public void deleteFilter(){
         filterList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

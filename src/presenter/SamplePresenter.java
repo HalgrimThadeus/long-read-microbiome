@@ -16,6 +16,7 @@ import model.Sample;
 import view.MainView;
 import view.NewSamplePopUp;
 import view.SampleView;
+import view.WorkView;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -26,7 +27,6 @@ public class SamplePresenter {
 
     private NewSamplePopUpPresenter newSamplePopUpPresenter = null;
     private SampleView sampleView;
-    private ObservableList<Sample> samples;
     private Map<Sample,TitledPane> sample2View;
 
     public SamplePresenter(SampleView sampleView) {
@@ -41,7 +41,6 @@ public class SamplePresenter {
      */
     public void initialize(NewSamplePopUpPresenter newSamplePopUpPresenter, ObservableList<Sample> samples) {
         this.newSamplePopUpPresenter = newSamplePopUpPresenter;
-        this.samples = samples;
 
         samples.addListener((ListChangeListener<Sample>) change -> {
             while(change.next()) {
@@ -93,19 +92,17 @@ public class SamplePresenter {
         TitledPane newSampleAccordionPane = sampleView.addSampleAccordionPane(sample.getName(),
                 sample.getFastaFileName(), sample.getGffFileName(), sample.getReadNames());
 
-        newSampleAccordionPane.setOnDragDetected(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                /* drag was detected, start a drag-and-drop gesture*/
-                /* allow any transfer mode */
-                Dragboard db = newSampleAccordionPane.startDragAndDrop(TransferMode.ANY);
+        newSampleAccordionPane.setOnDragDetected(event -> {
+            /* drag was detected, start a drag-and-drop gesture*/
+            /* allow any transfer mode */
+            Dragboard db = newSampleAccordionPane.startDragAndDrop(TransferMode.ANY);
 
-                /* Put a string on a dragboard */
-                ClipboardContent content = new ClipboardContent();
-                content.putString(newSampleAccordionPane.getText());
-                db.setContent(content);
+            /* Put a string on a dragboard */
+            ClipboardContent content = new ClipboardContent();
+            content.put(WorkView.SAMPLE, newSampleAccordionPane.getText());
+            db.setContent(content);
 
-                event.consume();
-            }
+            event.consume();
         });
 
         this.sample2View.put(sample, newSampleAccordionPane);

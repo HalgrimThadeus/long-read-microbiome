@@ -13,7 +13,7 @@ import java.util.function.Predicate;
  *
  *
  */
-public class Filter implements Serializable {
+public class Filter {
     private FilterBuilder filterBuilder = new FilterBuilder();
     private Predicate<Read> filterPredicate;
     private String name;
@@ -63,5 +63,7 @@ public class Filter implements Serializable {
         return acceptedReads;
     }
 
-
+    public Predicate<Read> getFilterPredicate() {
+        return filterPredicate;
+    }
 }

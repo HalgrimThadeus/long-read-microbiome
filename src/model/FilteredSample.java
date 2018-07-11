@@ -2,32 +2,51 @@ package model;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 
 public class FilteredSample {
 
     /**
      * actual sample to be filtered
      */
-    private ObjectProperty<Sample> sample = new SimpleObjectProperty<>();
+    private ObjectProperty<Sample> sample;
+
+
+    private ObservableList<Read> filteredReads;
     /**
      * actual given filter that has to be applied on the actual sample
      */
-    private ObjectProperty<Filter> filter = new SimpleObjectProperty<>();
+    private ObjectProperty<Filter> filter;
 
     /**
      * creates a new empty FilteredSample
      */
-    public FilteredSample() {
-    }
-
-    /**
-     * creates a new FilteredSample, given a sample and a filter to be applied
-     * @param sample
-     * @param filter
-     */
     public FilteredSample(Sample sample, Filter filter) {
         this.sample.setValue(sample);
         this.filter.setValue(filter);
+
+        applyFilter();
+    }
+
+    public FilteredSample() {
+        this.sample =  new SimpleObjectProperty<>();
+        this.filter = new SimpleObjectProperty<>();
+
+        this.filteredReads = FXCollections.observableArrayList();
+    }
+
+    private void applyFilter() {
+        //TODO look that filtering works
+
+        if(this.filter.getValue() != null && this.sample.getValue() != null) {
+            filteredReads.clear();
+            filteredReads.addAll(sample.getValue().getReads().filtered(this.filter.getValue().getFilterPredicate()));
+        } else if(this.filter.getValue() == null && this.sample.getValue() != null) {
+            filteredReads.clear();
+            filteredReads.addAll(sample.getValue().getReads());
+        }
     }
 
     /**
@@ -44,21 +63,16 @@ public class FilteredSample {
     }
 
     public void setSample(Sample sample) {
-        if(this.filter.getValue() != null) {
-            sample.setReads(this.filter.getValue().suitable(sample));
-        }
         this.sample.setValue(sample);
+        applyFilter();
     }
 
     public void setFilter(Filter filter) {
-        Sample sample = this.sample.getValue();
-        if(filter != null) {
-            sample.setReads(this.filter.getValue().suitable(sample));
-        }
         this.filter.setValue(filter);
-        //maybe theres a better way to trigger onchangelisteners
-        //todo listerner for reads
-        this.sample.setValue(null);
-        this.sample.setValue(sample);
+        applyFilter();
+    }
+
+    public ObservableList<Read> getFilteredReads() {
+        return filteredReads;
     }
 }
