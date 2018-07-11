@@ -2,6 +2,9 @@ package model.io;
 
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import model.FilterBuilder;
 import model.Project;
 import model.Sample;
 
@@ -61,7 +64,6 @@ public class ConfigIO {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(project.toString());
             bufferedWriter.close();
-        System.out.println("Welcome to the the configio");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -110,9 +112,9 @@ public class ConfigIO {
                     String[] filePaths = currentLine.split("\t");
 
                     Sample sampleToAdd = new Sample();
-                    sampleToAdd.setName(sampleName);
                     try {
                         sampleToAdd = sampleReader.read(filePaths[0], filePaths[1], filePaths[2]);
+                        sampleToAdd.setName(sampleName);
                     } catch (Exception e) {
                         e.printStackTrace();
                         System.out.println("SampleFormat not correct in the File");
@@ -120,11 +122,21 @@ public class ConfigIO {
                     project.addSamples(sampleToAdd);
                 }
             }
-            //Then construct the Filters:
+            //Then construct the lists for the Filterbuilder:
+            List<String> usedKeys = new ArrayList<>();
+            List<String> usedValues = new ArrayList<>();
             while ((currentLine = bufferedReader.readLine()) != null){
                 String filterName = currentLine;
                 currentLine = bufferedReader.readLine();
+                String[] filterAttributes = currentLine.split("\t");
+
+                for (int i = 0; i < filterAttributes.length/2; i+=2){
+                    usedKeys.add(filterAttributes[i]);
+                    usedValues.add(filterAttributes[i+1]);
+                }
             }
+            FilterBuilder filterBuilder = new FilterBuilder();
+
 
             bufferedReader.close();
         } catch (FileNotFoundException e) {
@@ -132,4 +144,5 @@ public class ConfigIO {
         }
 
     }
+
 }
