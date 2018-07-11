@@ -30,11 +30,9 @@ public class SampleView extends AnchorPane {
     private Accordion sampleAccordion;
 
     private SamplePresenter samplePresenter;
-    private Map<String,TitledPane> sampleAccordionPanes;
 
     public SampleView() {
         this.samplePresenter = new SamplePresenter(this);
-        this.sampleAccordionPanes = new HashMap<>();
     }
 
     @FXML
@@ -42,7 +40,7 @@ public class SampleView extends AnchorPane {
         samplePresenter.openSamplePane();
     }
 
-    public void sampleAdded(String sampleName, String fastaFileName, String gffFileName, List<String> readHeaders) {
+    public TitledPane addSampleAccordionPane(String sampleName, String fastaFileName, String gffFileName, List<String> readHeaders) {
 
         //adds the sample information to the accordion pane
         TitledPane newAccordionPane = new TitledPane();
@@ -83,28 +81,13 @@ public class SampleView extends AnchorPane {
         newAccordionPane.setText(sampleName);
         newAccordionPane.setContent(newAnchorPane);
 
-
-        newAccordionPane.setOnDragDetected(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                /* drag was detected, start a drag-and-drop gesture*/
-                /* allow any transfer mode */
-                Dragboard db = newAccordionPane.startDragAndDrop(TransferMode.ANY);
-
-                /* Put a string on a dragboard */
-                ClipboardContent content = new ClipboardContent();
-                content.putString(newAccordionPane.getText());
-                db.setContent(content);
-
-                event.consume();
-            }
-        });
-
-        this.sampleAccordionPanes.put(sampleName, newAccordionPane);
         sampleAccordion.getPanes().add(newAccordionPane);
+
+        return newAccordionPane;
     }
 
-    public void sampleRemoved(String sampleName) {
-        sampleAccordion.getPanes().remove(this.sampleAccordionPanes.get(sampleName));
+    public void removeSampleAccordionPane(TitledPane sampleAccordionPane) {
+        sampleAccordion.getPanes().remove(sampleAccordionPane);
     }
 
     public SamplePresenter getSamplePresenter() {
