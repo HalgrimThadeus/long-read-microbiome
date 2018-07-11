@@ -99,6 +99,9 @@ public class MainView {
 
     }
 
+
+
+
     @FXML
     public void onLoadProjectMenuItemClicked(ActionEvent clickEvent) throws Exception {
         //Choose File here:
