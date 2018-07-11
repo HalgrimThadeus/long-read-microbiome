@@ -1,6 +1,5 @@
 package model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,22 +9,22 @@ public class Sample{
      */
     private List<Read> reads = new ArrayList<>();
     private String name;
-    private String gffFileName;
-    private String fastaFileName;
-    private String taxaFileName;
+    private String gffFilePath;
+    private String fastaFilePath;
+    private String taxaFilePath;
 
     public Sample() {
         this.name = "SampleName not set";
-        this.gffFileName = "gffFileName not set";
-        this.fastaFileName = "fastaFileName not set";
+        this.gffFilePath = "gffFilePath not set";
+        this.fastaFilePath = "fastaFilePath not set";
         this.reads = new ArrayList<>();
     }
 
-    public Sample(String gffFileName, String fastaFileName, String taxaFileName) {
+    public Sample(String gffFilePath, String fastaFilePath, String taxaFilePath) {
         this.name = "SampleName not set";
-        this.gffFileName = gffFileName;
-        this.fastaFileName = fastaFileName;
-        this.taxaFileName = taxaFileName;
+        this.gffFilePath = gffFilePath;
+        this.fastaFilePath = fastaFilePath;
+        this.taxaFilePath = taxaFilePath;
     }
 
     public void setName(String name) {
@@ -52,12 +51,12 @@ public class Sample{
         return name;
     }
 
-    public String getFastaFileName() {
-        return fastaFileName;
+    public String getFastaFilePath() {
+        return fastaFilePath;
     }
 
-    public String getGffFileName() {
-        return gffFileName;
+    public String getGffFilePath() {
+        return gffFilePath;
     }
 
     /**
@@ -82,9 +81,9 @@ public class Sample{
     @Override
     public String toString(){
         String res = name + '\n';
-        res += fastaFileName + '\t';
-        res += gffFileName + '\t';
-        res += taxaFileName + '\n';
+        res += fastaFilePath + '\t';
+        res += gffFilePath + '\t';
+        res += taxaFilePath + '\n';
         return res;
     }
 }

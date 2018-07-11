@@ -128,11 +128,14 @@ public class ConfigIO {
             while ((currentLine = bufferedReader.readLine()) != null){
                 String filterName = currentLine;
                 currentLine = bufferedReader.readLine();
-                String[] filterAttributes = currentLine.split("\t");
+                String[] entriesOfLine = currentLine.split("\t");
 
-                for (int i = 0; i < filterAttributes.length/2; i+=2){
-                    usedKeys.add(filterAttributes[i]);
-                    usedValues.add(filterAttributes[i+1]);
+                for (int i = 0 ; i < entriesOfLine.length; i++){
+                    usedKeys.add(entriesOfLine[i]);
+                }
+                currentLine = bufferedReader.readLine();
+                for (int i = 0; i < entriesOfLine.length; i++){
+                    usedKeys.add(entriesOfLine[i]);
                 }
             }
             FilterBuilder filterBuilder = new FilterBuilder();

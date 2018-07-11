@@ -18,24 +18,28 @@ public class Filter {
     private List<String> values;
     private List<String> compare;
     private String name;
-    public Filter(String name, List<String> keys,List<String> values,List<String> compare){
+
+    public Filter(String name, List<String> keys, List<String> values, List<String> compare) {
         this.values = values;
         this.keys = keys;
         this.name = name;
         this.compare = compare;
-        buildPredicate(keys,values,compare);
+        buildPredicate(keys, values, compare);
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 
-    public List<String> getCompare(){
+    public List<String> getCompare() {
         return compare;
     }
-    public List<String> getKeys(){
+
+    public List<String> getKeys() {
         return keys;
     }
-    public List<String> getValues(){
+
+    public List<String> getValues() {
         return values;
     }
 
@@ -43,24 +47,36 @@ public class Filter {
      * @return two-line String with name + \n +  \t filterAttribute1  + \t filterValueOfAttribute1 +. ...
      */
     @Override
-    public String toString(){
+    public String toString() {
         String res = name + '\n';
-        List<String> usedKey = filterBuilder.getUsedKey();
-        List<String> usedValues = filterBuilder.getUsedValues();
-        for (int i = 0; i < usedKey.size(); i++){
-            res += usedKey.get(i) + '\t' + usedValues.get(i) + '\t';
+        List<String> usedKey = this.keys;
+        List<String> usedValues = this.values;
+        List<String> usedCompare = this.compare;
+        for (int i = 0; i < usedKey.size(); i++) {
+            res += usedKey.get(i) + '\t';
         }
+        res += '\n';
+        for (int i = 0; i < usedValues.size(); i++) {
+            res += usedValues.get(i) + '\t';
+        }
+        res += '\n';
+        for (int i = 0; i < usedCompare.size(); i++) {
+            res += usedCompare.get(i) + '\t';
+        }
+        res += '\n';
 
         return res;
     }
 
 
-    /**applies predicate to the List of Reads
+    /**
+     * applies predicate to the List of Reads
+     *
      * @return List of accepted reads
-    **/
-    public List<Read> suitable(Sample sample){
+     **/
+    public List<Read> suitable(Sample sample) {
         List<Read> acceptedReads = new ArrayList<>();
-        if((sample != null) && !sample.getReads().isEmpty()) {
+        if ((sample != null) && !sample.getReads().isEmpty()) {
             for (Read read : sample.getReads()) {
                 if (filterPredicate.test(read)) {
                     acceptedReads.add(read);
@@ -71,8 +87,8 @@ public class Filter {
     }
 
 
-    public void buildPredicate(List<String> keys,List<String> values,List<String> compares){
-        for(int i = 0; i < keys.size();i++) {
+    public void buildPredicate(List<String> keys, List<String> values, List<String> compares) {
+        for (int i = 0; i < keys.size(); i++) {
             String key = keys.get(i);
             String value = values.get(i);
             String compare = compares.get(i);
@@ -81,7 +97,7 @@ public class Filter {
             } else if (key.equals("GC")) {
                 if (isDouble(key)) {
                     if (compare.equals("<")) {
-                        filterPredicate =    filterPredicate.and(FilterBuilder.isGCContentLowerEq(Double.parseDouble(value)));
+                        filterPredicate = filterPredicate.and(FilterBuilder.isGCContentLowerEq(Double.parseDouble(value)));
                     }
                     //adds greatereq to filter if the textfield contains a >
                     else if (compare.equals(">")) {
@@ -90,26 +106,26 @@ public class Filter {
                 }
                 //adds equal predicate if nothing but the number is given
                 else if (compare.equals("=")) {
-                    filterPredicate =  filterPredicate.and(FilterBuilder.isGCContentEqual(Double.parseDouble(value)));
+                    filterPredicate = filterPredicate.and(FilterBuilder.isGCContentEqual(Double.parseDouble(value)));
                 }
             } else if (key.equals("Length")) {
                 if (isDigit(key)) {
                     if (compare.equals("="))
-                        filterPredicate =  filterPredicate.and(FilterBuilder.isLengthEqual(Integer.parseInt(value)));
+                        filterPredicate = filterPredicate.and(FilterBuilder.isLengthEqual(Integer.parseInt(value)));
                 } else if (compare.equals(">")) {
-                    filterPredicate =  filterPredicate.and(FilterBuilder.isLengthGreater(Integer.parseInt(value)));
+                    filterPredicate = filterPredicate.and(FilterBuilder.isLengthGreater(Integer.parseInt(value)));
                 } else if (compare.equals("<")) {
 
-                    filterPredicate =  filterPredicate.and(FilterBuilder.isLengthSmaller(Integer.parseInt(value)));
+                    filterPredicate = filterPredicate.and(FilterBuilder.isLengthSmaller(Integer.parseInt(value)));
                 }
             } else if (key.equals("Score")) {
                 if (isDigit(key)) {
                     if (compare.equals("=")) {
-                        filterPredicate =  filterPredicate.and(FilterBuilder.isScoreEqual(Integer.parseInt(value)));
+                        filterPredicate = filterPredicate.and(FilterBuilder.isScoreEqual(Integer.parseInt(value)));
                     } else if (compare.equals("<")) {
-                        filterPredicate =  filterPredicate.addMainPredicate(FilterBuilder.isScoreLower(Integer.parseInt(value)));
-                    } else if (scoreCompareChoice.getSelectionModel().getSelectedItem().equals(">")) {
-                        filterPredicate =   filterPredicate.and(FilterBuilder.isScoreHigher(Integer.parseInt(value)));
+                        filterPredicate = filterPredicate.and(FilterBuilder.isScoreLower(Integer.parseInt(value)));
+                    } else if (compare.equals(">")) {
+                        filterPredicate = filterPredicate.and(FilterBuilder.isScoreHigher(Integer.parseInt(value)));
                     }
                 }
 
@@ -126,33 +142,28 @@ public class Filter {
 
 
     //Checks if a String is a Int
-    private boolean isDigit(String test){
+    private boolean isDigit(String test) {
 
         boolean isDigit;
-        try{
+        try {
             Integer.parseInt(test);
             return true;
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
 
 
-
     }
-    private boolean isDouble(String test){
 
-        try{
+    private boolean isDouble(String test) {
+
+        try {
             Double.parseDouble(test);
             return true;
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
 
 
-
-
-
-
-
-
     }
+}
