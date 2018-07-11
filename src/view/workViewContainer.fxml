@@ -10,14 +10,8 @@
 <WorkViewContainer xmlns="http://javafx.com/javafx"
                    xmlns:fx="http://javafx.com/fxml"
                    fx:controller="view.WorkViewContainer"
-                   minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-<children>
-    <SplitPane fx:id="mainSplitPain" layoutX="216.0" layoutY="79.0" prefHeight="708.0" prefWidth="811.0"
-               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-               AnchorPane.topAnchor="0.0">
+                   minHeight="0.0" minWidth="0.0"
+                   layoutX="216.0" layoutY="79.0" prefHeight="708.0" prefWidth="811.0">
         <items>
-
         </items>
-    </SplitPane>
-</children>
 </WorkViewContainer>

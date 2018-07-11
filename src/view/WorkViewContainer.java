@@ -6,7 +6,7 @@ import presenter.WorkViewContainerPresenter;
 
 import java.io.IOException;
 
-public class WorkViewContainer extends AnchorPane {
+public class WorkViewContainer extends SplitPane {
 
     private WorkViewContainerPresenter workViewContainerPresenter;
 
@@ -19,7 +19,6 @@ public class WorkViewContainer extends AnchorPane {
     }
 
     public void onNewMainTabViewButtonClicked() throws IOException {
-        WorkView newSampleTabPane = workViewContainerPresenter.addNewMainTabView();
-        ((SplitPane)(this.getChildren().get(0))).getItems().add(newSampleTabPane);
+        workViewContainerPresenter.addNewMainTabView();
     }
 }
