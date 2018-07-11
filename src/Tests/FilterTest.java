@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class FilterTest {
 
-    private Sample shouldCreateNewSample() {
+    /*private Sample shouldCreateNewSample() {
         Sample sample = new Sample();
 
         Read read1 = new Read(">read1 bla bla", "ACTGCGCGCGCGCGCGCGCGCG", 23);
@@ -154,5 +154,5 @@ public class FilterTest {
 
         assertEquals(2, filter.suitable(shouldCreateNewSample()).size());
     }
-
+*/
 }
