@@ -7,6 +7,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.input.*;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import presenter.FilterPresenter;
 
@@ -26,6 +28,9 @@ public class FilterView extends AnchorPane {
         this.filterPresenter = new FilterPresenter(this);
     }
 
+    public ListView getFilterView(){
+        return filterList;
+    }
     public FilterPresenter getFilterPresenter() {
         return filterPresenter;
     }
@@ -78,9 +83,11 @@ public class FilterView extends AnchorPane {
         filterList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-               String filterToRemove = filterList.getSelectionModel().getSelectedItem();
-               names.remove(filterToRemove);
-               filterList.setItems(names);
+                if (event.getButton() == MouseButton.PRIMARY) {
+                    String filterToRemove = filterList.getSelectionModel().getSelectedItem();
+                    names.remove(filterToRemove);
+                    filterList.setItems(names);
+                }
             }
         });
     }

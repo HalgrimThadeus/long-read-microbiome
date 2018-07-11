@@ -1,7 +1,5 @@
 package model;
 
-import java.io.Serializable;
-
 /**
  *This class models a FastAEntry, so it's a seqeunce with its header (incl. title)
  * It is the motherclass of a Read, which gets additional information from a GFF-File
@@ -48,7 +46,7 @@ import java.io.Serializable;
         return sequence;
     }
 
-    private double calculateGCContent(){
+    public double calculateGCContent(){
         int cg = 0;
         for(char i: sequence.toCharArray()){
             if((i == 'C') || (i == 'G')){

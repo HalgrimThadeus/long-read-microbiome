@@ -4,6 +4,7 @@ package model.io;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import model.Filter;
 import model.FilterBuilder;
 import model.Project;
 import model.Sample;
@@ -102,11 +103,10 @@ public class ConfigIO {
             String currentLine = "";
             //first construct the samples
             SampleReader sampleReader = new SampleReader();
-            while ((currentLine = bufferedReader.readLine()) != null ) {
-                if(currentLine.startsWith("##########")){
+            while ((currentLine = bufferedReader.readLine()) != null) {
+                if (currentLine.startsWith("##########")) {
                     break;
-                }
-                else{
+                } else {
                     String sampleName = currentLine;
                     currentLine = bufferedReader.readLine(); //go to the next line, which is not the name
                     String[] filePaths = currentLine.split("\t");
@@ -125,19 +125,31 @@ public class ConfigIO {
             //Then construct the lists for the Filterbuilder:
             List<String> usedKeys = new ArrayList<>();
             List<String> usedValues = new ArrayList<>();
-            while ((currentLine = bufferedReader.readLine()) != null){
-                String filterName = currentLine;
+            List<String> usedCompare = new ArrayList<>();
+            String filterName  = "";
+            while ((currentLine = bufferedReader.readLine()) != null) {
+                filterName = currentLine;
                 currentLine = bufferedReader.readLine();
-                String[] filterAttributes = currentLine.split("\t");
-
-                for (int i = 0; i < filterAttributes.length/2; i+=2){
-                    usedKeys.add(filterAttributes[i]);
-                    usedValues.add(filterAttributes[i+1]);
+                String[] keysOfLine = currentLine.split("\t");
+                for (int i = 0; i < keysOfLine.length; i++) {
+                    usedKeys.add(keysOfLine[i]);
                 }
+                currentLine = bufferedReader.readLine();
+                String[] valuesOfLine = currentLine.split("\t");
+                for (int i = 0; i < valuesOfLine.length; i++) {
+                    usedValues.add(valuesOfLine[i]);
+                }
+                currentLine = bufferedReader.readLine();
+                String[] compareOfLine = currentLine.split("\t");
+                for (int i = 0; i < compareOfLine.length; i++) {
+                    usedCompare.add(compareOfLine[i]);
+                }
+
             }
-            FilterBuilder filterBuilder = new FilterBuilder();
-
-
+            for (int i = 0; i < usedKeys.size(); i++) {
+                Filter filter = new Filter(filterName,usedKeys,usedValues,usedCompare);
+                project.addFilter(filter);
+            }
             bufferedReader.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -90,7 +90,7 @@ public class SamplePresenter {
 
     private void addSample(Sample sample) {
         TitledPane newSampleAccordionPane = sampleView.addSampleAccordionPane(sample.getName(),
-                sample.getFastaFileName(), sample.getGffFileName(), sample.getReadNames());
+                sample.getFastaFilePath(), sample.getGffFilePath(), sample.getReadNames());
 
         newSampleAccordionPane.setOnDragDetected(event -> {
             /* drag was detected, start a drag-and-drop gesture*/

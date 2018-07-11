@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Slider fx:id="slider" layoutX="61.0" layoutY="51.0" prefHeight="26.0" prefWidth="198.0" value="50.0" />
+      <BarChart fx:id="barChart" layoutX="24.0" layoutY="113.0" prefHeight="450.0" prefWidth="646.0">
+        <xAxis>
+          <CategoryAxis prefWidth="500.0" side="BOTTOM" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Label layoutX="61.0" layoutY="34.0" text="number of bins:" />
+      <Label fx:id="numberOfBinsLabel" layoutX="155.0" layoutY="34.0" text="xxx" />
+   </children>
+</AnchorPane>

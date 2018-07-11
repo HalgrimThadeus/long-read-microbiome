@@ -9,10 +9,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import presenter.MainPresenter;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class MainView {
 
@@ -82,7 +80,7 @@ public class MainView {
     @FXML
     public void onStartComperatorButtonClicked(ActionEvent clickEvent) throws Exception {
         try {
-            mainPresenter.openStartComperatorPopup();
+            mainPresenter.openStartComparatorPopup();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,6 +96,9 @@ public class MainView {
         }
 
     }
+
+
+
 
     @FXML
     public void onLoadProjectMenuItemClicked(ActionEvent clickEvent) throws Exception {
