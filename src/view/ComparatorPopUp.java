@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import model.Sample;
 import presenter.ComparatorPopUpPresenter;
 
 import java.net.URL;
@@ -13,6 +14,8 @@ import java.util.ResourceBundle;
 public class ComparatorPopUp implements Initializable {
 
     private ComparatorPopUpPresenter comparatorPopUpPresenter;
+
+    private ObservableList<Sample> samples;
 
     @FXML
     ChoiceBox<String> sampleChoiceBox1;
@@ -34,6 +37,11 @@ public class ComparatorPopUp implements Initializable {
 
     @FXML
     public void onCompareButtonClicked(){
+        String selectedSample1 = sampleChoiceBox1.getValue();
+        String selectedSample2 = sampleChoiceBox2.getValue();
+        String selectedFilter1 = filterChoiceBox1.getValue();
+        String selectedFilter2 = filterChoiceBox2.getValue();
+//        ComparatorPopUpPresenter.calculateViewableResults;
         try {
             comparatorPopUpPresenter.openComparatorView();
         }catch (Exception e){
@@ -41,13 +49,17 @@ public class ComparatorPopUp implements Initializable {
         }
     }
 
+    public void setChoiceBoxes(ObservableList<String> nameList, ObservableList<String> filterList){
+        sampleChoiceBox1.setItems(nameList);
+        sampleChoiceBox2.setItems(nameList);
+        filterChoiceBox1.setItems(filterList);
+        filterChoiceBox2.setItems(filterList);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> comparisonModeChoices = FXCollections.observableArrayList("GC content", "length", "number of genes", "gene density");
         comparisonModeChoiceBox.setItems(comparisonModeChoices);
         comparisonModeChoiceBox.getSelectionModel().selectFirst();
-
-        //comparisonModeChoiceBox.getSelectionModel().selectedItemProperty().addListener(comparisonModeChangeListener);
-
     }
 }

@@ -89,16 +89,17 @@ public class MainPresenter {
 
     public void openStartComparatorPopup() throws IOException {
         ComparatorPopUp newComparatorPopUp = new ComparatorPopUp(comparatorPopUpPresenter);
-
         Stage comparatorPopUp = new Stage();
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("comparatorPopUp.fxml"));
-
         loader.setController(newComparatorPopUp);
         Parent root = loader.load();
+        comparatorPopUpPresenter.initialize(project.getSamples(), project.getFilters(), newComparatorPopUp);
 
         comparatorPopUp.setTitle("New Comparator");
         comparatorPopUp.setScene(new Scene(root, 450, 300));
+
         comparatorPopUp.show();
+
     }
 
     //TODO add stuff, that all Controllers share
