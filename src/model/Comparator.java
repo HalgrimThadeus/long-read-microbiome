@@ -45,13 +45,13 @@ public class Comparator {
     }
 
 
-    public static int calculateNumberOfBins(ArrayList<Double> data){
-        return (int)(2*(interquantileRange(data)/Math.pow(data.size(),1.0/3.0)));
-    }
+    ////////////////////////////// Freedman-Diaconis rule:
     public static int calculateNumberOfBins(ArrayList<Double> data1, ArrayList<Double> data2){
-        return (Math.max(calculateNumberOfBins(data1), calculateNumberOfBins(data2)));
+        double optimizedNumberOfBins1 = 2*(interquartileRange(data1)/Math.pow(data1.size(),1.0/3.0));
+        double optimizedNumberOfBins2 = 2*(interquartileRange(data2)/Math.pow(data2.size(),1.0/3.0));
+        return (int) (Math.max(optimizedNumberOfBins1, optimizedNumberOfBins2));
     }
-    public static double interquantileRange(List<Double> data){
+    public static double interquartileRange(List<Double> data){
         double q1 = 0;
         double q3 = 0;
         if(data.size()%2 == 0) {
@@ -62,8 +62,7 @@ public class Comparator {
             q1 = median(data.subList(0, (data.size()-1) / 2 -1));
             q3 = median(data.subList((data.size()+1) / 2, data.size()-1));
         }
-        double interquantileRange = q3-q1;
-        return interquantileRange;
+        return q3-q1;
     }
     public static double median(List<Double> data){
         double median;
@@ -78,11 +77,6 @@ public class Comparator {
     }
     ////////////////////////////////////
 
-    public static double calculateBoundaries(ArrayList<Double> data, int numberOfBins){
-        double minValue = Collections.min(data);
-        double maxValue = Collections.max(data);
-        return (maxValue-minValue)/numberOfBins;
-    }
     public static double calculateBoundaries(ArrayList<Double> data1, ArrayList<Double> data2, int numberOfBins) {
         //get maximum and minimum of the data and divide them by the given number of bins to get the size of the rages
         double sizeOfRanges;
@@ -91,19 +85,12 @@ public class Comparator {
         return (maxValue-minValue)/numberOfBins;
     }
 
-    public static ArrayList<String> setCategoryNames(ArrayList<Double> data, int numberOfBins, double sizeOfRanges){
-        double minValue = Collections.min(data);
-        ArrayList<String> categories = new ArrayList<String>(numberOfBins);
-        for(int i=0; i<numberOfBins; i++){
-            categories.add(i*sizeOfRanges+minValue + "-" + ((i+1)*sizeOfRanges+minValue));
-        }
-        return categories;
-    }
     public static ArrayList<String> setCategoryNames(ArrayList<Double> data1, ArrayList<Double> data2, int numberOfBins, double sizeOfRanges){
         double minValue = Math.min(Collections.min(data1),Collections.min(data2));
         ArrayList<String> categories = new ArrayList<String>(numberOfBins);
         for(int i=0; i<numberOfBins; i++){
-            categories.add(i*sizeOfRanges+minValue + "-" + ((i+1)*sizeOfRanges+minValue));
+            //categories.add(i*sizeOfRanges+minValue + "-" + ((i+1)*sizeOfRanges+minValue));
+            categories.add(String.format( "%.2f",i*sizeOfRanges+minValue) + "-" + String.format( "%.2f",(i+1)*sizeOfRanges+minValue));
         }
         return categories;
     }
