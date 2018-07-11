@@ -65,15 +65,16 @@ public class FilterPresenter {
             Parent root = loader.load();
             filterPopUp.setTitle("New Filter");
 
-            Filter usedFilter = new Filter(null,null);
+            Filter usedFilter = new Filter(null,null,null,null);
             for(Filter f: listOfFilters){
                 if(f.getName().equals(filterName)){
                     usedFilter = f;
                     break;
                 }
             }
-            List<String> usedKeys = usedFilter.getFilterBuilder().getUsedKey();
-            List<String> usedValues = usedFilter.getFilterBuilder().getUsedValues();
+            List<String> usedKeys = usedFilter.getKeys();
+            List<String> usedValues = usedFilter.getValues();
+            List<String> usedCompare = usedFilter.getCompare();
 
             newFilterPopUp.setFilterName(filterName);
 
@@ -81,12 +82,15 @@ public class FilterPresenter {
                 String key = usedKeys.get(i);
                 if(key.equals("GC")){
                     newFilterPopUp.setGccontent(usedValues.get(i));
+                    newFilterPopUp.setGCCompareChoice(usedCompare.get(i));
                 }
                 else if(key.equals("Length")){
                     newFilterPopUp.setLengthvalue(usedValues.get(i));
+                    newFilterPopUp.setLengthCompareChoice(usedCompare.get(i));
                 }
                 else if(key.equals("Score")){
                     newFilterPopUp.setScorevalue(usedValues.get(i));
+                    newFilterPopUp.setscoreCompareChoice(usedCompare.get(i));
                 }
                 else if(key.equals("Tax")){
                     newFilterPopUp.setTaxaid(usedValues.get(i));

@@ -22,6 +22,7 @@
                             <MenuItem fx:id="deleteFilterContextMenu" mnemonicParsing="false" onAction="#deleteFilter" text="Delete Filter" />
                         </items>
                     </ContextMenu>
-                </contextMenu></ListView>
+                </contextMenu>
+            </ListView>
         </children>
 </FilterView>

@@ -2,9 +2,9 @@ package presenter;
 
 import javafx.collections.ObservableList;
 import model.Filter;
-import model.FilterBuilder;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -15,9 +15,8 @@ public class NewFilterPopUpPresenter {
         this.listOfFilter = listOfFilter;
     }
 
-    public void updateFilterList(String name, FilterBuilder filterBuilder){
-        Filter newFilter = new Filter(name, filterBuilder.getMainPredicate() );
-            newFilter.setFilterBuilder(filterBuilder);
+    public void updateFilterList(String name, List<String> keys,List<String> values,List<String> compare){
+        Filter newFilter = new Filter(name,keys,values,compare);
             boolean contained = false;
             for(int i = 0; i <  listOfFilter.size(); i++){
                 if(listOfFilter.get(i).getName().equals(name)){
