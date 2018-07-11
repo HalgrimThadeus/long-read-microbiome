@@ -120,8 +120,8 @@ public class FilterPresenter {
     private Filter getFilterByName(String name){
 
         for(Filter f: filters){
-            System.err.println(f.getName());
             if(f.getName().equals(name)){
+
                  return f;
             }
         }

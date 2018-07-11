@@ -147,9 +147,7 @@ public class ConfigIO {
 
             }
             for (int i = 0; i < usedKeys.size(); i++) {
-                Filter filter = new Filter();
-                filter.buildPredicate(usedKeys, usedValues, usedCompare);
-                filter.setName(filterName);
+                Filter filter = new Filter(filterName,usedKeys,usedValues,usedCompare);
                 project.addFilter(filter);
             }
             bufferedReader.close();
