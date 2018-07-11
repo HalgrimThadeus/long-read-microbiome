@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import model.Filter;
 import model.Sample;
 import view.ComparatorPopUp;
-import view.ComparatorView;
 import view.MainView;
 
 import java.io.IOException;
@@ -29,15 +28,10 @@ public class ComparatorPopUpPresenter {
     private ObservableList<Sample> samples;
     private ObservableList<Filter> filters;
 
-    public ComparatorPopUpPresenter(MainPresenter mainPresenter){
-        this.mainPresenter = mainPresenter;
-    }
-
-    public void initialize(ObservableList<Sample> samples, ObservableList<Filter> filters, ComparatorPopUp comparatorPopUp){
+    public ComparatorPopUpPresenter(ObservableList<Sample> samples, ObservableList<Filter> filters, ComparatorPopUp comparatorPopUp){
         this.samples = samples;
         this.filters = filters;
-
-        setComparatorPopUp(comparatorPopUp);
+        this.comparatorPopUp = comparatorPopUp;
 
         for (Sample sample: this.samples){
             observableSampleMap.put(sample.getName(),sample);
@@ -63,19 +57,24 @@ public class ComparatorPopUpPresenter {
         });
     }
 
+    public void initialize(ObservableList<Sample> samples, ObservableList<Filter> filters, ComparatorPopUp comparatorPopUp){
+
+    }
+
     public void setComparatorPopUp(ComparatorPopUp comparatorPopUp){
         this.comparatorPopUp = comparatorPopUp;
     }
 
     public void openComparatorView() throws IOException, InterruptedException {
-        ComparatorView newComparatorView = new ComparatorView(mainPresenter.getComparatorViewPresenter());
+//        ComparatorView newComparatorView = new ComparatorView();
         Stage comparatorView = new Stage();
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("ComparatorView.fxml"));
-        loader.setController(newComparatorView);
+//        loader.setController(newComparatorView);
         Parent root = loader.load();
         Scene scene = new Scene(root, 700, 600);
         comparatorView.setTitle("Comparison");
         comparatorView.setScene(scene);
+
         comparatorView.show();
     }
 

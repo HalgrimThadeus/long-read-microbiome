@@ -5,13 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.AnchorPane;
 import model.Sample;
 import presenter.ComparatorPopUpPresenter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ComparatorPopUp implements Initializable {
+public class ComparatorPopUp extends AnchorPane implements Initializable {
 
     private ComparatorPopUpPresenter comparatorPopUpPresenter;
 
@@ -31,8 +32,7 @@ public class ComparatorPopUp implements Initializable {
     //ListChangeListener<String> comparisonModeChangeListener;
 
 
-    public ComparatorPopUp(ComparatorPopUpPresenter comparatorPopUpPresenter){
-        this.comparatorPopUpPresenter = comparatorPopUpPresenter;
+    public ComparatorPopUp(){
     }
 
     @FXML
@@ -41,7 +41,6 @@ public class ComparatorPopUp implements Initializable {
         String selectedSample2 = sampleChoiceBox2.getValue();
         String selectedFilter1 = filterChoiceBox1.getValue();
         String selectedFilter2 = filterChoiceBox2.getValue();
-//        ComparatorPopUpPresenter.calculateViewableResults;
         try {
             comparatorPopUpPresenter.openComparatorView();
         }catch (Exception e){
