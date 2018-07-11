@@ -39,10 +39,13 @@ public class NewFilterPopUp {
     @FXML
     TextField scorevalue;
 
+    FilterBuilder filterBuilder = new FilterBuilder();
+
     private NewFilterPopUpPresenter newFilterPopUpPresenter;
     public NewFilterPopUp(NewFilterPopUpPresenter newFilterPopUpPresenter){
         this.newFilterPopUpPresenter = newFilterPopUpPresenter;
     }
+
 
     @FXML
     public void saveFilterBtnClicked(){
@@ -55,14 +58,18 @@ public class NewFilterPopUp {
              * **/
             FilterBuilder filter = new FilterBuilder();
 
+            filterBuilder = filter;
+
             //Adds gen name predicate to the filter if a name is given
             if(!genname.getText().equals("")){
                 filter.addMainPredicate(FilterBuilder.isGen(genname.getText()));
+                filter.addKeyValue("Gen",genname.getText());
             }
 
             //adds gc content predicate to filter if a gc content is given
             if(!gccontent.getText().equals("")){
                 //adds smallereq predicate if the textfield contains a <
+                filter.addKeyValue("GC",gccontent.getText());
                 if(gccontent.getText().contains("<")){
                     String gc_Content = gccontent.getText().substring(1);
                     if(isDouble(gc_Content)){
@@ -99,6 +106,7 @@ public class NewFilterPopUp {
             }
             if(!lengthvalue.getText().equals("")) {
                 if (isDigit(lengthvalue.getText())) {
+                    filter.addKeyValue("Length",lengthvalue.getText());
                     filter.addMainPredicate(FilterBuilder.isLengthEqual(Integer.parseInt(lengthvalue.getText())));
                 } else {
                     Alert alter = new Alert(Alert.AlertType.WARNING, "Please enter a Number as length", ButtonType.OK);
@@ -107,6 +115,7 @@ public class NewFilterPopUp {
                 }
             }
             if(!scorevalue.getText().equals("")){
+                filter.addKeyValue("Score",scorevalue.getText());
                 if(isDigit(scorevalue.getText())){
                         filter.addMainPredicate(FilterBuilder.isScoreEqual(Integer.parseInt(scorevalue.getText())));
                     }
@@ -117,31 +126,14 @@ public class NewFilterPopUp {
                     }
             }
             if(!taxaid.getText().equals("")){
+                filter.addKeyValue("Tax",taxaid.getText());
                 if(isDigit(taxaid.getText())){
                     filter.addMainPredicate(FilterBuilder.isTaxaId(Integer.parseInt(taxaid.getText())));
                 }
                 //else case is filter by name (atm idk how)
             }
 
-
-
-            /**
-            List<String> keys = new ArrayList<>();
-            List<String> values = new ArrayList<>();
-            keys.add("Gen");
-            keys.add("Length");
-            keys.add("TaxaId");
-            keys.add("GCContent");
-            keys.add("Score");
-
-            values.add(genname.getText());
-            values.add(lengthvalue.getText());
-            values.add(taxaid.getText());
-            values.add(gccontent.getText());
-            values.add(scorevalue.getText());
-        **/
-
-            newFilterPopUpPresenter.updateFilterList(filtername.getText(),filter.getMainPredicate());
+            newFilterPopUpPresenter.updateFilterList(filtername.getText(),filter);
 
             stage.close();
         }
@@ -152,6 +144,28 @@ public class NewFilterPopUp {
         }
 
     }
+    //Setters for the saved Filters
+    @FXML
+    public void setFilterName(String name){
+        filtername.setText(name);
+    }
+    public void setGenname(String gen){
+        genname.setText(gen);
+    }
+    public void setLengthvalue(String length){
+        lengthvalue.setText(length);
+    }
+    public void setGccontent(String gc){
+        gccontent.setText(gc);
+    }
+    public void setTaxaid(String taxa){
+        taxaid.setText(taxa);
+    }
+    public void setScorevalue(String score){
+        scorevalue.setText(score);
+    }
+
+
  //Checks if a String is a Int
     private boolean isDigit(String test){
 

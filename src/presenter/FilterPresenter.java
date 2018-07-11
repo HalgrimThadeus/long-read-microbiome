@@ -2,17 +2,14 @@ package presenter;
 
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Filter;
-import model.Project;
 import view.FilterView;
 import view.MainView;
 import view.NewFilterPopUp;
-import view.NewSamplePopUp;
 
 import java.io.IOException;
 import java.util.List;
@@ -54,8 +51,60 @@ public class FilterPresenter {
             filterPopUp.show();
         }
         else {
-            throw new ExceptionInInitializerError("Could not Start NewFilterPopUp, because the Presenter hasn't been initialized");
+            throw new ExceptionInInitializerError("Could not Start NewFilterPopUp, because the presenter hasn't been initialized");
         }
+    }
+
+    public  void openFilterDialog(String filterName) throws IOException{
+        if (newFilterPopUpPresenter != null) {
+            NewFilterPopUp newFilterPopUp = new NewFilterPopUp(newFilterPopUpPresenter);
+            Stage filterPopUp = new Stage();
+
+            FXMLLoader loader = new FXMLLoader(MainView.class.getResource("newFilterPopUp.fxml"));
+            loader.setController(newFilterPopUp);
+            Parent root = loader.load();
+            filterPopUp.setTitle("New Filter");
+
+            Filter usedFilter = new Filter(null,null);
+            for(Filter f: listOfFilters){
+                if(f.getName().equals(filterName)){
+                    usedFilter = f;
+                    break;
+                }
+            }
+            List<String> usedKeys = usedFilter.getFilterBuilder().getUsedKey();
+            List<String> usedValues = usedFilter.getFilterBuilder().getUsedValues();
+            System.err.println(usedKeys.get(0));
+            newFilterPopUp.setFilterName(filterName);
+
+            for(int i = 0; i < usedKeys.size();i++){
+                String key = usedKeys.get(i);
+                if(key.equals("GC")){
+                    newFilterPopUp.setGccontent(usedValues.get(i));
+                    System.err.print("GC");
+                }
+                else if(key.equals("Length")){
+                    newFilterPopUp.setLengthvalue(usedValues.get(i));
+                }
+                else if(key.equals("Score")){
+                    newFilterPopUp.setScorevalue(usedValues.get(i));
+                }
+                else if(key.equals("Tax")){
+                    newFilterPopUp.setTaxaid(usedValues.get(i));
+                }
+                else if(key.equals("Gen")){
+                    newFilterPopUp.setGenname(usedValues.get(i));
+                }
+            }
+
+
+            filterPopUp.setScene(new Scene(root, 600, 400));
+            filterPopUp.show();
+        }
+        else {
+            throw new ExceptionInInitializerError("Could not Start NewFilterPopUp, because the presenter hasn't been initialized");
+        }
+
     }
 
 
