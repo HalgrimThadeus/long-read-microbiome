@@ -59,4 +59,24 @@ public class FilterView extends AnchorPane {
             }
         });
     }
+    public void onDragListItem(){
+        filterList.setOnDragDetected(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.isDragDetect()){
+                    String selectedFilter = filterList.getSelectionModel().getSelectedItem();
+                    }
+            }
+        });
+    }
+    public void deleteFilter(){
+        filterList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+               String filterToRemove = filterList.getSelectionModel().getSelectedItem();
+               names.remove(filterToRemove);
+               filterList.setItems(names);
+            }
+        });
+    }
 }

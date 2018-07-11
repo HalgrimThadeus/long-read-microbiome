@@ -4,10 +4,13 @@ import javafx.collections.ObservableList;
 import model.Filter;
 import model.FilterBuilder;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class NewFilterPopUpPresenter {
     private ObservableList<Filter> listOfFilter;
-
+    private Map<String,Filter> filterMap = new HashMap<>();
     public NewFilterPopUpPresenter(ObservableList<Filter> listOfFilter){
         this.listOfFilter = listOfFilter;
     }

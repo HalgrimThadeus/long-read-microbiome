@@ -74,14 +74,13 @@ public class FilterPresenter {
             }
             List<String> usedKeys = usedFilter.getFilterBuilder().getUsedKey();
             List<String> usedValues = usedFilter.getFilterBuilder().getUsedValues();
-            System.err.println(usedKeys.get(0));
+
             newFilterPopUp.setFilterName(filterName);
 
             for(int i = 0; i < usedKeys.size();i++){
                 String key = usedKeys.get(i);
                 if(key.equals("GC")){
                     newFilterPopUp.setGccontent(usedValues.get(i));
-                    System.err.print("GC");
                 }
                 else if(key.equals("Length")){
                     newFilterPopUp.setLengthvalue(usedValues.get(i));
@@ -105,7 +104,18 @@ public class FilterPresenter {
             throw new ExceptionInInitializerError("Could not Start NewFilterPopUp, because the presenter hasn't been initialized");
         }
 
+
+
     }
+
+    public  void removeFromList(String name){
+        for(Filter f: listOfFilters){
+            if(f.getName().equals(name)){
+                listOfFilters.remove(f);
+            }
+        }
+    }
+
 
 
 

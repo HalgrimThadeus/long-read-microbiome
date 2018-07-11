@@ -2,15 +2,16 @@ package view;
 
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.FilterBuilder;
 import presenter.NewFilterPopUpPresenter;
 
-public class NewFilterPopUp {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class NewFilterPopUp implements Initializable {
 
     /**
      * Save button
@@ -20,6 +21,16 @@ public class NewFilterPopUp {
     /**
      * All texfields to get the values
      */
+
+
+    @FXML
+    ChoiceBox<String> lengthCompareChoice = new ChoiceBox();
+    @FXML
+    ChoiceBox GCCompareChoice = new ChoiceBox();
+    @FXML
+    ChoiceBox scoreCompareChoice = new ChoiceBox();
+
+
 
     @FXML
     TextField filtername;
@@ -56,84 +67,34 @@ public class NewFilterPopUp {
             /**Builds the filterBuilder with the predicates needed to fit the criterias e.g "ands" one of the existing
              * predicates in FilterBuilder (model) to it's main PredicateField, with the user-given filter input
              * **/
-            FilterBuilder filter = new FilterBuilder();
-
-            filterBuilder = filter;
 
             //Adds gen name predicate to the filter if a name is given
             if(!genname.getText().equals("")){
-                filter.addMainPredicate(FilterBuilder.isGen(genname.getText()));
-                filter.addKeyValue("Gen",genname.getText());
+                buildPredicates("Gen",genname.getText());
+                filterBuilder.addKeyValue("Gen",genname.getText());
+
             }
 
             //adds gc content predicate to filter if a gc content is given
             if(!gccontent.getText().equals("")){
                 //adds smallereq predicate if the textfield contains a <
-                filter.addKeyValue("GC",gccontent.getText());
-                if(gccontent.getText().contains("<")){
-                    String gc_Content = gccontent.getText().substring(1);
-                    if(isDouble(gc_Content)){
-                        filter.addMainPredicate(FilterBuilder.isGCContentLowerEq(Double.parseDouble(gc_Content)));
-                    }
-                    //warning if input is not a number
-                    else {
-                        Alert alter = new Alert(Alert.AlertType.WARNING,"Please enter a Number as GC-content",ButtonType.OK);
-                        alter.show();
-                        return;
-                    }
-                }
-                //adds greatereq to filter if the textfield contains a >
-                if(gccontent.getText().contains(">")){
-                    String gc_Content = gccontent.getText().substring(1);
-                    if(isDouble(gc_Content)){
-                        filter.addMainPredicate(FilterBuilder.isGCContentHigherEq(Double.parseDouble(gc_Content)));
-                    }
-                    else {
-                        Alert alter = new Alert(Alert.AlertType.WARNING,"Please enter a Number as GC-content",ButtonType.OK);
-                        alter.show();
-                        return;
-                    }
-                }
-                //adds equal predicate if nothing but the number is given
-               if(isDigit(gccontent.getText())){
-                   filter.addMainPredicate(FilterBuilder.isGCContentEqual(Double.parseDouble(gccontent.getText())));
-               }
-               else {
-                   Alert alter = new Alert(Alert.AlertType.WARNING,"Please enter a Number as GC-content",ButtonType.OK);
-                   alter.show();
-                   return;
-               }
+                filterBuilder.addKeyValue("GC",gccontent.getText());
+                buildPredicates("GC",gccontent.getText());
             }
             if(!lengthvalue.getText().equals("")) {
-                if (isDigit(lengthvalue.getText())) {
-                    filter.addKeyValue("Length",lengthvalue.getText());
-                    filter.addMainPredicate(FilterBuilder.isLengthEqual(Integer.parseInt(lengthvalue.getText())));
-                } else {
-                    Alert alter = new Alert(Alert.AlertType.WARNING, "Please enter a Number as length", ButtonType.OK);
-                    alter.show();
-                    return;
-                }
+                filterBuilder.addKeyValue("Length",lengthvalue.getText());
+                buildPredicates("Length",lengthvalue.getText());
             }
             if(!scorevalue.getText().equals("")){
-                filter.addKeyValue("Score",scorevalue.getText());
-                if(isDigit(scorevalue.getText())){
-                        filter.addMainPredicate(FilterBuilder.isScoreEqual(Integer.parseInt(scorevalue.getText())));
-                    }
-                    else {
-                        Alert alter = new Alert(Alert.AlertType.WARNING,"Please enter a Number as score",ButtonType.OK);
-                        alter.show();
-                        return;
-                    }
+                buildPredicates("Score",scorevalue.getText());
+                filterBuilder.addKeyValue("Score",scorevalue.getText());
             }
             if(!taxaid.getText().equals("")){
-                filter.addKeyValue("Tax",taxaid.getText());
-                if(isDigit(taxaid.getText())){
-                    filter.addMainPredicate(FilterBuilder.isTaxaId(Integer.parseInt(taxaid.getText())));
-                }
-                //else case is filter by name (atm idk how)
+               buildPredicates("Taxa",taxaid.getText());
+               filterBuilder.addKeyValue("Taxa",taxaid.getText());
             }
 
-            newFilterPopUpPresenter.updateFilterList(filtername.getText(),filter);
+            newFilterPopUpPresenter.updateFilterList(filtername.getText(),filterBuilder);
 
             stage.close();
         }
@@ -193,5 +154,85 @@ public class NewFilterPopUp {
 
     }
 
+    /**
+     * Uses key and value to add a predicate to the filterBuilder
+     * @param key
+     * @param value
+     */
 
+    public void buildPredicates(String key,String value){
+
+        if(key.equals("Gen")){
+            filterBuilder.addMainPredicate(FilterBuilder.isGen(value));
+        }
+        else if(key.equals("GC")) {
+            if (isDouble(gccontent.getText())) {
+                if (GCCompareChoice.getSelectionModel().getSelectedItem().equals("<")) {
+                    filterBuilder.addMainPredicate(FilterBuilder.isGCContentLowerEq(Double.parseDouble(value)));
+                }
+                //adds greatereq to filter if the textfield contains a >
+                else if (GCCompareChoice.getSelectionModel().getSelectedItem().equals(">")) {
+                    filterBuilder.addMainPredicate(FilterBuilder.isGCContentHigherEq(Double.parseDouble(value)));
+                }
+            }
+            //adds equal predicate if nothing but the number is given
+            else if (GCCompareChoice.getSelectionModel().getSelectedItem().equals("=")) {
+                filterBuilder.addMainPredicate(FilterBuilder.isGCContentEqual(Double.parseDouble(value)));
+            }
+        else {
+                Alert alter = new Alert(Alert.AlertType.WARNING, "Please enter a Number as GC-content", ButtonType.OK);
+                alter.show();
+                return;
+            }
+        }
+        else if(key.equals("Length")){
+            if (isDigit(lengthvalue.getText())) {
+                if (lengthCompareChoice.getSelectionModel().getSelectedItem().equals("="))
+                    filterBuilder.addKeyValue("Length", lengthvalue.getText());
+                filterBuilder.addMainPredicate(FilterBuilder.isLengthEqual(Integer.parseInt(value)));
+            }
+            else if (lengthCompareChoice.getSelectionModel().getSelectedItem().equals(">")){
+                filterBuilder.addKeyValue("Length", ">"+lengthvalue.getText());
+                filterBuilder.addMainPredicate(FilterBuilder.isLengthGreater(Integer.parseInt(value)));
+            }
+            else if(lengthCompareChoice.getSelectionModel().getSelectedItem().equals("<")){
+                filterBuilder.addKeyValue("Length", "<"+lengthvalue.getText());
+                filterBuilder.addMainPredicate(FilterBuilder.isLengthSmaller(Integer.parseInt(value)));
+            }
+        }
+        else if(key.equals("Score")){
+            if(isDigit(scorevalue.getText())) {
+                if (scoreCompareChoice.getSelectionModel().getSelectedItem().equals("=")) {
+                    filterBuilder.addKeyValue("Score",scorevalue.getText());
+                    filterBuilder.addMainPredicate(FilterBuilder.isScoreEqual(Integer.parseInt(value)));
+                }
+                else if (scoreCompareChoice.getSelectionModel().getSelectedItem().equals("<")){
+                    filterBuilder.addMainPredicate(FilterBuilder.isScoreLower(Integer.parseInt(value)));
+                }
+                else if (scoreCompareChoice.getSelectionModel().getSelectedItem().equals(">")){
+                    filterBuilder.addMainPredicate(FilterBuilder.isScoreHigher(Integer.parseInt(value)));
+                }
+            }
+            else {
+                Alert alter = new Alert(Alert.AlertType.WARNING,"Please enter a Number as score",ButtonType.OK);
+                alter.show();
+                return;
+            }
+        }
+        else if(key.equals("Taxa")){
+            filterBuilder.addKeyValue("Tax",value);
+            if(isDigit(taxaid.getText())){
+                filterBuilder.addMainPredicate(FilterBuilder.isTaxaId(Integer.parseInt(value)));
+            }
+            //else case is filter by name (atm idk how)
+        }
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        lengthCompareChoice.getItems().addAll("<","=",">");
+        scoreCompareChoice.getItems().addAll("<","=",">");
+        GCCompareChoice.getItems().addAll("<","=",">");
+    }
 }
