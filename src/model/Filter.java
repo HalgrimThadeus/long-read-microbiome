@@ -32,6 +32,21 @@ public class Filter implements Serializable {
         filterBuilder = fb;
     }
 
+    /**
+     * @return two-line String with name + \n +  \t filterAttribute1  + \t filterValueOfAttribute1 +. ...
+     */
+    @Override
+    public String toString(){
+        String res = name + '\n';
+        List<String> usedKey = filterBuilder.getUsedKey();
+        List<String> usedValues = filterBuilder.getUsedValues();
+        for (int i = 0; i < usedKey.size(); i++){
+            res += usedKey.get(i) + '\t' + usedValues.get(i) + '\t';
+        }
+
+        return res;
+    }
+
 
     /**applies predicate to the List of Reads
      * @return List of accepted reads

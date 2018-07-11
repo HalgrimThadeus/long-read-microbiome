@@ -8,7 +8,7 @@ import java.io.Serializable;
  *
  **/
 
- public class FastAEntry implements Serializable {
+ public class FastAEntry {
     /**
      * Header of the FastaEntry
      */

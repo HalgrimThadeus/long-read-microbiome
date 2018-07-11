@@ -23,42 +23,58 @@ public class SaveProjectPresenter {
 
     private Project project;
 
-    public SaveProjectPresenter(Project project){
+    public SaveProjectPresenter(Project project) {
         this.project = project;
     }
 
 
     public void saveProject() throws Exception {
-        //TODO get the file from the filebrowser located in the VIEW package
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File
-                (System.getProperty("user.home") ));
+                (System.getProperty("user.home")));
         fileChooser.setTitle("Save Project to File...");
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("Project", "*.project"));
         fileChooser.setInitialFileName("save01.project");
         File file = fileChooser.showSaveDialog(new Stage());
-        if (file == null){
+        if (file == null) {
             return;
         }
 
         ConfigIO configIO = new ConfigIO(file);
+        /* old for saving with serializable
         List<Sample> nonObservedSampleList =  project.getSamples();
-        configIO.writeProjectToFile(nonObservedSampleList);
+        configIO.writeProjectToFile(nonObservedSampleList);*/
+
+        configIO.writeProjectToFile(project);
     }
 
-    public void loadProject(File file) throws Exception{
+    /*
+        public void loadProject(File file) throws Exception {
+
+            //first clear the Project
+            project.clear();
+
+            //then add all the samples back into the observable list:
+            ConfigIO configIO = new ConfigIO(file);
+            List<Sample> samples = configIO.readProjectFromFile();
+            for (Sample sample : samples
+                    ) {
+                project.addSamples(sample);
+
+            }
+
+
+        }*/
+    public void loadProject(File file) throws Exception {
 
         //first clear the Project
         project.clear();
 
         //then add all the samples back into the observable list:
         ConfigIO configIO = new ConfigIO(file);
-        List<Sample> samples = configIO.readProjectFromFile();
-        for (Sample sample: samples
-             ) { project.addSamples(sample);
-
-        }
+        configIO.updateProjectFromFile(project);
 
 
-    }}
+    }
+}
