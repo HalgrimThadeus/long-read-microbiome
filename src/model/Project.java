@@ -14,7 +14,7 @@ import java.util.List;
  * All Samples get added to the list of Samples in here
  */
 
-public class Project implements Serializable {
+public class Project {
 
     private ObservableList<Sample> samples = FXCollections.observableArrayList();
     private ObservableList<Filter> filters = FXCollections.observableArrayList();
@@ -26,6 +26,10 @@ public class Project implements Serializable {
      */
     public void addSamples(Sample sample) {
         samples.add(sample);
+    }
+
+    public void addFilter(Filter filter){
+        this.filters.add(filter);
     }
 
     public ObservableList<Sample> getSamples() {
@@ -54,6 +58,4 @@ public class Project implements Serializable {
         }
         return res;
     }
-
-
 }

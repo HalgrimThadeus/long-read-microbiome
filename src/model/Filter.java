@@ -13,7 +13,12 @@ import java.util.function.Predicate;
  *
  */
 public class Filter {
-    private Predicate<Read> filterPredicate;
+    private Predicate<Read> filterPredicate = new Predicate<Read>() {
+        @Override
+        public boolean test(Read read) {
+            return false;
+        }
+    };
     private List<String> keys;
     private List<String> values;
     private List<String> compare;
@@ -27,8 +32,13 @@ public class Filter {
         buildPredicate(keys, values, compare);
     }
 
+    public Filter(){}
+
     public String getName() {
         return name;
+    }
+    public void setName(String name){
+        this.name = name;
     }
 
     public List<String> getCompare() {
@@ -52,18 +62,15 @@ public class Filter {
         List<String> usedKey = this.keys;
         List<String> usedValues = this.values;
         List<String> usedCompare = this.compare;
-        for (int i = 0; i < usedKey.size(); i++) {
-            res += usedKey.get(i) + '\t';
-        }
-        res += '\n';
-        for (int i = 0; i < usedValues.size(); i++) {
-            res += usedValues.get(i) + '\t';
-        }
-        res += '\n';
-        for (int i = 0; i < usedCompare.size(); i++) {
-            res += usedCompare.get(i) + '\t';
-        }
-        res += '\n';
+        res += String.join("\t", usedKey);
+        res+= "\n";
+        res += String.join("\t", usedValues);
+        res+= "\n";
+        res += String.join("\t", usedCompare);
+        System.out.println(usedKey.toString());
+        System.out.println(usedValues.toString());
+        System.out.println(usedCompare.toString());
+        System.out.println(res);
 
         return res;
     }

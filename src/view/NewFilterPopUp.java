@@ -70,6 +70,11 @@ public class NewFilterPopUp implements Initializable {
         List<String> usedValues = new ArrayList<>();
         List<String> usedCompare = new ArrayList<>();
         if(!filtername.getText().equals("")){
+        if(filtername.getText().contains("##########")){
+            Alert alter = new Alert(Alert.AlertType.WARNING,"Name not allowed to contain: ########## ",ButtonType.OK);
+            alter.show();
+            return;
+        }
             /**Builds the filterBuilder with the predicates needed to fit the criterias e.g "ands" one of the existing
              * predicates in FilterBuilder (model) to it's main PredicateField, with the user-given filter input
              * **/
@@ -88,17 +93,17 @@ public class NewFilterPopUp implements Initializable {
                 usedValues.add(gccontent.getText());
                 usedCompare.add((String) GCCompareChoice.getSelectionModel().getSelectedItem());
             }
-            else if(!lengthvalue.getText().equals("")) {
+             if(!lengthvalue.getText().equals("")) {
                 usedKeys.add("Length");
                 usedValues.add(lengthvalue.getText());
                 usedCompare.add((String) lengthCompareChoice.getSelectionModel().getSelectedItem());
             }
-            else if(!scorevalue.getText().equals("")){
+             if(!scorevalue.getText().equals("")){
                 usedKeys.add("Score");
                 usedValues.add(scorevalue.getText());
                 usedCompare.add((String) scoreCompareChoice.getSelectionModel().getSelectedItem());
             }
-            else if(!taxaid.getText().equals("")){
+             if(!taxaid.getText().equals("")){
                 usedKeys.add("Taxa");
                 usedValues.add(taxaid.getText());
                 usedCompare.add("=");

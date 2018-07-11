@@ -47,14 +47,14 @@ public class NewSamplePopUp {
         this.newSamplePopUpPresenter = newSamplePopUpPresenter;
     }
 
-    private File getNewFiles(String extension){
+    private File getNewFiles(String extension) {
         String usedExtension = "*." + extension;
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File
-                (System.getProperty("user.home") ));
+                (System.getProperty("user.home")));
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("BioFiles",usedExtension)
+                new FileChooser.ExtensionFilter("BioFiles", usedExtension)
         );
 
         File selectedFile = fileChooser.showOpenDialog(new Stage());
@@ -62,49 +62,53 @@ public class NewSamplePopUp {
     }
 
     @FXML
-    public void addNewFilesClicked(ActionEvent event){
+    public void addNewFilesClicked(ActionEvent event) {
 
-        if(event.getSource().equals(searchFastaFile)){
+        if (event.getSource().equals(searchFastaFile)) {
             fastaFile = this.getNewFiles("fasta");
-            if(fastaFile != null)
+            if (fastaFile != null)
                 fastaFileTextField.setText(fastaFile.getAbsolutePath());
             else return;
         }
-        if(event.getSource().equals(searchGffFile)){
+        if (event.getSource().equals(searchGffFile)) {
             gffFile = this.getNewFiles("gff");
 
-            if(gffFile != null)
+            if (gffFile != null)
                 gffFileTextField.setText(fastaFile.getAbsolutePath());
             else return;
         }
-        if(event.getSource().equals(searchCsvFile)){
+        if (event.getSource().equals(searchCsvFile)) {
             csvFile = this.getNewFiles("txt");
-            if(csvFile != null)
+            if (csvFile != null)
                 csvFileTextField.setText(fastaFile.getAbsolutePath());
             else return;
         }
     }
 
     @FXML
-    public void createNewSampleClicked(ActionEvent event){
+    public void createNewSampleClicked(ActionEvent event) {
         Stage stage = (Stage) createNewSample.getScene().getWindow();
 
         //if not all files were declared return a warnning notice
-        if(fastaFile == null || gffFile == null || csvFile == null) {
+        if (fastaFile == null || gffFile == null || csvFile == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "At least one file is missing!", ButtonType.OK);
             alert.show();
             return;
         }
 
-        if(sampleName.getText() == null) {
+        if (sampleName.getText() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Please set a sample name", ButtonType.OK);
             alert.show();
             return;
         }
 
-        newSamplePopUpPresenter.addSampleToProject(fastaFile,gffFile,csvFile,sampleName.getText());
-
-        stage.close();
+        if (sampleName.getText().contains("##########")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Name is not allowed to contain ##########", ButtonType.OK);
+            alert.show();
+            return;
+        }
+            newSamplePopUpPresenter.addSampleToProject(fastaFile, gffFile, csvFile, sampleName.getText());
+            stage.close();
     }
 
 }
