@@ -15,6 +15,7 @@ import model.Project;
 import model.Sample;
 import view.WorkView;
 
+import java.beans.PropertyEditor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +35,6 @@ public class WorkViewPresenter {
             this.workView.setChartTab(newValue.getReads());
         });
     }
-
 
     public void setNewSampleToTabView(String sampleName) {
         Sample sample4Presenting = null;

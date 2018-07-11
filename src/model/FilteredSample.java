@@ -57,6 +57,7 @@ public class FilteredSample {
         }
         this.filter.setValue(filter);
         //maybe theres a better way to trigger onchangelisteners
+        //todo listerner for reads
         this.sample.setValue(null);
         this.sample.setValue(sample);
     }
