@@ -30,7 +30,7 @@ public class MainPresenter {
         this.mainView = mainView;
         this.project = project;
 
-        this.newFilterPopUpPresenter = new NewFilterPopUpPresenter(project.getFilters());
+        this.newFilterPopUpPresenter = new NewFilterPopUpPresenter(project);
 
         this.newSamplePopUpPresenter = new NewSamplePopUpPresenter(project.getSamples());
 

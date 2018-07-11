@@ -1,39 +1,8 @@
 package model;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
 
 public class FilterBuilder {
 
-    private List<String> usedKey = new ArrayList<>();
-    private List<String> usedValues = new ArrayList<>();
-
-    private Predicate<Read> mainPredicate = new Predicate<Read>() {
-        @Override
-        public boolean test(Read read) {
-            return true;
-        }
-    };
-
-
-    public void addKeyValue(String key, String value){
-        usedKey.add(key);
-        usedValues.add(value);
-    }
-
-    public List<String> getUsedKey(){
-        return usedKey;
-    }
-    public List<String> getUsedValues(){
-        return usedValues;
-    }
-
-    public void addMainPredicate(Predicate<Read> additionalPredicate){
-       mainPredicate = mainPredicate.and(additionalPredicate);
-    }
-    public Predicate<Read> getMainPredicate(){
-        return mainPredicate;
-    }
     //examples:
    public static Predicate<Read> isScoreHigher(Integer score){
        return p-> {

@@ -17,25 +17,36 @@ import java.util.List;
 
 public class FilterPresenter {
     private NewFilterPopUpPresenter newFilterPopUpPresenter = null;
-    private ObservableList<Filter> listOfFilters;
+    private ObservableList<Filter> filters;
     private FilterView filterView;
 
     public FilterPresenter(FilterView filterView) {
         this.filterView = filterView;
     }
 
-    public void initialize(NewFilterPopUpPresenter newFilterPopUpPresenter, ObservableList<Filter> listOfFilters){
-        this.listOfFilters = listOfFilters;
+    public void initialize(NewFilterPopUpPresenter newFilterPopUpPresenter, ObservableList<Filter> filters){
+        this.filters = filters;
         this.newFilterPopUpPresenter = newFilterPopUpPresenter;
 
-        listOfFilters.addListener((ListChangeListener<Filter>) c ->{
-            c.next();
-            List<Filter> addedFilters = (List<Filter>) c.getAddedSubList();
-            for(Filter filter:addedFilters){
-                filterView.updateFilterListView(filter.getName());
-            }
+        filters.addListener((ListChangeListener<Filter>) change -> {
+            while(change.next()) {
+                if(change.wasAdded()) {
+                    List<Filter> addedFilters = (List<Filter>) change.getAddedSubList();
 
-        } );
+                    for (Filter filter:addedFilters) {
+                        this.addFilter(filter);
+                    }
+                }
+                else if(change.wasRemoved()) {
+                    List<Filter> removedFilters = (List<Filter>) change.getRemoved();
+
+                    for (Filter filter:removedFilters) {
+                        this.removeFilter(filter);
+                    }
+                }
+
+            }
+        });
     }
     public void openNewFilterDialog() throws IOException {
         if (newFilterPopUpPresenter != null) {
@@ -65,13 +76,7 @@ public class FilterPresenter {
             Parent root = loader.load();
             filterPopUp.setTitle("New Filter");
 
-            Filter usedFilter = new Filter(null,null,null,null);
-            for(Filter f: listOfFilters){
-                if(f.getName().equals(filterName)){
-                    usedFilter = f;
-                    break;
-                }
-            }
+            Filter usedFilter = getFilterByName(filterName);
             List<String> usedKeys = usedFilter.getKeys();
             List<String> usedValues = usedFilter.getValues();
             List<String> usedCompare = usedFilter.getCompare();
@@ -112,11 +117,23 @@ public class FilterPresenter {
 
     }
 
-    public  void removeFromList(String name){
-        for(Filter f: listOfFilters){
+    private Filter getFilterByName(String name){
+
+        for(Filter f: filters){
+            System.err.println(f.getName());
             if(f.getName().equals(name)){
-                listOfFilters.remove(f);
+                 return f;
             }
+        }
+        return null;
+    }
+
+    private void addFilter(Filter filter){
+        filterView.updateFilterListView(filter.getName());
+    }
+
+    private  void removeFilter(Filter filter){
+        filterView.getFilterView().getItems().remove(filter.getName());
         }
     }
 
@@ -125,4 +142,4 @@ public class FilterPresenter {
 
 
 
-}
+

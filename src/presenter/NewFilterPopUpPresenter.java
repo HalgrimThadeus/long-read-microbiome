@@ -2,17 +2,18 @@ package presenter;
 
 import javafx.collections.ObservableList;
 import model.Filter;
+import model.Project;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 
 public class NewFilterPopUpPresenter {
     private ObservableList<Filter> listOfFilter;
-    private Map<String,Filter> filterMap = new HashMap<>();
-    public NewFilterPopUpPresenter(ObservableList<Filter> listOfFilter){
-        this.listOfFilter = listOfFilter;
+    private Project project;
+    public NewFilterPopUpPresenter(Project project){
+        this.listOfFilter = project.getFilters();
+        this.project = project;
     }
 
     public void updateFilterList(String name, List<String> keys,List<String> values,List<String> compare){
@@ -25,7 +26,7 @@ public class NewFilterPopUpPresenter {
                 }
             }
             if(!contained) {
-                listOfFilter.add(newFilter);
+                project.getFilters().add(newFilter);
             }
     }
 

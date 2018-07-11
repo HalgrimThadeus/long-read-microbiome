@@ -88,17 +88,17 @@ public class NewFilterPopUp implements Initializable {
                 usedValues.add(gccontent.getText());
                 usedCompare.add((String) GCCompareChoice.getSelectionModel().getSelectedItem());
             }
-            else if(!lengthvalue.getText().equals("")) {
+             if(!lengthvalue.getText().equals("")) {
                 usedKeys.add("Length");
                 usedValues.add(lengthvalue.getText());
                 usedCompare.add((String) lengthCompareChoice.getSelectionModel().getSelectedItem());
             }
-            else if(!scorevalue.getText().equals("")){
+             if(!scorevalue.getText().equals("")){
                 usedKeys.add("Score");
                 usedValues.add(scorevalue.getText());
                 usedCompare.add((String) scoreCompareChoice.getSelectionModel().getSelectedItem());
             }
-            else if(!taxaid.getText().equals("")){
+             if(!taxaid.getText().equals("")){
                 usedKeys.add("Taxa");
                 usedValues.add(taxaid.getText());
                 usedCompare.add("=");

@@ -13,7 +13,12 @@ import java.util.function.Predicate;
  *
  */
 public class Filter {
-    private Predicate<Read> filterPredicate;
+    private Predicate<Read> filterPredicate = new Predicate<Read>() {
+        @Override
+        public boolean test(Read read) {
+            return false;
+        }
+    };
     private List<String> keys;
     private List<String> values;
     private List<String> compare;
