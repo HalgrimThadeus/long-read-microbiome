@@ -22,7 +22,7 @@ import java.util.List;
 public class ComparatorPopUpPresenter {
     private MainPresenter mainPresenter;
     private ObservableMap<String, Sample> observableSampleMap = FXCollections.observableHashMap();
-    private ObservableMap<String, Filter> obeservableFilterMap  = FXCollections.observableHashMap();
+    private ObservableMap<String, Filter> observableFilterMap = FXCollections.observableHashMap();
     private ComparatorViewPresenter comparatorViewPresenter;
     private ComparatorPopUp comparatorPopUp;
     private LineChart<String, Number> vBox;
@@ -39,20 +39,15 @@ public class ComparatorPopUpPresenter {
 
         setComparatorPopUp(comparatorPopUp);
 
-        ObservableList<String> sampleNames = FXCollections.observableArrayList();
-        ObservableList<String> filterNames = FXCollections.observableArrayList();
-
         for (Sample sample: this.samples){
             observableSampleMap.put(sample.getName(),sample);
-            sampleNames.add(sample.getName());
         }
 
         for (Filter filter: this.filters){
-            obeservableFilterMap.put(filter.getName(),filter);
-            filterNames.add(filter.getName());
+            observableFilterMap.put(filter.getName(),filter);
         }
 
-        comparatorPopUp.setChoiceBoxes(sampleNames, filterNames);
+        comparatorPopUp.setChoiceBoxes((FXCollections.observableArrayList(observableSampleMap.keySet())), FXCollections.observableArrayList(observableFilterMap.keySet()));
 
         //TODO move
         samples.addListener((ListChangeListener<Sample>) change -> {
