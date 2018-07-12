@@ -2,6 +2,8 @@ package presenter;
 
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Window;
 import model.Filter;
 import model.io.ConfigIO;
@@ -42,30 +44,10 @@ public class SaveProjectPresenter {
         }
 
         ConfigIO configIO = new ConfigIO(file);
-        /* old for saving with serializable
-        List<Sample> nonObservedSampleList =  project.getSamples();
-        configIO.writeProjectToFile(nonObservedSampleList);*/
 
         configIO.writeProjectToFile(project);
     }
 
-    /*
-        public void loadProject(File file) throws Exception {
-
-            //first clear the Project
-            project.clear();
-
-            //then add all the samples back into the observable list:
-            ConfigIO configIO = new ConfigIO(file);
-            List<Sample> samples = configIO.readProjectFromFile();
-            for (Sample sample : samples
-                    ) {
-                project.addSamples(sample);
-
-            }
-
-
-        }*/
     public void loadProject(File file) throws Exception {
 
         //first clear the Project
@@ -73,8 +55,10 @@ public class SaveProjectPresenter {
 
         //then add all the samples back into the observable list:
         ConfigIO configIO = new ConfigIO(file);
-        configIO.updateProjectFromFile(project);
-
+        if(!configIO.updateProjectFromFile(project)){
+            Alert alter = new Alert(Alert.AlertType.WARNING,"Save has Wrong Version!",ButtonType.OK);
+            alter.show();
+        }
 
     }
 }

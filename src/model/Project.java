@@ -48,7 +48,7 @@ public class Project {
 
     @Override
     public String toString() {
-        String res = "";
+        String res = "Version 1.0" + "\n";
         for (Sample sample : samples) {
             res += sample.toString();
         }

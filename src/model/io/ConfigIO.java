@@ -19,45 +19,11 @@ public class ConfigIO {
 
     private File file;
 
+    private static String VERSIONSNUMMER = "Version 1.0";
+
     public ConfigIO(File file) {
         this.file = file;
     }
-
-   /* public void writeProjectToFile(List<Sample> samples) throws IOException {
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(this.file);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
-            //write samples to file by iterating about all of them in the samples list:
-            for (Sample sample : samples) {
-                objectOutputStream.writeObject(sample);
-            }
-
-            objectOutputStream.close();
-            fileOutputStream.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        } catch (IOException e) {
-            System.out.println("Error initilizing stream");
-        }
-
-        /*XMLEncoder enc = null;
-
-        try
-        {
-            enc = new XMLEncoder( new FileOutputStream(file) );
-            enc.writeObject(samples.get(0).);
-
-        }
-        catch ( IOException e ) {
-            e.printStackTrace();
-        }
-        finally {
-            if ( enc != null )
-                enc.close();
-        }
-
-    }*/
 
     public void writeProjectToFile(Project project) {
         try {
@@ -70,37 +36,15 @@ public class ConfigIO {
         }
     }
 
-    /*public List<Sample> readProjectFromFile() throws Exception {
-        List<Sample> samples = new ArrayList<Sample>();
 
-        try {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-
-            Sample sample;
-            do {
-                sample = (Sample) objectInputStream.readObject();
-                if (sample == null) break;
-                samples.add(sample);
-            } while (sample != null);
-
-            objectInputStream.close();
-            fileInputStream.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        } catch (IOException e) {
-            //just delete the exception, readObject doesnt return null!
-            System.out.println("");
-        }
-
-        return samples;
-    }*/
-
-    public void updateProjectFromFile(Project project) throws IOException {
+    public boolean updateProjectFromFile(Project project) throws IOException {
         try {
             FileReader filereader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(filereader);
-            String currentLine = "";
+            String currentLine = bufferedReader.readLine();
+            if(!currentLine.contains(VERSIONSNUMMER)){
+                return false;
+            }
             //first construct the samples
             SampleReader sampleReader = new SampleReader();
             while ((currentLine = bufferedReader.readLine()) != null) {
@@ -154,6 +98,7 @@ public class ConfigIO {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        return true;
 
     }
 
