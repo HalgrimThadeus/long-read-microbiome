@@ -1,7 +1,6 @@
 package view;
 
 import javafx.beans.property.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.NumberAxis;
@@ -9,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import presenter.ReadChartViewPresenter;
@@ -27,39 +25,40 @@ public class ReadChartView implements Initializable {
 
 
     @FXML
-    public VBox sequences;
+    private VBox sequences;
 
     @FXML
-    public VBox names;
+    private VBox names;
 
     @FXML
-    public NumberAxis xAxis;
+    private NumberAxis xAxis;
 
     @FXML
-    public Button addReadButton;
+    private Button addReadButton;
 
     @FXML
-    public ChoiceBox choseReadChoiceBox;
+    private ChoiceBox choseReadChoiceBox;
 
     @FXML
-    public Spinner<Integer> barWidthSpinner;
-
-    @FXML Slider zoomSlider;
+    private Spinner<Integer> barWidthSpinner;
 
     @FXML
-    AnchorPane readChartPane;
+    private Slider zoomSlider;
 
     @FXML
-    ScrollPane scrollPane;
+    private AnchorPane readChartPane;
 
     @FXML
-    ToolBar toolBar;
+    private ScrollPane scrollPane;
 
     @FXML
-    Button searchGeneButton;
+    private ToolBar toolBar;
 
     @FXML
-    TextField searchGeneTextField;
+    private Button searchGeneButton;
+
+    @FXML
+    private TextField searchGeneTextField;
 
     private IntegerProperty barWidth = new SimpleIntegerProperty(10);
     private DoubleProperty zoomFactor = new SimpleDoubleProperty(1);
@@ -72,34 +71,7 @@ public class ReadChartView implements Initializable {
     private final int BASIC_WIDTH = 740;
 
 
-    public void drawReads(List<ReadChartViewPresenter.SequenceData> reads){
 
-        //choseReadChoiceBox.getItems().addAll(reads);
-        double oldUpperBound = xAxis.getUpperBound();
-        int maxLength = reads.get(0).length;
-
-        xAxis.setUpperBound((maxLength + 1000)/1000 * 1000);
-        xAxis.setTickUnit(1000);
-
-
-        for(int i = 0; i < reads.size(); i++){
-            int length = reads.get(i).length;
-            String id = reads.get(i).seqId;
-            String taxId = reads.get(i).taxId + "";
-            List<ReadChartViewPresenter.GeneData> geneData = reads.get(i).geneData;
-
-            VBox readBox = new VBox();
-
-            readBox.getChildren().add(addGenes(geneData, oldUpperBound)[0]);
-            readBox.getChildren().add(addSequenceLength(id, length, oldUpperBound));
-            readBox.getChildren().add(addGenes(geneData, oldUpperBound)[1]);
-
-
-            addName(taxId);
-            sequences.getChildren().add(readBox);
-
-        }
-    }
 
 
     @Override
@@ -108,7 +80,7 @@ public class ReadChartView implements Initializable {
         //Spiner is initialized
         SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 200);
         barWidthSpinner.setValueFactory(valueFactory);
-        barWidthSpinner.getValueFactory().setValue((int)barWidth.get());
+        barWidthSpinner.getValueFactory().setValue(barWidth.get());
         barWidthSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
             barWidth.set(newValue);
         });
@@ -127,15 +99,38 @@ public class ReadChartView implements Initializable {
 
 
     }
+    //Setters/Getters-----------------------------------------------------------------------------------------------
 
 
-    /**
-     * If the addReadButton is clicked, a new Sequence + Genes is drawed if there is something selected in the
-     * choseReadChoiceBox.
-     * @param actionEvent
-     */
+    public void setReadChartViewPresenter(ReadChartViewPresenter readChartViewPresenter){
+        this.readChartViewPresenter = readChartViewPresenter;
+    }
+
+    //Listeners------------------------------------------------------------------------------------------------------
+
+    @FXML
+    private void onSearchGeneButtonClicked(){
+        String geneName = this.searchGeneTextField.getText();
+
+        //Resize the Rectangle Paints, to standard
+        if(!geneName.equals(searchedGene)){
+            markColor.set(Color.WHEAT);
+        }
+        searchedGene = geneName;
+        markColor.set(Color.rgb(255, 215 , 0, 0.5));
+
+    }
+
+    @FXML
+    private void onZoomGeneButtonClicked(){
+        System.out.println("Hehe");
+    }
+
+//Painting-----------------------------------------------------------------------------------------------------------
+            /*
+
     public void onAddReadButtonClicked(ActionEvent actionEvent) {
-        /*
+
         if(choseReadChoiceBox.getSelectionModel().getSelectedItem() == null){
             return;
         }else{
@@ -163,31 +158,42 @@ public class ReadChartView implements Initializable {
             sequences.getChildren().add(readBox);
             System.out.println(readChartViewPresenter);
         }
-    */
-
-
-
     }
-
-    public void setReadChartViewPresenter(ReadChartViewPresenter readChartViewPresenter){
-        this.readChartViewPresenter = readChartViewPresenter;
-    }
+        */
 
     /**
-     * If you add a Sequenze longer then the xAxis, the xAxis is getting bigger
-     * @param length
-     * @return
+     * Draws every Read given by the Presenter
+     * @param reads Liste von Sequenzdaten
      */
-    private boolean xAxisSetHigherBoundIfNeeded(int length){
-        boolean wasNeeded = false;
-        if(xAxis.getUpperBound() < length){
-            wasNeeded = true;
-            xAxis.setUpperBound((length + 1000)/1000 * 1000);
-            xAxis.setTickUnit(1000);
-        }
+    public void drawReads(List<ReadChartViewPresenter.SequenceData> reads){
 
-        return wasNeeded;
+        //choseReadChoiceBox.getItems().addAll(reads);
+        double oldUpperBound = xAxis.getUpperBound();
+        int maxLength = reads.get(0).length;
+
+        xAxis.setUpperBound((maxLength + 1000)/1000 * 1000);
+        xAxis.setTickUnit(1000);
+
+
+        for (ReadChartViewPresenter.SequenceData read : reads) {
+            int length = read.length;
+            String id = read.seqId;
+            String taxId = read.taxId + "";
+            List<ReadChartViewPresenter.GeneData> geneData = read.geneData;
+
+            VBox readBox = new VBox();
+
+            readBox.getChildren().add(addGenes(geneData, oldUpperBound)[0]);
+            readBox.getChildren().add(addSequenceLength(id, length, oldUpperBound));
+            readBox.getChildren().add(addGenes(geneData, oldUpperBound)[1]);
+
+
+            addName(taxId);
+            sequences.getChildren().add(readBox);
+
+        }
     }
+
 
     /**
      * Add the sequenceLengths to the plot
@@ -226,8 +232,8 @@ public class ReadChartView implements Initializable {
 
     /**
      * Add all Genes to the plot
-     * @param geneData
-     * @param oldUpperBound
+     * @param geneData Gendaten
+     * @param oldUpperBound alter xAxis bound zur Platzierung
      */
     private AnchorPane[] addGenes(List<ReadChartViewPresenter.GeneData> geneData, double oldUpperBound){
         AnchorPane genes = new AnchorPane();
@@ -239,58 +245,52 @@ public class ReadChartView implements Initializable {
         genesReversed.prefHeightProperty().bind(barWidth);
         genesReversed.minHeightProperty().bind(barWidth);
 
-        for(int j = 0; j < geneData.size(); j++){
+        for (ReadChartViewPresenter.GeneData aGeneData : geneData) {
 
-            String name = "" + geneData.get(j).name;
-            int start =geneData.get(j).start;
-            int end = geneData.get(j).end;
-            boolean isReversed = geneData.get(j).isReversed;
+            String name = "" + aGeneData.name;
+            int start = aGeneData.start;
+            int end = aGeneData.end;
+            boolean isReversed = aGeneData.isReversed;
 
             System.out.println(name);
 
             Rectangle rectangle = new Rectangle();
-            if(oldUpperBound == -1){
-                rectangle.setWidth(xAxis.getDisplayPosition(end)-xAxis.getDisplayPosition(start));
+            if (oldUpperBound == -1) {
+                rectangle.setWidth(xAxis.getDisplayPosition(end) - xAxis.getDisplayPosition(start));
                 rectangle.setX(xAxis.getDisplayPosition(start));
 
 
-            }
-            else{
-                rectangle.setWidth(xAxis.getDisplayPosition(end * (oldUpperBound/xAxis.getUpperBound()))-xAxis.getDisplayPosition(start * (oldUpperBound/xAxis.getUpperBound())));
-                rectangle.setX(xAxis.getDisplayPosition(start * (oldUpperBound/xAxis.getUpperBound())));
+            } else {
+                rectangle.setWidth(xAxis.getDisplayPosition(end * (oldUpperBound / xAxis.getUpperBound())) - xAxis.getDisplayPosition(start * (oldUpperBound / xAxis.getUpperBound())));
+                rectangle.setX(xAxis.getDisplayPosition(start * (oldUpperBound / xAxis.getUpperBound())));
             }
 
-            LinearGradient lg1;
 
             //Genes with start reds the get blue
-            if(isReversed){
-                rectangle.setFill(Color.rgb(34,34,178, 0.5));
+            if (isReversed) {
+                rectangle.setFill(Color.rgb(34, 34, 178, 0.5));
                 markColor.addListener((observable, oldValue, newValue) -> {
                     System.out.println(name);
                     System.out.println(searchedGene);
-                    if(!name.equals(searchedGene)){
-                        rectangle.setFill(Color.rgb(34,34,178, 0.5));
-                    }
-                    else{
+                    if (!name.equals(searchedGene)) {
+                        rectangle.setFill(Color.rgb(34, 34, 178, 0.5));
+                    } else {
                         rectangle.setFill(newValue);
                     }
                 });
                 genesReversed.getChildren().add(rectangle);
 
-            }
-            else{
-                rectangle.setFill(Color.rgb(178,34,34, 0.5));
+            } else {
+                rectangle.setFill(Color.rgb(178, 34, 34, 0.5));
                 markColor.addListener((observable, oldValue, newValue) -> {
-                    if(!name.equals(searchedGene)){
-                        rectangle.setFill(Color.rgb(178,34,34, 0.5));
-                    }
-                    else{
+                    if (!name.equals(searchedGene)) {
+                        rectangle.setFill(Color.rgb(178, 34, 34, 0.5));
+                    } else {
                         rectangle.setFill(newValue);
                     }
                 });
                 genes.getChildren().add(rectangle);
             }
-
 
 
             rectangle.heightProperty().bind(barWidth);
@@ -299,21 +299,21 @@ public class ReadChartView implements Initializable {
 
             //Right resizing
             xAxis.widthProperty().addListener((obs, oldVal, newVal) -> {
-                rectangle.setWidth(rectangle.getWidth()* (newVal.doubleValue()/oldVal.doubleValue()));
-                rectangle.setX(rectangle.getX() * (newVal.doubleValue()/oldVal.doubleValue()) );
+                rectangle.setWidth(rectangle.getWidth() * (newVal.doubleValue() / oldVal.doubleValue()));
+                rectangle.setX(rectangle.getX() * (newVal.doubleValue() / oldVal.doubleValue()));
 
             });
 
             xAxis.upperBoundProperty().addListener((obs, oldVal, newVal) -> {
-                rectangle.setWidth(rectangle.getWidth()* (oldVal.doubleValue()/newVal.doubleValue()));
-                rectangle.setX(rectangle.getX() * (oldVal.doubleValue()/newVal.doubleValue()) );
+                rectangle.setWidth(rectangle.getWidth() * (oldVal.doubleValue() / newVal.doubleValue()));
+                rectangle.setX(rectangle.getX() * (oldVal.doubleValue() / newVal.doubleValue()));
 
             });
 
             //Add tooltip
-            String tooltipMessage = geneData.get(j).name + "\n"
+            String tooltipMessage = aGeneData.name + "\n"
                     + "Start: " + start + " End: " + end + "\n"
-                    + "Strand: " + ((geneData.get(j).isReversed)?"+" : "-");
+                    + "Strand: " + ((aGeneData.isReversed) ? "+" : "-");
             Tooltip t = new Tooltip(tooltipMessage);
             Tooltip.install(rectangle, t);
 
@@ -330,7 +330,7 @@ public class ReadChartView implements Initializable {
     }
 
     /**
-     * Add the names to the Plot
+     * Add the names to the Plot TODO: TAX TREE INTEGRATION
      * @param name
      */
     private void addName(String name){
@@ -341,14 +341,4 @@ public class ReadChartView implements Initializable {
 
     }
 
-    @FXML
-    private void onSearchGeneButtonClicked(){
-        String geneName = this.searchGeneTextField.getText();
-        if(!geneName.equals(searchedGene)){
-            markColor.set(Color.WHEAT);
-        }
-        searchedGene = geneName;
-        markColor.set(Color.rgb(255, 215 , 0, 0.5));
-
-    }
 }

@@ -41,7 +41,6 @@ public class WorkView extends TabPane implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
         //Set drop listeners for the pane
         workView.setOnDragOver((DragEvent event) -> {
             System.out.println("Drag is now  over the workview " + this);
