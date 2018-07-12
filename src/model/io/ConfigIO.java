@@ -1,18 +1,13 @@
 package model.io;
 
 
-import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import model.Filter;
-import model.FilterBuilder;
 import model.Project;
 import model.Sample;
 
-import java.beans.XMLEncoder;
 import java.io.*;
-import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ConfigIO {
@@ -75,19 +70,14 @@ public class ConfigIO {
                 filterName = currentLine;
                 currentLine = bufferedReader.readLine();
                 String[] keysOfLine = currentLine.split("\t");
-                for (int i = 0; i < keysOfLine.length; i++) {
-                    usedKeys.add(keysOfLine[i]);
-                }
+
+                Collections.addAll(usedKeys, keysOfLine);
                 currentLine = bufferedReader.readLine();
                 String[] valuesOfLine = currentLine.split("\t");
-                for (int i = 0; i < valuesOfLine.length; i++) {
-                    usedValues.add(valuesOfLine[i]);
-                }
+                Collections.addAll(usedValues, valuesOfLine);
                 currentLine = bufferedReader.readLine();
                 String[] compareOfLine = currentLine.split("\t");
-                for (int i = 0; i < compareOfLine.length; i++) {
-                    usedCompare.add(compareOfLine[i]);
-                }
+                Collections.addAll(usedCompare, compareOfLine);
 
             }
             for (int i = 0; i < usedKeys.size(); i++) {
