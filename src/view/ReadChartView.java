@@ -127,10 +127,10 @@ public class ReadChartView implements Initializable {
     }
 
 //Painting-----------------------------------------------------------------------------------------------------------
-            /*
 
-    public void onAddReadButtonClicked(ActionEvent actionEvent) {
 
+    public void onAddReadButtonClicked() {
+        /*
         if(choseReadChoiceBox.getSelectionModel().getSelectedItem() == null){
             return;
         }else{
@@ -157,9 +157,9 @@ public class ReadChartView implements Initializable {
             addName(read.getTaxonomicId() + "");
             sequences.getChildren().add(readBox);
             System.out.println(readChartViewPresenter);
-        }
+        }*/
     }
-        */
+
 
     /**
      * Draws every Read given by the Presenter
