@@ -35,7 +35,7 @@
         </ToolBar>
         <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0">
             <items>
-                <Button fx:id="searchGeneButton" mnemonicParsing="false" text="Search Gene" />
+                <Button fx:id="searchGeneButton" onAction="#onSearchGeneButtonClicked" mnemonicParsing="false" text="Search Gene" />
                 <TextField fx:id="searchGeneTextField" prefHeight="25.0" prefWidth="203.0" />
             </items>
         </ToolBar>
