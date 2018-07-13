@@ -6,7 +6,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -15,14 +14,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import presenter.ComparatorViewPresenter;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.ResourceBundle;
 
 import static model.Comparator.*;
 
-public class ComparatorView implements Initializable {
+public class ComparatorView {
 
     private ComparatorViewPresenter comparatorViewPresenter;
     @FXML
@@ -44,17 +40,11 @@ public class ComparatorView implements Initializable {
     public ComparatorView(){
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
+    public void setComparatorViewPresenter(ComparatorViewPresenter comparatorViewPresenter){
+        this.comparatorViewPresenter = comparatorViewPresenter;
+    }
 
-        //example:
-        String name1 = "Sample1";
-        ArrayList<Double> data1
-                = new ArrayList<>(Arrays.asList(5.0,10.0,10.0,20.0,25.0,25.0,30.0,30.0,30.0,40.0,40.0,40.0,40.0,40.0,45.0,45.0,50.0,55.0,60.0,80.0));
-        String name2 = "Sample2";
-        ArrayList<Double> data2
-                = new ArrayList<>(Arrays.asList(0.0,10.0,20.0,25.0,30.0,30.0,39.5,35.5,40.0,40.0,45.5,45.0,45.0,44.5,44.5,50.0,50.0,60.0,70.0,80.0,100.0));
-
+    public void start(ArrayList<Double> data1, ArrayList<Double> data2, String name1, String name2, String comparisonMode){
 
         numberOfBins = 5;
         //numberOfBins = calculateNumberOfBins(data1,data2);
@@ -64,9 +54,9 @@ public class ComparatorView implements Initializable {
         ObservableList<Integer> counts2 = FXCollections.observableArrayList(groupData(data2, numberOfBins, sizeOfRanges));
 
         //chart:
-        xAxis.setLabel("GC content [%]");
+        xAxis.setLabel(comparisonMode);
         yAxis.setLabel("number of reads");
-        barChart.setTitle("Comparison GC content " + name1 + " , " + name2);
+        barChart.setTitle("compare " + comparisonMode + " " + name1 + " , " + name2);
         xAxis.setCategories(categories);
         xAxis.setAutoRanging(true);
         yAxis.setAutoRanging(true);
@@ -74,13 +64,13 @@ public class ComparatorView implements Initializable {
         barChart.setCategoryGap(0);
         //sample 1
         XYChart.Series series1 = new XYChart.Series();
-        series1.setName("Sample 1");
+        series1.setName(name1);
         for(int i=0; i<numberOfBins; i++){
             series1.getData().add(new XYChart.Data(categories.get(i) , counts1.get(i)));
         }
         //sample 2
         XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Sample 2");
+        series2.setName(name2);
         for(int i=0; i<numberOfBins; i++){
             series2.getData().add(new XYChart.Data(categories.get(i) , counts2.get(i)));
         }
@@ -141,5 +131,4 @@ public class ComparatorView implements Initializable {
         });
 
     }
-
 }

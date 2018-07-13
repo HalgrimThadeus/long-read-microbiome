@@ -71,10 +71,6 @@ public class ComparatorPopUpPresenter {
         Filter filter2 = observableFilterMap.get(selections[3]);
         //FilteredSample filteredSample2 = new FilteredSample(sample2, filter2);
         Comparator comparator = new Comparator(sample1, sample2, selections[4]);
-        List<List<Double>> dataResults = comparator.getData();
-
-        List<Double> data1 = dataResults.get(0);
-        List<Double> data2 = dataResults.get(1);
 
         ComparatorView cv = new ComparatorView();
         Stage comparatorView = new Stage();
@@ -86,7 +82,8 @@ public class ComparatorPopUpPresenter {
         comparatorView.setScene(scene);
 
         comparatorView.show();
-        ComparatorViewPresenter comparatorViewPresenter = new ComparatorViewPresenter();
+        ComparatorViewPresenter comparatorViewPresenter = new ComparatorViewPresenter(cv, comparator);
+        cv.setComparatorViewPresenter(comparatorViewPresenter);
     }
 
     public void calculateViewableResults(String sample1, String filter1, String sample2, String filter2){

@@ -17,6 +17,18 @@ public class Comparator {
         createDataWithInput();
     }
 
+    public String getComparisonMode() {
+        return comparisonMode;
+    }
+
+    public Sample getFilteredSample1() {
+        return filteredSample1;
+    }
+
+    public Sample getFilteredSample2() {
+        return filteredSample2;
+    }
+
     public List<List<Double>> getData() {
         return data;
     }
