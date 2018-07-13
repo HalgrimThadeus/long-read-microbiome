@@ -22,8 +22,6 @@ public class MainPresenter {
     private WorkViewContainerPresenter workViewContainerPresenter;
     private NewSamplePopUpPresenter newSamplePopUpPresenter;
     private NewFilterPopUpPresenter newFilterPopUpPresenter;
-    private ComparatorPopUpPresenter comparatorPopUpPresenter;
-    private ComparatorViewPresenter comparatorViewPresenter;
     //... more Presenter
 
     public MainPresenter(Project project, MainView mainView){
@@ -43,8 +41,6 @@ public class MainPresenter {
         this.samplePresenter.initialize(this.newSamplePopUpPresenter, project.getSamples());
 
         this.workViewContainerPresenter = this.mainView.getWorkViewContainer().getWorkViewContainerPresenter();
-        this.comparatorPopUpPresenter = new ComparatorPopUpPresenter(this);
-        this.comparatorViewPresenter = new ComparatorViewPresenter();
         workViewContainerPresenter.initialize(project);
 
     }
@@ -78,26 +74,20 @@ public class MainPresenter {
         return newFilterPopUpPresenter;
     }
 
-    public ComparatorPopUpPresenter getComparatorPopUpPresenter() {
-        return comparatorPopUpPresenter;
-    }
-
-    public ComparatorViewPresenter getComparatorViewPresenter(){
-        return comparatorViewPresenter;
-    }
-
     public void openStartComparatorPopup() throws IOException {
-        ComparatorPopUp newComparatorPopUp = new ComparatorPopUp(comparatorPopUpPresenter);
+
+        ComparatorPopUp cp = new ComparatorPopUp();
         Stage comparatorPopUp = new Stage();
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("comparatorPopUp.fxml"));
-        loader.setController(newComparatorPopUp);
+        loader.setController(cp);
         Parent root = loader.load();
-        comparatorPopUpPresenter.initialize(project.getSamples(), project.getFilters(), newComparatorPopUp);
 
         comparatorPopUp.setTitle("New Comparator");
         comparatorPopUp.setScene(new Scene(root, 450, 300));
 
         comparatorPopUp.show();
+        ComparatorPopUpPresenter comparatorPopUpPresenter = new ComparatorPopUpPresenter(project.getSamples(), project.getFilters(), cp);
+
 
     }
 

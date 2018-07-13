@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="288.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<?import view.ComparatorPopUp?>
+<ComparatorPopUp maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                 prefHeight="288.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.121"
+                 xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="37.0" layoutY="51.0" text="select 2 samples:" />
       <ChoiceBox fx:id="sampleChoiceBox1" layoutX="27.0" layoutY="75.0" prefHeight="25.0" prefWidth="153.0" />
@@ -20,4 +22,4 @@
       <Label layoutX="37.0" layoutY="183.0" text="select comparison mode:" />
       <ChoiceBox fx:id="comparisonModeChoiceBox" layoutX="37.0" layoutY="204.0" prefHeight="25.0" prefWidth="153.0" />
    </children>
-</AnchorPane>
+</ComparatorPopUp>

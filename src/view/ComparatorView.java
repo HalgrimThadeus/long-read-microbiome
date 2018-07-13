@@ -55,6 +55,8 @@ public class ComparatorView implements Initializable {
         String name2 = "Sample2";
         ArrayList<Double> data2
                 = new ArrayList<>(Arrays.asList(0.0,10.0,20.0,25.0,30.0,30.0,39.5,35.5,40.0,40.0,45.5,45.0,45.0,44.5,44.5,50.0,50.0,60.0,70.0,80.0,100.0));
+
+
         numberOfBins = 5;
         //numberOfBins = calculateNumberOfBins(data1,data2);
         double sizeOfRanges = calculateBoundaries(data1, data2 , numberOfBins);
