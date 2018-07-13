@@ -108,11 +108,14 @@ public class ComparatorView implements Initializable {
                             numberOfBins = (int) slider.getValue();
                             double sizeOfRanges = calculateBoundaries(data1, data2, numberOfBins);
                             categories.clear();
-                            categories.addAll(setCategoryNames(data1, data2, numberOfBins, sizeOfRanges));
+                            ArrayList<String> categoriesList = setCategoryNames(data1, data2, numberOfBins, sizeOfRanges);
+                            categories.addAll(categoriesList);
                             counts1.clear();
-                            counts1.addAll(groupData(data1, numberOfBins, sizeOfRanges));
+                            ArrayList<Integer> countsList1 = groupData(data1, numberOfBins, sizeOfRanges);
+                            counts1.addAll(countsList1);
                             counts2.clear();
-                            counts2.addAll(groupData(data2, numberOfBins, sizeOfRanges));
+                            ArrayList<Integer> countsList2 = groupData(data2, numberOfBins, sizeOfRanges);
+                            counts2.addAll(countsList2);
                             System.out.println("bins " + numberOfBins);
                             System.out.println("size ranges " + sizeOfRanges);
                             System.out.println("categories " + categories);
