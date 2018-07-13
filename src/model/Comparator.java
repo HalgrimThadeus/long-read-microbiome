@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Comparator {
     String comparisonMode;
-    FilteredSample filteredSample1;
-    FilteredSample filteredSample2;
-    List<List<Double>> data;
+    Sample filteredSample1;
+    Sample filteredSample2;
+    List<List<Double>> data = new ArrayList<>();
 
-    public Comparator(String comparisonMode, FilteredSample filteredSample1, FilteredSample FilteredSample2) {
+    public Comparator(Sample filteredSample1, Sample filteredSample2, String comparisonMode) {
         this.comparisonMode = comparisonMode;
         this.filteredSample1 = filteredSample1;
         this.filteredSample2 = filteredSample2;
@@ -22,36 +22,36 @@ public class Comparator {
     }
 
     //gc-content
-    private ArrayList<Double> calculateDataCGContent(FilteredSample filteredSample){
-        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getFilteredReads().size());
-        for(Read read : filteredSample.getFilteredReads()){
+    private ArrayList<Double> calculateDataCGContent(Sample filteredSample){
+        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getReads().size());
+        for(Read read : filteredSample.getReads()){
             data.add(read.calculateGCContent());
         }
         return data;
     }
 
     //length of the genes
-    private ArrayList<Double> calculateDataLength (FilteredSample filteredSample){
-        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getFilteredReads().size());
-        for(Read read : filteredSample.getFilteredReads()){
+    private ArrayList<Double> calculateDataLength (Sample filteredSample){
+        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getReads().size());
+        for(Read read : filteredSample.getReads()){
             data.add((double)read.getSequence().length());
         }
         return data;
     }
 
     //number of genes
-    private ArrayList<Double> calculateDataNumberOfGenes (FilteredSample filteredSample){
-        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getFilteredReads().size());
-        for(Read read : filteredSample.getFilteredReads()){
+    private ArrayList<Double> calculateDataNumberOfGenes (Sample filteredSample){
+        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getReads().size());
+        for(Read read : filteredSample.getReads()){
             data.add((double)read.getGFFEntries().size());
         }
         return data;
     }
 
     //gene density
-    private ArrayList<Double> calculateDataGeneDensity (FilteredSample filteredSample){
-        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getFilteredReads().size());
-        for(Read read : filteredSample.getFilteredReads()){
+    private ArrayList<Double> calculateDataGeneDensity (Sample filteredSample){
+        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getReads().size());
+        for(Read read : filteredSample.getReads()){
             int numberOfGenes = read.getGFFEntries().size();
             int length = read.getSequence().length();
             data.add((double)numberOfGenes/length); //average number of genes per basepair
