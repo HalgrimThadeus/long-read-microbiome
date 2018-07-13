@@ -37,12 +37,14 @@ public class ComparatorPopUp extends AnchorPane implements Initializable {
 
     @FXML
     public void onCompareButtonClicked(){
-        String selectedSample1 = sampleChoiceBox1.getValue();
-        String selectedSample2 = sampleChoiceBox2.getValue();
-        String selectedFilter1 = filterChoiceBox1.getValue();
-        String selectedFilter2 = filterChoiceBox2.getValue();
+        String[] selections = new String[5];
+        selections[0] = sampleChoiceBox1.getValue();
+        selections[1] = sampleChoiceBox2.getValue();
+        selections[2] = filterChoiceBox1.getValue();
+        selections[3] = filterChoiceBox2.getValue();
+        selections[4] = comparisonModeChoiceBox.getValue();
         try {
-            comparatorPopUpPresenter.openComparatorView();
+            comparatorPopUpPresenter.openComparatorView(selections);
         }catch (Exception e){
             e.printStackTrace();
         }

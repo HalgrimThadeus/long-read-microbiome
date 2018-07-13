@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.stage.Stage;
 import model.Filter;
+import model.FilteredSample;
 import model.Sample;
 import view.ComparatorPopUp;
 import view.ComparatorView;
@@ -58,15 +59,23 @@ public class ComparatorPopUpPresenter {
         });
     }
 
-    public void initialize(ObservableList<Sample> samples, ObservableList<Filter> filters, ComparatorPopUp comparatorPopUp){
-
-    }
-
     public void setComparatorPopUp(ComparatorPopUp comparatorPopUp){
         this.comparatorPopUp = comparatorPopUp;
     }
 
-    public void openComparatorView() throws IOException, InterruptedException {
+    public void openComparatorView(String[] selections) throws IOException, InterruptedException {
+        Sample sample1 = observableSampleMap.get(selections[0]);
+        Filter filter1 = observableFilterMap.get(selections[2]);
+        FilteredSample filteredSample1 = new FilteredSample(sample1, filter1);
+        Sample sample2 = observableSampleMap.get(selections[1]);
+        Filter filter2 = observableFilterMap.get(selections[3]);
+        FilteredSample filteredSample2 = new FilteredSample(sample2, filter2);
+//        Comparator comparator = new Comparator(filteredSample1, filteredSample2, selections[4]);
+//        List<List<Double>> dataResults = comparator.getData;
+
+//        List<Double> data1 = dataResults.get(0);
+//        List<Double> data2 = dataResults.get(1);
+
         ComparatorView cv = new ComparatorView();
         Stage comparatorView = new Stage();
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("ComparatorView.fxml"));
