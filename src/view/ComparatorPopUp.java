@@ -48,6 +48,10 @@ public class ComparatorPopUp extends AnchorPane implements Initializable {
         }
     }
 
+    public void setComparatorPopUpPresenter(ComparatorPopUpPresenter comparatorPopUpPresenter) {
+        this.comparatorPopUpPresenter = comparatorPopUpPresenter;
+    }
+
     public void setChoiceBoxes(ObservableList<String> nameList, ObservableList<String> filterList){
         sampleChoiceBox1.setItems(nameList);
         sampleChoiceBox2.setItems(nameList);

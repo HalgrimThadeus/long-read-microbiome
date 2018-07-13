@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import model.Filter;
 import model.Sample;
 import view.ComparatorPopUp;
+import view.ComparatorView;
 import view.MainView;
 
 import java.io.IOException;
@@ -66,16 +67,17 @@ public class ComparatorPopUpPresenter {
     }
 
     public void openComparatorView() throws IOException, InterruptedException {
-//        ComparatorView newComparatorView = new ComparatorView();
+        ComparatorView cv = new ComparatorView();
         Stage comparatorView = new Stage();
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("ComparatorView.fxml"));
-//        loader.setController(newComparatorView);
+        loader.setController(cv);
         Parent root = loader.load();
         Scene scene = new Scene(root, 700, 600);
         comparatorView.setTitle("Comparison");
         comparatorView.setScene(scene);
 
         comparatorView.show();
+        ComparatorViewPresenter comparatorViewPresenter = new ComparatorViewPresenter();
     }
 
     public void calculateViewableResults(String sample1, String filter1, String sample2, String filter2){

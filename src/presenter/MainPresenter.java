@@ -87,7 +87,7 @@ public class MainPresenter {
 
         comparatorPopUp.show();
         ComparatorPopUpPresenter comparatorPopUpPresenter = new ComparatorPopUpPresenter(project.getSamples(), project.getFilters(), cp);
-
+        cp.setComparatorPopUpPresenter(comparatorPopUpPresenter);
 
     }
 

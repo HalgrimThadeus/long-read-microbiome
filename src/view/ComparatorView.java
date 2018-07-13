@@ -41,8 +41,7 @@ public class ComparatorView implements Initializable {
     private int numberOfBins;
 
 
-    public ComparatorView(ComparatorViewPresenter comparatorViewPresenter){
-        this.comparatorViewPresenter = comparatorViewPresenter;
+    public ComparatorView(){
     }
 
     @Override
