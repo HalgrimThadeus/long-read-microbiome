@@ -5,7 +5,7 @@
 <?import view.ComparatorPopUp?>
 <ComparatorPopUp maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
                  prefHeight="288.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.121"
-                 xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ComparatorPopUp">
+                 xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="37.0" layoutY="51.0" text="select 2 samples:" />
       <ChoiceBox fx:id="sampleChoiceBox1" layoutX="27.0" layoutY="75.0" prefHeight="25.0" prefWidth="153.0" />

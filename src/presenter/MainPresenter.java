@@ -76,15 +76,17 @@ public class MainPresenter {
 
     public void openStartComparatorPopup() throws IOException {
 
+        ComparatorPopUp cp = new ComparatorPopUp();
         Stage comparatorPopUp = new Stage();
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("comparatorPopUp.fxml"));
+        loader.setController(cp);
         Parent root = loader.load();
 
         comparatorPopUp.setTitle("New Comparator");
         comparatorPopUp.setScene(new Scene(root, 450, 300));
 
         comparatorPopUp.show();
-        ComparatorPopUpPresenter comparatorPopUpPresenter = new ComparatorPopUpPresenter(project.getSamples(), project.getFilters(), (ComparatorPopUp) root);
+        ComparatorPopUpPresenter comparatorPopUpPresenter = new ComparatorPopUpPresenter(project.getSamples(), project.getFilters(), cp);
 
 
     }
