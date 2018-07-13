@@ -66,7 +66,7 @@ public class Comparator {
         for(Read read : filteredSample.getReads()){
             int numberOfGenes = read.getGFFEntries().size();
             int length = read.getSequence().length();
-            data.add((double)numberOfGenes/length); //average number of genes per basepair
+            data.add((numberOfGenes/(double)length)*1000.0); //average number of genes per 1000 basepairs
         }
         return data;
     }
