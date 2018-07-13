@@ -64,5 +64,11 @@ public class ComparatorPopUp extends AnchorPane implements Initializable {
         ObservableList<String> comparisonModeChoices = FXCollections.observableArrayList("GC content", "length", "number of genes", "gene density");
         comparisonModeChoiceBox.setItems(comparisonModeChoices);
         comparisonModeChoiceBox.getSelectionModel().selectFirst();
+//        comparisonModeChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+//
+//            }
+//        });
     }
 }

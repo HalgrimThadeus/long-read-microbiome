@@ -67,6 +67,7 @@ public class ComparatorPopUpPresenter {
     }
 
     public void openComparatorView() throws IOException, InterruptedException {
+
         ComparatorView cv = new ComparatorView();
         Stage comparatorView = new Stage();
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("ComparatorView.fxml"));
