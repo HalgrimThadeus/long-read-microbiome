@@ -28,8 +28,6 @@ public class WorkViewPresenter {
 
                 if(change.wasAdded()) {
                     this.workView.setTextTab(this.getFastaFileHtmlCode((List<Read>) change.getList()));
-                } else if(change.wasRemoved()) {
-                    this.workView.setTextTab(this.getFastaFileHtmlCode((List<Read>) change.getList()));
                 }
             }
             });

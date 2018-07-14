@@ -37,13 +37,9 @@ public class FilteredSample {
     }
 
     private void applyFilter() {
-        //TODO look that filtering works
-
         if(this.filter.getValue() != null && this.sample.getValue() != null) {
-
             filteredReads.setAll(sample.getValue().getReads().filtered(this.filter.getValue().getFilterPredicate()));
         } else if(this.filter.getValue() == null && this.sample.getValue() != null) {
-
             filteredReads.setAll(sample.getValue().getReads());
         }
     }
