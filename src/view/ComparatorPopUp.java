@@ -30,8 +30,6 @@ public class ComparatorPopUp extends AnchorPane implements Initializable {
     ChoiceBox<String> filterChoiceBox2;
     @FXML
     ChoiceBox<String> comparisonModeChoiceBox;
-    //@FXML
-    //ListChangeListener<String> comparisonModeChangeListener;
 
 
     public ComparatorPopUp(){

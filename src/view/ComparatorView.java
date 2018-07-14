@@ -82,11 +82,11 @@ public class ComparatorView {
         xAxis.setLabel(comparisonMode + " " + getScaleUnit(comparisonMode));
         yAxis.setLabel("number of reads");
         barChart.setTitle("compare " + comparisonMode + " " + name1 + " , " + name2);
-        xAxis.setCategories(categories);
         xAxis.setAutoRanging(true);
         yAxis.setAutoRanging(true);
+        xAxis.setCategories(categories);
         barChart.setBarGap(0);
-        barChart.setCategoryGap(0);
+        barChart.setCategoryGap(0.1);
         //sample 1
         XYChart.Series series1 = new XYChart.Series();
         series1.setName(name1);
@@ -131,8 +131,7 @@ public class ComparatorView {
                             counts2.clear();
                             ArrayList<Integer> countsList2 = groupData(data2, numberOfBins, sizeOfRanges);
                             counts2.addAll(countsList2);
-
-                            xAxis.setCategories(categories);
+                            //xAxis.setCategories(categories);
 
                             //sample 1
                             series1.getData().clear();
