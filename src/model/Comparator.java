@@ -71,23 +71,28 @@ public class Comparator {
         return data;
     }
 
-    private void createDataWithInput(){
+    private void createDataWithInput() {
         List<Double> data1 = new ArrayList<>();
         List<Double> data2 = new ArrayList<>();
-        switch (comparisonMode){
-            case "GC content": data1 = calculateDataCGContent(filteredSample1);
-                                data2 = calculateDataCGContent(filteredSample2);
-                                break;
-            case "length": data1 = calculateDataLength(filteredSample1);
-                            data2 = calculateDataLength(filteredSample2);
-                            break;
-            case "number of genes": data1 = calculateDataNumberOfGenes(filteredSample1);
-                                    data2 = calculateDataNumberOfGenes(filteredSample2);
-                                    break;
-            case "gene density": data1 = calculateDataGeneDensity(filteredSample1);
+        switch (comparisonMode) {
+            case "GC content":
+                data1 = calculateDataCGContent(filteredSample1);
+                data2 = calculateDataCGContent(filteredSample2);
+                break;
+            case "length":
+                data1 = calculateDataLength(filteredSample1);
+                data2 = calculateDataLength(filteredSample2);
+                break;
+            case "number of genes":
+                data1 = calculateDataNumberOfGenes(filteredSample1);
+                data2 = calculateDataNumberOfGenes(filteredSample2);
+                break;
+            case "gene density":
+                data1 = calculateDataGeneDensity(filteredSample1);
                 data2 = calculateDataGeneDensity(filteredSample2);
                 break;
-            default: System.err.println("no string as input");
+            default:
+                System.err.println("no string as input");
                 break;
         }
         this.data.add(data1);

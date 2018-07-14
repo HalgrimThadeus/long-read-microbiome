@@ -34,7 +34,7 @@ public class ComparatorView {
 
     private final int minNumberOfBins = 0;
     private final int maxNumberOfBins = 100;
-    private int numberOfBins;
+    private int numberOfBins = 10;
 
 
     public ComparatorView(){
@@ -44,9 +44,34 @@ public class ComparatorView {
         this.comparatorViewPresenter = comparatorViewPresenter;
     }
 
+    public String getScaleUnit(String comparisonMode){
+        String scaleUnit = "";
+        switch (comparisonMode) {
+            case "GC content":
+                scaleUnit = "[%]";
+                break;
+            case "length":
+                scaleUnit = "[bp]";
+                break;
+            case "number of genes":
+                scaleUnit = "";
+                break;
+            case "gene density":
+                scaleUnit = "[bp / kb]";
+                break;
+            default:
+                System.err.println("no string as input");
+                break;
+        }
+        return scaleUnit;
+    }
+
+//    public void recalculateData(int numberOfBins){
+//    }
+
     public void start(ArrayList<Double> data1, ArrayList<Double> data2, String name1, String name2, String comparisonMode){
 
-        numberOfBins = 5;
+        //numberOfBins = 10;
         //numberOfBins = calculateNumberOfBins(data1,data2);
         double sizeOfRanges = calculateBoundaries(data1, data2 , numberOfBins);
         ObservableList<String> categories = FXCollections.observableArrayList(setCategoryNames(data1, data2, numberOfBins, sizeOfRanges));
@@ -54,7 +79,7 @@ public class ComparatorView {
         ObservableList<Integer> counts2 = FXCollections.observableArrayList(groupData(data2, numberOfBins, sizeOfRanges));
 
         //chart:
-        xAxis.setLabel(comparisonMode);
+        xAxis.setLabel(comparisonMode + " " + getScaleUnit(comparisonMode));
         yAxis.setLabel("number of reads");
         barChart.setTitle("compare " + comparisonMode + " " + name1 + " , " + name2);
         xAxis.setCategories(categories);
@@ -106,14 +131,10 @@ public class ComparatorView {
                             counts2.clear();
                             ArrayList<Integer> countsList2 = groupData(data2, numberOfBins, sizeOfRanges);
                             counts2.addAll(countsList2);
-                            System.out.println("bins " + numberOfBins);
-                            System.out.println("size ranges " + sizeOfRanges);
-                            System.out.println("categories " + categories);
-                            System.out.println(counts1);
-                            System.out.println(counts2);
 
                             xAxis.setCategories(categories);
 
+                            //sample 1
                             series1.getData().clear();
                             for (int i = 0; i < numberOfBins; i++) {
                                 series1.getData().add(new XYChart.Data(categories.get(i), counts1.get(i)));
