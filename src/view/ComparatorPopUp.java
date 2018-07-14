@@ -4,6 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import model.Sample;
@@ -43,6 +45,18 @@ public class ComparatorPopUp extends AnchorPane implements Initializable {
         selections[2] = filterChoiceBox1.getValue();
         selections[3] = filterChoiceBox2.getValue();
         selections[4] = comparisonModeChoiceBox.getValue();
+
+        if(selections[0]==null | selections[1]==null){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please select two samples!", ButtonType.OK);
+            alert.show();
+            return;
+        }
+        if(selections[2]==null | selections[3]==null){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a filter for each sample!", ButtonType.OK);
+            alert.show();
+            return;
+        }
+
         try {
             comparatorPopUpPresenter.openComparatorView(selections);
         }catch (Exception e){
@@ -66,11 +80,5 @@ public class ComparatorPopUp extends AnchorPane implements Initializable {
         ObservableList<String> comparisonModeChoices = FXCollections.observableArrayList("GC content", "length", "number of genes", "gene density");
         comparisonModeChoiceBox.setItems(comparisonModeChoices);
         comparisonModeChoiceBox.getSelectionModel().selectFirst();
-//        comparisonModeChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-//
-//            }
-//        });
     }
 }
