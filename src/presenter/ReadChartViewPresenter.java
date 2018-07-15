@@ -1,5 +1,6 @@
 package presenter;
 
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,8 +30,13 @@ public class ReadChartViewPresenter {
     }
 
     private void onActions(){
-        filteredSample.getSample().addListener((observable, oldValue, newValue) -> {
-            readChartView.drawReads(getReadInformationOutOfRead(sortReads(newValue.getReads())));
+        this.filteredSample.getFilteredReads().addListener((ListChangeListener<? super Read>) change -> {
+            while(change.next()) {
+
+                if(change.wasAdded()) {
+                    this.readChartView.drawReads(getReadInformationOutOfRead(sortReads((List<Read>) change.getList())));
+                }
+            }
         });
     }
 
