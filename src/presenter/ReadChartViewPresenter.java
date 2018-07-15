@@ -42,15 +42,12 @@ public class ReadChartViewPresenter {
 
     private List<Read> sortReads(List<Read> reads){
         List<Read> sortedRead = new ArrayList<>(reads);
-        sortedRead.sort(new Comparator<Read>() {
-            @Override
-            public int compare(Read o1, Read o2) {
-                if(o1.getSequence().length() < o2.getSequence().length()){
-                    return 1;
-                }
-                else{
-                    return -1;
-                }
+        sortedRead.sort((o1, o2) -> {
+            if(o1.getSequence().length() < o2.getSequence().length()){
+                return 1;
+            }
+            else{
+                return -1;
             }
         });
         return sortedRead;
