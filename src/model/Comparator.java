@@ -5,44 +5,101 @@ import java.util.Collections;
 import java.util.List;
 
 public class Comparator {
+    String comparisonMode;
+    FilteredSample filteredSample1;
+    FilteredSample filteredSample2;
+    List<List<Double>> data = new ArrayList<>();
+
+    public Comparator(FilteredSample filteredSample1, FilteredSample filteredSample2, String comparisonMode) {
+        this.comparisonMode = comparisonMode;
+        this.filteredSample1 = filteredSample1;
+        this.filteredSample2 = filteredSample2;
+        createDataWithInput();
+    }
+
+    public String getComparisonMode() {
+        return comparisonMode;
+    }
+
+    public FilteredSample getFilteredSample1() {
+        return filteredSample1;
+    }
+
+    public FilteredSample getFilteredSample2() {
+        return filteredSample2;
+    }
+
+    public List<List<Double>> getData() {
+        return data;
+    }
 
     //gc-content
-    public ArrayList<Double> getDataCGContent(Sample sample){
-        ArrayList<Double> data = new ArrayList<Double>(sample.getReads().size());
-        for(Read read : sample.getReads()){
+    private ArrayList<Double> calculateDataCGContent(FilteredSample filteredSample){
+        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getFilteredReads().size());
+        for(Read read : filteredSample.getFilteredReads()){
             data.add(read.calculateGCContent());
         }
         return data;
     }
 
     //length of the genes
-    public ArrayList<Double> getDataLength (Sample sample){
-        ArrayList<Double> data = new ArrayList<Double>(sample.getReads().size());
-        for(Read read : sample.getReads()){
+    private ArrayList<Double> calculateDataLength (FilteredSample filteredSample){
+        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getFilteredReads().size());
+        for(Read read : filteredSample.getFilteredReads()){
             data.add((double)read.getSequence().length());
         }
         return data;
     }
 
     //number of genes
-    public ArrayList<Double> getDataNumberOfGenes (Sample sample){
-        ArrayList<Double> data = new ArrayList<Double>(sample.getReads().size());
-        for(Read read : sample.getReads()){
+    private ArrayList<Double> calculateDataNumberOfGenes (FilteredSample filteredSample){
+        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getFilteredReads().size());
+        for(Read read : filteredSample.getFilteredReads()){
             data.add((double)read.getGFFEntries().size());
         }
         return data;
     }
 
     //gene density
-    public ArrayList<Double> getDataGeneDensity (Sample sample){
-        ArrayList<Double> data = new ArrayList<Double>(sample.getReads().size());
-        for(Read read : sample.getReads()){
+    private ArrayList<Double> calculateDataGeneDensity (FilteredSample filteredSample){
+        ArrayList<Double> data = new ArrayList<Double>(filteredSample.getFilteredReads().size());
+        for(Read read : filteredSample.getFilteredReads()){
             int numberOfGenes = read.getGFFEntries().size();
             int length = read.getSequence().length();
-            data.add((double)numberOfGenes/length); //average number of genes per basepair
+            data.add((numberOfGenes/(double)length)*1000.0); //average number of genes per 1000 basepairs
         }
         return data;
     }
+
+    private void createDataWithInput() {
+        List<Double> data1 = new ArrayList<>();
+        List<Double> data2 = new ArrayList<>();
+        switch (comparisonMode) {
+            case "GC content":
+                data1 = calculateDataCGContent(filteredSample1);
+                data2 = calculateDataCGContent(filteredSample2);
+                break;
+            case "length":
+                data1 = calculateDataLength(filteredSample1);
+                data2 = calculateDataLength(filteredSample2);
+                break;
+            case "number of genes":
+                data1 = calculateDataNumberOfGenes(filteredSample1);
+                data2 = calculateDataNumberOfGenes(filteredSample2);
+                break;
+            case "gene density":
+                data1 = calculateDataGeneDensity(filteredSample1);
+                data2 = calculateDataGeneDensity(filteredSample2);
+                break;
+            default:
+                System.err.println("no string as input");
+                break;
+        }
+        this.data.add(data1);
+        this.data.add(data2);
+    }
+
+
 
 
     ////////////////////////////// Freedman-Diaconis rule:

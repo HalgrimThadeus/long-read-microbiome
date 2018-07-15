@@ -9,7 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.stage.Stage;
+import model.Comparator;
 import model.Filter;
+import model.FilteredSample;
 import model.Sample;
 import view.ComparatorPopUp;
 import view.ComparatorView;
@@ -29,15 +31,10 @@ public class ComparatorPopUpPresenter {
     private ObservableList<Sample> samples;
     private ObservableList<Filter> filters;
 
-    public ComparatorPopUpPresenter(MainPresenter mainPresenter){
-        this.mainPresenter = mainPresenter;
-    }
-
-    public void initialize(ObservableList<Sample> samples, ObservableList<Filter> filters, ComparatorPopUp comparatorPopUp){
+    public ComparatorPopUpPresenter(ObservableList<Sample> samples, ObservableList<Filter> filters, ComparatorPopUp comparatorPopUp){
         this.samples = samples;
         this.filters = filters;
-
-        setComparatorPopUp(comparatorPopUp);
+        this.comparatorPopUp = comparatorPopUp;
 
         for (Sample sample: this.samples){
             observableSampleMap.put(sample.getName(),sample);
@@ -67,16 +64,31 @@ public class ComparatorPopUpPresenter {
         this.comparatorPopUp = comparatorPopUp;
     }
 
-    public void openComparatorView() throws IOException, InterruptedException {
-        ComparatorView newComparatorView = new ComparatorView(mainPresenter.getComparatorViewPresenter());
+    public void openComparatorView(String[] selections) throws IOException, InterruptedException {
+        Sample sample1 = observableSampleMap.get(selections[0]);
+        Filter filter1 = observableFilterMap.get(selections[2]);
+        FilteredSample filteredSample1 = new FilteredSample();
+        filteredSample1.setSample(sample1);
+        filteredSample1.setFilter(filter1);
+        Sample sample2 = observableSampleMap.get(selections[1]);
+        Filter filter2 = observableFilterMap.get(selections[3]);
+        FilteredSample filteredSample2 = new FilteredSample();
+        filteredSample2.setSample(sample2);
+        filteredSample2.setFilter(filter2);
+        Comparator comparator = new Comparator(filteredSample1, filteredSample2, selections[4]);
+
+        ComparatorView cv = new ComparatorView();
         Stage comparatorView = new Stage();
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("ComparatorView.fxml"));
-        loader.setController(newComparatorView);
+        loader.setController(cv);
         Parent root = loader.load();
         Scene scene = new Scene(root, 700, 600);
         comparatorView.setTitle("Comparison");
         comparatorView.setScene(scene);
+
         comparatorView.show();
+        ComparatorViewPresenter comparatorViewPresenter = new ComparatorViewPresenter(cv, comparator);
+        cv.setComparatorViewPresenter(comparatorViewPresenter);
     }
 
     public void calculateViewableResults(String sample1, String filter1, String sample2, String filter2){

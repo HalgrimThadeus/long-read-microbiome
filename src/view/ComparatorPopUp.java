@@ -4,14 +4,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.AnchorPane;
 import model.Sample;
 import presenter.ComparatorPopUpPresenter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ComparatorPopUp implements Initializable {
+public class ComparatorPopUp extends AnchorPane implements Initializable {
 
     private ComparatorPopUpPresenter comparatorPopUpPresenter;
 
@@ -27,26 +30,40 @@ public class ComparatorPopUp implements Initializable {
     ChoiceBox<String> filterChoiceBox2;
     @FXML
     ChoiceBox<String> comparisonModeChoiceBox;
-    //@FXML
-    //ListChangeListener<String> comparisonModeChangeListener;
 
 
-    public ComparatorPopUp(ComparatorPopUpPresenter comparatorPopUpPresenter){
-        this.comparatorPopUpPresenter = comparatorPopUpPresenter;
+    public ComparatorPopUp(){
     }
 
     @FXML
     public void onCompareButtonClicked(){
-        String selectedSample1 = sampleChoiceBox1.getValue();
-        String selectedSample2 = sampleChoiceBox2.getValue();
-        String selectedFilter1 = filterChoiceBox1.getValue();
-        String selectedFilter2 = filterChoiceBox2.getValue();
-//        ComparatorPopUpPresenter.calculateViewableResults;
+        String[] selections = new String[5];
+        selections[0] = sampleChoiceBox1.getValue();
+        selections[1] = sampleChoiceBox2.getValue();
+        selections[2] = filterChoiceBox1.getValue();
+        selections[3] = filterChoiceBox2.getValue();
+        selections[4] = comparisonModeChoiceBox.getValue();
+
+        if(selections[0]==null | selections[1]==null){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please select two samples!", ButtonType.OK);
+            alert.show();
+            return;
+        }
+        if(selections[2]==null | selections[3]==null){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a filter for each sample!", ButtonType.OK);
+            alert.show();
+            return;
+        }
+
         try {
-            comparatorPopUpPresenter.openComparatorView();
+            comparatorPopUpPresenter.openComparatorView(selections);
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void setComparatorPopUpPresenter(ComparatorPopUpPresenter comparatorPopUpPresenter) {
+        this.comparatorPopUpPresenter = comparatorPopUpPresenter;
     }
 
     public void setChoiceBoxes(ObservableList<String> nameList, ObservableList<String> filterList){

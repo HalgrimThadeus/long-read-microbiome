@@ -82,16 +82,16 @@ public class FilterBuilder {
     }
 
     public static Predicate<Read> isLengthSmaller(Integer length){
-        return p-> p.getSequence().length() <= length;
+        return p-> (p.getSequence().length() <= length);
     }
 
     public static Predicate<Read> isLengthEqual(Integer length){
-       return p->  p.getSequence().length() == length;
+       return p->  (p.getSequence().length() == length);
 
     }
 
     public static Predicate<Read> isTaxaId(Integer taxaId){
-       return p-> p.getTaxonomicId() == taxaId ;
+       return p-> (p.getTaxonomicId() == taxaId) ;
     }
 
 

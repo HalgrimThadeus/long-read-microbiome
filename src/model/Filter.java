@@ -13,12 +13,8 @@ import java.util.function.Predicate;
  *
  */
 public class Filter {
-    private Predicate<Read> filterPredicate = new Predicate<Read>() {
-        @Override
-        public boolean test(Read read) {
-            return false;
-        }
-    };
+    private Predicate<Read> filterPredicate = read -> true;
+
     private List<String> keys;
     private List<String> values;
     private List<String> compare;
@@ -32,7 +28,12 @@ public class Filter {
         buildPredicate(keys, values, compare);
     }
 
-    public Filter(){}
+    public Filter(){
+        this.values = new ArrayList<>();
+        this.keys = new ArrayList<>();
+        this.compare = new ArrayList<>();
+        this.name = "";
+    }
 
     public String getName() {
         return name;
@@ -85,7 +86,7 @@ public class Filter {
         List<Read> acceptedReads = new ArrayList<>();
         if ((sample != null) && !sample.getReads().isEmpty()) {
             for (Read read : sample.getReads()) {
-                if (filterPredicate.test(read)) {
+                if (this.filterPredicate.test(read)) {
                     acceptedReads.add(read);
                 }
             }
@@ -99,34 +100,34 @@ public class Filter {
             String key = keys.get(i);
             String value = values.get(i);
             String compare = compares.get(i);
-            if (key.equals("Gen")) {
+            if (key.equals("Gene")) {
                 filterPredicate = filterPredicate.and(FilterBuilder.isGen(value));
             } else if (key.equals("GC")) {
-                if (isDouble(key)) {
+                if (isDouble(value)) {
                     if (compare.equals("<")) {
                         filterPredicate = filterPredicate.and(FilterBuilder.isGCContentLowerEq(Double.parseDouble(value)));
                     }
                     //adds greatereq to filter if the textfield contains a >
                     else if (compare.equals(">")) {
-                        filterPredicate.and(FilterBuilder.isGCContentHigherEq(Double.parseDouble(value)));
+                        filterPredicate = filterPredicate.and(FilterBuilder.isGCContentHigherEq(Double.parseDouble(value)));
+                    }
+                    //adds equal predicate if nothing but the number is given
+                    else if (compare.equals("=")) {
+                        filterPredicate = filterPredicate.and(FilterBuilder.isGCContentEqual(Double.parseDouble(value)));
                     }
                 }
-                //adds equal predicate if nothing but the number is given
-                else if (compare.equals("=")) {
-                    filterPredicate = filterPredicate.and(FilterBuilder.isGCContentEqual(Double.parseDouble(value)));
-                }
             } else if (key.equals("Length")) {
-                if (isDigit(key)) {
-                    if (compare.equals("="))
+                if (isDigit(value)) {
+                    if (compare.equals("=")) {
                         filterPredicate = filterPredicate.and(FilterBuilder.isLengthEqual(Integer.parseInt(value)));
-                } else if (compare.equals(">")) {
-                    filterPredicate = filterPredicate.and(FilterBuilder.isLengthGreater(Integer.parseInt(value)));
-                } else if (compare.equals("<")) {
-
-                    filterPredicate = filterPredicate.and(FilterBuilder.isLengthSmaller(Integer.parseInt(value)));
+                    } else if (compare.equals(">")) {
+                        filterPredicate = filterPredicate.and(FilterBuilder.isLengthGreater(Integer.parseInt(value)));
+                    } else if (compare.equals("<")) {
+                        filterPredicate = filterPredicate.and(FilterBuilder.isLengthSmaller(Integer.parseInt(value)));
+                    }
                 }
             } else if (key.equals("Score")) {
-                if (isDigit(key)) {
+                if (isDigit(value)) {
                     if (compare.equals("=")) {
                         filterPredicate = filterPredicate.and(FilterBuilder.isScoreEqual(Integer.parseInt(value)));
                     } else if (compare.equals("<")) {
@@ -138,8 +139,8 @@ public class Filter {
 
             } else if (key.equals("Taxa")) {
 
-                if (isDigit(key)) {
-                    filterPredicate.and(FilterBuilder.isTaxaId(Integer.parseInt(value)));
+                if (isDigit(value)) {
+                    filterPredicate = filterPredicate.and(FilterBuilder.isTaxaId(Integer.parseInt(value)));
                 }
                 //else case is filter by name (atm idk how)
             }
