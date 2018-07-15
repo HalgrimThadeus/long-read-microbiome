@@ -12,7 +12,9 @@ public class ComparatorViewPresenter {
         this.comparatorView = comparatorView;
         List<List<Double>> dataResults = comparator.getData();
 
-        comparatorView.start((ArrayList<Double>) dataResults.get(0),(ArrayList<Double>) dataResults.get(1),comparator.getFilteredSample1().getName(),comparator.getFilteredSample2().getName(), comparator.getComparisonMode());
+        comparatorView.start((ArrayList<Double>) dataResults.get(0),(ArrayList<Double>) dataResults.get(1),
+                            comparator.getFilteredSample1().getSample().getValue().getName(),comparator.getFilteredSample2().getSample().getValue().getName(),
+                            comparator.getComparisonMode());
 
 
     }
