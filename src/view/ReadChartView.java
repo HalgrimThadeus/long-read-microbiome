@@ -203,7 +203,7 @@ public class ReadChartView implements Initializable {
     private static int AREA_WIDTH = 500;
 
     public void drawZoomedReads(List<ReadChartViewPresenter.SequenceData> reads, String genName){
-        //choseReadChoiceBox.getItems().addAll(reads);
+        //TODO Make this different!
         if(reads == null){
             return;
         }
@@ -211,47 +211,61 @@ public class ReadChartView implements Initializable {
         double oldUpperBound = xAxis.getUpperBound();
         int maxLength = reads.get(0).length;
 
-        xAxis.setLowerBound(-AREA_WIDTH);
-        xAxis.setUpperBound(AREA_WIDTH);
+        xAxis.setLowerBound(0);
+        xAxis.setUpperBound(2*AREA_WIDTH);
 
 
         for (ReadChartViewPresenter.SequenceData read : reads) {
 
-            int length = AREA_WIDTH;
+            int length = 2*AREA_WIDTH;
             String id = read.seqId;
             String taxId = read.taxId + "";
 
             List<ReadChartViewPresenter.GeneData> sortedGens = read.sortGeneData(read.geneData);
             List<ReadChartViewPresenter.GeneData> genesToDraw = new ArrayList<>();
+
+            //If there are more then one, always the first is taken
             int startGen = 0;
             for(ReadChartViewPresenter.GeneData gens : sortedGens){
                 if(genName.equals(gens.name)){
                     startGen = gens.start;
                 }
             }
+            //Area width, where genes are painted
             int lowerBound = startGen-AREA_WIDTH;
             int upperBound = startGen+AREA_WIDTH;
 
+            //Prepare them for paint
             for(ReadChartViewPresenter.GeneData gens : sortedGens){
-                if(gens.start >= lowerBound){
-                    gens.start = gens.start - startGen;
-                    gens.end = gens.end-startGen;
-                    if(gens.end > upperBound){
-                        gens.end = upperBound;
+                if(gens.start >= lowerBound && gens.start <= upperBound){
+                    gens.start = gens.start - startGen + AREA_WIDTH;
+                    if(gens.end > upperBound) {
+                        gens.end = 2*AREA_WIDTH;
+                    }else{
+                        gens.end = gens.end-startGen + AREA_WIDTH;
                     }
+                    System.out.println(gens.start);
+                    System.out.println(gens.end);
                     genesToDraw.add(gens);
                 }
             }
 
             VBox readBox = new VBox();
 
-            //readBox.getChildren().add(addGenes(geneData, oldUpperBound)[0]);
+            readBox.getChildren().add(addGenes(genesToDraw, oldUpperBound)[0]);
             readBox.getChildren().add(addSequenceLength(id, length, oldUpperBound));
-            //readBox.getChildren().add(addGenes(geneData, oldUpperBound)[1]);
+            readBox.getChildren().add(addGenes(genesToDraw, oldUpperBound)[1]);
 
 
             addName(taxId);
             sequences.getChildren().add(readBox);
+
+            xAxis.setPrefWidth(xAxis.getWidth());
+            xAxis.setLowerBound(-1000);
+            xAxis.setUpperBound(1000);
+
+
+
 
         }
     }
@@ -315,7 +329,6 @@ public class ReadChartView implements Initializable {
             int end = aGeneData.end;
             boolean isReversed = aGeneData.isReversed;
 
-            System.out.println(name);
 
             Rectangle rectangle = new Rectangle();
             if (oldUpperBound == -1) {
@@ -333,8 +346,7 @@ public class ReadChartView implements Initializable {
             if (isReversed) {
                 rectangle.setFill(Color.rgb(34, 34, 178, 0.5));
                 markColor.addListener((observable, oldValue, newValue) -> {
-                    System.out.println(name);
-                    System.out.println(searchedGene);
+
                     if (!name.equals(searchedGene)) {
                         rectangle.setFill(Color.rgb(34, 34, 178, 0.5));
                     } else {

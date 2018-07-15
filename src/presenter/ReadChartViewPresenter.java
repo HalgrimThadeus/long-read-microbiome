@@ -127,7 +127,7 @@ public class ReadChartViewPresenter {
 
     private List<Read> getReadsByName(List<Read> reads, String name){
         List<Read> readByName = new ArrayList<>();
-        System.out.println(name);
+
         for(Read read : reads){
             for(GffEntry gffEntry : read.getGFFEntries()){
                 if(name.equals(gffEntry.getAttributes().get(" Name"))){
@@ -135,7 +135,6 @@ public class ReadChartViewPresenter {
                 }
             }
         }
-        System.out.println(readByName);
 
         return readByName;
     }
