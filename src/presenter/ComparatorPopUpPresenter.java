@@ -11,6 +11,7 @@ import javafx.scene.chart.LineChart;
 import javafx.stage.Stage;
 import model.Comparator;
 import model.Filter;
+import model.FilteredSample;
 import model.Sample;
 import view.ComparatorPopUp;
 import view.ComparatorView;
@@ -66,11 +67,15 @@ public class ComparatorPopUpPresenter {
     public void openComparatorView(String[] selections) throws IOException, InterruptedException {
         Sample sample1 = observableSampleMap.get(selections[0]);
         Filter filter1 = observableFilterMap.get(selections[2]);
-        //FilteredSample filteredSample1 = new FilteredSample(sample1, filter1);
+        FilteredSample filteredSample1 = new FilteredSample();
+        filteredSample1.setSample(sample1);
+        filteredSample1.setFilter(filter1);
         Sample sample2 = observableSampleMap.get(selections[1]);
         Filter filter2 = observableFilterMap.get(selections[3]);
-        //FilteredSample filteredSample2 = new FilteredSample(sample2, filter2);
-        Comparator comparator = new Comparator(sample1, sample2, selections[4]);
+        FilteredSample filteredSample2 = new FilteredSample();
+        filteredSample2.setSample(sample2);
+        filteredSample2.setFilter(filter2);
+        Comparator comparator = new Comparator(filteredSample1, filteredSample2, selections[4]);
 
         ComparatorView cv = new ComparatorView();
         Stage comparatorView = new Stage();

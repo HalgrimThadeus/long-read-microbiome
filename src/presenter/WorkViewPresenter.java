@@ -48,6 +48,7 @@ public class WorkViewPresenter {
         readChartTab.setContent(loader.load());
     }
 
+
     public void setNewSampleToWorkView(String sampleName) {
         Sample sample4Presenting = null;
 
