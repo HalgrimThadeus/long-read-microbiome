@@ -12,7 +12,9 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import presenter.ReadChartViewPresenter;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -110,7 +112,7 @@ public class ReadChartView implements Initializable {
 
     @FXML
     private void onSearchGeneButtonClicked(){
-        String geneName = this.searchGeneTextField.getText();
+        String geneName = ""+ this.searchGeneTextField.getText();
 
         //Resize the Rectangle Paints, to standard
         if(!geneName.equals(searchedGene)){
@@ -122,8 +124,8 @@ public class ReadChartView implements Initializable {
     }
 
     @FXML
-    private void onZoomGeneButtonClicked(){
-        System.out.println("Hehe");
+    private void onZoomGeneButtonClicked() throws IOException {
+        readChartViewPresenter.searchForGenByName(searchedGene);
     }
 
 //Painting-----------------------------------------------------------------------------------------------------------
@@ -161,6 +163,10 @@ public class ReadChartView implements Initializable {
     }
 
 
+
+
+
+
     /**
      * Draws every Read given by the Presenter
      * @param reads Liste von Sequenzdaten
@@ -193,6 +199,63 @@ public class ReadChartView implements Initializable {
 
         }
     }
+
+    private static int AREA_WIDTH = 500;
+
+    public void drawZoomedReads(List<ReadChartViewPresenter.SequenceData> reads, String genName){
+        //choseReadChoiceBox.getItems().addAll(reads);
+        if(reads == null){
+            return;
+        }
+
+        double oldUpperBound = xAxis.getUpperBound();
+        int maxLength = reads.get(0).length;
+
+        xAxis.setLowerBound(-AREA_WIDTH);
+        xAxis.setUpperBound(AREA_WIDTH);
+
+
+        for (ReadChartViewPresenter.SequenceData read : reads) {
+
+            int length = AREA_WIDTH;
+            String id = read.seqId;
+            String taxId = read.taxId + "";
+
+            List<ReadChartViewPresenter.GeneData> sortedGens = read.sortGeneData(read.geneData);
+            List<ReadChartViewPresenter.GeneData> genesToDraw = new ArrayList<>();
+            int startGen = 0;
+            for(ReadChartViewPresenter.GeneData gens : sortedGens){
+                if(genName.equals(gens.name)){
+                    startGen = gens.start;
+                }
+            }
+            int lowerBound = startGen-AREA_WIDTH;
+            int upperBound = startGen+AREA_WIDTH;
+
+            for(ReadChartViewPresenter.GeneData gens : sortedGens){
+                if(gens.start >= lowerBound){
+                    gens.start = gens.start - startGen;
+                    gens.end = gens.end-startGen;
+                    if(gens.end > upperBound){
+                        gens.end = upperBound;
+                    }
+                    genesToDraw.add(gens);
+                }
+            }
+
+            VBox readBox = new VBox();
+
+            //readBox.getChildren().add(addGenes(geneData, oldUpperBound)[0]);
+            readBox.getChildren().add(addSequenceLength(id, length, oldUpperBound));
+            //readBox.getChildren().add(addGenes(geneData, oldUpperBound)[1]);
+
+
+            addName(taxId);
+            sequences.getChildren().add(readBox);
+
+        }
+    }
+
 
 
     /**
