@@ -19,6 +19,11 @@ public class Filter {
     private List<String> values;
     private List<String> compare;
     private String name;
+    public static String gene = "Gene";
+    public static String gc = "GC";
+    public static String length = "Length";
+    public static String taxa = "Taxa";
+    public static String score = "Score";
 
     public Filter(String name, List<String> keys, List<String> values, List<String> compare) {
         this.values = values;
@@ -100,9 +105,9 @@ public class Filter {
             String key = keys.get(i);
             String value = values.get(i);
             String compare = compares.get(i);
-            if (key.equals("Gene")) {
+            if (key.equals(gene)) {
                 filterPredicate = filterPredicate.and(FilterBuilder.isGen(value));
-            } else if (key.equals("GC")) {
+            } else if (key.equals(gc)) {
                 if (isDouble(value)) {
                     if (compare.equals("<")) {
                         filterPredicate = filterPredicate.and(FilterBuilder.isGCContentLowerEq(Double.parseDouble(value)));
@@ -116,7 +121,7 @@ public class Filter {
                         filterPredicate = filterPredicate.and(FilterBuilder.isGCContentEqual(Double.parseDouble(value)));
                     }
                 }
-            } else if (key.equals("Length")) {
+            } else if (key.equals(length)) {
                 if (isDigit(value)) {
                     if (compare.equals("=")) {
                         filterPredicate = filterPredicate.and(FilterBuilder.isLengthEqual(Integer.parseInt(value)));
@@ -126,7 +131,7 @@ public class Filter {
                         filterPredicate = filterPredicate.and(FilterBuilder.isLengthSmaller(Integer.parseInt(value)));
                     }
                 }
-            } else if (key.equals("Score")) {
+            } else if (key.equals(score)) {
                 if (isDigit(value)) {
                     if (compare.equals("=")) {
                         filterPredicate = filterPredicate.and(FilterBuilder.isScoreEqual(Integer.parseInt(value)));
@@ -137,7 +142,7 @@ public class Filter {
                     }
                 }
 
-            } else if (key.equals("Taxa")) {
+            } else if (key.equals(taxa)) {
 
                 if (isDigit(value)) {
                     filterPredicate = filterPredicate.and(FilterBuilder.isTaxaId(Integer.parseInt(value)));
@@ -174,8 +179,26 @@ public class Filter {
 
 
     }
+    public void setFilterPredicate(Predicate p){
+        filterPredicate = p;
+    }
 
     public Predicate<Read> getFilterPredicate() {
         return filterPredicate;
+    }
+
+    public Filter combineFilter(Filter f1, Filter f2){
+        List<String> newKeys = new ArrayList<>();
+        List<String> newValues = new ArrayList<>();
+        List<String> newCompares = new ArrayList<>();
+
+        newKeys.addAll(f1.getKeys());
+        newKeys.addAll(f2.getKeys());
+        newValues.addAll(f1.getValues());
+        newValues.addAll(f2.getValues());
+        newCompares.addAll(f1.getCompare());
+        newCompares.addAll(f2.getCompare());
+        Filter filter = new Filter(f1.getName() + " " + f2.getName(), newKeys,newValues,newCompares);
+        return filter;
     }
 }
