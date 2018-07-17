@@ -1,6 +1,9 @@
 package view;
 
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.NumberAxis;
@@ -27,13 +30,13 @@ public class ReadChartView implements Initializable {
 
 
     @FXML
-    private VBox sequences;
+    public VBox sequences;
 
     @FXML
-    private VBox names;
+    public VBox names;
 
     @FXML
-    private NumberAxis xAxis;
+    public NumberAxis xAxis;
 
     @FXML
     private Button addReadButton;
@@ -42,7 +45,7 @@ public class ReadChartView implements Initializable {
     private ChoiceBox choseReadChoiceBox;
 
     @FXML
-    private Spinner<Integer> barWidthSpinner;
+    public Spinner<Integer> barWidthSpinner;
 
     @FXML
     private Slider zoomSlider;
@@ -62,7 +65,7 @@ public class ReadChartView implements Initializable {
     @FXML
     private TextField searchGeneTextField;
 
-    private IntegerProperty barWidth = new SimpleIntegerProperty(10);
+    public IntegerProperty barWidth = new SimpleIntegerProperty(10);
     private DoubleProperty zoomFactor = new SimpleDoubleProperty(1);
     private ObjectProperty<Paint> markColor = new SimpleObjectProperty<>();
 
@@ -71,6 +74,11 @@ public class ReadChartView implements Initializable {
 
 
     private final int BASIC_WIDTH = 740;
+
+    public ObservableList<AnchorPane> genPane = FXCollections.observableArrayList();
+    public ObservableList<Rectangle> reads = FXCollections.observableArrayList();
+    public ObservableList<AnchorPane> reversedGenPane = FXCollections.observableArrayList();
+    public ObservableList<Label> name = FXCollections.observableArrayList();
 
 
 
@@ -98,6 +106,22 @@ public class ReadChartView implements Initializable {
 
         sequences.setSpacing(10);
         names.setSpacing(10);
+
+        reads.addListener((ListChangeListener<? super Rectangle>) change ->{
+            while(change.next()) {
+
+                if(change.wasAdded()) {
+                    VBox vBox = new VBox();
+
+                    vBox.getChildren().add(genPane.get(change.getFrom()));
+                    vBox.getChildren().add(reads.get(change.getFrom()));
+                    vBox.getChildren().add(reversedGenPane.get(change.getFrom()));
+
+                    sequences.getChildren().add(vBox);
+                    names.getChildren().add(name.get(change.getFrom()));
+                }
+            }
+        });
 
 
     }
@@ -204,12 +228,11 @@ public class ReadChartView implements Initializable {
 
     public void drawZoomedReads(List<ReadChartViewPresenter.SequenceData> reads, String genName){
         //TODO Make this different!
-        if(reads == null){
+        if(reads == null && reads.get(0) == null){
             return;
         }
 
         double oldUpperBound = xAxis.getUpperBound();
-        int maxLength = reads.get(0).length;
 
         xAxis.setLowerBound(0);
         xAxis.setUpperBound(2*AREA_WIDTH);
@@ -313,6 +336,7 @@ public class ReadChartView implements Initializable {
      * @param oldUpperBound alter xAxis bound zur Platzierung
      */
     private AnchorPane[] addGenes(List<ReadChartViewPresenter.GeneData> geneData, double oldUpperBound){
+
         AnchorPane genes = new AnchorPane();
         AnchorPane genesReversed = new AnchorPane();
 
@@ -347,7 +371,7 @@ public class ReadChartView implements Initializable {
                 rectangle.setFill(Color.rgb(34, 34, 178, 0.5));
                 markColor.addListener((observable, oldValue, newValue) -> {
 
-                    if (!name.equals(searchedGene)) {
+                    if (!name.contains(searchedGene)) {
                         rectangle.setFill(Color.rgb(34, 34, 178, 0.5));
                     } else {
                         rectangle.setFill(newValue);
@@ -358,7 +382,7 @@ public class ReadChartView implements Initializable {
             } else {
                 rectangle.setFill(Color.rgb(178, 34, 34, 0.5));
                 markColor.addListener((observable, oldValue, newValue) -> {
-                    if (!name.equals(searchedGene)) {
+                    if (!name.contains(searchedGene)) {
                         rectangle.setFill(Color.rgb(178, 34, 34, 0.5));
                     } else {
                         rectangle.setFill(newValue);
