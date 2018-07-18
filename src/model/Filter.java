@@ -7,8 +7,6 @@ import java.util.function.Predicate;
 /**
  *Takes a predicate and applies it to the reads of the sample
  *
- *TODO : method for GC Content , Taxa, Length etc.
- *
  *
  *
  */
@@ -82,24 +80,6 @@ public class Filter {
     }
 
 
-    /**
-     * applies predicate to the List of Reads
-     *
-     * @return List of accepted reads
-     **/
-    public List<Read> suitable(Sample sample) {
-        List<Read> acceptedReads = new ArrayList<>();
-        if ((sample != null) && !sample.getReads().isEmpty()) {
-            for (Read read : sample.getReads()) {
-                if (this.filterPredicate.test(read)) {
-                    acceptedReads.add(read);
-                }
-            }
-        }
-        return acceptedReads;
-    }
-
-
     public void buildPredicate(List<String> keys, List<String> values, List<String> compares) {
         for (int i = 0; i < keys.size(); i++) {
             String key = keys.get(i);
@@ -147,7 +127,7 @@ public class Filter {
                 if (isDigit(value)) {
                     filterPredicate = filterPredicate.and(FilterBuilder.isTaxaId(Integer.parseInt(value)));
                 }
-                //else case is filter by name (atm idk how)
+                else{ filterPredicate = filterPredicate.and(FilterBuilder.isTaxaByName(taxa));}
             }
         }
 

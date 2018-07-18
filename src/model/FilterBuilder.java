@@ -1,46 +1,47 @@
 package model;
+import model.tax.TaxTree;
+
 import java.util.function.Predicate;
 
 public class FilterBuilder {
+    static TaxTree tree = new TaxTree();
 
     //examples:
    public static Predicate<Read> isScoreHigher(Integer score){
        return p-> {
-         boolean scoreis= false;
+
          for(GffEntry gff: p.getGFFEntries()){
              if(gff.getScore() >= score){
-                 scoreis = true;
-                 break;
+                 return true;
              }
          }
-         return scoreis;
+         return false;
        };
 
    }
     public static Predicate<Read> isScoreLower(Integer score){
         return p-> {
-            boolean scoreis= false;
             for(GffEntry gff: p.getGFFEntries()){
                 if(gff.getScore() <= score){
-                    scoreis = true;
-                    break;
+                   return  true;
+
                 }
             }
-            return scoreis;
+            return false;
         };
 
     }
 
     public static Predicate<Read> isScoreEqual(Integer score){
         return p-> {
-            boolean scoreis= false;
+
             for(GffEntry gff: p.getGFFEntries()){
                 if(gff.getScore() == score){
-                    scoreis = true;
-                    break;
+                   return  true;
+
                 }
             }
-            return scoreis;
+            return false;
         };
 
     }
@@ -66,7 +67,7 @@ public class FilterBuilder {
                 for (GffEntry gff : p.getGFFEntries()) {
                     if(gff.getAttributes() != null) {
                         if (gff.getAttributes().containsKey("Name")) {
-                            if (gff.getAttributes().get("Name").equals(name)) {
+                            if (gff.getAttributes().get("Name").contains(name)) {
                                 return true;
                             }
                         }
@@ -94,6 +95,19 @@ public class FilterBuilder {
        return p-> (p.getTaxonomicId() == taxaId) ;
     }
 
+   public static Predicate<Read>  isTaxaByName(String name) {
+        return p -> {
 
+            for (GffEntry gff : p.getGFFEntries()) {
+                if((gff.getAttributes() != null) && gff.getAttributes().containsKey("tax")){
+                    if (tree.getNode(name).getAllChildren().contains(gff.getAttributes().get("tax"))) {
+                        return true;
 
+                    }
+                }
+            }
+            return false;
+
+        };
+    }
 }
