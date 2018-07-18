@@ -22,13 +22,6 @@ public class FilteredSample {
     /**
      * creates a new empty FilteredSample
      */
-    public FilteredSample(Sample sample, Filter filter) {
-        this.sample.setValue(sample);
-        this.filter.setValue(filter);
-
-        applyFilter();
-    }
-
     public FilteredSample() {
         this.sample =  new SimpleObjectProperty<>();
         this.filter = new SimpleObjectProperty<>();
@@ -73,6 +66,7 @@ public class FilteredSample {
             combinedFilter = Filter.combineFilter(this.filter.getValue(), filter);
         }
         this.filter.setValue(combinedFilter);
+        applyFilter();
         return combinedFilter;
     }
 
