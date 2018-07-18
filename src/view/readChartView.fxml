@@ -5,14 +5,13 @@
 <?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="533.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ToolBar fx:id="toolBar" layoutY="10.0" prefHeight="25.0" prefWidth="742.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ToolBar fx:id="toolBar" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="742.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
-                <ChoiceBox fx:id="choseReadChoiceBox" prefWidth="200.0" />
-                <Button fx:id="addReadButton" onAction="#onAddReadButtonClicked" text="+" />
-                <Label text="Bar Width:" />
-                <Spinner fx:id="barWidthSpinner" editable="true" prefHeight="25.0" prefWidth="67.0" />
+                <Slider fx:id="zoomSlider" blockIncrement="0.5" max="100.0" min="1.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="14.0" prefWidth="182.0" />
                 <Label text="Zoom In:" />
-                <Slider fx:id="zoomSlider" blockIncrement="0.5" max="100.0" min="1.0" prefHeight="14.0" prefWidth="149.0" />
+                <Spinner fx:id="barWidthSpinner" editable="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="67.0" />
+      
+                <Label text="Bar Width:" />
             </items>
         </ToolBar>
         <ScrollPane fx:id="scrollPane" prefWidth="771.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
@@ -29,13 +28,13 @@
         </ScrollPane>
         <ToolBar prefHeight="30.0" prefWidth="404.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="338.0">
             <items>
-                <Button mnemonicParsing="false" text="Add Sample" />
-                <ChoiceBox prefWidth="150.0" />
+            <Label text="Filters:" />
+                <ChoiceBox fx:id="filterChooseBox" prefWidth="150.0" />
             </items>
         </ToolBar>
         <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="35.0" prefWidth="397.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0">
             <items>
-                 <Button onAction="#onZoomGeneButtonClicked" mnemonicParsing="false" text="Zoom to Search" />
+                 <Button mnemonicParsing="false" onAction="#onZoomGeneButtonClicked" text="Zoom to Search" />
                 <Button fx:id="searchGeneButton" mnemonicParsing="false" onAction="#onSearchGeneButtonClicked" text="Search Gene" />
                 <TextField fx:id="searchGeneTextField" prefHeight="25.0" prefWidth="168.0" />
             </items>
