@@ -4,7 +4,7 @@ import model.tax.TaxTree;
 import java.util.function.Predicate;
 
 public class FilterBuilder {
-    static TaxTree tree = new TaxTree();
+    static TaxTree tree = Project.tree;
 
     //examples:
    public static Predicate<Read> isScoreHigher(Integer score){
@@ -97,9 +97,9 @@ public class FilterBuilder {
 
    public static Predicate<Read>  isTaxaByName(String name) {
         return p -> {
-
+        if(!tree.isEmpty()) {
             for (GffEntry gff : p.getGFFEntries()) {
-                if((gff.getAttributes() != null) && gff.getAttributes().containsKey("tax")){
+                if ((gff.getAttributes() != null) && gff.getAttributes().containsKey("tax")) {
                     if (tree.getNode(name).getAllChildren().contains(gff.getAttributes().get("tax"))) {
                         return true;
 
@@ -107,7 +107,8 @@ public class FilterBuilder {
                 }
             }
             return false;
-
+        }
+        return false;
         };
     }
 }

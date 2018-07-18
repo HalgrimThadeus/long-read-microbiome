@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Filter;
-import model.FilterBuilder;
 import presenter.NewFilterPopUpPresenter;
 
 import java.net.URL;
@@ -52,8 +51,6 @@ public class NewFilterPopUp implements Initializable {
 
     @FXML
     TextField scorevalue;
-
-    FilterBuilder filterBuilder = new FilterBuilder();
 
     private NewFilterPopUpPresenter newFilterPopUpPresenter;
     public NewFilterPopUp(NewFilterPopUpPresenter newFilterPopUpPresenter){

@@ -28,7 +28,7 @@ public class Main extends Application {
 
         MainPresenter mainPresenter = new MainPresenter(project, mainView);
         mainView.setMainPresenter(mainPresenter);
-        primaryStage.setTitle("Long Read Microbiome");
+        primaryStage.setTitle("LAMA");
         primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
     }
