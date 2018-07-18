@@ -66,8 +66,8 @@ public class FilterBuilder {
         return p-> {
                 for (GffEntry gff : p.getGFFEntries()) {
                     if(gff.getAttributes() != null) {
-                        if (gff.getAttributes().containsKey("Name")) {
-                            if (gff.getAttributes().get("Name").contains(name)) {
+                        if (gff.getAttributes().containsKey(" Name")) {
+                            if (gff.getAttributes().get(" Name").contains(name)) {
                                 return true;
                             }
                         }

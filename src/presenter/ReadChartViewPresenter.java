@@ -207,7 +207,7 @@ public class ReadChartViewPresenter {
     }
 
     private Label addName(String name){
-        //TODO Transform them to names add listener to spinner
+
         javafx.scene.control.Label label = new Label(name);
         label.prefHeightProperty().bind(readChartView.barWidth.multiply(3));
         label.minHeightProperty().bind(readChartView.barWidth.multiply(3));
