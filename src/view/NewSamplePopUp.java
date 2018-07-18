@@ -1,6 +1,5 @@
 package view;
 
-import javafx.concurrent.Service;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -9,8 +8,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.Sample;
-import model.services.NewSampleService;
 import presenter.NewSamplePopUpPresenter;
 
 import java.io.File;
@@ -60,6 +57,8 @@ public class NewSamplePopUp {
         File selectedFile = fileChooser.showOpenDialog(new Stage());
         return selectedFile;
     }
+
+
 
     @FXML
     public void addNewFilesClicked(ActionEvent event) {

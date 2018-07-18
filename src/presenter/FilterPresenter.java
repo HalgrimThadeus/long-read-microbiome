@@ -97,7 +97,7 @@ public class FilterPresenter {
                     newFilterPopUp.setScorevalue(usedValues.get(i));
                     newFilterPopUp.setscoreCompareChoice(usedCompare.get(i));
                 }
-                else if(key.equals("Tax")){
+                else if(key.equals("Taxa")){
                     newFilterPopUp.setTaxaid(usedValues.get(i));
                 }
                 else if(key.equals("Gen")){
@@ -121,7 +121,6 @@ public class FilterPresenter {
 
         for(Filter f: filters){
             if(f.getName().equals(name)){
-
                  return f;
             }
         }

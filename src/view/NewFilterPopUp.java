@@ -71,8 +71,8 @@ public class NewFilterPopUp implements Initializable {
         List<String> usedCompare = new ArrayList<>();
         if(!filtername.getText().equals("")){
         if(filtername.getText().contains("##########")){
-            Alert alter = new Alert(Alert.AlertType.WARNING,"Name not allowed to contain: ########## ",ButtonType.OK);
-            alter.show();
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Name not allowed to contain: ########## ",ButtonType.OK);
+            alert.show();
             return;
         }
             /**Builds the filterBuilder with the predicates needed to fit the criterias e.g "ands" one of the existing
@@ -87,23 +87,41 @@ public class NewFilterPopUp implements Initializable {
             }
 
             //adds gc content predicate to filter if a gc content is given
-            if(!gccontent.getText().equals("")){
+            if(!gccontent.getText().equals("")) {
                 //adds smallereq predicate if the textfield contains a <
-                usedKeys.add("GC");
-                usedValues.add(gccontent.getText());
-                usedCompare.add((String) GCCompareChoice.getSelectionModel().getSelectedItem());
+                if (isDouble(gccontent.getText())) {
+                    usedKeys.add("GC");
+                    usedValues.add(gccontent.getText());
+                    usedCompare.add((String) GCCompareChoice.getSelectionModel().getSelectedItem());
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "Please put in a Number", ButtonType.OK);
+                    alert.show();
+                    return;
+                }
             }
              if(!lengthvalue.getText().equals("")) {
-                usedKeys.add("Length");
-                usedValues.add(lengthvalue.getText());
-                usedCompare.add((String) lengthCompareChoice.getSelectionModel().getSelectedItem());
-            }
-             if(!scorevalue.getText().equals("")){
-                usedKeys.add("Score");
-                usedValues.add(scorevalue.getText());
-                usedCompare.add((String) scoreCompareChoice.getSelectionModel().getSelectedItem());
-            }
-             if(!taxaid.getText().equals("")){
+                 if (isDigit(lengthvalue.getText())) {
+                     usedKeys.add("Length");
+                     usedValues.add(lengthvalue.getText());
+                     usedCompare.add((String) lengthCompareChoice.getSelectionModel().getSelectedItem());
+                 } else {
+                     Alert alert = new Alert(Alert.AlertType.WARNING, "Please put in an Integer", ButtonType.OK);
+                     alert.show();
+                     return;
+                 }
+             }
+             if(!scorevalue.getText().equals("")) {
+                 if (isDigit(scorevalue.getText())) {
+                     usedKeys.add("Score");
+                     usedValues.add(scorevalue.getText());
+                     usedCompare.add((String) scoreCompareChoice.getSelectionModel().getSelectedItem());
+                 } else {
+                     Alert alert = new Alert(Alert.AlertType.WARNING,"Please put in a Number",ButtonType.OK);
+                     alert.show();
+                     return;
+                 }
+             }
+             if(!taxaid.getText().equals(null)){
                 usedKeys.add("Taxa");
                 usedValues.add(taxaid.getText());
                 usedCompare.add("=");
@@ -114,10 +132,11 @@ public class NewFilterPopUp implements Initializable {
             stage.close();
         }
         else {
-            Alert alter = new Alert(Alert.AlertType.WARNING,"Please set a Name",ButtonType.OK);
-            alter.show();
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Please set a Name",ButtonType.OK);
+            alert.show();
             return;
-        }
+            }
+
 
     }
     //Setters for the saved Filters
@@ -160,5 +179,30 @@ public class NewFilterPopUp implements Initializable {
         lengthCompareChoice.getItems().addAll("<","=",">");
         scoreCompareChoice.getItems().addAll("<","=",">");
         GCCompareChoice.getItems().addAll("<","=",">");
+    }
+    //Checks if a String is a Int
+    private boolean isDigit(String test) {
+
+        boolean isDigit;
+        try {
+            Integer.parseInt(test);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+
+    }
+
+    private boolean isDouble(String test) {
+
+        try {
+            Double.parseDouble(test);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+
     }
 }

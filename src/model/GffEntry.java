@@ -1,7 +1,5 @@
 package model;
 
-import java.io.Serializable;
-import java.lang.String;
 import java.util.Map;
 
 public class GffEntry {
