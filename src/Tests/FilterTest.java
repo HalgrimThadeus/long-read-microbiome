@@ -49,7 +49,7 @@ public class FilterTest {
         };
         List<String> values = new ArrayList<>() {
             {
-                add("50.0");
+                add("50");
             }
         };
         List<String> compares = new ArrayList<>() {

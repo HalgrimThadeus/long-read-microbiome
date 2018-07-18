@@ -1,3 +1,5 @@
+package Tests;
+
 import javafx.collections.ListChangeListener;
 import model.*;
 import org.junit.Test;
@@ -94,4 +96,5 @@ public class FilteredSampleTest {
         filter.buildPredicate(keys,values,compares);
         return filter;
     }
+
 }

@@ -52,7 +52,6 @@ public class WorkView extends TabPane implements Initializable {
         workView.setOnDragDropped((DragEvent event) -> {
             String filterName = (String) event.getDragboard().getContent(FILTER);
             String sampleName = (String) event.getDragboard().getContent(SAMPLE);
-
             if(filterName != null) {
                 workViewPresenter.setNewFilterToWorkView(filterName);
                 System.out.println("Filter-Item: "+ filterName + " dropped in " + this);
