@@ -69,7 +69,7 @@ public class ComparatorView {
 //    public void recalculateData(int numberOfBins){
 //    }
 
-    public void start(ArrayList<Double> data1, ArrayList<Double> data2, String name1, String name2, String comparisonMode){
+    public void start(ArrayList<Double> data1, ArrayList<Double> data2, String name1, String name2, String filter1, String filter2, String comparisonMode){
 
         //numberOfBins = 10;
         //numberOfBins = calculateNumberOfBins(data1,data2);
@@ -81,7 +81,7 @@ public class ComparatorView {
         //chart:
         xAxis.setLabel(comparisonMode + " " + getScaleUnit(comparisonMode));
         yAxis.setLabel("number of reads");
-        barChart.setTitle("compare " + comparisonMode + " " + name1 + " , " + name2);
+        barChart.setTitle("compare " + comparisonMode + " " + name1 + ", " + filter1 + " & " + name2 + ", " + filter2);
         xAxis.setAutoRanging(true);
         yAxis.setAutoRanging(true);
         xAxis.setCategories(categories);
@@ -89,13 +89,13 @@ public class ComparatorView {
         barChart.setCategoryGap(0.1);
         //sample 1
         XYChart.Series series1 = new XYChart.Series();
-        series1.setName(name1);
+        series1.setName(name1 + ", " + filter1);
         for(int i=0; i<numberOfBins; i++){
             series1.getData().add(new XYChart.Data(categories.get(i) , counts1.get(i)));
         }
         //sample 2
         XYChart.Series series2 = new XYChart.Series();
-        series2.setName(name2);
+        series2.setName(name2 + ", " + filter2);
         for(int i=0; i<numberOfBins; i++){
             series2.getData().add(new XYChart.Data(categories.get(i) , counts2.get(i)));
         }

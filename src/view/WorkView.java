@@ -43,8 +43,6 @@ public class WorkView extends TabPane implements Initializable {
 
         //Set drop listeners for the pane
         workView.setOnDragOver((DragEvent event) -> {
-            System.out.println("Drag is now  over the workview " + this);
-
             event.acceptTransferModes(TransferMode.ANY);
             event.consume();
         });
@@ -52,9 +50,8 @@ public class WorkView extends TabPane implements Initializable {
         workView.setOnDragDropped((DragEvent event) -> {
             String filterName = (String) event.getDragboard().getContent(FILTER);
             String sampleName = (String) event.getDragboard().getContent(SAMPLE);
-
             if(filterName != null) {
-                workViewPresenter.setNewFilterToWorkView(filterName);
+                workViewPresenter.addNewFilterToWorkView(filterName);
                 System.out.println("Filter-Item: "+ filterName + " dropped in " + this);
             } else if(sampleName != null) {
                 workViewPresenter.setNewSampleToWorkView(sampleName);

@@ -7,14 +7,14 @@
       <AnchorPane prefHeight="397.0" prefWidth="504.0">
          <children>
             <TextField fx:id="filtername" layoutX="28.0" layoutY="22.0" prefHeight="25.0" prefWidth="212.0" promptText="Filter name" />
-            <TextField fx:id="genname" layoutX="252.0" layoutY="87.0" />
-            <TextField fx:id="lengthvalue" layoutX="252.0" layoutY="124.0" />
-            <TextField fx:id="taxaid" layoutX="252.0" layoutY="165.0" />
-            <TextField fx:id="gccontent" layoutX="252.0" layoutY="205.0" />
-            <TextField fx:id="scorevalue" layoutX="252.0" layoutY="243.0" />
+            <TextField fx:id="genname" layoutX="252.0" layoutY="87.0" promptText="Genname" />
+            <TextField fx:id="lengthvalue" layoutX="252.0" layoutY="124.0" promptText="Length (integer)" />
+            <TextField fx:id="taxaid" layoutX="252.0" layoutY="165.0" promptText="TaxaId or Name" />
+            <TextField fx:id="gccontent" layoutX="252.0" layoutY="205.0" promptText="GC Conent in percent" />
+            <TextField fx:id="scorevalue" layoutX="252.0" layoutY="243.0" promptText="Score (integer)" />
             <Label layoutX="56.0" layoutY="91.0" prefHeight="17.0" prefWidth="129.0" text="Gen" />
             <Label layoutX="56.0" layoutY="128.0" text="Length" />
-            <Label layoutX="56.0" layoutY="169.0" text="TaxaId" />
+            <Label layoutX="56.0" layoutY="169.0" text="Taxa" />
             <Label layoutX="56.0" layoutY="209.0" prefHeight="17.0" prefWidth="68.0" text="GC-Content" />
             <Label layoutX="56.0" layoutY="247.0" text="Score" />
             <ChoiceBox id="lengthCompareChoice" fx:id="lengthCompareChoice" layoutX="210.0" layoutY="124.0" prefHeight="25.0" prefWidth="42.0" value="=" />

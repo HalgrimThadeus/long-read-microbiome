@@ -1,12 +1,18 @@
 package model.tax;
 
-import java.util.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @class the datastorage for the taxdump files, where information about species and their taxonomic classification is put in
  * therefore there are two hashmaps, which make easy access of the tree strucure and the elements theirselves possible
  */
 public class TaxTree {
+
+    private BooleanProperty isLoaded = new SimpleBooleanProperty(false);
 
     /**
      * contains the actual tree structure with the TaxNodes
@@ -26,10 +32,20 @@ public class TaxTree {
         this.nameMap =  new HashMap<>();
     }
 
+
+    public void setIsLoaded(boolean loaded){
+        isLoaded.setValue(loaded);
+    }
+
+    public BooleanProperty getIsLoaded(){
+        return isLoaded;
+    }
+
     /**
      * adds the taxNode to the tree, by creting a node out of the different components
      * @param id, rank, parentId
      */
+
     public void addNode(int id, String rank, int parentId) {
 
         //create almost empty parent node if it doesn't already exists, and initilize it completely later
@@ -99,5 +115,9 @@ public class TaxTree {
         } else {
             return null;
         }
+    }
+
+    public boolean isEmpty(){
+        return tree.isEmpty();
     }
 }

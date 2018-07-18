@@ -1,4 +1,9 @@
-import model.*;
+package Tests;
+
+import model.Filter;
+import model.GffEntry;
+import model.Read;
+import model.Sample;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -35,6 +40,7 @@ public class FilterTest {
 
     @Test
     public void shouldFilterListByGCContent() {
+
         Filter filter = new Filter();
         List<String> keys = new ArrayList<>() {
             {
@@ -43,7 +49,7 @@ public class FilterTest {
         };
         List<String> values = new ArrayList<>() {
             {
-                add("50.0");
+                add("50");
             }
         };
         List<String> compares = new ArrayList<>() {
@@ -53,9 +59,9 @@ public class FilterTest {
         };
         filter.buildPredicate(keys,values,compares);
 
-        List<Read> suitableRead = filter.suitable(shouldCreateNewSample());
+        List<Read> suitableRead = shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate());
         assertEquals(1, suitableRead.size());
-        assertEquals("read1", filter.suitable(shouldCreateNewSample()).get(0).getId());
+        assertEquals("read1", shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate()).get(0).getId());
 
     }
 
@@ -79,10 +85,10 @@ public class FilterTest {
         };
         filter.buildPredicate(keys,values,compares);
 
-        List<Read> suitableRead = filter.suitable(shouldCreateNewSample());
+        List<Read> suitableRead = shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate());
         assertEquals(2, suitableRead.size());
-        assertEquals("read1", filter.suitable(shouldCreateNewSample()).get(0).getId());
-        assertEquals("read2", filter.suitable(shouldCreateNewSample()).get(1).getId());
+        assertEquals("read1", shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate()).get(0).getId());
+        assertEquals("read2", shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate()).get(1).getId());
     }
 
     @Test
@@ -105,9 +111,9 @@ public class FilterTest {
         };
         filter.buildPredicate(keys,values,compares);
 
-        List<Read> suitableRead = filter.suitable(shouldCreateNewSample());
+        List<Read> suitableRead = shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate());
         assertEquals(1, suitableRead.size());
-        assertEquals("read1", filter.suitable(shouldCreateNewSample()).get(0).getId());
+        assertEquals("read1", shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate()).get(0).getId());
 
     }
 
@@ -131,8 +137,8 @@ public class FilterTest {
         };
         filter.buildPredicate(keys,values,compares);
 
-        assertEquals(1, filter.suitable(shouldCreateNewSample()).size());
-        assertEquals("read2", filter.suitable(shouldCreateNewSample()).get(0).getId());
+        assertEquals(1,shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate()).size());
+        assertEquals("read2", shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate()).get(0).getId());
     }
 
 
@@ -157,8 +163,8 @@ public class FilterTest {
         };
         filter.buildPredicate(keys,values,compares);
 
-        assertEquals(1, filter.suitable(shouldCreateNewSample()).size());
-        assertEquals("read1", filter.suitable(shouldCreateNewSample()).get(0).getId());
+        assertEquals(1, shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate()).size());
+        assertEquals("read1", shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate()).get(0).getId());
     }
 
     @Test
@@ -181,37 +187,14 @@ public class FilterTest {
         };
         filter.buildPredicate(keys,values,compares);
 
-        assertEquals(0, filter.suitable(new Sample()).size());
-    }
-
-    @Test
-    public void shouldFilterNullSample() {
-        Filter filter = new Filter();
-        List<String> keys = new ArrayList<>() {
-            {
-                add("Gene");
-            }
-        };
-        List<String> values = new ArrayList<>() {
-            {
-                add("ZUCCHINI");
-            }
-        };
-        List<String> compares = new ArrayList<>() {
-            {
-                add("=");
-            }
-        };
-        filter.buildPredicate(keys,values,compares);
-
-        assertEquals(0, filter.suitable(null).size());
+        assertEquals(0, new Sample().getReads().filtered(filter.getFilterPredicate()).size());
     }
 
     @Test
     public void shouldNotFilterSample() {
         Filter filter = new Filter();
 
-        assertEquals(2, filter.suitable(shouldCreateNewSample()).size());
+        assertEquals(2, shouldCreateNewSample().getReads().filtered(filter.getFilterPredicate()).size());
     }
 
 }

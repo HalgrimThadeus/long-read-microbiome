@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.FilterBuilder;
+import model.Filter;
 import presenter.NewFilterPopUpPresenter;
 
 import java.net.URL;
@@ -52,8 +52,6 @@ public class NewFilterPopUp implements Initializable {
     @FXML
     TextField scorevalue;
 
-    FilterBuilder filterBuilder = new FilterBuilder();
-
     private NewFilterPopUpPresenter newFilterPopUpPresenter;
     public NewFilterPopUp(NewFilterPopUpPresenter newFilterPopUpPresenter){
         this.newFilterPopUpPresenter = newFilterPopUpPresenter;
@@ -71,40 +69,57 @@ public class NewFilterPopUp implements Initializable {
         List<String> usedCompare = new ArrayList<>();
         if(!filtername.getText().equals("")){
         if(filtername.getText().contains("##########")){
-            Alert alter = new Alert(Alert.AlertType.WARNING,"Name not allowed to contain: ########## ",ButtonType.OK);
-            alter.show();
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Name not allowed to contain: ########## ",ButtonType.OK);
+            alert.show();
             return;
         }
-            /**Builds the filterBuilder with the predicates needed to fit the criterias e.g "ands" one of the existing
-             * predicates in FilterBuilder (model) to it's main PredicateField, with the user-given filter input
+            /**Builds the needed lists for the filter w
              * **/
 
-            //Adds gen name predicate to the filter if a name is given
+            //Adds gen name
             if(!genname.getText().equals("")){
-                usedKeys.add("Gen");
+                usedKeys.add(Filter.gene);
                 usedValues.add(genname.getText());
                 usedCompare.add("=");
             }
 
             //adds gc content predicate to filter if a gc content is given
-            if(!gccontent.getText().equals("")){
+            if(!gccontent.getText().equals("")) {
                 //adds smallereq predicate if the textfield contains a <
-                usedKeys.add("GC");
-                usedValues.add(gccontent.getText());
-                usedCompare.add((String) GCCompareChoice.getSelectionModel().getSelectedItem());
+                if (isDouble(gccontent.getText())) {
+                    usedKeys.add(Filter.gc);
+                    usedValues.add(gccontent.getText());
+                    usedCompare.add((String) GCCompareChoice.getSelectionModel().getSelectedItem());
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "Please put in a Number", ButtonType.OK);
+                    alert.show();
+                    return;
+                }
             }
              if(!lengthvalue.getText().equals("")) {
-                usedKeys.add("Length");
-                usedValues.add(lengthvalue.getText());
-                usedCompare.add((String) lengthCompareChoice.getSelectionModel().getSelectedItem());
-            }
-             if(!scorevalue.getText().equals("")){
-                usedKeys.add("Score");
-                usedValues.add(scorevalue.getText());
-                usedCompare.add((String) scoreCompareChoice.getSelectionModel().getSelectedItem());
-            }
+                 if (isDigit(lengthvalue.getText())) {
+                     usedKeys.add(Filter.length);
+                     usedValues.add(lengthvalue.getText());
+                     usedCompare.add((String) lengthCompareChoice.getSelectionModel().getSelectedItem());
+                 } else {
+                     Alert alert = new Alert(Alert.AlertType.WARNING, "Please put in an Integer", ButtonType.OK);
+                     alert.show();
+                     return;
+                 }
+             }
+             if(!scorevalue.getText().equals("")) {
+                 if (isDigit(scorevalue.getText())) {
+                     usedKeys.add(Filter.score);
+                     usedValues.add(scorevalue.getText());
+                     usedCompare.add((String) scoreCompareChoice.getSelectionModel().getSelectedItem());
+                 } else {
+                     Alert alert = new Alert(Alert.AlertType.WARNING,"Please put in a Number",ButtonType.OK);
+                     alert.show();
+                     return;
+                 }
+             }
              if(!taxaid.getText().equals("")){
-                usedKeys.add("Taxa");
+                usedKeys.add(Filter.taxa);
                 usedValues.add(taxaid.getText());
                 usedCompare.add("=");
             }
@@ -114,10 +129,11 @@ public class NewFilterPopUp implements Initializable {
             stage.close();
         }
         else {
-            Alert alter = new Alert(Alert.AlertType.WARNING,"Please set a Name",ButtonType.OK);
-            alter.show();
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Please set a Name",ButtonType.OK);
+            alert.show();
             return;
-        }
+            }
+
 
     }
     //Setters for the saved Filters
@@ -160,5 +176,30 @@ public class NewFilterPopUp implements Initializable {
         lengthCompareChoice.getItems().addAll("<","=",">");
         scoreCompareChoice.getItems().addAll("<","=",">");
         GCCompareChoice.getItems().addAll("<","=",">");
+    }
+    //Checks if a String is a Int
+    private boolean isDigit(String test) {
+
+        boolean isDigit;
+        try {
+            Integer.parseInt(test);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+
+    }
+
+    private boolean isDouble(String test) {
+
+        try {
+            Double.parseDouble(test);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+
     }
 }
