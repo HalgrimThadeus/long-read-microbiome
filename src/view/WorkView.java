@@ -54,7 +54,7 @@ public class WorkView extends TabPane implements Initializable {
             String sampleName = (String) event.getDragboard().getContent(SAMPLE);
 
             if(filterName != null) {
-                workViewPresenter.setNewFilterToWorkView(filterName);
+                workViewPresenter.addNewFilterToWorkView(filterName);
                 System.out.println("Filter-Item: "+ filterName + " dropped in " + this);
             } else if(sampleName != null) {
                 workViewPresenter.setNewSampleToWorkView(sampleName);

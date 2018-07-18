@@ -67,6 +67,15 @@ public class FilteredSample {
         applyFilter();
     }
 
+    public Filter addFilter(Filter filter) {
+        Filter combinedFilter = filter;
+        if(this.filter.getValue() != null) {
+            combinedFilter = Filter.combineFilter(this.filter.getValue(), filter);
+        }
+        this.filter.setValue(combinedFilter);
+        return combinedFilter;
+    }
+
     public ObservableList<Read> getFilteredReads() {
         return filteredReads;
     }
