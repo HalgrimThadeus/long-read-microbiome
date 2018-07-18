@@ -28,6 +28,9 @@ public class MainView extends AnchorPane {
     @FXML
     private Button toolbarBtnAddSamplePage;
 
+    @FXML
+    private Button toolbarBtnRemoveSamplePage;
+
     /**
      * Menues
      */
@@ -70,6 +73,11 @@ public class MainView extends AnchorPane {
     @FXML
     public void onAddSamplePageToolbarButtonClicked(ActionEvent event) throws IOException {
         ((WorkViewContainer) workViewContainer).onNewMainTabViewButtonClicked();
+    }
+
+    @FXML
+    public void onRemoveSamplePageToolbarButtonClicked(ActionEvent event) throws IOException {
+        ((WorkViewContainer) workViewContainer).onRemoveMainTabViewButtonClicked();
     }
 
     @FXML
