@@ -43,8 +43,6 @@ public class WorkView extends TabPane implements Initializable {
 
         //Set drop listeners for the pane
         workView.setOnDragOver((DragEvent event) -> {
-            System.out.println("Drag is now  over the workview " + this);
-
             event.acceptTransferModes(TransferMode.ANY);
             event.consume();
         });
