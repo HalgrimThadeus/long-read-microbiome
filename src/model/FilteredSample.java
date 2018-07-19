@@ -22,13 +22,6 @@ public class FilteredSample {
     /**
      * creates a new empty FilteredSample
      */
-    public FilteredSample(Sample sample, Filter filter) {
-        this.sample.setValue(sample);
-        this.filter.setValue(filter);
-
-        applyFilter();
-    }
-
     public FilteredSample() {
         this.sample =  new SimpleObjectProperty<>();
         this.filter = new SimpleObjectProperty<>();
@@ -37,10 +30,16 @@ public class FilteredSample {
     }
 
     private void applyFilter() {
-        if(this.filter.getValue() != null && this.sample.getValue() != null) {
-            filteredReads.setAll(sample.getValue().getReads().filtered(this.filter.getValue().getFilterPredicate()));
-        } else if(this.filter.getValue() == null && this.sample.getValue() != null) {
-            filteredReads.setAll(sample.getValue().getReads());
+        if(!Project.tree.getIsLoaded().getValue()) {
+            if (this.filter.getValue() != null && this.sample.getValue() != null) {
+                filteredReads.setAll(sample.getValue().getReads().filtered(this.filter.getValue().getFilterPredicate()));
+            } else if (this.filter.getValue() == null && this.sample.getValue() != null) {
+                filteredReads.setAll(sample.getValue().getReads());
+            }
+        }
+        else{
+            Project.tree.getIsLoaded().addListener((observable, oldValue, newValue) -> applyFilter());
+            //Todo add binding to status bar.
         }
     }
 
@@ -57,7 +56,7 @@ public class FilteredSample {
         return filter;
     }
 
-    public void setSample(Sample sample) {
+    public void setSample(Sample sample)  {
         this.sample.setValue(sample);
         applyFilter();
     }
@@ -65,6 +64,16 @@ public class FilteredSample {
     public void setFilter(Filter filter) {
         this.filter.setValue(filter);
         applyFilter();
+    }
+
+    public Filter addFilter(Filter filter) {
+        Filter combinedFilter = filter;
+        if(this.filter.getValue() != null) {
+            combinedFilter = Filter.combineFilter(this.filter.getValue(), filter);
+        }
+        this.filter.setValue(combinedFilter);
+        applyFilter();
+        return combinedFilter;
     }
 
     public ObservableList<Read> getFilteredReads() {

@@ -167,7 +167,7 @@ public class Filter {
         return filterPredicate;
     }
 
-    public Filter combineFilter(Filter f1, Filter f2){
+    public static Filter combineFilter(Filter f1, Filter f2){
         List<String> newKeys = new ArrayList<>();
         List<String> newValues = new ArrayList<>();
         List<String> newCompares = new ArrayList<>();

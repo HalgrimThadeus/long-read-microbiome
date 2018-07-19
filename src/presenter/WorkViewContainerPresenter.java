@@ -1,10 +1,7 @@
 package presenter;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.SplitPane;
 import model.Project;
-import view.MainView;
 import view.WorkView;
 import view.WorkViewContainer;
 
@@ -42,6 +39,12 @@ public class WorkViewContainerPresenter {
 
         newWorkView.setWorkViewPresenter(workViewPresenter);
         workViewContainer.getItems().add(loader.load());
+    }
+
+    public void removeMainTabView(){
+        if(workViewContainer.getItems().size() > 0){
+            workViewContainer.getItems().remove(workViewContainer.getItems().size()-1);
+        }
     }
 
 

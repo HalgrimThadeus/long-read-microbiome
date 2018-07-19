@@ -60,7 +60,7 @@ public class WorkViewPresenter {
         this.filteredSample.setSample(sample4Presenting);
     }
 
-    public void setNewFilterToWorkView(String filterName) {
+    public void addNewFilterToWorkView(String filterName) {
         Filter filter4Applying = null;
 
         for (Filter filter: project.getFilters()) {
@@ -68,7 +68,8 @@ public class WorkViewPresenter {
                 filter4Applying = filter;
         }
 
-        this.filteredSample.setFilter(filter4Applying);
+        //adds filter to filtered sample AND concats the new combined filter directly to the list of filters in prpject
+        this.project.addFilter(this.filteredSample.addFilter(filter4Applying));
     }
 
     private String getFastaFileHtmlCode(List<Read> reads){

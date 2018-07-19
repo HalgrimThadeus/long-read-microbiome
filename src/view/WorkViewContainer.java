@@ -1,7 +1,6 @@
 package view;
 
 import javafx.scene.control.SplitPane;
-import javafx.scene.layout.AnchorPane;
 import presenter.WorkViewContainerPresenter;
 
 import java.io.IOException;
@@ -20,5 +19,9 @@ public class WorkViewContainer extends SplitPane {
 
     public void onNewMainTabViewButtonClicked() throws IOException {
         workViewContainerPresenter.addNewMainTabView();
+    }
+
+    public void onRemoveMainTabViewButtonClicked(){
+        workViewContainerPresenter.removeMainTabView();
     }
 }

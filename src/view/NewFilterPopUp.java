@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.FilterBuilder;
+import model.Filter;
 import presenter.NewFilterPopUpPresenter;
 
 import java.net.URL;
@@ -52,8 +52,6 @@ public class NewFilterPopUp implements Initializable {
     @FXML
     TextField scorevalue;
 
-    FilterBuilder filterBuilder = new FilterBuilder();
-
     private NewFilterPopUpPresenter newFilterPopUpPresenter;
     public NewFilterPopUp(NewFilterPopUpPresenter newFilterPopUpPresenter){
         this.newFilterPopUpPresenter = newFilterPopUpPresenter;
@@ -75,13 +73,12 @@ public class NewFilterPopUp implements Initializable {
             alert.show();
             return;
         }
-            /**Builds the filterBuilder with the predicates needed to fit the criterias e.g "ands" one of the existing
-             * predicates in FilterBuilder (model) to it's main PredicateField, with the user-given filter input
+            /**Builds the needed lists for the filter w
              * **/
 
-            //Adds gen name predicate to the filter if a name is given
+            //Adds gen name
             if(!genname.getText().equals("")){
-                usedKeys.add("Gen");
+                usedKeys.add(Filter.gene);
                 usedValues.add(genname.getText());
                 usedCompare.add("=");
             }
@@ -90,7 +87,7 @@ public class NewFilterPopUp implements Initializable {
             if(!gccontent.getText().equals("")) {
                 //adds smallereq predicate if the textfield contains a <
                 if (isDouble(gccontent.getText())) {
-                    usedKeys.add("GC");
+                    usedKeys.add(Filter.gc);
                     usedValues.add(gccontent.getText());
                     usedCompare.add((String) GCCompareChoice.getSelectionModel().getSelectedItem());
                 } else {
@@ -101,7 +98,7 @@ public class NewFilterPopUp implements Initializable {
             }
              if(!lengthvalue.getText().equals("")) {
                  if (isDigit(lengthvalue.getText())) {
-                     usedKeys.add("Length");
+                     usedKeys.add(Filter.length);
                      usedValues.add(lengthvalue.getText());
                      usedCompare.add((String) lengthCompareChoice.getSelectionModel().getSelectedItem());
                  } else {
@@ -112,7 +109,7 @@ public class NewFilterPopUp implements Initializable {
              }
              if(!scorevalue.getText().equals("")) {
                  if (isDigit(scorevalue.getText())) {
-                     usedKeys.add("Score");
+                     usedKeys.add(Filter.score);
                      usedValues.add(scorevalue.getText());
                      usedCompare.add((String) scoreCompareChoice.getSelectionModel().getSelectedItem());
                  } else {
@@ -121,8 +118,8 @@ public class NewFilterPopUp implements Initializable {
                      return;
                  }
              }
-             if(!taxaid.getText().equals(null)){
-                usedKeys.add("Taxa");
+             if(!taxaid.getText().equals("")){
+                usedKeys.add(Filter.taxa);
                 usedValues.add(taxaid.getText());
                 usedCompare.add("=");
             }
