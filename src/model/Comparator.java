@@ -1,5 +1,10 @@
 package model;
 
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,13 +13,25 @@ public class Comparator {
     String comparisonMode;
     FilteredSample filteredSample1;
     FilteredSample filteredSample2;
-    List<List<Double>> data = new ArrayList<>();
+    List<Double> data1;
+    List<Double> data2;
+    public Property<Integer> numberOfBins;
+    //public Property<Double> sizeOfRanges;
+    public Property<ObservableList<String>> categories;
+    public Property<ObservableList<Integer>> counts1;
+    public Property<ObservableList<Integer>> counts2;
+
 
     public Comparator(FilteredSample filteredSample1, FilteredSample filteredSample2, String comparisonMode) {
         this.comparisonMode = comparisonMode;
         this.filteredSample1 = filteredSample1;
         this.filteredSample2 = filteredSample2;
         createDataWithInput();
+        this.numberOfBins = new SimpleObjectProperty<>();
+        //this.sizeOfRanges = new SimpleObjectProperty<>();
+        this.categories = new SimpleObjectProperty<>(FXCollections.observableArrayList());
+        this.counts1 = new SimpleObjectProperty<>(FXCollections.observableArrayList());
+        this.counts2 = new SimpleObjectProperty<>(FXCollections.observableArrayList());
     }
 
     public String getComparisonMode() {
@@ -29,9 +46,11 @@ public class Comparator {
         return filteredSample2;
     }
 
-    public List<List<Double>> getData() {
-        return data;
+    public List<Double> getData1() {
+        return data1;
     }
+
+    public List<Double> getData2() { return data2; }
 
     //gc-content
     private ArrayList<Double> calculateDataCGContent(FilteredSample filteredSample){
@@ -72,8 +91,6 @@ public class Comparator {
     }
 
     private void createDataWithInput() {
-        List<Double> data1 = new ArrayList<>();
-        List<Double> data2 = new ArrayList<>();
         switch (comparisonMode) {
             case "GC content":
                 data1 = calculateDataCGContent(filteredSample1);
@@ -95,8 +112,6 @@ public class Comparator {
                 System.err.println("no string as input");
                 break;
         }
-        this.data.add(data1);
-        this.data.add(data2);
     }
 
 
@@ -134,28 +149,42 @@ public class Comparator {
     }
     ////////////////////////////////////
 
-    public static double calculateBoundaries(ArrayList<Double> data1, ArrayList<Double> data2, int numberOfBins) {
+    public double calculateBoundaries(int numberOfBins) {
         //get maximum and minimum of the data and divide them by the given number of bins to get the size of the rages
-        double sizeOfRanges;
         double minValue = Math.min(Collections.min(data1),Collections.min(data2));
         double maxValue = Math.max(Collections.max(data1),Collections.max(data2));
-        return (maxValue-minValue)/numberOfBins;
+        return ((maxValue-minValue)/numberOfBins);
     }
 
-    public static ArrayList<String> setCategoryNames(ArrayList<Double> data1, ArrayList<Double> data2, int numberOfBins, double sizeOfRanges){
+    public void setCategoryNames(int numberOfBins){
+        double sizeOfRanges = calculateBoundaries(numberOfBins);
         double minValue = Math.min(Collections.min(data1),Collections.min(data2));
-        ArrayList<String> categories = new ArrayList<String>(numberOfBins);
+        List<String> categoriesList = new ArrayList<String>(numberOfBins);
         for(int i=0; i<numberOfBins; i++){
-            //categories.add(i*sizeOfRanges+minValue + "-" + ((i+1)*sizeOfRanges+minValue));
-            categories.add(String.format( "%.2f",i*sizeOfRanges+minValue) + "-" + String.format( "%.2f",(i+1)*sizeOfRanges+minValue));
+            categoriesList.add((i*sizeOfRanges+minValue) + "-" + ((i+1)*sizeOfRanges+minValue));
+            //categoriesList.add(String.format( "%.2f",(i*sizeOfRanges+minValue)) + "-" + String.format( "%.2f",((i+1)*sizeOfRanges+minValue)));
         }
-        return categories;
+        categories.getValue().clear();
+        categories.getValue().addAll(categoriesList);
+//        System.out.println(numberOfBins);
+//        System.out.println(sizeOfRanges);
+//        System.out.println("comparator: categories : " + categories.getValue());
     }
 
-    public static ArrayList<Integer> groupData(ArrayList<Double> data, int numberOfBins, double sizeOfRanges){
+    public void groupData(int numberOfBins){
+        double minValue = Math.min(Collections.min(data1),Collections.min(data2));
+        counts1.getValue().clear();
+        counts2.getValue().clear();
+        counts1.getValue().addAll(group(data1,minValue, numberOfBins));
+        counts2.getValue().addAll(group(data2,minValue, numberOfBins));
+//        System.out.println("comparator: grouped1 : " + counts1.getValue());
+//        System.out.println("comparator: grouped2 : " + counts2.getValue());
+    }
+
+    public List<Integer> group(List<Double> data, double minValue, int numberOfBins){
+        double sizeOfRanges = calculateBoundaries(numberOfBins);
         //sort data in right ranges - how many values fall into a specific range?
-        double minValue = Collections.min(data);
-        ArrayList<Integer> counts = new ArrayList<Integer>(numberOfBins);
+        List<Integer> counts = new ArrayList<Integer>();
         for(int i = 0; i<numberOfBins; i++){ counts.add(0); }
         for(double d : data){
             for(int i=0; i<numberOfBins; i++){

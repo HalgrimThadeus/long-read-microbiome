@@ -91,7 +91,4 @@ public class ComparatorPopUpPresenter {
         cv.setComparatorViewPresenter(comparatorViewPresenter);
     }
 
-    public void calculateViewableResults(String sample1, String filter1, String sample2, String filter2){
-
-    }
 }
