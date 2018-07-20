@@ -78,12 +78,14 @@ public class ConfigIO {
                 currentLine = bufferedReader.readLine();
                 String[] compareOfLine = currentLine.split("\t");
                 Collections.addAll(usedCompare, compareOfLine);
-                System.out.println(usedKeys);
 
                 for (int i = 0; i < usedKeys.size(); i++) {
                     Filter filter = new Filter(filterName, usedKeys, usedValues, usedCompare);
                     project.addFilter(filter);
                 }
+                System.out.println(usedKeys);
+                System.out.println(usedValues);
+                System.out.println(usedCompare);
                 usedKeys.clear();
                 usedCompare.clear();
                 usedValues.clear();
