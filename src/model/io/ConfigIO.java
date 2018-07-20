@@ -37,7 +37,7 @@ public class ConfigIO {
             FileReader filereader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(filereader);
             String currentLine = bufferedReader.readLine();
-            if(!currentLine.contains(VERSIONSNUMMER)){
+            if (!currentLine.contains(VERSIONSNUMMER)) {
                 return false;
             }
             //first construct the samples
@@ -65,7 +65,7 @@ public class ConfigIO {
             List<String> usedKeys = new ArrayList<>();
             List<String> usedValues = new ArrayList<>();
             List<String> usedCompare = new ArrayList<>();
-            String filterName  = "";
+            String filterName = "";
             while ((currentLine = bufferedReader.readLine()) != null) {
                 filterName = currentLine;
                 currentLine = bufferedReader.readLine();
@@ -78,11 +78,15 @@ public class ConfigIO {
                 currentLine = bufferedReader.readLine();
                 String[] compareOfLine = currentLine.split("\t");
                 Collections.addAll(usedCompare, compareOfLine);
+                System.out.println(usedKeys);
 
-            }
-            for (int i = 0; i < usedKeys.size(); i++) {
-                Filter filter = new Filter(filterName,usedKeys,usedValues,usedCompare);
-                project.addFilter(filter);
+                for (int i = 0; i < usedKeys.size(); i++) {
+                    Filter filter = new Filter(filterName, usedKeys, usedValues, usedCompare);
+                    project.addFilter(filter);
+                }
+                usedKeys.clear();
+                usedCompare.clear();
+                usedValues.clear();
             }
             bufferedReader.close();
         } catch (FileNotFoundException e) {

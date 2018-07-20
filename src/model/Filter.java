@@ -71,6 +71,7 @@ public class Filter {
         res += String.join("\t", usedValues);
         res+= "\n";
         res += String.join("\t", usedCompare);
+        res += "\n";
         System.out.println(usedKey.toString());
         System.out.println(usedValues.toString());
         System.out.println(usedCompare.toString());
