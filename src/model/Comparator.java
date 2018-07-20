@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -151,34 +152,70 @@ public class Comparator {
 
     public double calculateBoundaries(int numberOfBins) {
         //get maximum and minimum of the data and divide them by the given number of bins to get the size of the rages
-        double minValue = Math.min(Collections.min(data1),Collections.min(data2));
-        double maxValue = Math.max(Collections.max(data1),Collections.max(data2));
+        double minValue = 0;
+        double maxValue = 0;
+        if(data1.isEmpty()&&data2.isEmpty()){
+            minValue = 0;
+            maxValue = Double.MAX_VALUE;
+        }
+        else if(data1.isEmpty()){
+            minValue = Collections.min(data2);
+            maxValue = Collections.max(data2);
+        }
+        else if(data2.isEmpty()){
+            minValue = Collections.min(data1);
+            maxValue = Collections.max(data1);
+        }
+        else {
+            minValue = Math.min(Collections.min(data1), Collections.min(data2));
+            maxValue = Math.max(Collections.max(data1), Collections.max(data2));
+        }
         return ((maxValue-minValue)/numberOfBins);
     }
 
     public void setCategoryNames(int numberOfBins){
         double sizeOfRanges = calculateBoundaries(numberOfBins);
-        double minValue = Math.min(Collections.min(data1),Collections.min(data2));
+        double minValue = 0;
+        if(data1.isEmpty()&&data2.isEmpty()){
+            minValue = 0;
+        }
+        else if(data1.isEmpty()){
+            minValue = Collections.min(data2);
+        }
+        else if(data2.isEmpty()){
+            minValue = Collections.min(data1);
+        }
+        else {
+            minValue = Math.min(Collections.min(data1), Collections.min(data2));
+        }
         List<String> categoriesList = new ArrayList<String>(numberOfBins);
         for(int i=0; i<numberOfBins; i++){
-            categoriesList.add((i*sizeOfRanges+minValue) + "-" + ((i+1)*sizeOfRanges+minValue));
+            DecimalFormat df = new DecimalFormat("#.00");
+            categoriesList.add(df.format(i*sizeOfRanges+minValue) + "-" + df.format((i+1)*sizeOfRanges+minValue));
             //categoriesList.add(String.format( "%.2f",(i*sizeOfRanges+minValue)) + "-" + String.format( "%.2f",((i+1)*sizeOfRanges+minValue)));
         }
         categories.getValue().clear();
         categories.getValue().addAll(categoriesList);
-//        System.out.println(numberOfBins);
-//        System.out.println(sizeOfRanges);
-//        System.out.println("comparator: categories : " + categories.getValue());
     }
 
     public void groupData(int numberOfBins){
-        double minValue = Math.min(Collections.min(data1),Collections.min(data2));
+        double minValue = 0;
+        if(data1.isEmpty()&&data2.isEmpty()){
+            minValue = 0;
+        }
+        else if(data1.isEmpty()){
+            minValue = Collections.min(data2);
+        }
+        else if(data2.isEmpty()){
+            minValue = Collections.min(data1);
+        }
+        else {
+            minValue = Math.min(Collections.min(data1), Collections.min(data2));
+        }
         counts1.getValue().clear();
         counts2.getValue().clear();
         counts1.getValue().addAll(group(data1,minValue, numberOfBins));
         counts2.getValue().addAll(group(data2,minValue, numberOfBins));
-//        System.out.println("comparator: grouped1 : " + counts1.getValue());
-//        System.out.println("comparator: grouped2 : " + counts2.getValue());
     }
 
     public List<Integer> group(List<Double> data, double minValue, int numberOfBins){

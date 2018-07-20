@@ -30,17 +30,17 @@ public class FilteredSample {
     }
 
     private void applyFilter() {
-        if(!Project.tree.getIsLoaded().getValue()) {
+//        if(!Project.tree.getIsLoaded().getValue()) {
             if (this.filter.getValue() != null && this.sample.getValue() != null) {
                 filteredReads.setAll(sample.getValue().getReads().filtered(this.filter.getValue().getFilterPredicate()));
             } else if (this.filter.getValue() == null && this.sample.getValue() != null) {
                 filteredReads.setAll(sample.getValue().getReads());
             }
-        }
-        else{
-            Project.tree.getIsLoaded().addListener((observable, oldValue, newValue) -> applyFilter());
+//        }
+ //       else{
+ //           Project.tree.getIsLoaded().addListener((observable, oldValue, newValue) -> applyFilter());
             //Todo add binding to status bar.
-        }
+ //       }
     }
 
     /**

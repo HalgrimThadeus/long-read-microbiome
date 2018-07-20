@@ -133,11 +133,6 @@ public class ComparatorView {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-//                        System.out.println("view chart: categories : " + categories.getValue());
-//                        System.out.println("view chart: counts1 : " + counts1.getValue());
-//                        System.out.println("view chart: counts2 : " + counts2.getValue());
-//                        System.out.println("view" + numberOfBins.getValue());
-//                        System.out.println("start drawing");
                         //sample 1
                         series1.getData().clear();
                         //series1.getData().addAll(new XYChart.Data(categories.getValue(),counts1.getValue()));
@@ -150,7 +145,6 @@ public class ComparatorView {
                         for (int i = 0; i < numberOfBins.getValue(); i++) {
                             series2.getData().add(new XYChart.Data(categories.getValue().get(i), counts2.getValue().get(i)));
                         }
-//                        System.out.println("end drawing");
                     }
                 });
             }
