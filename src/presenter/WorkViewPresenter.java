@@ -40,7 +40,7 @@ public class WorkViewPresenter {
      */
     public void addReadChartView(Tab readChartTab) throws IOException {
         ReadChartView readChartView = new ReadChartView();
-        ReadChartViewPresenter readChartViewPresenter = new ReadChartViewPresenter(this.filteredSample, readChartView);
+        ReadChartViewPresenter readChartViewPresenter = new ReadChartViewPresenter(this.project, this.filteredSample, readChartView);
         FXMLLoader loader = new FXMLLoader(WorkView.class.getResource("readChartView.fxml"));
         loader.setController(readChartView);
 

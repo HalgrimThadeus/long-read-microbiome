@@ -12,10 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import model.Filter;
-import model.FilteredSample;
-import model.GffEntry;
-import model.Read;
+import model.*;
 import view.ReadChartView;
 import view.WorkView;
 
@@ -27,11 +24,13 @@ public class ReadChartViewPresenter {
 
     private FilteredSample filteredSample;
     private ReadChartView readChartView;
+    private Project project;
 
     private BooleanProperty isSearched = new SimpleBooleanProperty(false);
     private String searchedGene = "";
 
-    public ReadChartViewPresenter(FilteredSample filteredSample, ReadChartView readChartView){
+    public ReadChartViewPresenter(Project project, FilteredSample filteredSample, ReadChartView readChartView){
+        this.project = project;
         this.filteredSample = filteredSample;
         this.readChartView = readChartView;
         onActions();
@@ -41,7 +40,7 @@ public class ReadChartViewPresenter {
     private void onActions(){
         this.filteredSample.getFilteredReads().addListener((ListChangeListener<? super Read>) change -> {
             if(filteredSample.getFilter() != null && filteredSample.getFilter().get() != null){
-                readChartView.filterChooseBox.getItems().add(filteredSample.getFilter().get().getName());
+                readChartView.filterLabel.setText(filteredSample.getFilter().get().getName());
             }
         });
 
@@ -157,29 +156,7 @@ public class ReadChartViewPresenter {
 
 
             //Genes with start reds the get blue
-            if (isReversed) {
-                rectangle.setFill(javafx.scene.paint.Color.rgb(34, 34, 178, 0.5));
-                isSearched.addListener((observable, oldValue, newValue) -> {
-
-                    if (!name.contains(searchedGene)) {
-                        rectangle.setFill(Color.rgb(34, 34, 178, 0.5));
-                    } else {
-                        rectangle.setFill(Color.rgb(255, 215 , 0, 0.5));
-                    }
-                });
-                genesReversed.getChildren().add(rectangle);
-
-            } else {
-                rectangle.setFill(javafx.scene.paint.Color.rgb(178, 34, 34, 0.5));
-                isSearched.addListener((observable, oldValue, newValue) -> {
-                    if (!name.contains(searchedGene)) {
-                        rectangle.setFill(Color.rgb(178, 34, 34, 0.5));
-                    } else {
-                        rectangle.setFill(Color.rgb(255, 215 , 0, 0.5));
-                    }
-                });
-                genes.getChildren().add(rectangle);
-            }
+            addIsSearchedListener(genes, genesReversed, rectangle, isReversed, name);
 
 
             rectangle.heightProperty().bind(readChartView.barWidthSpinner.valueProperty());
@@ -191,7 +168,7 @@ public class ReadChartViewPresenter {
             //Add tooltip
             String tooltipMessage = name + "\n"
                     + "Start: " + start + " End: " + end + "\n"
-                    + "Strand: " + ((isReversed) ? "+" : "-");
+                    + "Strand: " + ((isReversed) ? "-" : "+");
             Tooltip t = new Tooltip(tooltipMessage);
             Tooltip.install(rectangle, t);
 
@@ -199,13 +176,39 @@ public class ReadChartViewPresenter {
             //genes.getChildren().add(rectangle);
 
         }
-
         //sequences.getChildren().add(pane);
         AnchorPane[] allGenes = new AnchorPane[2];
         allGenes[0] = genes;
         allGenes[1] = genesReversed;
         return allGenes;
     }
+
+    private void addIsSearchedListener(AnchorPane genes, AnchorPane genesReversed, Rectangle rectangle, boolean isReversed, String name){
+        if (isReversed) {
+            rectangle.setFill(javafx.scene.paint.Color.rgb(34, 34, 178, 0.5));
+            isSearched.addListener((observable, oldValue, newValue) -> {
+
+                if (!name.contains(searchedGene)) {
+                    rectangle.setFill(Color.rgb(34, 34, 178, 0.5));
+                } else {
+                    rectangle.setFill(Color.rgb(255, 215 , 0, 0.5));
+                }
+            });
+            genesReversed.getChildren().add(rectangle);
+
+        } else {
+            rectangle.setFill(javafx.scene.paint.Color.rgb(178, 34, 34, 0.5));
+            isSearched.addListener((observable, oldValue, newValue) -> {
+                if (!name.contains(searchedGene)) {
+                    rectangle.setFill(Color.rgb(178, 34, 34, 0.5));
+                } else {
+                    rectangle.setFill(Color.rgb(255, 215 , 0, 0.5));
+                }
+            });
+            genes.getChildren().add(rectangle);
+        }
+    }
+
 
     private Label addName(String name){
 
@@ -233,7 +236,7 @@ public class ReadChartViewPresenter {
     public void searchForGenByName(String genName) throws IOException {
 
         ReadChartView readChartView = new ReadChartView();
-        ReadChartViewPresenter readChartViewPresenter = new ReadChartViewPresenter(this.filteredSample, readChartView);
+        ReadChartViewPresenter readChartViewPresenter = new ReadChartViewPresenter(this.project, this.filteredSample, readChartView);
         FXMLLoader loader = new FXMLLoader(WorkView.class.getResource("readChartView.fxml"));
         loader.setController(readChartView);
         readChartView.setReadChartViewPresenter(readChartViewPresenter);
@@ -243,10 +246,16 @@ public class ReadChartViewPresenter {
         stage.setScene(new Scene(root));
         stage.show();
 
-        Filter filter = new Filter();
 
-        //TODO Add a filter to filterView
-        //TODO isGen filter is not working proper
+        ArrayList<String> keys = new ArrayList<>();
+        keys.add("Gene");
+        ArrayList<String> values = new ArrayList<>();
+        values.add(genName);
+        ArrayList<String> compare = new ArrayList<>();
+        compare.add("=");
+        Filter filter = new Filter(("Filter Name: " + genName), keys, values, compare );
+        project.getFilters().add(filter);
+
 
         List<Read> reads = getReadsByName(filteredSample.getFilteredReads(), genName);
 
@@ -351,29 +360,7 @@ public class ReadChartViewPresenter {
             Rectangle rectangle = new Rectangle();
 
             //Genes with start reds the get blue
-            if (isReversed) {
-                rectangle.setFill(javafx.scene.paint.Color.rgb(34, 34, 178, 0.5));
-                isSearched.addListener((observable, oldValue, newValue) -> {
-
-                    if (!name.contains(searchedGene)) {
-                        rectangle.setFill(Color.rgb(34, 34, 178, 0.5));
-                    } else {
-                        rectangle.setFill(Color.rgb(255, 215 , 0, 0.5));
-                    }
-                });
-                genesReversed.getChildren().add(rectangle);
-
-            } else {
-                rectangle.setFill(javafx.scene.paint.Color.rgb(178, 34, 34, 0.5));
-                isSearched.addListener((observable, oldValue, newValue) -> {
-                    if (!name.contains(searchedGene)) {
-                        rectangle.setFill(Color.rgb(178, 34, 34, 0.5));
-                    } else {
-                        rectangle.setFill(Color.rgb(255, 215 , 0, 0.5));
-                    }
-                });
-                genes.getChildren().add(rectangle);
-            }
+            addIsSearchedListener(genes, genesReversed, rectangle, isReversed, name);
 
 
             rectangle.heightProperty().bind(readChartView.barWidthSpinner.valueProperty());

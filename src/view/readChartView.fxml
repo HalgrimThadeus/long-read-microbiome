@@ -28,8 +28,8 @@
         </ScrollPane>
         <ToolBar prefHeight="30.0" prefWidth="404.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="338.0">
             <items>
-            <Label text="Filters:" />
-                <ChoiceBox fx:id="filterChooseBox" prefWidth="150.0" />
+            <Label text="Filter:" />
+                <Label fx:id="filterLabel" prefWidth="150.0" />
             </items>
         </ToolBar>
         <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="35.0" prefWidth="397.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0">

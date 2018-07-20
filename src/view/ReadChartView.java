@@ -41,7 +41,7 @@ public class ReadChartView implements Initializable {
     private Button addReadButton;
 
     @FXML
-    public ChoiceBox filterChooseBox;
+    public Label filterLabel;
 
     @FXML
     public Spinner<Integer> barWidthSpinner;
