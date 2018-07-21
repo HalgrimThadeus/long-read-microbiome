@@ -209,8 +209,11 @@ public class ReadChartViewPresenter {
         }
     }
 
-
     private Label addName(String name){
+        return addName(this.readChartView, name);
+    }
+
+    private Label addName(ReadChartView readChartView, String name){
 
         javafx.scene.control.Label label = new Label(name);
         label.prefHeightProperty().bind(readChartView.barWidth.multiply(3));
@@ -290,12 +293,12 @@ public class ReadChartViewPresenter {
             int lowerBound = startGen - AREA_WIDTH;
             int upperBound = startGen + AREA_WIDTH;
 
-            AnchorPane[] genes = addZoomedGenes(read.getGFFEntries(), lowerBound, startGen, upperBound);
+            AnchorPane[] genes = addZoomedGenes(readChartView, read.getGFFEntries(), lowerBound, startGen, upperBound);
 
             readChartView.genPane.add(genes[0]);
             readChartView.reversedGenPane.add(genes[1]);
-            readChartView.name.add(addName(taxId));
-            readChartView.reads.add(getZoomedSequence(read));
+            readChartView.name.add(addName(readChartView, taxId));
+            readChartView.reads.add(getZoomedSequence(readChartView, read));
 
         }
         readChartView.xAxis.setLowerBound(-1000);
@@ -303,7 +306,7 @@ public class ReadChartViewPresenter {
         readChartView.xAxis.setTickUnit(100);
     }
 
-    private Rectangle getZoomedSequence(Read read){
+    private Rectangle getZoomedSequence(ReadChartView readChartView, Read read){
         String id = read.getId();
 
         Rectangle rectangle = new Rectangle();
@@ -318,7 +321,7 @@ public class ReadChartViewPresenter {
         return rectangle;
     }
 
-    private AnchorPane[] addZoomedGenes(List<GffEntry> gffEntries, int lowerBound, int startGen, int upperBound){
+    private AnchorPane[] addZoomedGenes(ReadChartView readChartView, List<GffEntry> gffEntries, int lowerBound, int startGen, int upperBound){
 
         AnchorPane genes = new AnchorPane();
         AnchorPane genesReversed = new AnchorPane();
@@ -366,8 +369,8 @@ public class ReadChartViewPresenter {
             rectangle.heightProperty().bind(readChartView.barWidthSpinner.valueProperty());
             rectangle.setStrokeWidth(0.5);
             rectangle.setStroke(Color.BLACK);
-            rectangle.xProperty().bind(readChartView.xAxis.widthProperty().divide(readChartView.xAxis.upperBoundProperty()).multiply(start).multiply(9.5));
-            rectangle.widthProperty().bind(readChartView.xAxis.widthProperty().divide(readChartView.xAxis.upperBoundProperty()).multiply(end-start).multiply(9.5));
+            rectangle.xProperty().bind(readChartView.xAxis.widthProperty().divide(readChartView.xAxis.upperBoundProperty()).multiply(start).divide(2));
+            rectangle.widthProperty().bind(readChartView.xAxis.widthProperty().divide(readChartView.xAxis.upperBoundProperty()).multiply(end-start).divide(2));
 
             //Add tooltip
             String tooltipMessage = name + "\n"
