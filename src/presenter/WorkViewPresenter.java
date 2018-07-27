@@ -27,7 +27,7 @@ public class WorkViewPresenter {
             while(change.next()) {
 
                 if(change.wasAdded()) {
-                    this.workView.setTextTab(this.getFastaFileHtmlCode((List<Read>) change.getList()));
+                    this.workView.setProjectComments(this.project.toString());
                 }
             }
             });

@@ -45,13 +45,13 @@ public class GffIO {
                 BufferedReader bufferedReader = new BufferedReader(this.reader);
 
                 String line = "";
-                StringBuilder fileHeader = new StringBuilder();
+                StringBuilder comments = new StringBuilder();
 
                 //read actual content of the gff file
                 while ((line = bufferedReader.readLine()) != null) {
                     if (line.startsWith("#")) {
-                        fileHeader.append(line);
-                        fileHeader.append("/n");
+                        comments.append(line.replaceFirst("#", ""));
+                        comments.append("/n");
                     } else {
                         String[] lineCols = line.split("\t");
                         String sequence = lineCols[0];

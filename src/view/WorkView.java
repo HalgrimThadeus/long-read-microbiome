@@ -3,11 +3,11 @@ package view;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.web.HTMLEditor;
 import presenter.WorkViewPresenter;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class WorkView extends TabPane implements Initializable {
     private AnchorPane readChartView;
 
     @FXML
-    private HTMLEditor fastaTextShow;
+    private TextArea projectComments;
 
     private WorkViewPresenter workViewPresenter;
 
@@ -34,8 +34,8 @@ public class WorkView extends TabPane implements Initializable {
         this.workViewPresenter = workViewPresenter;
     }
 
-    public void setTextTab(String fastaFileHtmlCode) {
-        this.fastaTextShow.setHtmlText(fastaFileHtmlCode);
+    public void setProjectComments(String projectComments) {
+        this.projectComments.setText(projectComments);
     }
 
     @Override
