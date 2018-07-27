@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class GffEntry {
@@ -41,7 +42,7 @@ public class GffEntry {
      */
     private int length;
 
-    private Map<String,String> attributes; //All the other information pertaining to this feature. The format, structure and content of this field is the one which varies the most between the three competing file formats.
+    private Map<String,String> attributes = new HashMap<>(); //All the other information pertaining to this feature. The format, structure and content of this field is the one which varies the most between the three competing file formats.
 
     /**
      * Make a new GffEntry with all the typical properties of a Feature in a GFF-File
@@ -64,7 +65,7 @@ public class GffEntry {
             this.score = score;
         this.strand = strand;
         this.frame = frame;
-        this.attributes = attributes;
+        this.attributes.putAll(attributes);
     }
 
     /**

@@ -1,12 +1,12 @@
 package presenter;
 
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Filter;
+import model.Project;
 import view.FilterView;
 import view.MainView;
 import view.NewFilterPopUp;
@@ -17,18 +17,18 @@ import java.util.List;
 
 public class FilterPresenter {
     private NewFilterPopUpPresenter newFilterPopUpPresenter = null;
-    private ObservableList<Filter> filters;
+    private Project project;
     private FilterView filterView;
 
     public FilterPresenter(FilterView filterView) {
         this.filterView = filterView;
     }
 
-    public void initialize(NewFilterPopUpPresenter newFilterPopUpPresenter, ObservableList<Filter> filters){
-        this.filters = filters;
+    public void initialize(NewFilterPopUpPresenter newFilterPopUpPresenter, Project project){
+        this.project = project;
         this.newFilterPopUpPresenter = newFilterPopUpPresenter;
 
-        filters.addListener((ListChangeListener<Filter>) change -> {
+        this.project.getFilters().addListener((ListChangeListener<Filter>) change -> {
             while(change.next()) {
                 if(change.wasAdded()) {
                     List<Filter> addedFilters = (List<Filter>) change.getAddedSubList();
@@ -76,7 +76,7 @@ public class FilterPresenter {
             Parent root = loader.load();
             filterPopUp.setTitle("New Filter");
 
-            Filter usedFilter = getFilterByName(filterName);
+            Filter usedFilter = this.project.getFilterByName(filterName);
             List<String> usedKeys = usedFilter.getKeys();
             List<String> usedValues = usedFilter.getValues();
             List<String> usedCompare = usedFilter.getCompare();
@@ -115,16 +115,6 @@ public class FilterPresenter {
 
 
 
-    }
-
-    private Filter getFilterByName(String name){
-
-        for(Filter f: filters){
-            if(f.getName().equals(name)){
-                 return f;
-            }
-        }
-        return null;
     }
 
     private void addFilter(Filter filter){

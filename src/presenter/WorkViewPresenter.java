@@ -50,26 +50,16 @@ public class WorkViewPresenter {
 
 
     public void setNewSampleToWorkView(String sampleName) {
-        Sample sample4Presenting = null;
-
-        for (Sample sample: project.getSamples()) {
-            if(sample.getName().equals(sampleName))
-                sample4Presenting = sample;
-        }
+        Sample sample4Presenting = this.project.getSampleByName(sampleName);
 
         this.filteredSample.setSample(sample4Presenting);
     }
 
     public void addNewFilterToWorkView(String filterName) {
-        Filter filter4Applying = null;
-
-        for (Filter filter: project.getFilters()) {
-            if(filter.getName().equals(filterName))
-                filter4Applying = filter;
-        }
+        Filter filter4Applying = this.project.getFilterByName(filterName);
 
         //adds filter to filtered sample AND concats the new combined filter directly to the list of filters in prpject
-        this.project.addFilter(this.filteredSample.addFilter(filter4Applying));
+        this.project.addOrSetFilter(this.filteredSample.addFilter(filter4Applying));
     }
 
     private String getFastaFileHtmlCode(List<Read> reads){

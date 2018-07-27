@@ -256,8 +256,8 @@ public class ReadChartViewPresenter {
         values.add(genName);
         ArrayList<String> compare = new ArrayList<>();
         compare.add("=");
-        Filter filter = new Filter(("Filter Name: " + genName), keys, values, compare );
-        project.getFilters().add(filter);
+        Filter filter = new Filter(("Filter gene name: " + genName), keys, values, compare );
+        project.addOrSetFilter(filter);
 
 
         List<Read> reads = getReadsByName(filteredSample.getFilteredReads(), genName);

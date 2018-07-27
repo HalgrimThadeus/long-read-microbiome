@@ -17,6 +17,7 @@ public class Project {
     private ObservableList<Sample> samples = FXCollections.observableArrayList();
     private ObservableList<Filter> filters = FXCollections.observableArrayList();
     public static TaxTree tree = new TaxTree();
+
     public Project(){
         //TODO write in statusbar that file is loading and no filtering possible
         ReadInTaxTreeService readInTaxTreeService = new ReadInTaxTreeService("res/TreeDumpFiles/nodes.dmp","res/TreeDumpFiles/names.dmp");
@@ -36,11 +37,54 @@ public class Project {
      * @param sample
      */
     public void addSamples(Sample sample) {
-        samples.add(sample);
+        this.samples.add(sample);
     }
 
-    public void addFilter(Filter filter){
-        this.filters.add(filter);
+    /**
+     * adds a filter if one with same name doesnot exist. If it exists, old filter is overwritten.
+     * @param filter
+     */
+    public void addOrSetFilter(Filter filter){
+
+        boolean contained = false;
+        for(int i = 0; i <  this.filters.size(); i++){
+            if(this.filters.get(i).getName().equals(filter.getName())){
+                contained = true;
+                filters.set(i,filter);
+            }
+        }
+
+        if(!contained) {
+            filters.add(filter);
+        }
+    }
+
+    /**
+     * returns null if filter not found with this name
+     * @param filterName
+     * @return
+     */
+    public Filter getFilterByName(String filterName) {
+        for (Filter filter: filters) {
+            if(filter.getName().equals(filterName))
+                return filter;
+        }
+
+        return null;
+    }
+
+    /**
+     * returns null if sample not found with this name
+     * @param sampleName
+     * @return
+     */
+    public Sample getSampleByName(String sampleName) {
+        for (Sample sample: samples) {
+            if(sample.getName().equals(sampleName))
+                return sample;
+        }
+
+        return null;
     }
 
     public ObservableList<Sample> getSamples() {

@@ -13,9 +13,9 @@ import java.util.function.Predicate;
 public class Filter {
     private Predicate<Read> filterPredicate = read -> true;
 
-    private List<String> keys;
-    private List<String> values;
-    private List<String> compare;
+    private List<String> keys = new ArrayList<>();
+    private List<String> values = new ArrayList<>();
+    private List<String> compare = new ArrayList<>();
     private String name;
     public static String gene = "Gene";
     public static String gc = "GC";
@@ -24,18 +24,15 @@ public class Filter {
     public static String score = "Score";
 
     public Filter(String name, List<String> keys, List<String> values, List<String> compare) {
-        this.values = values;
-        this.keys = keys;
+        this.values.addAll(values);
+        this.keys.addAll(keys);
         this.name = name;
-        this.compare = compare;
+        this.compare.addAll(compare);
         buildPredicate(keys, values, compare);
     }
 
     public Filter(){
-        this.values = new ArrayList<>();
-        this.keys = new ArrayList<>();
-        this.compare = new ArrayList<>();
-        this.name = "";
+        this.name = "filter not named";
     }
 
     public String getName() {
@@ -63,19 +60,12 @@ public class Filter {
     @Override
     public String toString() {
         String res = name + '\n';
-        List<String> usedKey = this.keys;
-        List<String> usedValues = this.values;
-        List<String> usedCompare = this.compare;
-        res += String.join("\t", usedKey);
+        res += String.join("\t", this.keys);
         res+= "\n";
-        res += String.join("\t", usedValues);
+        res += String.join("\t", this.values);
         res+= "\n";
-        res += String.join("\t", usedCompare);
+        res += String.join("\t", this.compare);
         res += "\n";
-        System.out.println(usedKey.toString());
-        System.out.println(usedValues.toString());
-        System.out.println(usedCompare.toString());
-        System.out.println(res);
 
         return res;
     }
@@ -179,7 +169,7 @@ public class Filter {
         newValues.addAll(f2.getValues());
         newCompares.addAll(f1.getCompare());
         newCompares.addAll(f2.getCompare());
-        Filter filter = new Filter(f1.getName() + " " + f2.getName(), newKeys,newValues,newCompares);
+        Filter filter = new Filter(f1.getName() + " + " + f2.getName(), newKeys,newValues,newCompares);
         return filter;
     }
 }

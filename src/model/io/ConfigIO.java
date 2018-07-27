@@ -81,8 +81,9 @@ public class ConfigIO {
 
                 for (int i = 0; i < usedKeys.size(); i++) {
                     Filter filter = new Filter(filterName, usedKeys, usedValues, usedCompare);
-                    project.addFilter(filter);
+                    project.addOrSetFilter(filter);
                 }
+
                 System.out.println(usedKeys);
                 System.out.println(usedValues);
                 System.out.println(usedCompare);

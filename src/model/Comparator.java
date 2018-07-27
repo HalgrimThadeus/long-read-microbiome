@@ -23,6 +23,8 @@ public class Comparator {
     public Property<ObservableList<Integer>> counts2;
 
 
+    //todo: maybe passing the filtered sample directly could lead to errors, because NO COPY of the filtered samples are made and
+    //when ever work is done on the references this will change these filtered samples here too!!!
     public Comparator(FilteredSample filteredSample1, FilteredSample filteredSample2, String comparisonMode) {
         this.comparisonMode = comparisonMode;
         this.filteredSample1 = filteredSample1;

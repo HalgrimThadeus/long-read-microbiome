@@ -18,7 +18,6 @@ public class MainPresenter {
     private FilterPresenter filterPresenter;
     private SaveProjectPresenter saveProjectPresenter;
     private SamplePresenter samplePresenter;
-    private WorkViewPresenter workViewPresenter;
     private WorkViewContainerPresenter workViewContainerPresenter;
     private NewSamplePopUpPresenter newSamplePopUpPresenter;
     private NewFilterPopUpPresenter newFilterPopUpPresenter;
@@ -33,7 +32,7 @@ public class MainPresenter {
         this.newSamplePopUpPresenter = new NewSamplePopUpPresenter(project.getSamples());
 
         this.filterPresenter = this.mainView.getFilterView().getFilterPresenter();
-        this.filterPresenter.initialize(this.newFilterPopUpPresenter, project.getFilters());
+        this.filterPresenter.initialize(this.newFilterPopUpPresenter, project);
 
         this.saveProjectPresenter = new SaveProjectPresenter(project);
 
@@ -56,10 +55,6 @@ public class MainPresenter {
 
     public SamplePresenter getSamplePresenter() {
         return samplePresenter;
-    }
-
-    public WorkViewPresenter getWorkViewPresenter() {
-        return workViewPresenter;
     }
 
     public WorkViewContainerPresenter getWorkViewContainerPresenter() {
