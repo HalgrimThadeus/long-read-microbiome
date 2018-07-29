@@ -17,14 +17,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         MainView mainView = new MainView();
-        Project project = new Project();
 
         FXMLLoader loader = new FXMLLoader(MainView.class.getResource("mainView.fxml"));
         loader.setController(mainView);
 
-
-
         Parent root = loader.load();
+
+        Project project = new Project();
 
         MainPresenter mainPresenter = new MainPresenter(project, mainView);
         mainView.setMainPresenter(mainPresenter);

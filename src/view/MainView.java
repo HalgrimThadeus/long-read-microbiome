@@ -2,9 +2,7 @@ package view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -42,14 +40,23 @@ public class MainView extends AnchorPane {
      * with these attributes you could access the fxcontroller of the subviews and the subview itself
      * !!!DONT CHANGE THE ATTRIBUTES NAMES!!! (they get automatically bound by fxml)
      */
-
-    //TODO Which this bindings the workViewContainer is somehow empty so i changed this.
     @FXML
     private WorkViewContainer workViewContainer;
     @FXML
     private FilterView filterViewController;
     @FXML
     private SampleView sampleViewController;
+
+    /**
+     * attributes concerning the status bar
+     */
+    @FXML
+    private ToolBar statusbar;
+    @FXML
+    private Label statusmessage;
+    @FXML
+    private ProgressBar statusprogressbar;
+
 
     private MainPresenter mainPresenter;
 
@@ -59,7 +66,7 @@ public class MainView extends AnchorPane {
 
 
     public SampleView getSampleView() {
-        return sampleViewController;
+        return this.sampleViewController;
     }
 
     public FilterView getFilterView() {
@@ -72,12 +79,12 @@ public class MainView extends AnchorPane {
 
     @FXML
     public void onAddSamplePageToolbarButtonClicked(ActionEvent event) throws IOException {
-        ((WorkViewContainer) workViewContainer).onNewMainTabViewButtonClicked();
+        workViewContainer.onNewMainTabViewButtonClicked();
     }
 
     @FXML
     public void onRemoveSamplePageToolbarButtonClicked(ActionEvent event) throws IOException {
-        ((WorkViewContainer) workViewContainer).onRemoveMainTabViewButtonClicked();
+        workViewContainer.onRemoveMainTabViewButtonClicked();
     }
 
     @FXML
@@ -139,5 +146,15 @@ public class MainView extends AnchorPane {
 
     public void onCloseMenuItemClicked(ActionEvent e) {
         System.exit(0);
+    }
+
+    public void showLoadingBarinStatusBar(String message) {
+        statusprogressbar.setVisible(true);
+        statusmessage.setText(message + ": \t \t");
+    }
+
+    public void showMessageInStatusBar(String message) {
+        statusprogressbar.setVisible(false);
+        statusmessage.setText(message);
     }
 }

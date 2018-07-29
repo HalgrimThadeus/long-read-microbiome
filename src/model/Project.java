@@ -1,9 +1,9 @@
 package model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import model.services.ReadInTaxTreeService;
 import model.tax.TaxTree;
 
@@ -16,21 +16,31 @@ public class Project {
 
     private ObservableList<Sample> samples = FXCollections.observableArrayList();
     private ObservableList<Filter> filters = FXCollections.observableArrayList();
+    private IntegerProperty treeLoadingStatus = new SimpleIntegerProperty();
     public static TaxTree tree = new TaxTree();
 
-    public Project(){
-        //TODO write in statusbar that file is loading and no filtering possible
-        ReadInTaxTreeService readInTaxTreeService = new ReadInTaxTreeService("res/TreeDumpFiles/nodes.dmp","res/TreeDumpFiles/names.dmp");
+    public static final int LOADING =1;
+    public static final int LOADED =2;
+    public static final int LOADING_FAILED =0;
+
+    public void loadTaxTree() {
+        ReadInTaxTreeService readInTaxTreeService = new ReadInTaxTreeService("res/TaxDump/nodes.dmp","res/TaxDump/names.dmp");
+
         readInTaxTreeService.setOnSucceeded(event1 -> {
-            this.tree = ((ReadInTaxTreeService)event1.getSource()).getValue();
-            tree.setIsLoaded(true);
+            tree = ((ReadInTaxTreeService)event1.getSource()).getValue();
+            treeLoadingStatus.setValue(Project.LOADED);
         });
 
         readInTaxTreeService.setOnFailed(event1 -> {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Loading of TaxTree FAILED. Please insert nodes.dmp and names.dmp in res/TreeDumpFiles directory", ButtonType.CANCEL);
-            alert.show();
+            event1.getSource().getException().printStackTrace();
+            treeLoadingStatus.setValue(Project.LOADING_FAILED);
         });
+
+        treeLoadingStatus.setValue(Project.LOADING);
+        readInTaxTreeService.start();
     }
+
+
     /**
      * Add a new Sample
      *
@@ -100,6 +110,9 @@ public class Project {
         this.filters.clear();
     }
 
+    public IntegerProperty getTreeLoadingStatus() {
+        return treeLoadingStatus;
+    }
 
     @Override
     public String toString() {

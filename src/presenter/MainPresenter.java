@@ -27,6 +27,20 @@ public class MainPresenter {
         this.mainView = mainView;
         this.project = project;
 
+        //loading of the tax tree
+        this.project.getTreeLoadingStatus().addListener(
+                (observable, oldValue, newValue) -> {
+                    if (newValue.intValue() == Project.LOADING) {
+                        this.mainView.showLoadingBarinStatusBar("Loading taxonomic tree");
+                    } else if(newValue.intValue() == Project.LOADED) {
+                        this.mainView.showMessageInStatusBar("Taxonomic tree loaded");
+                    } else if(newValue.intValue() == Project.LOADING_FAILED) {
+                        this.mainView.showLoadingBarinStatusBar("Loading of taxonomic tree failed. Name filtering is not usable!");
+                    }
+                }
+        );
+        this.project.loadTaxTree();
+
         this.newFilterPopUpPresenter = new NewFilterPopUpPresenter(project);
 
         this.newSamplePopUpPresenter = new NewSamplePopUpPresenter(project.getSamples());
@@ -86,6 +100,4 @@ public class MainPresenter {
 
     }
 
-
-    //TODO add stuff, that all Controllers share
 }

@@ -1,8 +1,5 @@
 package model.tax;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,8 +8,6 @@ import java.util.Map;
  * therefore there are two hashmaps, which make easy access of the tree strucure and the elements theirselves possible
  */
 public class TaxTree {
-
-    private BooleanProperty isLoaded = new SimpleBooleanProperty(false);
 
     /**
      * contains the actual tree structure with the TaxNodes
@@ -30,15 +25,6 @@ public class TaxTree {
     public TaxTree() {
         this.tree = new HashMap<>();
         this.nameMap =  new HashMap<>();
-    }
-
-
-    public void setIsLoaded(boolean loaded){
-        isLoaded.setValue(loaded);
-    }
-
-    public BooleanProperty getIsLoaded(){
-        return isLoaded;
     }
 
     /**
@@ -81,26 +67,10 @@ public class TaxTree {
      */
     public void setNameOfId(int id, String name) {
         if(tree.containsKey(id)) {
-            //if(!nameMap.containsKey(name)) {
-            //}
-
-            //prevents collision of two names naming the same node
-            if(!nameMap.containsValue(id)) {
-                //adds "_" to name of an organism if name already exists and puts the rank too
-                if(!nameMap.containsKey(name)) {
-                    nameMap.put(name,id);
-                    tree.get(id).setName(name);
-                } else {
-                    TaxNode existingNode = tree.get(nameMap.get(name));
-                    nameMap.remove(existingNode.getName());
-                    nameMap.put(existingNode.getName() + "_" + existingNode.getRank(), existingNode.getID());
-                    existingNode.setName(existingNode.getName() + "_" + existingNode.getRank());
-
-                    name = name + "_" + tree.get(id).getRank();
-                    nameMap.put(name,id);
-                    tree.get(id).setName(name);
-                }
-            }
+            //only adds the names of organims, !!doesnot regard if there are multiple ranks named by one name.
+            // the latest of the names.dmp file is used. So the species names are always in, because no rank has a double name like each species!
+            nameMap.put(name,id);
+            tree.get(id).setName(name);
         }
     }
 

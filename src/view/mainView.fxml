@@ -71,10 +71,11 @@
 
          </items>
       </ToolBar>
-       <ToolBar AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0" prefHeight="$btmAnchor" prefWidth="200.0">
+       <ToolBar fx:id="statusbar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0" prefHeight="$btmAnchor" prefWidth="200.0">
            <items>
-               <Label fx:id="statusbar" text="Statusbar">
+               <Label fx:id="statusmessage" text=" ">
                </Label>
+               <ProgressBar fx:id="statusprogressbar" visible="false"/>
            </items>
        </ToolBar>
    </children>

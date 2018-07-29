@@ -68,17 +68,21 @@ public class TaxIO {
         String nameLine = nameReader.readLine();
 
         //Add names; as long as there are lines take them and add the names to the corresponding node
-        while (nameLine != null ) {
+            while (nameLine != null ) {
 
                 nameLine = nameLine.replace('\t', '\0');
                 String[] lineValues = nameLine.trim().split("\\|");
 
                 //only take the scientific names; overwrites if there are multiple scientifc names for one id;
-                if(lineValues[3].contains("scientific name")) {
+                if(lineValues[3].trim().equals("scientific name")) {
                     int nodeID = Integer.parseInt(lineValues[0].trim());
 
                     String nodeName = lineValues[1].trim();
-                    tree.setNameOfId(nodeID, nodeName);
+
+                    //excluding not named nodes
+                    if(!nodeName.equals("environmental samples")) {
+                        tree.setNameOfId(nodeID, nodeName);
+                    }
 
                 }
                 nameLine = nameReader.readLine();
