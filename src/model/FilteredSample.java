@@ -4,6 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ProgressBar;
 
 public class FilteredSample {
 
@@ -30,17 +31,19 @@ public class FilteredSample {
     }
 
     private void applyFilter() {
-//        if(!Project.tree.getIsLoaded().getValue()) {
+        if(Project.treeLoadingStatus.getValue() == Project.LOADED) {
             if (this.filter.getValue() != null && this.sample.getValue() != null) {
                 filteredReads.setAll(sample.getValue().getReads().filtered(this.filter.getValue().getFilterPredicate()));
             } else if (this.filter.getValue() == null && this.sample.getValue() != null) {
                 filteredReads.setAll(sample.getValue().getReads());
             }
-//        }
- //       else{
- //           Project.tree.getIsLoaded().addListener((observable, oldValue, newValue) -> applyFilter());
-            //Todo add binding to status bar.
- //       }
+        }
+        else{
+            Project.treeLoadingStatus.addListener((observable, oldValue, newValue) -> {
+                if(newValue.intValue() == Project.LOADED)
+                    applyFilter();
+            });
+        }
     }
 
     /**

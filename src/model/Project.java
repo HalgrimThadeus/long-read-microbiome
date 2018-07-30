@@ -16,7 +16,8 @@ public class Project {
 
     private ObservableList<Sample> samples = FXCollections.observableArrayList();
     private ObservableList<Filter> filters = FXCollections.observableArrayList();
-    private IntegerProperty treeLoadingStatus = new SimpleIntegerProperty();
+
+    public static IntegerProperty treeLoadingStatus = new SimpleIntegerProperty();
     public static TaxTree tree = new TaxTree();
 
     public static final int LOADING =1;
@@ -108,10 +109,6 @@ public class Project {
     public void clear() {
         this.samples.clear();
         this.filters.clear();
-    }
-
-    public IntegerProperty getTreeLoadingStatus() {
-        return treeLoadingStatus;
     }
 
     @Override

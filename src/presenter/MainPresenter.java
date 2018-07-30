@@ -3,6 +3,8 @@ package presenter;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import model.Project;
 import view.ComparatorPopUp;
@@ -28,14 +30,16 @@ public class MainPresenter {
         this.project = project;
 
         //loading of the tax tree
-        this.project.getTreeLoadingStatus().addListener(
+        Project.treeLoadingStatus.addListener(
                 (observable, oldValue, newValue) -> {
                     if (newValue.intValue() == Project.LOADING) {
-                        this.mainView.showLoadingBarinStatusBar("Loading taxonomic tree");
+                        this.mainView.showLoadingBarinStatusBar("Loading taxonomic tree (Filtering is applied when loaded.)");
                     } else if(newValue.intValue() == Project.LOADED) {
                         this.mainView.showMessageInStatusBar("Taxonomic tree loaded");
                     } else if(newValue.intValue() == Project.LOADING_FAILED) {
-                        this.mainView.showLoadingBarinStatusBar("Loading of taxonomic tree failed. Name filtering is not usable!");
+                        this.mainView.showLoadingBarinStatusBar("Loading of taxonomic tree failed. Filtering is not usable! Please insert nodes.dmp and names.dmp in ./res/TaxDump directory");
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Loading of taxonomic tree failed. Filtering is not usable! Please insert nodes.dmp and names.dmp in ./res/TaxDump directory", ButtonType.OK);
+                        alert.show();
                     }
                 }
         );

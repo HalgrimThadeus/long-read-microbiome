@@ -1,5 +1,6 @@
 package model.tax;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -89,5 +90,9 @@ public class TaxTree {
 
     public boolean isEmpty(){
         return tree.isEmpty();
+    }
+
+    public boolean hasNode(String name) {
+        return nameMap.containsKey(name);
     }
 }
