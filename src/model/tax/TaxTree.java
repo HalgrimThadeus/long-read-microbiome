@@ -88,6 +88,16 @@ public class TaxTree {
         }
     }
 
+    public TaxNode getNodeById(int id){
+        if(this.tree.containsKey(id)){
+            return this.tree.get(id);
+        }
+        else{
+            return null;
+        }
+    }
+
+
     public boolean isEmpty(){
         return tree.isEmpty();
     }

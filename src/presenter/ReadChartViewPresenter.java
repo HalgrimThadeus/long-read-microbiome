@@ -98,6 +98,7 @@ public class ReadChartViewPresenter {
         List<Read> reads = sortReads(filteredSample.getFilteredReads());
         int maxLength = reads.get(0).getSequence().length();
 
+
         readChartView.xAxis.setUpperBound((maxLength + 1000)/1000 * 1000);
         readChartView.xAxis.setTickUnit(1000);
 
@@ -105,11 +106,21 @@ public class ReadChartViewPresenter {
 
             Rectangle rectangle = getSequence(read);
 
+            String name;
+            if(Project.treeLoadingStatus.get() == Project.LOADED){
+                if(Project.tree.getNodeById(read.getTaxonomicId()) != null && Project.tree.getNodeById(read.getTaxonomicId()).getName() != null)
+                    name = Project.tree.getNodeById(read.getTaxonomicId()).getName();
+                else
+                    name = read.getTaxonomicId() + "";
+            }
+            else{
+                name = read.getTaxonomicId() + "";
+            }
             AnchorPane[] genes = addGenes(read.getGFFEntries());
 
             readChartView.genPane.add(genes[0]);
             readChartView.reversedGenPane.add(genes[1]);
-            readChartView.name.add(addName(read.getTaxonomicId() + ""));
+            readChartView.name.add(addName(name));
             readChartView.reads.add(rectangle);
 
 
@@ -220,6 +231,9 @@ public class ReadChartViewPresenter {
         label.minHeightProperty().bind(readChartView.barWidth.multiply(3));
         label.maxHeightProperty().bind(readChartView.barWidth.multiply(3));
 
+        Tooltip tooltip = new Tooltip(name);
+        tooltip.install(label, tooltip);
+
         return label;
 
     }
@@ -295,9 +309,20 @@ public class ReadChartViewPresenter {
 
             AnchorPane[] genes = addZoomedGenes(readChartView, read.getGFFEntries(), lowerBound, startGen, upperBound);
 
+            String name;
+            if(Project.treeLoadingStatus.get() == Project.LOADED){
+                if(Project.tree.getNodeById(read.getTaxonomicId()) != null && Project.tree.getNodeById(read.getTaxonomicId()).getName() != null)
+                    name = Project.tree.getNodeById(read.getTaxonomicId()).getName();
+                else
+                    name = read.getTaxonomicId() + "";
+            }
+            else{
+                name = read.getTaxonomicId() + "";
+            }
+
             readChartView.genPane.add(genes[0]);
             readChartView.reversedGenPane.add(genes[1]);
-            readChartView.name.add(addName(readChartView, taxId));
+            readChartView.name.add(addName(name));
             readChartView.reads.add(getZoomedSequence(readChartView, read));
 
         }

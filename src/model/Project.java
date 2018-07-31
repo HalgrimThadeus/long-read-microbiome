@@ -25,7 +25,7 @@ public class Project {
     public static final int LOADING_FAILED =0;
 
     public void loadTaxTree() {
-        ReadInTaxTreeService readInTaxTreeService = new ReadInTaxTreeService("res/TaxDump/nodes.dmp","res/TaxDump/names.dmp");
+        ReadInTaxTreeService readInTaxTreeService = new ReadInTaxTreeService("res/TreeDumpFiles/nodes.dmp","res/TreeDumpFiles/names.dmp");
 
         readInTaxTreeService.setOnSucceeded(event1 -> {
             tree = ((ReadInTaxTreeService)event1.getSource()).getValue();
